@@ -15,6 +15,6 @@ https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml
 
 你可以在网页 https://www.bestblogs.dev/sources 上浏览所有 RSS 订阅源信息，包括订阅源最近 3 个月的文章数量、精选文章数量和阅读数。
 
-[Sources Page](/images/source_page.png)
+![Sources Page](/images/source_page.png)
 
 你可以使用 RSS 阅读器进行导入阅读，如有优质的 RSS 订阅源需要添加，可以提 Issue 补充。
