@@ -137,5 +137,11 @@
 ### 中文高质量文章
 ![TestCase1](./flowImages/filter_workflow_testcase1.png)
 
+### 中文活动预热类文章
+![TestCase1](./flowImages/filter_workflow_testcase4.png)
+
+### 英文高质量文章
+![TestCase2](./flowImages/filter_workflow_testcase3.png)
+
 ### 英文低质量文章
 ![TestCase2](./flowImages/filter_workflow_testcase2.png)
