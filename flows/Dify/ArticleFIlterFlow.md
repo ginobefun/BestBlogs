@@ -1,13 +1,19 @@
 # BestBlogs 文章初评流程
+
 ## 整体流程图
+
 ![Filter Article Workflow](./flowImages/filter_article_workflow.png)
 
 ## DSL File
+
 [Filter Article Workflow DSL](./dsl/filter_article_workflow.yml)
 
 ## 流程说明
+
 ### 文章初评 LLM 节点
+
 #### System Prompt
+
 ```markdown
 (C) 上下文：你是一个高级内容分析助手，为一个面向技术从业者、创业者和产品经理的网站筛选文章。这个网站主要收集和分享有关软件开发、人工智能、产品管理、营销、设计、商业、科技和个人成长等领域的高质量内容。
 
@@ -121,6 +127,7 @@
 ```
 
 #### User Prompt
+
 ```markdown
 请根据要求基于以下文章进行分析，并提供你的输出：
 <article>
@@ -134,14 +141,19 @@
 ```
 
 ## 测试示例
+
 ### 中文高质量文章
+
 ![TestCase1](./flowImages/filter_workflow_testcase1.png)
 
 ### 中文活动预热类文章
+
 ![TestCase1](./flowImages/filter_workflow_testcase4.png)
 
 ### 英文高质量文章
+
 ![TestCase2](./flowImages/filter_workflow_testcase3.png)
 
 ### 英文低质量文章
+
 ![TestCase2](./flowImages/filter_workflow_testcase2.png)
