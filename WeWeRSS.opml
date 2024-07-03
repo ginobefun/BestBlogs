@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <opml version="2.0">
       <head>
-        <title>BestBlogs.dev 所有微信公众号订阅源</title>
+        <title>WeWeRSS 所有订阅源</title>
       </head>
       <body>
         <outline text="腾讯科技" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2756372660.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2756372660.atom"/>
@@ -172,5 +172,24 @@
     <outline text="郎瀚威 Will" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3206366426.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3206366426.atom"/>
     <outline text="AI炼金术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868900251.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868900251.atom"/>
     <outline text="暗涌Waves" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3940324519.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3940324519.atom"/>
+    <outline text="春暖花开" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3555649254.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3555649254.atom"/>
+    <outline text="功夫财经" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3239075092.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3239075092.atom"/>
+    <outline text="Datawhale" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3226363426.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3226363426.atom"/>
+    <outline text="架构师" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3006407565.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3006407565.atom"/>
+    <outline text="PaperAgent" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3941633310.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3941633310.atom"/>
+    <outline text="混沌学园" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3520497292.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3520497292.atom"/>
+    <outline text="徐慢慢心理话" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3261264596.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3261264596.atom"/>
+    <outline text="中国企业家杂志" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1275451641.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1275451641.atom"/>
+    <outline text="周国平" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3007318168.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3007318168.atom"/>
+    <outline text="新周刊" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398330323.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398330323.atom"/>
+    <outline text="小钻风的学习" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3235569828.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3235569828.atom"/>
+    <outline text="人人都是产品经理" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399106260.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399106260.atom"/>
+    <outline text="罗辑思维" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396019580.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396019580.atom"/>
+    <outline text="吴鲁加" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3894688350.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3894688350.atom"/>
+    <outline text="大语言模型论文跟踪" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3269165433.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3269165433.atom"/>
+    <outline text="AI大模型应用实践" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3942503650.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3942503650.atom"/>
+    <outline text="AI大航海" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3266465967.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3266465967.atom"/>
+    <outline text="华为云" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253753329.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253753329.atom"/>
+    <outline text="产品二姐" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3528641488.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3528641488.atom"/>
     </body>
     </opml>
