@@ -1,0 +1,2404 @@
+app:
+  description: "\u5229\u7528\u5927\u8BED\u8A00\u6A21\u578B\u5BF9\u6587\u7AE0\u8FDB\
+    \u884C\u603B\u7ED3\u3001\u6458\u8981\uFF0C\u63D0\u53D6\u5173\u952E\u8BCD\u3001\
+    \u4E3B\u8981\u89C2\u70B9\u548C\u6587\u7AE0\u91D1\u53E5"
+  icon: sparkle
+  icon_background: '#D3F8DF'
+  mode: workflow
+  name: "BestBlogs \u6587\u7AE0\u5206\u6790\u6D41\u7A0B"
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1718353568276-source-1718354838381-target
+      source: '1718353568276'
+      sourceHandle: source
+      target: '1718354838381'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: template-transform
+      id: 1718354838381-source-1718355718469-target
+      source: '1718354838381'
+      sourceHandle: source
+      target: '1718355718469'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1718355718469-source-1718355814693-target
+      source: '1718355718469'
+      sourceHandle: source
+      target: '1718355814693'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1718352852007-source-1719356422842-target
+      source: '1718352852007'
+      sourceHandle: source
+      target: '1719356422842'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1719356422842-source-1719357159255-target
+      source: '1719356422842'
+      sourceHandle: source
+      target: '1719357159255'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719381882148-source-1719444170368-target
+      source: '1719381882148'
+      sourceHandle: source
+      target: '1719444170368'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719647683007-source-1719650938792-target
+      source: '1719647683007'
+      sourceHandle: source
+      target: '1719650938792'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719650938792-source-1719381882148-target
+      source: '1719650938792'
+      sourceHandle: source
+      target: '1719381882148'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1719444170368-source-1718356146046-target
+      source: '1719444170368'
+      sourceHandle: source
+      target: '1718356146046'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: if-else
+      id: 1719357159255-source-1719660246354-target
+      source: '1719357159255'
+      sourceHandle: source
+      target: '1719660246354'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1719660246354-true-1718353568276-target
+      source: '1719660246354'
+      sourceHandle: 'true'
+      target: '1718353568276'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1719660246354-false-1719660406112-target
+      source: '1719660246354'
+      sourceHandle: 'false'
+      target: '1719660406112'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1718355814693-source-1719647683007-target
+      source: '1718355814693'
+      sourceHandle: source
+      target: '1719647683007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719660406112-source-17196606925130-target
+      source: '1719660406112'
+      sourceHandle: source
+      target: '17196606925130'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17196606925130-source-17196607045470-target
+      source: '17196606925130'
+      sourceHandle: source
+      target: '17196607045470'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17196607045470-source-17196607171490-target
+      source: '17196607045470'
+      sourceHandle: source
+      target: '17196607171490'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17196607171490-source-17196607260480-target
+      source: '17196607171490'
+      sourceHandle: source
+      target: '17196607260480'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 17196607260480-source-17196607334660-target
+      source: '17196607260480'
+      sourceHandle: source
+      target: '17196607334660'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: "\u8F93\u5165\u6587\u7AE0 Id"
+        selected: false
+        title: "\u5F00\u59CB"
+        type: start
+        variables:
+        - label: "BestBlogs \u6587\u7AE0 Id"
+          max_length: 20
+          options: []
+          required: true
+          type: text-input
+          variable: input_article_id
+      height: 118
+      id: '1718352852007'
+      position:
+        x: 943.3714285714286
+        y: -163.8142857142857
+      positionAbsolute:
+        x: 943.3714285714286
+        y: -163.8142857142857
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import re\n\ndef main(markdown_text: str) -> dict:\n    \"\"\"\n  \
+          \  \u5C06 Markdown \u6587\u672C\u5212\u5206\u4E3A\u6BB5\u843D\uFF0C\u5E76\
+          \u5408\u5E76\u8F83\u5C0F\u7684\u6BB5\u843D\u4F7F\u5176\u957F\u5EA6\u4E0D\
+          \u8D85\u8FC7 3000 \u4E2A\u5B57\u7B26\u3002\n\n    \u53C2\u6570\uFF1A\n \
+          \       markdown_text (str): Markdown\u683C\u5F0F\u7684\u6587\u672C\u3002\
+          \n\n    \u8FD4\u56DE\uFF1A\n        Dict[str, List[str]]: \u5305\u542B\u6BB5\
+          \u843D\u5217\u8868\u7684\u5B57\u5178\uFF0C\u6BCF\u4E2A\u6BB5\u843D\u4F5C\
+          \u4E3A\u5217\u8868\u4E2D\u7684\u4E00\u9879\uFF0C\u957F\u5EA6\u4E0D\u8D85\
+          \u8FC7 3000 \u4E2A\u5B57\u7B26\u3002\n    \"\"\"\n    max_length = 3000\n\
+          \n    # \u9884\u5904\u7406\uFF1A\u79FB\u9664YAML\u524D\u7F6E\u5143\u6570\
+          \u636E\uFF08\u5982\u679C\u5B58\u5728\uFF09\n    markdown_text = re.sub(r'^---\\\
+          n.*?\\n---\\n', '', markdown_text, flags=re.DOTALL)\n\n    # \u521D\u6B65\
+          \u6309\u6362\u884C\u5206\u9694\uFF0C\u4FDD\u7559\u7A7A\u884C\n    initial_paragraphs\
+          \ = markdown_text.split('\\n')\n    \n    paragraphs = []\n    current_paragraph\
+          \ = \"\"\n    in_code_block = False\n    \n    for line in initial_paragraphs:\n\
+          \        stripped_line = line.strip()\n        \n        # \u5904\u7406\u4EE3\
+          \u7801\u5757\n        if stripped_line.startswith('```'):\n            in_code_block\
+          \ = not in_code_block\n            if current_paragraph:\n             \
+          \   paragraphs.append(current_paragraph)\n                current_paragraph\
+          \ = \"\"\n            paragraphs.append(line)\n            continue\n  \
+          \      \n        if in_code_block:\n            paragraphs.append(line)\n\
+          \            continue\n        \n        # \u5904\u7406\u6807\u9898\u3001\
+          \u5F15\u7528\u3001\u5217\u8868\u7B49\n        if (stripped_line.startswith(('#',\
+          \ '>', '-', '*', '+')) or \n            re.match(r'^\\d+\\.', stripped_line)\
+          \ or\n            stripped_line.startswith('|') or  # \u8868\u683C\n   \
+          \         stripped_line == '---' or  # \u6C34\u5E73\u7EBF\n            re.match(r'^\\\
+          [.*\\]:.*', stripped_line)):  # \u94FE\u63A5\u5F15\u7528\n            if\
+          \ current_paragraph:\n                paragraphs.append(current_paragraph)\n\
+          \                current_paragraph = \"\"\n            paragraphs.append(line)\n\
+          \        elif stripped_line == \"\":\n            if current_paragraph:\n\
+          \                paragraphs.append(current_paragraph)\n                current_paragraph\
+          \ = \"\"\n        else:\n            if current_paragraph:\n           \
+          \     current_paragraph += \" \" + stripped_line\n            else:\n  \
+          \              current_paragraph = stripped_line\n    \n    if current_paragraph:\n\
+          \        paragraphs.append(current_paragraph)\n    \n    # \u5408\u5E76\u6BB5\
+          \u843D\u4F7F\u5176\u957F\u5EA6\u4E0D\u8D85\u8FC7max_length\n    merged_paragraphs\
+          \ = []\n    current_paragraph = \"\"\n\n    for para in paragraphs:\n  \
+          \      if len(current_paragraph) + len(para) + 2 <= max_length:  # +2 for\
+          \ potential '\\n\\n'\n            if current_paragraph:\n              \
+          \  current_paragraph += \"\\n\\n\" + para\n            else:\n         \
+          \       current_paragraph = para\n        else:\n            if current_paragraph:\n\
+          \                merged_paragraphs.append(current_paragraph)\n         \
+          \   if len(para) > max_length:\n                # \u5982\u679C\u5355\u4E2A\
+          \u6BB5\u843D\u8D85\u8FC7\u6700\u5927\u957F\u5EA6\uFF0C\u8FDB\u884C\u5206\
+          \u5272\n                words = para.split()\n                temp_para\
+          \ = \"\"\n                for word in words:\n                    if len(temp_para)\
+          \ + len(word) + 1 <= max_length:\n                        temp_para += \"\
+          \ \" + word if temp_para else word\n                    else:\n        \
+          \                merged_paragraphs.append(temp_para)\n                 \
+          \       temp_para = word\n                if temp_para:\n              \
+          \      merged_paragraphs.append(temp_para)\n            else:\n        \
+          \        current_paragraph = para\n\n    if current_paragraph:\n       \
+          \ merged_paragraphs.append(current_paragraph)\n\n    return {\n        \"\
+          paragraphs\": merged_paragraphs,\n        \"totalParagraphCount\": len(merged_paragraphs)\n\
+          \    }"
+        code_language: python3
+        desc: "\u5C06\u6587\u7AE0\u5212\u5206\u6210\u82E5\u5E72\u4E2A\u4E0D\u8D85\u8FC7\
+          \ 3000 \u5B57\u7B26\u7684\u6BB5\u843D"
+        outputs:
+          paragraphs:
+            children: null
+            type: array[string]
+          totalParagraphCount:
+            children: null
+            type: number
+        selected: false
+        title: "\u6587\u7AE0\u5206\u6BB5"
+        type: code
+        variables:
+        - value_selector:
+          - '1719357159255'
+          - markdown
+          variable: markdown_text
+      height: 100
+      id: '1718353568276'
+      position:
+        x: 1242
+        y: 315.5
+      positionAbsolute:
+        x: 1242
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: "\u9010\u4E2A\u6BB5\u843D\u8FDB\u884C\u5904\u7406"
+        height: 231
+        iterator_selector:
+        - '1718353568276'
+        - paragraphs
+        output_selector:
+        - '1718354999060'
+        - text
+        output_type: array[string]
+        selected: false
+        startNodeType: llm
+        start_node_id: '1718354999060'
+        title: "\u9010\u4E2A\u6BB5\u843D\u8FDB\u884C\u5206\u6790"
+        type: iteration
+        width: 376
+      height: 231
+      id: '1718354838381'
+      position:
+        x: 1545
+        y: 315.5
+      positionAbsolute:
+        x: 1545
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 376
+      zIndex: 1
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1718354838381'
+          - item
+        desc: "\u9010\u4E2A\u6BB5\u843D\u8FDB\u884C\u603B\u7ED3\u3001\u6458\u8981\u3001\
+          \u5217\u51FA\u4E3B\u8981\u89C2\u70B9\u3001\u63D0\u53D6\u5173\u952E\u8BCD"
+        isInIteration: true
+        isIterationStart: true
+        iteration_id: '1718354838381'
+        model:
+          completion_params:
+            temperature: 0.5
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 982fdfa5-0a05-4858-b89e-d9bf8205a4d2
+          role: system
+          text: "# \u6587\u7AE0\u6BB5\u843D\u7CBE\u8981\u5206\u6790\u52A9\u624B\n\n\
+            ## \u8F93\u5165\u683C\u5F0F\n\u60A8\u5C06\u6536\u5230\u4E00\u4E2A XML\
+            \ \u683C\u5F0F\u7684\u6587\u7AE0\u6BB5\u843D\u4FE1\u606F\uFF0C\u5305\u542B\
+            \u6807\u9898\u3001\u6765\u6E90\u3001\u7F51\u5740\u548C\u6BB5\u843D\u5185\
+            \u5BB9\u7B49\u5143\u7D20\u3002\u6587\u7AE0\u6BB5\u843D\u5185\u5BB9\u5C06\
+            \u5305\u542B\u5728 CDATA \u90E8\u5206\u4E2D\u3002\n## \u76EE\u6807\n\u5206\
+            \u6790\u7ED9\u5B9A\u7684 XML \u683C\u5F0F\u6BB5\u843D\u4FE1\u606F\uFF0C\
+            \u63D0\u53D6\u6838\u5FC3\u5185\u5BB9\uFF0C\u5E76\u6309\u6307\u5B9A\u683C\
+            \u5F0F\u8F93\u51FA\u5206\u6790\u7ED3\u679C\u3002\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\
+            \u51FA\u3002\n## \u8F93\u51FA\u683C\u5F0F\n```markdown\n### \u6BB5\u843D\
+            \u6458\u8981\n[3-4\u53E5\u8BDD\u6982\u62EC\u672C\u6BB5\u843D\u7684\u6838\
+            \u5FC3\u5185\u5BB9\uFF0C\u786E\u4FDD\u6DB5\u76D6\u6240\u6709\u5173\u952E\
+            \u4FE1\u606F]\n### \u6BB5\u843D\u6807\u7B7E\uFF082-5\u4E2A\uFF09\n[\u6309\
+            \u4EE5\u4E0B\u987A\u5E8F\u9009\u62E9\u5E76\u5217\u51FA\u6807\u7B7E\uFF1A\
+            \u4E3B\u9898\u6807\u7B7E\u3001\u6280\u672F/\u9886\u57DF\u6807\u7B7E\u3001\
+            \u5E94\u7528/\u4EA7\u54C1\u6807\u7B7E\u3001\u516C\u53F8/\u5E73\u53F0/\u540D\
+            \u4EBA\u6807\u7B7E\u3001\u8D8B\u52BF\u6807\u7B7E]\n### \u6BB5\u843D\u4E3B\
+            \u8981\u89C2\u70B9\uFF082-5\u4E2A\uFF09\n[\u5168\u9762\u6982\u62EC\u672C\
+            \u6BB5\u843D\u7684\u4E3B\u8981\u89C2\u70B9\u53CA\u5176\u8BF4\u660E\uFF0C\
+            \u53EF\u4F7F\u7528\u591A\u4E2A\u8981\u70B9\u5217\u51FA\uFF0C\u786E\u4FDD\
+            \u4E0D\u9057\u6F0F\u5173\u952E\u4FE1\u606F]\n### \u6F5C\u5728\u91D1\u53E5\
+            \uFF081-3\u53E5\uFF09\n> [\u91D1\u53E51]\n> [\u91D1\u53E52]\uFF08\u5982\
+            \u679C\u6709\uFF09\n> [\u91D1\u53E53]\uFF08\u5982\u679C\u6709\uFF09\n\
+            ## \u6CE8\u610F\u4E8B\u9879\n1. \u4ED4\u7EC6\u5206\u6790 XML \u4E2D\u7684\
+            \u6240\u6709\u4FE1\u606F\uFF0C\u5305\u62EC\u6807\u9898\u3001\u6765\u6E90\
+            \u548C\u7F51\u5740\uFF0C\u8FD9\u4E9B\u53EF\u80FD\u5BF9\u7406\u89E3\u5185\
+            \u5BB9\u80CC\u666F\u5F88\u91CD\u8981\u3002\n2. \u6BB5\u843D\u6458\u8981\
+            \u5E94\u7B80\u660E\u627C\u8981\u5730\u6982\u62EC\u6574\u4E2A\u6BB5\u843D\
+            \u7684\u6838\u5FC3\u5185\u5BB9\u3002\n\u6BB5\u843D\u6807\u7B7E\u9009\u62E9\
+            \uFF1A\n3. \u4ECE\u6807\u51C6\u5316\u6807\u7B7E\u5217\u8868\u4E2D\u9009\
+            \u62E92-5\u4E2A\u6700\u76F8\u5173\u7684\u6807\u7B7E\u3002\n- \u4EE5\u4E0B\
+            \u662F\u4E00\u4E9B\u5178\u578B\u793A\u4F8B\uFF1A\u4E3B\u9898\u6807\u7B7E\
+            \uFF08\u4EBA\u5DE5\u667A\u80FD\u3001\u7F16\u7A0B\u6280\u672F\u3001\u4EA7\
+            \u54C1\u3001\u8BBE\u8BA1\u3001\u5546\u4E1A\u3001\u8425\u9500\u3001\u79D1\
+            \u6280\u3001\u4E2A\u4EBA\u6210\u957F\u7B49\uFF09\u3001\u6280\u672F/\u9886\
+            \u57DF\u6807\u7B7E\uFF08\u63D0\u793A\u8BCD\u3001\u667A\u80FD\u4F53\u3001\
+            Web\u5F00\u53D1\u3001UX\u8BBE\u8BA1\u3001\u6570\u636E\u5206\u6790\u3001\
+            \u67B6\u6784\u8BBE\u8BA1\u3001\u6848\u4F8B\u5206\u4EAB\u3001\u521B\u4E1A\
+            \u7B49\uFF09\u3001\u5E94\u7528/\u4EA7\u54C1\u6807\u7B7E\uFF08ChatGPT\u3001\
+            GitHub\u3001Midjourney\u3001TensorFlow\u3001Dify\u3001Coze\u7B49\uFF09\
+            \u3001\u516C\u53F8/\u5E73\u53F0/\u540D\u4EBA\u6807\u7B7E\uFF08Google\u3001\
+            OpenAI\u3001LangChain\u3001Spring\u3001\u5FAE\u8F6F\u3001\u9A6C\u65AF\u514B\
+            \u3001\u6768\u690D\u9E9F\u7B49\uFF09\u3001\u8D8B\u52BF\u6807\u7B7E\uFF08\
+            \u5927\u8BED\u8A00\u6A21\u578B\u3001\u4E91\u539F\u751F\u3001\u5143\u5B87\
+            \u5B99\u3001\u53EF\u6301\u7EED\u53D1\u5C55\u7B49\uFF09\u3002\n- \u6309\
+            \u7167\u4E0A\u8FF0\u987A\u5E8F\u6392\u5217\u9009\u62E9\u7684\u6807\u7B7E\
+            \u3002\n- \u6807\u7B7E\u5E94\u53CD\u6620\u6BB5\u843D\u7684\u4E3B\u8981\
+            \u4E3B\u9898\u3001\u6D89\u53CA\u7684\u6280\u672F\u6216\u9886\u57DF\u3001\
+            \u76F8\u5173\u7684\u5E94\u7528\u6216\u4EA7\u54C1\u3001\u63D0\u5230\u7684\
+            \u516C\u53F8/\u5E73\u53F0/\u540D\u4EBA\uFF0C\u4EE5\u53CA\u4EFB\u4F55\u660E\
+            \u663E\u7684\u8D8B\u52BF\u3002\n- \u9009\u62E9\u7684\u6807\u7B7E\u5E94\
+            \u8BE5\u80FD\u591F\u6709\u6548\u5730\u7EC4\u7EC7\u548C\u7B5B\u9009\u6587\
+            \u7AE0\uFF0C\u800C\u4E0D\u4EC5\u4EC5\u662F\u5173\u952E\u8BCD\u3002\n4.\
+            \ \u6BB5\u843D\u4E3B\u8981\u89C2\u70B9\u5E94\u5B8C\u6574\u6982\u62EC\u672C\
+            \u6BB5\u843D\u7684\u6240\u6709\u91CD\u8981\u5185\u5BB9\uFF0C\u4EE5\u53CA\
+            \u5BF9\u89C2\u70B9\u7684\u8865\u5145\u8BF4\u660E\uFF0C\u4E0D\u9057\u6F0F\
+            \u4EFB\u4F55\u5173\u952E\u4FE1\u606F\u3002\n5. \u6F5C\u5728\u91D1\u53E5\
+            \u5E94\u9009\u62E9\u6700\u80FD\u4EE3\u8868\u6BB5\u843D\u6838\u5FC3\u5185\
+            \u5BB9\u6216\u6700\u6709\u6D1E\u89C1\u7684\u53E5\u5B50\u3002\n6. \u786E\
+            \u4FDD\u5206\u6790\u51C6\u786E\u53CD\u6620\u6BB5\u843D\u5185\u5BB9\uFF0C\
+            \u4E0D\u6DFB\u52A0\u63A8\u6D4B\u3002"
+        - id: 24d97f72-bbd2-4d77-ab03-90368accf732
+          role: user
+          text: "\u8BF7\u6309\u7167\u7CFB\u7EDF\u63D0\u793A\u4E2D\u7684\u6B65\u9AA4\
+            \u548C\u539F\u5219\uFF0C\u5BF9\u8FD9\u6BB5\u5185\u5BB9\u8FDB\u884C\u5206\
+            \u6790\uFF0C\u5E76\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\u51FA\
+            \u6307\u5B9A\u683C\u5F0F\u7684\u5206\u6790\u7ED3\u679C\u3002\n\n\n<article>\n\
+            \  <title>{{#1719357159255.title#}}</title>\n  <source>{{#1719357159255.sourceName#}}</source>\n\
+            \  <url>{{#1719357159255.url#}}</url>\n  <paragraph>\n    <index>{{#1718354838381.index#}}</index>\n\
+            \    <content>\n      <![CDATA[\n      {{#1718354838381.item#}}\n    \
+            \  ]]>\n    </content>\n  </paragraph>\n</article>"
+        selected: false
+        title: "\u6BB5\u843D\u5206\u6790"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      extent: parent
+      height: 144
+      id: '1718354999060'
+      parentId: '1718354838381'
+      position:
+        x: 117
+        y: 85
+      positionAbsolute:
+        x: 1662
+        y: 400.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1001
+    - data:
+        desc: "\u5C06\u5404\u4E2A\u6BB5\u843D\u7684\u5206\u6790\u7ED3\u679C\u5408\u5E76"
+        selected: false
+        template: '{{ articleSections | join("\n") }}'
+        title: "\u5206\u6790\u7ED3\u679C\u5408\u5E76"
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1718354838381'
+          - output
+          variable: articleSections
+      height: 82
+      id: '1718355718469'
+      position:
+        x: 1981
+        y: 315.5
+      positionAbsolute:
+        x: 1981
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1718355718469'
+          - output
+        desc: "\u8C03\u7528\u5927\u8BED\u8A00\u6A21\u578B\u5BF9\u5206\u6BB5\u7ED3\u679C\
+          \u8FDB\u884C\u7EFC\u5408\u5206\u6790"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 2e9ab6fb-4504-4891-95a1-39dff0e8ed6d
+          role: system
+          text: "# \u6280\u672F\u6587\u7AE0\u5206\u6790\u6C47\u603B\u4E13\u5BB6\n\n\
+            ## \u80CC\u666F\u4E0E\u4EFB\u52A1\n\n\u60A8\u662F\u4E00\u4F4D\u4E13\u4E1A\
+            \u7684\u6280\u672F\u6587\u7AE0\u5206\u6790\u6C47\u603B\u4E13\u5BB6\u3002\
+            \u60A8\u7684\u4EFB\u52A1\u662F\u5BF9\u7ED9\u5B9A\u7684\u6587\u7AE0\u5143\
+            \u6570\u636E\u548C\u5206\u6BB5\u5206\u6790\u7ED3\u679C\u8FDB\u884C\u7EFC\
+            \u5408\u5206\u6790\uFF0C\u63D0\u4F9B\u5168\u6587\u7684\u603B\u4F53\u6982\
+            \u8FF0\u3002\u60A8\u7684\u5206\u6790\u5C06\u9762\u5411\u5F00\u53D1\u8005\
+            \u3001\u4EA7\u54C1\u7ECF\u7406\u53CA\u76F8\u5173\u6280\u672F\u4EBA\u5458\
+            \uFF0C\u5E2E\u52A9\u4ED6\u4EEC\u5FEB\u901F\u7406\u89E3\u6587\u7AE0\u7684\
+            \u6838\u5FC3\u5185\u5BB9\u3001\u6280\u672F\u8981\u70B9\u548C\u5B9E\u9645\
+            \u5E94\u7528\u4EF7\u503C\u3002\n\n## \u5206\u6790\u6B65\u9AA4\u548C\u539F\
+            \u5219\n\n1. \u5168\u9762\u5BA1\u9605\uFF1A\u4ED4\u7EC6\u5BA1\u9605\u63D0\
+            \u4F9B\u7684\u6587\u7AE0\u5143\u6570\u636E\u548C\u5404\u4E2A\u6BB5\u843D\
+            \u7684\u5206\u6790\u7ED3\u679C\uFF0C\u7406\u89E3\u6587\u7AE0\u7684\u4E3B\
+            \u65E8\u3001\u7ED3\u6784\u548C\u6838\u5FC3\u5185\u5BB9\u3002\n2. \u63D0\
+            \u53D6\u5173\u952E\u4FE1\u606F\uFF1A\u8BC6\u522B\u5E76\u63D0\u53D6\u6587\
+            \u7AE0\u7684\u80CC\u666F\u3001\u5173\u952E\u70B9\u3001\u8BBA\u636E\u3001\
+            \u6570\u636E\u548C\u7ED3\u8BBA\u3002\n3. \u7EC4\u7EC7\u7ED3\u6784\uFF1A\
+            \u5C06\u4FE1\u606F\u7EC4\u7EC7\u6210\u903B\u8F91\u7ED3\u6784\uFF0C\u53CD\
+            \u6620\u6587\u7AE0\u7684\u6574\u4F53\u8109\u7EDC\u6216\u4E3B\u9898\u5206\
+            \u5E03\u3002\n4. \u7CBE\u70BC\u8BED\u8A00\uFF1A\u4F7F\u7528\u7B80\u6D01\
+            \u3001\u660E\u4E86\u4F46\u4E13\u4E1A\u7684\u8BED\u8A00\u8868\u8FBE\u539F\
+            \u6587\u6838\u5FC3\u5185\u5BB9\uFF0C\u907F\u514D\u5197\u4F59\u3002\n5.\
+            \ \u4FDD\u6301\u4E2D\u7ACB\u6027\uFF1A\u4FDD\u6301\u5BA2\u89C2\uFF0C\u7A81\
+            \u51FA\u6587\u7AE0\u4E2D\u7279\u522B\u6709\u89C1\u5730\u6216\u521B\u65B0\
+            \u7684\u90E8\u5206\u3002\n6. \u7EF4\u62A4\u539F\u6587\u98CE\u683C\uFF1A\
+            \u5C3D\u53EF\u80FD\u4FDD\u7559\u539F\u6587\u7684\u98CE\u683C\u548C\u8BED\
+            \u6C14\uFF0C\u786E\u4FDD\u5206\u6790\u4E0D\u626D\u66F2\u539F\u610F\u3002\
+            \n7. \u8BC6\u522B\u521B\u65B0\u70B9\uFF1A\u7279\u522B\u5173\u6CE8\u6587\
+            \u7AE0\u4E2D\u7684\u521B\u65B0\u89C2\u70B9\u3001\u65B9\u6CD5\u6216\u53D1\
+            \u73B0\uFF0C\u5E76\u5728\u5206\u6790\u4E2D\u7A81\u51FA\u5B83\u4EEC\u3002\
+            \n8. \u8003\u8651\u5E94\u7528\u4EF7\u503C\uFF1A\u5F3A\u8C03\u6587\u7AE0\
+            \u5185\u5BB9\u7684\u5B9E\u9645\u5E94\u7528\u4EF7\u503C\u6216\u6F5C\u5728\
+            \u5F71\u54CD\u3002\n\n## \u5206\u6790\u98CE\u683C\u548C\u8BED\u6C14\n\n\
+            - \u98CE\u683C\uFF1A\u4EE5\u6280\u672F\u535A\u5BA2\u4F5C\u8005\u7684\u98CE\
+            \u683C\u8FDB\u884C\u5199\u4F5C\u3002\u4F7F\u7528\u6E05\u6670\u3001\u7B80\
+            \u6D01\u4F46\u4E13\u4E1A\u7684\u8BED\u8A00\uFF0C\u65E2\u8981\u4F53\u73B0\
+            \u6280\u672F\u6DF1\u5EA6\uFF0C\u53C8\u8981\u4FDD\u8BC1\u53EF\u8BFB\u6027\
+            \u3002\n- \u8BED\u6C14\uFF1A\u4FDD\u6301\u4E13\u4E1A\u3001\u53CB\u597D\
+            \u4E14\u7A0D\u5E26\u542F\u53D1\u6027\u7684\u8BED\u6C14\u3002\u5206\u6790\
+            \u5E94\u8BE5\u5BA2\u89C2\uFF0C\u4F46\u4E5F\u53EF\u4EE5\u7A81\u51FA\u6587\
+            \u7AE0\u4E2D\u7279\u522B\u6709\u89C1\u5730\u6216\u521B\u65B0\u7684\u90E8\
+            \u5206\u3002\n\n## \u8F93\u5165\u683C\u5F0F\n\n\u8F93\u5165\u5C06\u4EE5\
+            XML\u683C\u5F0F\u63D0\u4F9B\uFF0C\u5305\u542B\u4EE5\u4E0B\u4E3B\u8981\u90E8\
+            \u5206\uFF1A\n1. \u6587\u7AE0\u5143\u6570\u636E\uFF08\u6807\u9898\u3001\
+            \u6765\u6E90\u3001URL\uFF09\n2. \u4E4B\u524D\u6B65\u9AA4\u751F\u6210\u7684\
+            \u5206\u6BB5\u5206\u6790\u7ED3\u679C\n\n\u793A\u4F8B\uFF1A\n<article>\n\
+            \  <metadata>\n    <title>\u6587\u7AE0\u6807\u9898</title>\n    <source>\u6765\
+            \u6E90\u7F51\u7AD9</source>\n    <url>\u6587\u7AE0URL</url>\n  </metadata>\n\
+            \  <analysis>\n    <![CDATA[\n    \u5206\u6BB5\u5206\u6790\u7ED3\u679C\
+            \u5185\u5BB9\n    ]]>\n  </analysis>\n</article>\n\n## \u8F93\u51FA\u683C\
+            \u5F0F\n\n\u8BF7\u4F7F\u7528{{#1719357159255.languageName#}}\uFF0C\u6309\
+            \u7167\u4EE5\u4E0BMarkdown\u683C\u5F0F\u8F93\u51FA\u4F18\u5316\u540E\u7684\
+            \u5206\u6790\u7ED3\u679C\uFF1A\n\n```markdown\n### \u4E00\u53E5\u8BDD\u603B\
+            \u7ED3\n[\u7528\u4E00\u53E5\u8BDD\u6982\u62EC\u6574\u7BC7\u6587\u7AE0\u7684\
+            \u6838\u5FC3\u5185\u5BB9\u548C\u4E3B\u8981\u7ED3\u8BBA]\n\n### \u6458\u8981\
+            \n[\u75285-8\u53E5\u8BDD\u63D0\u4F9B\u6587\u7AE0\u7684\u5168\u9762\u6982\
+            \u8FF0\uFF0C\u5305\u62EC\u80CC\u666F\u4FE1\u606F\u3001\u601D\u8003\u8FC7\
+            \u7A0B\u3001\u5B9E\u73B0\u65B9\u6848\u3001\u5173\u952E\u6570\u636E\u3001\
+            \u6838\u5FC3\u5185\u5BB9\u548C\u6709\u542F\u53D1\u7684\u89C2\u70B9]\n\n\
+            ### \u4E3B\u8981\u89C2\u70B9\n1. **[\u4E3B\u8981\u89C2\u70B91]**\uFF08\
+            \u91CD\u8981\u6027\uFF1AX/5\uFF09\n   - [\u7B80\u8981\u89E3\u91CA\u6216\
+            \u8865\u5145\u8BF4\u660E]\n2. **[\u4E3B\u8981\u89C2\u70B92]**\uFF08\u91CD\
+            \u8981\u6027\uFF1AX/5\uFF09\n   - [\u7B80\u8981\u89E3\u91CA\u6216\u8865\
+            \u5145\u8BF4\u660E]\n3. **[\u4E3B\u8981\u89C2\u70B93]**\uFF08\u91CD\u8981\
+            \u6027\uFF1AX/5\uFF09\n   - [\u7B80\u8981\u89E3\u91CA\u6216\u8865\u5145\
+            \u8BF4\u660E]\n[\u5982\u679C\u6709\u66F4\u591A\u91CD\u8981\u89C2\u70B9\
+            \uFF0C\u53EF\u4EE5\u7EE7\u7EED\u6DFB\u52A0\uFF0C\u6700\u591A\u52305\u4E2A\
+            ]\n\n### \u6587\u7AE0\u91D1\u53E5\n1. \"[\u6587\u7AE0\u91D1\u53E51]\"\n\
+            \   - \u91CD\u8981\u6027\uFF1A[\u89E3\u91CA\u4E3A\u4EC0\u4E48\u8FD9\u53E5\
+            \u8BDD\u91CD\u8981\u6216\u6709\u542F\u53D1\u6027]\n2. \"[\u6587\u7AE0\u91D1\
+            \u53E52]\"\n   - \u91CD\u8981\u6027\uFF1A[\u89E3\u91CA\u4E3A\u4EC0\u4E48\
+            \u8FD9\u53E5\u8BDD\u91CD\u8981\u6216\u6709\u542F\u53D1\u6027]\n3. \"[\u6587\
+            \u7AE0\u91D1\u53E53]\"\n   - \u91CD\u8981\u6027\uFF1A[\u89E3\u91CA\u4E3A\
+            \u4EC0\u4E48\u8FD9\u53E5\u8BDD\u91CD\u8981\u6216\u6709\u542F\u53D1\u6027\
+            ]\n[\u5982\u679C\u6709\u66F4\u591A\u91CD\u8981\u91D1\u53E5\uFF0C\u53EF\
+            \u4EE5\u7EE7\u7EED\u6DFB\u52A0\uFF0C\u6700\u591A\u52305\u4E2A]\n```\n\n\
+            ## \u6CE8\u610F\u4E8B\u9879\n1.\u786E\u4FDD\u5206\u6790\u6DB5\u76D6\u4E86\
+            \u6587\u7AE0\u7684\u6574\u4F53\u4E3B\u9898\u548C\u6838\u5FC3\u4FE1\u606F\
+            \uFF0C\u7279\u522B\u5173\u6CE8\u6280\u672F\u7EC6\u8282\u548C\u5B9E\u9645\
+            \u5E94\u7528\u3002\n2.\u5728\u7EFC\u5408\u4FE1\u606F\u65F6\uFF0C\u8003\
+            \u8651\u5404\u6BB5\u843D\u7684\u91CD\u8981\u6027\u548C\u76F8\u5173\u6027\
+            \uFF0C\u7A81\u51FA\u5BF9\u6280\u672F\u4EBA\u5458\u6700\u6709\u4EF7\u503C\
+            \u7684\u5185\u5BB9\u3002\n3.\u5982\u679C\u53D1\u73B0\u6BB5\u843D\u95F4\
+            \u6709\u77DB\u76FE\u6216\u4E0D\u4E00\u81F4\u7684\u5730\u65B9\uFF0C\u8BF7\
+            \u5728\u5206\u6790\u4E2D\u6307\u51FA\u3002\n4.\u4FDD\u6301\u5BA2\u89C2\
+            \u6027\uFF0C\u51C6\u786E\u8868\u8FBE\u539F\u6587\u5185\u5BB9\uFF0C\u4F46\
+            \u53EF\u4EE5\u5F3A\u8C03\u521B\u65B0\u70B9\u6216\u7279\u522B\u6709\u4EF7\
+            \u503C\u7684\u89C1\u89E3\u3002\n5.\u4E3B\u8981\u89C2\u70B9\u548C\u6587\
+            \u7AE0\u91D1\u53E5\u5E94\u6309\u91CD\u8981\u6027\u6392\u5E8F\uFF0C\u5E76\
+            \u63D0\u4F9B\u91CD\u8981\u6027\u8BC4\u5206\uFF081-5\u5206\uFF09\u3002\n\
+            6.\u5728\u6458\u8981\u4E2D\uFF0C\u786E\u4FDD\u5305\u542B\u8DB3\u591F\u7684\
+            \u80CC\u666F\u4FE1\u606F\u3001\u601D\u8003\u8FC7\u7A0B\u3001\u5B9E\u73B0\
+            \u65B9\u6848\u3001\u5173\u952E\u6570\u636E\u3001\u6838\u5FC3\u5185\u5BB9\
+            \u548C\u6709\u542F\u53D1\u7684\u89C2\u70B9\uFF0C\u4EE5\u5168\u9762\u53CD\
+            \u6620\u6587\u7AE0\u7684\u4EF7\u503C\u3002\n7.\u4E3B\u8981\u89C2\u70B9\
+            \u548C\u6587\u7AE0\u91D1\u53E5\u53EF\u4EE5\u7075\u6D3B\u5305\u542B3\u5230\
+            5\u4E2A\u9879\u76EE\uFF0C\u4EE5\u786E\u4FDD\u6355\u6349\u5230\u6587\u7AE0\
+            \u4E2D\u6700\u91CD\u8981\u7684\u5185\u5BB9\u3002\n8.\u5728\u5206\u6790\
+            \u8FC7\u7A0B\u4E2D\uFF0C\u6CE8\u610F\u5E73\u8861\u6280\u672F\u6DF1\u5EA6\
+            \u548C\u53EF\u8BFB\u6027\uFF0C\u786E\u4FDD\u5206\u6790\u7ED3\u679C\u65E2\
+            \u6709\u4E13\u4E1A\u4EF7\u503C\uFF0C\u53C8\u6613\u4E8E\u7406\u89E3\u3002\
+            \n9.\u786E\u4FDD\u5404\u4E2A\u90E8\u5206\uFF08\u6458\u8981\u3001\u4E3B\
+            \u8981\u89C2\u70B9\u3001\u91D1\u53E5\u7B49\uFF09\u4E4B\u95F4\u4FDD\u6301\
+            \u903B\u8F91\u8FDE\u8D2F\u6027\u3002\n10.\u7279\u522B\u5173\u6CE8\u5E76\
+            \u7A81\u51FA\u6587\u7AE0\u5185\u5BB9\u7684\u5B9E\u9645\u5E94\u7528\u4EF7\
+            \u503C\u6216\u6F5C\u5728\u5F71\u54CD\uFF0C\u8FD9\u5BF9\u5F00\u53D1\u8005\
+            \u548C\u4EA7\u54C1\u7ECF\u7406\u5C24\u5176\u91CD\u8981\u3002"
+        - id: cde18505-a2fe-45a5-a765-40dbe1c10c0f
+          role: user
+          text: "\u8BF7\u6839\u636E\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\u6570\u636E\
+            \u548C\u5206\u6BB5\u5206\u6790\u7ED3\u679C\uFF0C\u6309\u7167\u7CFB\u7EDF\
+            \u63D0\u793A\u4E2D\u7684\u6B65\u9AA4\u548C\u539F\u5219\uFF0C\u5BF9\u5168\
+            \u6587\u8FDB\u884C\u7EFC\u5408\u5206\u6790\uFF0C\u5E76\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\
+            \u51FA\u6307\u5B9A\u683C\u5F0F\u7684\u5206\u6790\u7ED3\u679C\u3002\n\n\
+            <article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n  <analysis>\n    <![CDATA[\n    {{#1718355718469.output#}}\n\
+            \    ]]>\n  </analysis>\n</article>"
+        selected: false
+        title: "\u5BF9\u5206\u6BB5\u7ED3\u679C\u8FDB\u884C\u7EFC\u5408"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 144
+      id: '1718355814693'
+      position:
+        x: 2284
+        y: 315.5
+      positionAbsolute:
+        x: 2284
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: "\u8F93\u51FA\u6700\u7EC8\u5206\u6790\u7ED3\u679C"
+        outputs:
+        - value_selector:
+          - '1719444170368'
+          - text
+          variable: analysisResult
+        selected: false
+        title: "\u7ED3\u675F"
+        type: end
+      height: 118
+      id: '1718356146046'
+      position:
+        x: 3799
+        y: 315.5
+      positionAbsolute:
+        x: 3799
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: ''
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: id:{{#1718352852007.input_article_id#}}
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: "\u83B7\u53D6\u6587\u7AE0\u4FE1\u606F"
+        type: http-request
+        url: https://api.bestblogs.dev/api/resource/markdown
+        variables: []
+      height: 104
+      id: '1719356422842'
+      position:
+        x: 943.3714285714286
+        y: 2.8142857142857736
+      positionAbsolute:
+        x: 943.3714285714286
+        y: 2.8142857142857736
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\n\ndef main(json_body):\n    \"\"\"\n    \u5904\u7406 REST\
+          \ \u8BF7\u6C42\u8FD4\u56DE\u7684 JSON \u5B57\u7B26\u4E32\u3002\n    \n \
+          \   \u82E5\u8F93\u5165\u4E3A\u7A7A\u5B57\u7B26\u4E32\u6216JSON\u89E3\u6790\
+          \u5931\u8D25\uFF0C\u5219\u8FD4\u56DE {'success': 'false'}\u3002\n    \u82E5\
+          \ JSON \u5B57\u7B26\u4E32\u89E3\u6790\u6210\u529F\u4E14 'success' \u4E3A\
+          \ 'true'\uFF0C\u5219\u8FD4\u56DE\u5305\u542B\u6307\u5B9A\u952E\u503C\u7684\
+          \u5B57\u5178\u3002\n    \u5426\u5219\u8FD4\u56DE {'success': 'false'}\u3002\
+          \n\n    \u53C2\u6570:\n        json_body (str): \u5305\u542B JSON \u6570\
+          \u636E\u7684\u5B57\u7B26\u4E32\u3002\n    \n    \u8FD4\u56DE:\n        dict:\
+          \ \u5305\u542B 'success' \u952E\u548C\u6307\u5B9A\u7684\u6570\u636E\u952E\
+          \u503C\u5BF9\u7684\u5B57\u5178\u3002\n    \"\"\"\n    \n    result = {'success':\
+          \ 'false'}\n    \n    if not json_body:\n        return result\n\n    try:\n\
+          \        data = json.loads(json_body)\n        if isinstance(data, dict)\
+          \ and data.get('success') == 'true':\n            result['success'] = 'true'\n\
+          \            result['markdown'] = data.get('markdown', '')\n           \
+          \ result['sourceName'] = data.get('sourceName', '')\n            result['languageName']\
+          \ = data.get('languageName', '\u4E2D\u6587')\n            result['title']\
+          \ = data.get('title', '')\n            result['url'] = data.get('url', '')\n\
+          \            result['wordCount'] = data.get('wordCount', 100)\n        return\
+          \ result\n    except json.JSONDecodeError:\n        return result\n    except\
+          \ Exception:\n        return result"
+        code_language: python3
+        desc: "\u89E3\u6790\u8BF7\u6C42\u7ED3\u679C"
+        outputs:
+          languageName:
+            children: null
+            type: string
+          markdown:
+            children: null
+            type: string
+          sourceName:
+            children: null
+            type: string
+          success:
+            children: null
+            type: string
+          title:
+            children: null
+            type: string
+          url:
+            children: null
+            type: string
+          wordCount:
+            children: null
+            type: number
+        selected: false
+        title: "\u89E3\u6790\u6587\u7AE0\u4FE1\u606F"
+        type: code
+        variables:
+        - value_selector:
+          - '1719356422842'
+          - body
+          variable: json_body
+      height: 82
+      id: '1719357159255'
+      position:
+        x: 939
+        y: 161.21428571428572
+      positionAbsolute:
+        x: 939
+        y: 161.21428571428572
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u53CD\u601D\u51C6\u786E\u6027\u3001\u4E0A\u4E0B\u6587\u7406\u89E3\u3001\
+          \u91CD\u70B9\u628A\u63E1\u3001\u8BED\u8A00\u8868\u8FBE\u3001\u903B\u8F91\
+          \u8FDE\u8D2F\u7B49"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 38022a40-3101-4709-9a69-57ddef9e086a
+          role: system
+          text: "# \u6587\u7AE0\u5206\u6790\u7ED3\u679C\u5BA1\u6838\u4E13\u5BB6\u4EFB\
+            \u52A1\u6307\u5357\n\n## \u80CC\u666F\uFF08Context\uFF09\n\u60A8\u662F\
+            \u4E00\u4F4D\u8D44\u6DF1\u7684\u6587\u7AE0\u5206\u6790\u5BA1\u6838\u4E13\
+            \u5BB6\uFF0C\u6B63\u5728\u68C0\u67E5\u548C\u53CD\u601D\u4E00\u7BC7\u6587\
+            \u7AE0\u7684\u521D\u6B65\u5206\u6790\u7ED3\u679C\u3002\u60A8\u5C06\u6536\
+            \u5230\u4E00\u4E2AXML\u683C\u5F0F\u7684\u8F93\u5165\uFF0C\u5305\u542B\u539F\
+            \u59CB\u6587\u7AE0\u548C\u521D\u6B65\u5206\u6790\u7ED3\u679C\u3002\u60A8\
+            \u7684\u4EFB\u52A1\u662F\u901A\u8FC7\u4ED4\u7EC6\u5BA1\u6838\uFF0C\u63D0\
+            \u4F9B\u6539\u8FDB\u5EFA\u8BAE\uFF0C\u4EE5\u751F\u6210\u66F4\u9AD8\u8D28\
+            \u91CF\u7684\u6700\u7EC8\u5206\u6790\u7ED3\u679C\u3002\n\n## \u76EE\u6807\
+            \uFF08Objective\uFF09\n\u5BA1\u6838\u5E76\u6539\u8FDB\u521D\u6B65\u5206\
+            \u6790\u7ED3\u679C\uFF0C\u786E\u4FDD\u6700\u7EC8\u8F93\u51FA\u7684\u4E00\
+            \u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\u3001\u4E3B\u8981\u89C2\u70B9\
+            \u3001\u6587\u7AE0\u91D1\u53E5\u3001\u6807\u7B7E\u548C\u8BC4\u5206\u51C6\
+            \u786E\u53CD\u6620\u539F\u6587\uFF0C\u5E76\u5177\u6709\u9AD8\u5EA6\u7684\
+            \u6D1E\u5BDF\u529B\u548C\u5B9E\u7528\u6027\u3002\n\n## \u8F93\u5165\u683C\
+            \u5F0F\n\u8F93\u5165\u5C06\u4EE5XML\u683C\u5F0F\u63D0\u4F9B\uFF0C\u5305\
+            \u542B\u4EE5\u4E0B\u4E3B\u8981\u90E8\u5206\uFF1A\n1. <metadata>\uFF1A\u5305\
+            \u542B\u6587\u7AE0\u7684\u6807\u9898\u3001\u6765\u6E90\u548CURL\n2. <content>\uFF1A\
+            \u539F\u59CB\u6587\u7AE0\u7684\u5B8C\u6574Markdown\u5185\u5BB9\n3. <previousAnalysisResult>\uFF1A\
+            \u5BF9\u6587\u7AE0\u7684\u5206\u6790\u7ED3\u679C\uFF0C\u5305\u62EC\u4E00\
+            \u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\u3001\u4E3B\u8981\u89C2\u70B9\
+            \u548C\u6587\u7AE0\u91D1\u53E5\n4. <previousDomainAndTagResult>\uFF1A\u5BF9\
+            \u6587\u7AE0\u9886\u57DF\u7684\u8BC6\u522B\u548C\u751F\u6210\u7684\u6807\
+            \u7B7E\n5. <previousScoringResult>\uFF1A\u5BF9\u6587\u7AE0\u7684\u6807\
+            \u51C6\u5316\u8BC4\u5206\n\n## \u6B65\u9AA4\u548C\u539F\u5219\n\n1. \u4E00\
+            \u53E5\u8BDD\u603B\u7ED3\u5BA1\u6838\uFF1A\n   - \u8BC4\u4F30\u662F\u5426\
+            \u51C6\u786E\u6355\u6349\u4E86\u6587\u7AE0\u7684\u6838\u5FC3\u5185\u5BB9\
+            \n   - \u68C0\u67E5\u662F\u5426\u6293\u4F4F\u4E86\u6587\u7AE0\u7684\u4E3B\
+            \u8981\u89C2\u70B9\u6216\u7ED3\u8BBA\n   - \u786E\u4FDD\u603B\u7ED3\u7B80\
+            \u6D01\u660E\u4E86\uFF0C\u540C\u65F6\u4E0D\u5931\u5173\u952E\u4FE1\u606F\
+            \n\n2. \u6458\u8981\u5BA1\u6838\uFF1A\n   - \u8BC4\u4F30\u6458\u8981\u662F\
+            \u5426\u5168\u9762\u6982\u62EC\u4E86\u6587\u7AE0\u5185\u5BB9\n   - \u68C0\
+            \u67E5\u662F\u5426\u6DB5\u76D6\u4E86\u4EE5\u4E0B\u5173\u952E\u5143\u7D20\
+            \uFF1A\n     a) \u6587\u7AE0\u80CC\u666F\n     b) \u8BA8\u8BBA\u7684\u4E3B\
+            \u9898\n     c) \u9762\u4E34\u7684\u95EE\u9898\u548C\u6311\u6218\n   \
+            \  d) \u601D\u8003\u7684\u8FC7\u7A0B\n     e) \u89E3\u51B3\u7684\u601D\
+            \u8DEF\n     f) \u5B9E\u65BD\u7684\u63AA\u65BD\n     g) \u5173\u952E\u7684\
+            \u65B9\u6848\u7EC6\u8282\n     h) \u6700\u7EC8\u7684\u7ED3\u679C\n   -\
+            \ \u786E\u4FDD\u6458\u8981\u903B\u8F91\u6E05\u6670\uFF0C\u7ED3\u6784\u5408\
+            \u7406\n   - \u8BC4\u4F30\u662F\u5426\u6709\u91CD\u8981\u4FE1\u606F\u9057\
+            \u6F0F\u6216\u4E0D\u5FC5\u8981\u7684\u5197\u4F59\n\n3. \u4E3B\u8981\u89C2\
+            \u70B9\u548C\u6587\u7AE0\u91D1\u53E5\u5BA1\u6838\uFF1A\n   - \u9A8C\u8BC1\
+            \u6BCF\u4E2A\u89C2\u70B9\u662F\u5426\u771F\u5B9E\u53CD\u6620\u4E86\u6587\
+            \u7AE0\u7684\u6838\u5FC3\u8BBA\u8FF0\n   - \u8BC4\u4F30\u89C2\u70B9\u662F\
+            \u5426\u6DB5\u76D6\u4E86\u6587\u7AE0\u6700\u91CD\u8981\u7684\u5185\u5BB9\
+            \u548C\u601D\u8003\n   - \u68C0\u67E5\u6587\u7AE0\u91D1\u53E5\u662F\u5426\
+            \u4F53\u73B0\u4E86\u6700\u6709\u542F\u53D1\u6027\u7684\u601D\u8003\u548C\
+            \u4FE1\u606F\n   - \u8BC4\u4F30\u89C2\u70B9\u548C\u91D1\u53E5\u7684\u6392\
+            \u5E8F\u662F\u5426\u5408\u7406\u53CD\u6620\u4E86\u5B83\u4EEC\u5728\u6587\
+            \u7AE0\u4E2D\u7684\u91CD\u8981\u6027\n   - \u786E\u4FDD\u4E3B\u8981\u89C2\
+            \u70B9\u548C\u91D1\u53E5\u80FD\u591F\u5B8C\u6574\u6982\u62EC\u6587\u7AE0\
+            \u7684\u7CBE\u534E\n\n4. \u6807\u7B7E\u5BA1\u6838\uFF1A\n   - \u8BC4\u4F30\
+            \u6807\u7B7E\u662F\u5426\u51C6\u786E\u53CD\u6620\u6587\u7AE0\u7684\u4E3B\
+            \u9898\u548C\u5173\u952E\u6982\u5FF5\n   - \u68C0\u67E5\u6807\u7B7E\u662F\
+            \u5426\u5408\u7406\u5206\u7C7B\u4E3A\u4EE5\u4E0B\u51E0\u7C7B\uFF1A\n \
+            \    a) \u4E3B\u9898\u6807\u7B7E\n     b) \u6280\u672F/\u9886\u57DF\u6807\
+            \u7B7E\n     c) \u5E94\u7528/\u4EA7\u54C1\u6807\u7B7E\n     d) \u516C\u53F8\
+            /\u5E73\u53F0\u6807\u7B7E\n     e) \u8D8B\u52BF\u6807\u7B7E\n   - \u8BC4\
+            \u4F30\u6BCF\u7C7B\u6807\u7B7E\u7684\u51C6\u786E\u6027\u548C\u5B8C\u6574\
+            \u6027\n   - \u68C0\u67E5\u662F\u5426\u6709\u4E0D\u76F8\u5173\u6216\u8BEF\
+            \u5BFC\u6027\u7684\u6807\u7B7E\n   - \u8003\u8651\u662F\u5426\u9700\u8981\
+            \u6DFB\u52A0\u5176\u4ED6\u91CD\u8981\u6807\u7B7E\u4EE5\u4FBF\u4E8E\u6587\
+            \u7AE0\u7684\u6574\u7406\u548C\u7B5B\u9009\n\n5. \u6587\u7AE0\u8BC4\u5206\
+            \u5BA1\u6838\uFF1A\n   - \u68C0\u67E5\u8BC4\u5206\u7EF4\u5EA6\u662F\u5426\
+            \u5168\u9762\u8986\u76D6\u4E86\u6587\u7AE0\u7684\u5404\u4E2A\u65B9\u9762\
+            \n   - \u8BC4\u4F30\u5404\u7EF4\u5EA6\u7684\u8BC4\u5206\u662F\u5426\u5408\
+            \u7406\u4E14\u6709\u5145\u5206\u4F9D\u636E\n   - \u5BA1\u6838\u52A0\u5206\
+            \u9879\u548C\u51CF\u5206\u9879\u7684\u7406\u7531\u662F\u5426\u5145\u5206\
+            \n   - \u786E\u4FDD\u6700\u7EC8\u8BC4\u5206\u51C6\u786E\u53CD\u6620\u6587\
+            \u7AE0\u7684\u6574\u4F53\u8D28\u91CF\n   - \u8BC4\u4F30\u8BC4\u5206\u7ED3\
+            \u679C\u662F\u5426\u4E0E\u4E00\u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\
+            \u3001\u4E3B\u8981\u89C2\u70B9\u7B49\u5176\u4ED6\u5206\u6790\u7ED3\u679C\
+            \u4FDD\u6301\u4E00\u81F4\n\n6. \u4E00\u81F4\u6027\u68C0\u67E5\uFF1A\n\
+            \   - \u786E\u4FDD\u4E00\u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\u3001\
+            \u4E3B\u8981\u89C2\u70B9\u3001\u6587\u7AE0\u91D1\u53E5\u3001\u6807\u7B7E\
+            \u548C\u8BC4\u5206\u4E4B\u95F4\u76F8\u4E92\u4E00\u81F4\n   - \u68C0\u67E5\
+            \u662F\u5426\u5B58\u5728\u77DB\u76FE\u6216\u4E0D\u534F\u8C03\u7684\u5730\
+            \u65B9\n   - \u8BC4\u4F30\u6574\u4F53\u5206\u6790\u7ED3\u679C\u662F\u5426\
+            \u5168\u9762\u3001\u51C6\u786E\u5730\u53CD\u6620\u4E86\u539F\u6587\u5185\
+            \u5BB9\n\n## \u8F93\u51FA\u683C\u5F0F\n\u8BF7\u6309\u4EE5\u4E0B Markdown\
+            \ \u683C\u5F0F\u63D0\u4F9B\u60A8\u7684\u5BA1\u6838\u62A5\u544A\uFF1A\n\
+            \n```markdown\n### \u4E00\u53E5\u8BDD\u603B\u7ED3\u5BA1\u6838\n- \u51C6\
+            \u786E\u6027\u8BC4\u4F30\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u6838\u5FC3\
+            \u5185\u5BB9\u6355\u6349\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u6539\u8FDB\
+            \u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u6458\u8981\u5BA1\
+            \u6838\n- \u5168\u9762\u6027\u8BC4\u4F30\uFF1A[\u8BC4\u4F30\u7ED3\u679C\
+            ]\n- \u5173\u952E\u5143\u7D20\u8986\u76D6\uFF1A\n  - \u6587\u7AE0\u80CC\
+            \u666F\uFF1A[\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u8BA8\u8BBA\u4E3B\u9898\
+            \uFF1A[\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u95EE\u9898\u548C\u6311\u6218\
+            \uFF1A[\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u601D\u8003\u8FC7\u7A0B\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u89E3\u51B3\u601D\u8DEF\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u5B9E\u65BD\u63AA\u65BD\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u65B9\u6848\u7EC6\u8282\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u6700\u7EC8\u7ED3\u679C\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n- \u903B\u8F91\u548C\u7ED3\u6784\uFF1A\
+            [\u8BC4\u4F30\u7ED3\u679C]\n- \u6539\u8FDB\u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\
+            \u8BF4\u660E]\n\n### \u4E3B\u8981\u89C2\u70B9\u548C\u6587\u7AE0\u91D1\u53E5\
+            \u5BA1\u6838\n- \u89C2\u70B9\u51C6\u786E\u6027\uFF1A[\u8BC4\u4F30\u7ED3\
+            \u679C]\n- \u5185\u5BB9\u8986\u76D6\u5168\u9762\u6027\uFF1A[\u8BC4\u4F30\
+            \u7ED3\u679C]\n- \u91D1\u53E5\u542F\u53D1\u6027\uFF1A[\u8BC4\u4F30\u7ED3\
+            \u679C]\n- \u6392\u5E8F\u5408\u7406\u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C\
+            ]\n- \u6539\u8FDB\u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u6807\
+            \u7B7E\u5BA1\u6838\n- \u6574\u4F53\u51C6\u786E\u6027\uFF1A[\u8BC4\u4F30\
+            \u7ED3\u679C]\n- \u5206\u7C7B\u8BC4\u4F30\uFF1A\n  - \u4E3B\u9898\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u6280\u672F/\u9886\u57DF\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u5E94\u7528/\u4EA7\u54C1\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u516C\u53F8/\u5E73\u53F0\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u8D8B\u52BF\u6807\u7B7E\uFF1A\
+            [\u8BC4\u4F30\u7ED3\u679C]\n- \u4E0D\u5F53\u6216\u7F3A\u5931\u7684\u6807\
+            \u7B7E\uFF1A[\u5177\u4F53\u5217\u51FA]\n- \u5EFA\u8BAE\u6DFB\u52A0/\u79FB\
+            \u9664\u7684\u6807\u7B7E\uFF1A[\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u6587\
+            \u7AE0\u8BC4\u5206\u5BA1\u6838\n- \u8BC4\u5206\u7EF4\u5EA6\u5168\u9762\
+            \u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u5404\u7EF4\u5EA6\u8BC4\u5206\
+            \u5408\u7406\u6027\uFF1A[\u9010\u9879\u8BC4\u4F30]\n- \u52A0\u51CF\u5206\
+            \u7406\u7531\u5145\u5206\u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u6700\
+            \u7EC8\u8BC4\u5206\u51C6\u786E\u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n\
+            - \u4E0E\u5176\u4ED6\u5206\u6790\u7ED3\u679C\u4E00\u81F4\u6027\uFF1A[\u8BC4\
+            \u4F30\u7ED3\u679C]\n- \u8BC4\u5206\u8C03\u6574\u5EFA\u8BAE\uFF1A[\u5982\
+            \u9700\u8981\uFF0C\u8BF7\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u4E00\u81F4\u6027\
+            \u68C0\u67E5\n- \u53D1\u73B0\u7684\u4E0D\u4E00\u81F4\u4E4B\u5904\uFF1A\
+            [\u5177\u4F53\u5217\u51FA]\n- \u534F\u8C03\u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\
+            \u8BF4\u660E]\n\n### \u603B\u4F53\u6539\u8FDB\u5EFA\u8BAE\n1. [\u5177\u4F53\
+            \u5EFA\u8BAE1\uFF1A\u5305\u62EC\u95EE\u9898\u63CF\u8FF0\u3001\u6539\u8FDB\
+            \u65B9\u5411\u548C\u6267\u884C\u6B65\u9AA4]\n2. [\u5177\u4F53\u5EFA\u8BAE\
+            2\uFF1A\u5305\u62EC\u95EE\u9898\u63CF\u8FF0\u3001\u6539\u8FDB\u65B9\u5411\
+            \u548C\u6267\u884C\u6B65\u9AA4]\n3. [\u5177\u4F53\u5EFA\u8BAE3\uFF1A\u5305\
+            \u62EC\u95EE\u9898\u63CF\u8FF0\u3001\u6539\u8FDB\u65B9\u5411\u548C\u6267\
+            \u884C\u6B65\u9AA4]\n```\n\n## \u6CE8\u610F\u4E8B\u9879\n- \u4ED4\u7EC6\
+            \u9605\u8BFB\u539F\u59CB\u6587\u7AE0\u5185\u5BB9\u548C\u6240\u6709\u521D\
+            \u6B65\u5206\u6790\u7ED3\u679C\n- \u4FDD\u6301\u5BA2\u89C2\u3001\u4E13\
+            \u4E1A\u7684\u8BED\u6C14\n- \u63D0\u4F9B\u5177\u4F53\u3001\u53EF\u64CD\
+            \u4F5C\u7684\u6539\u8FDB\u5EFA\u8BAE\n- \u5173\u6CE8\u5982\u4F55\u63D0\
+            \u9AD8\u5206\u6790\u7ED3\u679C\u7684\u51C6\u786E\u6027\u3001\u6DF1\u5EA6\
+            \u548C\u5B9E\u7528\u6027\n- \u8003\u8651\u5206\u6790\u7ED3\u679C\u5BF9\
+            \u4E0D\u540C\u53D7\u4F17\uFF08\u5982\u51B3\u7B56\u8005\u3001\u7814\u7A76\
+            \u4EBA\u5458\u3001\u666E\u901A\u8BFB\u8005\uFF09\u7684\u4EF7\u503C\n-\
+            \ \u5728\u5BA1\u6838\u8FC7\u7A0B\u4E2D\uFF0C\u65F6\u523B\u7262\u8BB0\u6587\
+            \u7AE0\u7684\u6574\u4F53\u80CC\u666F\u548C\u76EE\u7684\n- \u786E\u4FDD\
+            \u60A8\u7684\u5BA1\u6838\u610F\u89C1\u548C\u5EFA\u8BAE\u4E0E\u539F\u6587\
+            \u7684\u98CE\u683C\u3001\u8BED\u6C14\u548C\u76EE\u6807\u53D7\u4F17\u76F8\
+            \u7B26\n- \u5728\u63D0\u4F9B\u6539\u8FDB\u5EFA\u8BAE\u65F6\uFF0C\u8003\
+            \u8651\u5B9E\u65BD\u7684\u53EF\u884C\u6027\u548C\u6F5C\u5728\u7684\u5F71\
+            \u54CD\n- \u6CE8\u610F\u5E73\u8861\u8BE6\u7EC6\u5EA6\u548C\u7B80\u6D01\
+            \u6027\uFF0C\u786E\u4FDD\u60A8\u7684\u5BA1\u6838\u62A5\u544A\u65E2\u5168\
+            \u9762\u53C8\u6613\u4E8E\u7406\u89E3"
+        - id: f42b8839-8a0b-45a6-a0f5-71db57e573ae
+          role: user
+          text: "\u8BF7\u57FA\u4E8E\u4E0B\u9762XML\u8F93\u5165\uFF0C\u5BF9\u539F\u59CB\
+            \u6587\u7AE0\u548C\u4E4B\u524D\u7684\u5206\u6790\u7ED3\u679C\u8FDB\u884C\
+            \u5168\u9762\u7684\u68C0\u67E5\u548C\u53CD\u601D\uFF0C\u5E76\u6309\u7167\
+            \u7CFB\u7EDF\u63D0\u793A\u4E2D\u6307\u5B9A\u7684\u6B65\u9AA4\u3001\u539F\
+            \u5219\u548C\u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u7ED3\u679C\u3002\n\n\
+            <article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \n    <source>{{#1719357159255.sourceName#}}</source>\n\n    <url>{{#1719357159255.url#}}</url>\n\
+            \n  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1718355814693.text#}}\n\n    ]]>\n  </previousAnalysisResult>\n\
+            \  <previousDomainAndTagResult>\n    <![CDATA[\n    {{#1719647683007.text#}}\n\
+            \    ]]>\n  </previousDomainAndTagResult>\n  <previousScoringResult>\n\
+            \    <![CDATA[\n    {{#1719650938792.text#}}\n\n    ]]>\n  </previousScoringResult>\n\
+            </article>"
+        selected: false
+        title: "\u5BF9\u7EFC\u5408\u7ED3\u679C\u8FDB\u884C\u68C0\u67E5\u548C\u53CD\
+          \u601D"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 144
+      id: '1719381882148'
+      position:
+        x: 3193
+        y: 315.5
+      positionAbsolute:
+        x: 3193
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u6839\u636E\u68C0\u67E5\u548C\u53CD\u601D\u7684\u5EFA\u8BAE\u8FDB\u884C\
+          \u4F18\u5316\u548C\u6539\u8FDB"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: a3799a74-b248-4202-a6ee-134857c2d020
+          role: system
+          text: "# \u6587\u7AE0\u5206\u6790\u4F18\u5316\u6B65\u9AA4\n\n\u8BF7\u57FA\
+            \u4E8E\u63D0\u4F9B\u7684XML\u8F93\u5165\uFF0C\u7ED3\u5408\u521D\u6B21\u5206\
+            \u6790\u7ED3\u679C\u548C\u68C0\u67E5\u53CD\u601D\u7684\u53CD\u9988\uFF0C\
+            \u5BF9\u6587\u7AE0\u5206\u6790\u7ED3\u679C\u8FDB\u884C\u6539\u8FDB\u548C\
+            \u4F18\u5316\u3002\u8BF7\u6309\u7167\u4EE5\u4E0B\u6307\u5B9A\u7684\u6B65\
+            \u9AA4\u3001\u539F\u5219\u548C\u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u4F18\
+            \u5316\u540E\u7684\u5206\u6790\u7ED3\u679C\u3002\n## \u8F93\u5165\u683C\
+            \u5F0F\n\u8F93\u5165\u5C06\u4EE5XML\u683C\u5F0F\u63D0\u4F9B\uFF0C\u5305\
+            \u542B\u4EE5\u4E0B\u90E8\u5206\uFF1A\n- `<metadata>`: \u6587\u7AE0\u7684\
+            \u5143\u6570\u636E\uFF0C\u5305\u62EC\u6807\u9898\u3001\u6765\u6E90\u548C\
+            URL\n- `<content>`: \u6587\u7AE0\u7684\u5B8C\u6574\u5185\u5BB9\n- `<previousAnalysisResult>`:\
+            \ \u4E4B\u524D\u7684\u5206\u6790\u7ED3\u679C\n- `<previousDomainAndTagResult>`:\
+            \ \u4E4B\u524D\u7684\u9886\u57DF\u548C\u6807\u7B7E\u5206\u6790\u7ED3\u679C\
+            \n- `<previousScoringResult>`: \u4E4B\u524D\u7684\u8BC4\u5206\u7ED3\u679C\
+            \n- `<reflectionFeedback>`: \u68C0\u67E5\u53CD\u601D\u7684\u53CD\u9988\
+            \n## \u5206\u6790\u6B65\u9AA4\n1. \u4ED4\u7EC6\u9605\u8BFB\u6587\u7AE0\
+            \u5185\u5BB9\u3001\u4E4B\u524D\u7684\u5206\u6790\u7ED3\u679C\u548C\u68C0\
+            \u67E5\u53CD\u601D\u7684\u53CD\u9988\u3002\n2. \u6839\u636E\u53CD\u9988\
+            \uFF0C\u786E\u5B9A\u9700\u8981\u6539\u8FDB\u7684\u65B9\u9762\u3002\n3.\
+            \ \u5BF9\u6BCF\u4E2A\u9700\u8981\u6539\u8FDB\u7684\u65B9\u9762\u8FDB\u884C\
+            \u6DF1\u5165\u601D\u8003\u548C\u5206\u6790\u3002\n4. \u66F4\u65B0\u76F8\
+            \u5173\u5B57\u6BB5\uFF0C\u786E\u4FDD\u66F4\u65B0\u662F\u6709\u610F\u4E49\
+            \u548C\u5FC5\u8981\u7684\u3002\n5. \u4E3A\u6BCF\u4E2A\u66F4\u65B0\u63D0\
+            \u4F9B\u6E05\u6670\u7684\u7406\u7531\u3002\n## \u8F93\u51FA\u683C\u5F0F\
+            \n\u8BF7\u4F7F\u7528{{#1719357159255.languageName#}}\u4EE5JSON\u683C\u5F0F\
+            \u8F93\u51FA\u4F18\u5316\u540E\u7684\u5206\u6790\u7ED3\u679C\uFF0C\u5305\
+            \u542B\u4EE5\u4E0B\u5B57\u6BB5\uFF1A\n```json\n{\n  \"oneSentenceSummary\"\
+            : \"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\u7684\u4E00\u53E5\
+            \u8BDD\u603B\u7ED3\",\n  \"oneSentenceSummaryOriginal\": \"\u539F\u59CB\
+            \u7684\u4E00\u53E5\u8BDD\u603B\u7ED3\uFF08\u5982\u679C\u6709\u66F4\u65B0\
+            \uFF09\",\n  \"oneSentenceSummaryUpdateReason\": \"\u66F4\u65B0\u539F\u56E0\
+            \uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n  \"summary\": \"\u66F4\
+            \u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\u76843-8\u53E5\u8BDD\u603B\u7ED3\
+            \",\n  \"summaryOriginal\": \"\u539F\u59CB\u76843-8\u53E5\u8BDD\u603B\u7ED3\
+            \uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n  \"summaryUpdateReason\"\
+            : \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\
+            \",\n  \"domain\": \"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\u7684\
+            \u9886\u57DF\u5206\u7C7B\",\n  \"domainOriginal\": \"\u539F\u59CB\u7684\
+            \u9886\u57DF\u5206\u7C7B\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n\
+            \  \"domainUpdateReason\": \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\
+            \u6709\u66F4\u65B0\uFF09\",\n  \"tags\": [\"\u66F4\u65B0\u540E\u6216\u4FDD\
+            \u6301\u4E0D\u53D8\u7684\u6807\u7B7E1\", \"\u6807\u7B7E2\", \"...\"],\n\
+            \  \"tagsOriginal\": [\"\u539F\u59CB\u6807\u7B7E1\", \"\u539F\u59CB\u6807\
+            \u7B7E2\", \"...\"]\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09,\n  \"tagsUpdateReason\"\
+            : \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\
+            \",\n  \"mainPoints\": [\n    {\n      \"point\": \"\u66F4\u65B0\u540E\
+            \u6216\u4FDD\u6301\u4E0D\u53D8\u7684\u4E3B\u8981\u89C2\u70B91\",\n   \
+            \   \"explanation\": \"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\
+            \u7684\u89E3\u91CA1\"\n    },\n    // ...\u6700\u591A5\u4E2A\u4E3B\u8981\
+            \u89C2\u70B9\n  ],\n  \"mainPointsOriginal\": [\n    {\n      \"point\"\
+            : \"\u539F\u59CB\u4E3B\u8981\u89C2\u70B91\",\n      \"explanation\": \"\
+            \u539F\u59CB\u89E3\u91CA1\"\n    },\n    // ...\uFF08\u5982\u679C\u6709\
+            \u66F4\u65B0\uFF09\n  ],\n  \"mainPointsUpdateReason\": \"\u66F4\u65B0\
+            \u539F\u56E0\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n  \"keyQuotes\"\
+            : [\"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\u7684\u91D1\u53E5\
+            1\", \"\u91D1\u53E52\", \"...\"],\n  \"keyQuotesOriginal\": [\"\u539F\u59CB\
+            \u91D1\u53E51\", \"\u539F\u59CB\u91D1\u53E52\", \"...\"]\uFF08\u5982\u679C\
+            \u6709\u66F4\u65B0\uFF09,\n  \"keyQuotesUpdateReason\": \"\u66F4\u65B0\
+            \u539F\u56E0\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n  \"score\"\
+            : 80,\n  \"scoreOriginal\": 75\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\
+            ,\n  \"scoreUpdateReason\": \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\
+            \u6709\u66F4\u65B0\uFF09\",\n  \"improvements\": \"\u603B\u4F53\u8BF4\u660E\
+            \u672C\u6B21\u4F18\u5316\u7684\u4E3B\u8981\u6539\u8FDB\u70B9\"\n}\n```\n\
+            ## \u5B57\u6BB5\u8BF4\u660E\u548C\u66F4\u65B0\u539F\u5219\n1. oneSentenceSummary\n\
+            \   - \u8981\u6C42\uFF1A\u7B80\u6D01\u660E\u4E86\uFF0C\u4E0D\u8D85\u8FC7\
+            50\u4E2A\u5B57\u7B26\n   - \u66F4\u65B0\u539F\u5219\uFF1A\u53EA\u6709\u5728\
+            \u68C0\u67E5\u53CD\u601D\u4E2D\u660E\u786E\u6307\u51FA\u4E00\u53E5\u8BDD\
+            \u603B\u7ED3\u4E0D\u51C6\u786E\u6216\u4E0D\u5168\u9762\u65F6\u624D\u8FDB\
+            \u884C\u4FEE\u6539\n2. summary\n   - \u8981\u6C42\uFF1A3-8\u53E5\u8BDD\
+            \uFF0C\u6BCF\u53E520-40\u4E2A\u5B57\u7B26\uFF0C\u5305\u542B\u6587\u7AE0\
+            \u7684\u6838\u5FC3\u8981\u7D20\n   - \u66F4\u65B0\u539F\u5219\uFF1A\u6839\
+            \u636E\u68C0\u67E5\u53CD\u601D\u7684\u610F\u89C1\uFF0C\u53EF\u4EE5\u8C03\
+            \u6574\u5185\u5BB9\u7684\u51C6\u786E\u6027\u548C\u5B8C\u6574\u6027\uFF0C\
+            \u4F46\u4E0D\u6539\u53D8\u539F\u6709\u7684\u6838\u5FC3\u4FE1\u606F\n3.\
+            \ domain\n   - \u8981\u6C42\uFF1A\u5355\u4E00\u6700\u9002\u5408\u7684\u9886\
+            \u57DF\u5206\u7C7B\uFF0C\u4E0D\u8D85\u8FC710\u4E2A\u5B57\u7B26\n   - \u66F4\
+            \u65B0\u539F\u5219\uFF1A\u9664\u975E\u68C0\u67E5\u53CD\u601D\u660E\u786E\
+            \u6307\u51FA\u9886\u57DF\u5206\u7C7B\u9519\u8BEF\uFF0C\u5426\u5219\u4FDD\
+            \u6301\u4E0D\u53D8\n4. tags\n   - \u8981\u6C42\uFF1A3-10\u4E2A\u6807\u7B7E\
+            \uFF0C\u6309\u4E3B\u9898\u3001\u6280\u672F/\u9886\u57DF\u3001\u5E94\u7528\
+            /\u4EA7\u54C1\u3001\u516C\u53F8/\u5E73\u53F0/\u540D\u4EBA\u3001\u8D8B\u52BF\
+            \u7684\u987A\u5E8F\u6392\u5217\n   - \u66F4\u65B0\u539F\u5219\uFF1A\u53EF\
+            \u4EE5\u6839\u636E\u68C0\u67E5\u53CD\u601D\u6DFB\u52A0\u9057\u6F0F\u7684\
+            \u91CD\u8981\u6807\u7B7E\u6216\u5220\u9664\u4E0D\u76F8\u5173\u6807\u7B7E\
+            \uFF0C\u4F46\u603B\u6570\u4FDD\u6301\u57283-10\u4E2A\u4E4B\u95F4\n5. mainPoints\n\
+            \   - \u8981\u6C42\uFF1A3-5\u4E2A\u4E3B\u8981\u89C2\u70B9\uFF0C\u6BCF\u4E2A\
+            \u89C2\u70B9\u914D\u6709\u7B80\u8981\u89E3\u91CA\n   - \u66F4\u65B0\u539F\
+            \u5219\uFF1A\u53EF\u4EE5\u6839\u636E\u68C0\u67E5\u53CD\u601D\u8C03\u6574\
+            \u89C2\u70B9\u7684\u8868\u8FF0\uFF0C\u589E\u52A0\u9057\u6F0F\u7684\u91CD\
+            \u8981\u89C2\u70B9\u6216\u5220\u9664\u6B21\u8981\u89C2\u70B9\uFF0C\u4F46\
+            \u603B\u6570\u4FDD\u6301\u57283-5\u4E2A\u4E4B\u95F4\n6. keyQuotes\n  \
+            \ - \u8981\u6C42\uFF1A3-5\u4E2A\u4EE3\u8868\u6027\u7684\u6587\u7AE0\u91D1\
+            \u53E5\uFF0C\u6BCF\u53E5\u4E0D\u8D85\u8FC750\u4E2A\u5B57\u7B26\n   - \u66F4\
+            \u65B0\u539F\u5219\uFF1A\u53EA\u6709\u5728\u68C0\u67E5\u53CD\u601D\u660E\
+            \u786E\u6307\u51FA\u67D0\u4E9B\u91D1\u53E5\u4E0D\u5177\u4EE3\u8868\u6027\
+            \u6216\u9057\u6F0F\u4E86\u66F4\u91CD\u8981\u7684\u91D1\u53E5\u65F6\u624D\
+            \u8FDB\u884C\u4FEE\u6539\n7. score\n   - \u8981\u6C42\uFF1A0-100\u7684\
+            \u6574\u6570\n   - \u66F4\u65B0\u539F\u5219\uFF1A\u9664\u975E\u68C0\u67E5\
+            \u53CD\u601D\u660E\u786E\u6307\u51FA\u8BC4\u5206\u4E0D\u5408\u7406\uFF0C\
+            \u5426\u5219\u4FDD\u6301\u539F\u8BC4\u5206\u4E0D\u53D8\n8. improvements\n\
+            \   - \u8981\u6C42\uFF1A\u7B80\u8981\u5217\u51FA\u672C\u6B21\u4F18\u5316\
+            \u7684\u4E3B\u8981\u6539\u8FDB\u70B9\uFF0C\u5305\u62EC\u4FEE\u6539\u7684\
+            \u5185\u5BB9\u548C\u539F\u56E0\u3002\u6839\u636E\u5B9E\u9645\u4FEE\u6539\
+            \u60C5\u51B5\u586B\u5199\uFF0C\u603B\u7ED3\u6240\u6709\u7684\u66F4\u65B0\
+            \u3002\n## \u6CE8\u610F\u4E8B\u9879\n1. \u53EA\u6709\u5728\u6709\u5145\
+            \u5206\u7406\u7531\u7684\u60C5\u51B5\u4E0B\u624D\u66F4\u65B0\u5B57\u6BB5\
+            \u3002\u5982\u679C\u6CA1\u6709\u66F4\u65B0\uFF0C\u4E0D\u8981\u6DFB\u52A0\
+            \u5E26\u6709\"Original\"\u548C\"UpdateReason\"\u540E\u7F00\u7684\u5B57\
+            \u6BB5\u3002\n2. \u6240\u6709\u7684\u66F4\u65B0\u90FD\u5FC5\u987B\u6709\
+            \u76F8\u5E94\u7684\"UpdateReason\"\u8BF4\u660E\u3002\n3. \"improvements\"\
+            \u5B57\u6BB5\u5E94\u8BE5\u603B\u7ED3\u6240\u6709\u7684\u66F4\u65B0\uFF0C\
+            \u63D0\u4F9B\u4E00\u4E2A\u6574\u4F53\u7684\u4F18\u5316\u8BF4\u660E\u3002\
+            \n4. \u786E\u4FDDJSON\u683C\u5F0F\u6B63\u786E\uFF0C\u53EF\u4EE5\u88AB\u7A0B\
+            \u5E8F\u76F4\u63A5\u89E3\u6790\u3002\n5. \u4E0D\u8F93\u51FA\u4E2D\u95F4\
+            \u601D\u8003\u8FC7\u7A0B\uFF0C\u4EC5\u8F93\u51FA\u6700\u7EC8\u7684JSON\u683C\
+            \u5F0F\u7ED3\u679C\u3002\n6. \u8F93\u51FA\u5185\u5BB9\u5E94\u4E0E\u539F\
+            \u6587\u4FDD\u6301\u76F8\u540C\u7684\u8BED\u8A00\u3002"
+        - id: 4836545e-d0f5-4703-8fb5-461cf5ede618
+          role: user
+          text: "\u8BF7\u57FA\u4E8E\u4E0B\u9762XML\u8F93\u5165\uFF0C\u7ED3\u5408\u521D\
+            \u6B21\u5206\u6790\u7ED3\u679C\u548C\u68C0\u67E5\u53CD\u601D\u7684\u53CD\
+            \u9988\uFF0C\u5BF9\u6587\u7AE0\u5206\u6790\u8FDB\u884C\u6539\u8FDB\u548C\
+            \u4F18\u5316\u3002\u8BF7\u6309\u7167\u7CFB\u7EDF\u63D0\u793A\u4E2D\u6307\
+            \u5B9A\u7684\u6B65\u9AA4\u3001\u539F\u5219\u548C\u8F93\u51FA\u683C\u5F0F\
+            \uFF0C\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\u51FA\u5206\u6790\
+            \u7ED3\u679C\u3002\n\n<article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1718355814693.text#}}\n    ]]>\n  </previousAnalysisResult>\n  <previousDomainAndTagResult>\n\
+            \    <![CDATA[\n    {{#1719647683007.text#}}\n    ]]>\n  </previousDomainAndTagResult>\n\
+            \  <previousScoringResult>\n    <![CDATA[\n    {{#1719650938792.text#}}\n\
+            \    ]]>\n  </previousScoringResult>\n  <reflectionFeedback>\n    <![CDATA[\n\
+            \    {{#1719381882148.text#}}\n    ]]>\n  </reflectionFeedback>\n</article>"
+        selected: false
+        title: "\u7EFC\u5408\u53CD\u601D\u5EFA\u8BAE\u8FDB\u884C\u6539\u8FDB"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 126
+      id: '1719444170368'
+      position:
+        x: 3496
+        y: 315.5
+      positionAbsolute:
+        x: 3496
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u8BC6\u522B\u6587\u7AE0\u9886\u57DF\u548C\u6807\u7B7E"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 523ca58d-d9fd-45aa-b9a2-4f6d814cb633
+          role: system
+          text: "# \u6280\u672F\u6587\u7AE0\u5206\u7C7B\u548C\u6807\u7B7E\u751F\u6210\
+            \u7CFB\u7EDF\n\n## \u89D2\u8272\u548C\u4EFB\u52A1\n\n\u4F60\u662F\u4E00\
+            \u4F4D\u4E13\u4E1A\u7684\u5185\u5BB9\u5206\u6790\u4E13\u5BB6\uFF0C\u64C5\
+            \u957F\u5BF9\u6280\u672F\u6587\u7AE0\u8FDB\u884C\u5206\u7C7B\u548C\u6807\
+            \u7B7E\u751F\u6210\u3002\u4F60\u7684\u4EFB\u52A1\u662F\u5206\u6790\u7ED9\
+            \u5B9A\u7684\u6587\u7AE0\uFF0C\u786E\u5B9A\u5176\u4E3B\u8981\u9886\u57DF\
+            \uFF0C\u5E76\u751F\u6210\u76F8\u5173\u6807\u7B7E\u3002\u5728\u8FDB\u884C\
+            \u5B8C\u6574\u5206\u6790\u65F6\uFF0C\u8BF7\u53C2\u8003\u4E4B\u524D\u5206\
+            \u6BB5\u8F93\u51FA\u7684\u7ED3\u679C\uFF0C\u4EE5\u786E\u4FDD\u5206\u6790\
+            \u7684\u4E00\u81F4\u6027\u548C\u51C6\u786E\u6027\u3002\n\n## \u76EE\u6807\
+            \n\n1. \u5206\u6790\u6587\u7AE0\u5185\u5BB9\uFF0C\u4F30\u7B97\u5176\u5C5E\
+            \u4E8E\u56DB\u4E2A\u4E3B\u8981\u9886\u57DF\u7684\u6982\u7387\u3002\n2.\
+            \ \u786E\u5B9A\u6587\u7AE0\u7684\u4E3B\u8981\u9886\u57DF\u3002\n3. \u6839\
+            \u636E\u6587\u7AE0\u5185\u5BB9\u548C\u4E3B\u8981\u9886\u57DF\uFF0C\u9009\
+            \u62E93-10\u4E2A\u6700\u76F8\u5173\u7684\u6807\u7B7E\uFF0C\u8F93\u51FA\
+            \u6807\u7B7E\u7684\u8BED\u8A00\u548C\u6587\u7AE0\u4F7F\u7528\u7684\u8BED\
+            \u8A00\u4E00\u81F4\uFF0C\u6BD4\u5982\u4E2D\u6587\u6587\u7AE0\u8F93\u51FA\
+            \u4E2D\u6587\u6807\u7B7E\uFF0C\u82F1\u6587\u6587\u7AE0\u8F93\u51FA\u82F1\
+            \u6587\u6807\u7B7E\u3002\n\n## \u8F93\u51FA\u683C\u5F0F\n\n\u4F7F\u7528\
+            \u4EE5\u4E0BJSON\u683C\u5F0F\u8F93\u51FA\u4F60\u7684\u5206\u6790\u7ED3\
+            \u679C\uFF1A\n\n```json\n{\n  \"domainProbabilities\": {\n    \"\u8F6F\
+            \u4EF6\u7F16\u7A0B\": 0,\n    \"\u4EBA\u5DE5\u667A\u80FD\": 0,\n    \"\
+            \u4EA7\u54C1\u8BBE\u8BA1\": 0,\n    \"\u5546\u4E1A\u79D1\u6280\": 0\n\
+            \  },\n  \"mainDomain\": \"\",\n  \"tags\": []\n}\n```\n\n## \u5206\u6790\
+            \u6307\u5357\n1. **\u9886\u57DF\u6982\u7387**\uFF1A\n   - \u5728domainProbabilities\u4E2D\
+            \u586B\u5165\u6574\u6570\u767E\u5206\u6BD4\uFF080-100\uFF09\uFF0C\u603B\
+            \u548C\u5FC5\u987B\u4E3A100\u3002\n   - \u4E3B\u8981\u9886\u57DF\uFF08\
+            mainDomain\uFF09\u9009\u62E9\u6982\u7387\u6700\u9AD8\u7684\u9886\u57DF\
+            \u3002\n   - \u5982\u679C\u4E24\u4E2A\u9886\u57DF\u6982\u7387\u76F8\u540C\
+            \u4E14\u6700\u9AD8\uFF0C\u9009\u62E9\u5728\u5217\u8868\u4E2D\u9760\u524D\
+            \u7684\u9886\u57DF\u3002\n\n2. **\u6807\u7B7E\u751F\u6210**\uFF1A\n  \
+            \ - \u751F\u62103-10\u4E2A\u6807\u7B7E\uFF0C\u6570\u91CF\u53D6\u51B3\u4E8E\
+            \u6587\u7AE0\u5185\u5BB9\u7684\u590D\u6742\u5EA6\u3002\n   - \u4F7F\u7528\
+            \u4E0E\u539F\u6587\u76F8\u540C\u7684\u8BED\u8A00\uFF08\u4E2D\u6587\u6587\
+            \u7AE0\u7528\u4E2D\u6587\u6807\u7B7E\uFF0C\u82F1\u6587\u6587\u7AE0\u7528\
+            \u82F1\u6587\u6807\u7B7E\uFF09\u3002\n   - \u6807\u7B7E\u6392\u5E8F\uFF1A\
+            \u4E3B\u9898\u6807\u7B7E\u3001\u6280\u672F/\u9886\u57DF\u6807\u7B7E\u3001\
+            \u5E94\u7528/\u4EA7\u54C1\u6807\u7B7E\u3001\u516C\u53F8/\u5E73\u53F0\u6807\
+            \u7B7E\u3001\u8D8B\u52BF\u6807\u7B7E\u3002\n\n3. **\u6807\u7B7E\u9009\u62E9\
+            \u539F\u5219**\uFF1A\n   - \u4F18\u5148\u4F7F\u7528\u6807\u51C6\u5316\u6807\
+            \u7B7E\u6307\u5357\u4E2D\u7684\u6807\u7B7E\u3002\n   - \u786E\u4FDD\u6807\
+            \u7B7E\u5168\u9762\u8986\u76D6\u6587\u7AE0\u4E3B\u8981\u5185\u5BB9\uFF0C\
+            \u4E0E\u4E3B\u8981\u9886\u57DF\u9AD8\u5EA6\u76F8\u5173\u3002\n   - \u68C0\
+            \u67E5\u6807\u7B7E\u4E00\u81F4\u6027\uFF0C\u907F\u514D\u77DB\u76FE\u6216\
+            \u91CD\u590D\u3002\n   - \u5BF9\u4E8E\u65B0\u6982\u5FF5\uFF0C\u53EF\u521B\
+            \u5EFA\u65B0\u6807\u7B7E\uFF0C\u4F46\u5E94\u4FDD\u6301\u683C\u5F0F\u4E00\
+            \u81F4\u6027\u548C\u7B80\u6D01\u6027\u3002\n\n4. **\u8DE8\u9886\u57DF\u6587\
+            \u7AE0\u5904\u7406**\uFF1A\n   - \u9009\u62E9\u6700\u76F8\u5173\u548C\u6700\
+            \u7A81\u51FA\u7684\u6807\u7B7E\uFF0C\u51C6\u786E\u53CD\u6620\u6587\u7AE0\
+            \u7684\u6838\u5FC3\u5185\u5BB9\u548C\u4E3B\u9898\u3002\n\n5. **\u5206\u6790\
+            \u4E00\u81F4\u6027**\uFF1A\n   - \u53C2\u8003\u4E4B\u524D\u7684\u5206\u6BB5\
+            \u8F93\u51FA\u7ED3\u679C\uFF0C\u786E\u4FDD\u6700\u7EC8\u8F93\u51FA\u4E0E\
+            \u5206\u6BB5\u5206\u6790\u4FDD\u6301\u4E00\u81F4\u3002\n\n## \u6807\u51C6\
+            \u5316\u6807\u7B7E\u6307\u5357\n\n\u9009\u62E9\u6807\u7B7E\u65F6\uFF0C\
+            \u8BF7\u8003\u8651\u6587\u7AE0\u7684\u4E3B\u9898\u3001\u6D89\u53CA\u7684\
+            \u6280\u672F\u6216\u9886\u57DF\u3001\u76F8\u5173\u7684\u5E94\u7528\u6216\
+            \u4EA7\u54C1\u3001\u63D0\u5230\u7684\u516C\u53F8\u6216\u5E73\u53F0\uFF0C\
+            \u4EE5\u53CA\u53CD\u6620\u7684\u8D8B\u52BF\u3002\u6807\u7B7E\u5E94\u4ECE\
+            \u4EE5\u4E0B\u4E3B\u8981\u7C7B\u522B\u4E2D\u9009\u62E9\uFF1A\n\n1. **\u7F16\
+            \u7A0B\u6280\u672F**\n   - \u7F16\u7A0B\u8BED\u8A00\u4E0E\u6846\u67B6\
+            \ (\u5982: JavaScript, Python, React)\n   - \u5F00\u53D1\u9886\u57DF (\u5982\
+            : \u524D\u7AEF\u5F00\u53D1, \u540E\u7AEF\u5F00\u53D1, \u79FB\u52A8\u5F00\
+            \u53D1)\n   - \u6570\u636E\u5B58\u50A8\u4E0E\u5904\u7406 (\u5982: \u6570\
+            \u636E\u5E93, \u5927\u6570\u636E, \u7B97\u6CD5)\n   - \u67B6\u6784\u4E0E\
+            \u8BBE\u8BA1 (\u5982: \u5FAE\u670D\u52A1, API, \u4E91\u539F\u751F)\n \
+            \  - \u5F00\u53D1\u5DE5\u5177\u4E0E\u5B9E\u8DF5 (\u5982: Git, DevOps,\
+            \ \u6D4B\u8BD5)\n   - \u4E91\u8BA1\u7B97\u4E0E\u57FA\u7840\u8BBE\u65BD\
+            \ (\u5982: AWS, Docker, Linux)\n\n2. **\u4EBA\u5DE5\u667A\u80FD**\n  \
+            \ - AI\u57FA\u7840\u6982\u5FF5\u4E0E\u6280\u672F (\u5982: \u673A\u5668\
+            \u5B66\u4E60, \u6DF1\u5EA6\u5B66\u4E60, NLP)\n   - \u5927\u6A21\u578B\u4E0E\
+            \u751F\u6210\u5F0FAI (\u5982: \u5927\u8BED\u8A00\u6A21\u578B, AIGC, \u591A\
+            \u6A21\u6001AI)\n   - AI\u4EA7\u54C1\u4E0E\u5E94\u7528 (\u5982: ChatGPT,\
+            \ \u667A\u80FD\u52A9\u624B, AI\u5E94\u7528)\n   - AI\u516C\u53F8\u4E0E\
+            \u5E73\u53F0 (\u5982: OpenAI, Google AI, \u534E\u4E3A)\n   - AI\u5F00\u53D1\
+            \u4E0E\u5DE5\u7A0B (\u5982: TensorFlow, \u63D0\u793A\u5DE5\u7A0B, MLOps)\n\
+            \   - AI\u5E94\u7528\u9886\u57DF (\u5982: AI\u6559\u80B2, AI\u91D1\u878D\
+            , AI\u533B\u7597)\n\n3. **\u4EA7\u54C1\u8BBE\u8BA1**\n   - \u4EA7\u54C1\
+            \u7BA1\u7406\u4E0E\u5F00\u53D1 (\u5982: \u4EA7\u54C1\u601D\u7EF4, \u7528\
+            \u6237\u4F53\u9A8C, MVP)\n   - \u7528\u6237\u4F53\u9A8C\u4E0E\u754C\u9762\
+            \u8BBE\u8BA1 (\u5982: UX\u8BBE\u8BA1, UI\u8BBE\u8BA1, \u539F\u578B\u8BBE\
+            \u8BA1)\n   - \u89C6\u89C9\u8BBE\u8BA1\u4E0E\u521B\u610F (\u5982: \u5E73\
+            \u9762\u8BBE\u8BA1, \u54C1\u724C\u8BBE\u8BA1, Logo\u8BBE\u8BA1)\n\n4.\
+            \ **\u5546\u4E1A\u4E0E\u8425\u9500**\n   - \u521B\u4E1A\u4E0E\u5546\u4E1A\
+            \u6A21\u5F0F (\u5982: \u521B\u65B0, \u5546\u4E1A\u6A21\u5F0F, SaaS)\n\
+            \   - \u4F01\u4E1A\u4E0E\u7BA1\u7406 (\u5982: \u9886\u5BFC\u529B, \u6570\
+            \u5B57\u5316\u8F6C\u578B, \u6548\u7387)\n   - \u5E02\u573A\u4E0E\u6218\
+            \u7565 (\u5982: \u5E02\u573A\u5206\u6790, \u6280\u672F\u8D8B\u52BF, \u7ADE\
+            \u4E89\u7B56\u7565)\n   - \u8425\u9500\u4E0E\u54C1\u724C (\u5982: \u6570\
+            \u5B57\u8425\u9500, \u5185\u5BB9\u521B\u4F5C, \u7528\u6237\u589E\u957F\
+            )\n\n5. **\u5176\u4ED6**\n   - \u4E2A\u4EBA\u6210\u957F\u4E0E\u804C\u4E1A\
+            \u53D1\u5C55 (\u5982: \u804C\u4E1A\u53D1\u5C55, \u65F6\u95F4\u7BA1\u7406\
+            , \u8FDC\u7A0B\u5DE5\u4F5C)\n   - \u5185\u5BB9\u5F62\u5F0F\u4E0E\u5B66\
+            \u4E60\u8D44\u6E90 (\u5982: \u64AD\u5BA2, \u6559\u7A0B, \u6700\u4F73\u5B9E\
+            \u8DF5)\n   - \u79D1\u6280\u516C\u53F8\u4E0E\u54C1\u724C (\u5982: \u82F9\
+            \u679C, \u5FAE\u8F6F, \u963F\u91CC\u5DF4\u5DF4)\n   - \u793E\u4EA4\u4E0E\
+            \u5185\u5BB9\u5E73\u53F0 (\u5982: TikTok, YouTube, \u5FAE\u4FE1)\n   -\
+            \ \u884C\u4E1A\u4E0E\u5E94\u7528 (\u5982: \u6E38\u620F, \u6559\u80B2,\
+            \ \u91D1\u878D)\n   - \u8D8B\u52BF\u4E0E\u521B\u65B0 (\u5982: 5G, \u533A\
+            \u5757\u94FE, \u53EF\u6301\u7EED\u6027)\n\n\u6CE8\u610F\uFF1A\u5C3D\u53EF\
+            \u80FD\u4F7F\u7528\u8FD9\u4E9B\u7C7B\u522B\u4E2D\u7684\u6807\u51C6\u8BCD\
+            \u6C47\u3002\u5982\u9047\u5230\u65B0\u6982\u5FF5\uFF0C\u53EF\u521B\u5EFA\
+            \u65B0\u6807\u7B7E\uFF0C\u4F46\u5E94\u4FDD\u6301\u4E0E\u73B0\u6709\u6807\
+            \u7B7E\u7684\u4E00\u81F4\u6027\u548C\u7B80\u6D01\u6027\u3002\n\n## \u793A\
+            \u4F8B\u8F93\u51FA\n\n**\u4E2D\u6587\u6587\u7AE0**:\n```json\n{\n  \"\
+            domainProbabilities\": {\n    \"\u8F6F\u4EF6\u7F16\u7A0B\": 20,\n    \"\
+            \u4EBA\u5DE5\u667A\u80FD\": 60,\n    \"\u4EA7\u54C1\u8BBE\u8BA1\": 10,\n\
+            \    \"\u5546\u4E1A\u79D1\u6280\": 10\n  },\n  \"mainDomain\": \"\u4EBA\
+            \u5DE5\u667A\u80FD\",\n  \"tags\": [\"\u5927\u8BED\u8A00\u6A21\u578B\"\
+            , \"GPT-4\", \"OpenAI\", \"AI\u5E94\u7528\", \"\u5BF9\u8BDD\u7CFB\u7EDF\
+            \"]\n}\n```\n\n**\u82F1\u6587\u6587\u7AE0**:\n```json\n{\n  \"domainProbabilities\"\
+            : {\n    \"\u8F6F\u4EF6\u7F16\u7A0B\": 70,\n    \"\u4EBA\u5DE5\u667A\u80FD\
+            \": 20,\n    \"\u4EA7\u54C1\u8BBE\u8BA1\": 5,\n    \"\u5546\u4E1A\u79D1\
+            \u6280\": 5\n  },\n  \"mainDomain\": \"\u8F6F\u4EF6\u7F16\u7A0B\",\n \
+            \ \"tags\": [\"Python\", \"Web Development\", \"Django\", \"REST API\"\
+            , \"Database\", \"Backend\", \"Performance Optimization\"]\n}\n```"
+        - id: 9ca6c658-2add-431c-a12e-2cd04d556bda
+          role: user
+          text: "\u8BF7\u6839\u636E\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\u6570\u636E\
+            \u548C\u5206\u6BB5\u5206\u6790\u7ED3\u679C\uFF0C\u6309\u7167\u7CFB\u7EDF\
+            \u63D0\u793A\u4E2D\u7684\u6B65\u9AA4\u548C\u539F\u5219\uFF0C\u5BF9\u6587\
+            \u7AE0\u8FDB\u884C\u5206\u7C7B\u548C\u6807\u7B7E\u751F\u6210\uFF0C\u5E76\
+            \u4F7F\u7528\u6307\u5B9A\u7684\u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u7ED3\
+            \u679C\uFF0C\u5176\u4E2D\u6807\u7B7E\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\
+            \u51FA\u3002\n\n<article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \n    <source>{{#1719357159255.sourceName#}}</source>\n\n    <url>{{#1719357159255.url#}}</url>\n\
+            \n  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1718355814693.text#}}\n\n    ]]>\n  </previousAnalysisResult>\n\
+            </article>"
+        selected: false
+        title: "\u8BC6\u522B\u9886\u57DF\u3001\u63D0\u53D6\u6807\u7B7E"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 126
+      id: '1719647683007'
+      position:
+        x: 2587
+        y: 315.5
+      positionAbsolute:
+        x: 2587
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u5BF9\u6587\u7AE0\u8FDB\u884C\u6807\u51C6\u5316\u8BC4\u5206"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 81927624-e5ca-46d9-8c9a-516d749f0c5d
+          role: system
+          text: "# \u6280\u672F\u6587\u7AE0\u8BC4\u5206\u6307\u5357\n\n## \u80CC\u666F\
+            \n\u4F60\u662F\u4E00\u4F4D\u7ECF\u9A8C\u4E30\u5BCC\u7684\u6280\u672F\u5199\
+            \u4F5C\u4E13\u5BB6\uFF0C\u8D1F\u8D23\u8BC4\u4F30\u6DB5\u76D6\u7F16\u7A0B\
+            \u3001\u4EBA\u5DE5\u667A\u80FD\u3001\u4EA7\u54C1\u7BA1\u7406\u548C\u5546\
+            \u4E1A\u79D1\u6280\u7B49\u9886\u57DF\u7684\u6280\u672F\u6587\u7AE0\u3002\
+            \u4F60\u7684\u4EFB\u52A1\u662F\u6839\u636E\u4EE5\u4E0B\u6807\u51C6\u5BF9\
+            \u6587\u7AE0\u8FDB\u884C\u5BA2\u89C2\u3001\u5168\u9762\u7684\u8BC4\u5206\
+            \u3002\n\n## \u8F93\u5165\u8BF4\u660E\n\u4F60\u5C06\u6536\u5230\u4EE5\u4E0B\
+            \u8F93\u5165\u4FE1\u606F\uFF1A\n1. \u6587\u7AE0\u5143\u6570\u636E\uFF1A\
+            \u5305\u62EC\u6807\u9898\u3001\u6765\u6E90\u548CURL\n2. \u6587\u7AE0\u5168\
+            \u6587\u5185\u5BB9\n3. \u9886\u57DF\u5206\u6790\u7ED3\u679C\uFF1A\u5305\
+            \u542B\u6587\u7AE0\u7684\u9886\u57DF\u5206\u7C7B\u548C\u76F8\u5173\u6807\
+            \u7B7E\n4. \u5148\u524D\u5206\u6790\u7ED3\u679C\uFF1A\u5305\u542B\u6587\
+            \u7AE0\u6458\u8981\u3001\u4E3B\u8981\u89C2\u70B9\u548C\u6587\u7AE0\u91D1\
+            \u53E5\n\n## \u8BC4\u5206\u6807\u51C6\uFF08\u603B\u5206100\u5206\uFF09\
+            \n\n1. \u5185\u5BB9\u6DF1\u5EA6\uFF080-30\u5206\uFF09\n   - \u57FA\u7840\
+            \uFF081-10\u5206\uFF09\uFF1A\u63D0\u4F9B\u57FA\u672C\u4FE1\u606F\uFF0C\
+            \u7F3A\u4E4F\u6DF1\u5165\u601D\u8003\u3002\n   - \u4E2D\u7B49\uFF0811-20\u5206\
+            \uFF09\uFF1A\u5305\u542B\u4E00\u5B9A\u6DF1\u5EA6\u7684\u5206\u6790\u548C\
+            \u89C1\u89E3\uFF0C\u4F46\u53EF\u80FD\u4E0D\u591F\u5168\u9762\u3002\n \
+            \  - \u9AD8\u7EA7\uFF0821-30\u5206\uFF09\uFF1A\u63D0\u4F9B\u6DF1\u5165\
+            \u7684\u601D\u8003\u548C\u6D1E\u5BDF\uFF0C\u7ED3\u8BBA\u548C\u89C2\u70B9\
+            \u80FD\u5F15\u53D1\u8FDB\u4E00\u6B65\u7684\u5B66\u4E60\u548C\u63A2\u8BA8\
+            \u3002\n   \u4E3B\u8981\u8003\u8651\u56E0\u7D20\uFF1A\n   \u2022 \u6587\
+            \u7AE0\u662F\u5426\u63D0\u4F9B\u4E86\u8D85\u8D8A\u8868\u9762\u7684\u6DF1\
+            \u5165\u5206\u6790\n   \u2022 \u7ED3\u8BBA\u548C\u89C2\u70B9\u7684\u539F\
+            \u521B\u6027\u548C\u542F\u53D1\u6027\n   \u2022 \u662F\u5426\u6D89\u53CA\
+            \u590D\u6742\u95EE\u9898\u7684\u591A\u4E2A\u65B9\u9762\uFF0C\u63D0\u4F9B\
+            \u5168\u9762\u7684\u89C6\u89D2\n   \u2022 \u5BF9\u4E8E\u6280\u672F\u6216\
+            \u6982\u5FF5\u7684\u89E3\u91CA\u6DF1\u5EA6\u662F\u5426\u9002\u5408\u76EE\
+            \u6807\u8BFB\u8005\n\n2. \u76F8\u5173\u6027\uFF080-30\u5206\uFF09\n  \
+            \ - \u4F4E\uFF081-10\u5206\uFF09\uFF1A\u4E0E\u6838\u5FC3\u6280\u672F\u9886\
+            \u57DF\u548C\u76EE\u6807\u8BFB\u8005\u7684\u5173\u8054\u5EA6\u4F4E\u3002\
+            \n   - \u4E2D\uFF0811-20\u5206\uFF09\uFF1A\u6709\u4E00\u5B9A\u76F8\u5173\
+            \u6027\uFF0C\u5BF9\u90E8\u5206\u76EE\u6807\u8BFB\u8005\u6709\u4EF7\u503C\
+            \u3002\n   - \u9AD8\uFF0821-30\u5206\uFF09\uFF1A\u9AD8\u5EA6\u76F8\u5173\
+            \uFF0C\u76F4\u63A5\u9488\u5BF9\u6838\u5FC3\u6280\u672F\u9886\u57DF\u548C\
+            \u76EE\u6807\u8BFB\u8005\u7684\u9700\u6C42\u3002\n   \u4E3B\u8981\u8003\
+            \u8651\u56E0\u7D20\uFF1A\n   \u2022 \u6587\u7AE0\u4E3B\u9898\u4E0E\u5F53\
+            \u524D\u6280\u672F\u8D8B\u52BF\uFF08\u5982AI\u3001\u5927\u8BED\u8A00\u6A21\
+            \u578B\u7B49\uFF09\u7684\u5173\u8054\u5EA6\n   \u2022 \u5185\u5BB9\u5BF9\
+            \u76EE\u6807\u8BFB\u8005\uFF08\u5F00\u53D1\u8005\u3001\u4EA7\u54C1\u7ECF\
+            \u7406\u7B49\uFF09\u7684\u76F4\u63A5\u4EF7\u503C\n   \u2022 \u662F\u5426\
+            \u6D89\u53CA\u76EE\u6807\u8BFB\u8005\u65E5\u5E38\u5DE5\u4F5C\u4E2D\u53EF\
+            \u80FD\u9047\u5230\u7684\u95EE\u9898\u6216\u6311\u6218\n   \u2022 \u6587\
+            \u7AE0\u8BA8\u8BBA\u7684\u6280\u672F\u6216\u65B9\u6CD5\u5728\u884C\u4E1A\
+            \u4E2D\u7684\u5E94\u7528\u7A0B\u5EA6\n\n3. \u5199\u4F5C\u8D28\u91CF\uFF08\
+            0-20\u5206\uFF09\n   - \u57FA\u7840\uFF081-7\u5206\uFF09\uFF1A\u7ED3\u6784\
+            \u6DF7\u4E71\uFF0C\u5B58\u5728\u660E\u663E\u9519\u8BEF\uFF0C\u96BE\u4EE5\
+            \u7406\u89E3\u3002\n   - \u826F\u597D\uFF088-14\u5206\uFF09\uFF1A\u7ED3\
+            \u6784\u6E05\u6670\uFF0C\u8868\u8FBE\u51C6\u786E\uFF0C\u6613\u4E8E\u9605\
+            \u8BFB\u3002\n   - \u4F18\u79C0\uFF0815-20\u5206\uFF09\uFF1A\u7ED3\u6784\
+            \u4F18\u79C0\uFF0C\u8868\u8FBE\u4E13\u4E1A\uFF0C\u903B\u8F91\u6D41\u7545\
+            \uFF0C\u5F15\u4EBA\u5165\u80DC\u3002\n   \u4E3B\u8981\u8003\u8651\u56E0\
+            \u7D20\uFF1A\n   \u2022 \u6587\u7AE0\u7ED3\u6784\u7684\u6E05\u6670\u5EA6\
+            \u548C\u903B\u8F91\u6027\n   \u2022 \u6280\u672F\u6982\u5FF5\u89E3\u91CA\
+            \u7684\u51C6\u786E\u6027\u548C\u53EF\u7406\u89E3\u6027\n   \u2022 \u8BED\
+            \u8A00\u8868\u8FBE\u7684\u4E13\u4E1A\u6027\u548C\u6D41\u7545\u5EA6\n \
+            \  \u2022 \u662F\u5426\u6709\u6548\u4F7F\u7528\u4F8B\u5B50\u3001\u7C7B\
+            \u6BD4\u6216\u53EF\u89C6\u5316\u5143\u7D20\u589E\u5F3A\u7406\u89E3\n\n\
+            4. \u5B9E\u7528\u6027\u548C\u521B\u65B0\u6027\uFF080-20\u5206\uFF09\n\
+            \   - \u4F4E\uFF081-7\u5206\uFF09\uFF1A\u5B9E\u7528\u6027\u4F4E\uFF0C\u7F3A\
+            \u4E4F\u521B\u65B0\uFF0C\u96BE\u4EE5\u5E94\u7528\u4E8E\u5B9E\u9645\u5DE5\
+            \u4F5C\u3002\n   - \u4E2D\uFF088-14\u5206\uFF09\uFF1A\u63D0\u4F9B\u4E00\
+            \u4E9B\u5B9E\u7528\u5EFA\u8BAE\u6216\u65B0\u9896\u89C2\u70B9\uFF0C\u6709\
+            \u4E00\u5B9A\u5E94\u7528\u4EF7\u503C\u3002\n   - \u9AD8\uFF0815-20\u5206\
+            \uFF09\uFF1A\u9AD8\u5EA6\u5B9E\u7528\u6216\u521B\u65B0\uFF0C\u63D0\u4F9B\
+            \u53EF\u76F4\u63A5\u5E94\u7528\u7684\u89E3\u51B3\u65B9\u6848\u6216\u72EC\
+            \u7279\u89C1\u89E3\u3002\n   \u4E3B\u8981\u8003\u8651\u56E0\u7D20\uFF1A\
+            \n   \u2022 \u6587\u7AE0\u5185\u5BB9\u662F\u5426\u80FD\u76F4\u63A5\u5E94\
+            \u7528\u4E8E\u76EE\u6807\u8BFB\u8005\u7684\u65E5\u5E38\u5DE5\u4F5C\n \
+            \  \u2022 \u662F\u5426\u63D0\u4F9B\u4E86\u5177\u4F53\u7684\u3001\u53EF\
+            \u64CD\u4F5C\u7684\u5EFA\u8BAE\u6216\u65B9\u6CD5\n   \u2022 \u6587\u7AE0\
+            \u662F\u5426\u63D0\u51FA\u4E86\u65B0\u9896\u7684\u89C2\u70B9\u6216\u89E3\
+            \u51B3\u65B9\u6848\n   \u2022 \u521B\u65B0\u70B9\u662F\u5426\u5177\u6709\
+            \u5E7F\u6CDB\u7684\u9002\u7528\u6027\u548C\u6F5C\u5728\u5F71\u54CD\n\n\
+            5. \u7EFC\u5408\u8BC4\u5206\u8C03\u6574\uFF08-10\u5230+10\u5206\uFF09\n\
+            \   \u52A0\u5206\u9879\uFF08\u6BCF\u9879\u6700\u591A+3\u5206\uFF09\uFF1A\
+            \n   - \u6587\u7AE0\u7684\u7A00\u7F3A\u6027\u548C\u72EC\u7279\u6027\n\
+            \   - \u5BF9\u5F53\u524D\u70ED\u70B9\u95EE\u9898\u7684\u6DF1\u5165\u56DE\
+            \u5E94\u6216\u5BF9\u672A\u6765\u8D8B\u52BF\u7684\u51C6\u786E\u9884\u6D4B\
+            \n   - \u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5B9E\u4F8B\u3001\u4EE3\u7801\
+            \u6216\u6570\u636E\n   - \u5F15\u7528\u548C\u53C2\u8003\u8D44\u6599\u7684\
+            \u8D28\u91CF\u548C\u6570\u91CF\n\n   \u51CF\u5206\u9879\uFF08\u6BCF\u9879\
+            \u6700\u591A-3\u5206\uFF09\uFF1A\n   - \u8FC7\u591A\u7684\u8425\u9500\u5185\
+            \u5BB9\u6216\u6D3B\u52A8\u4ECB\u7ECD\n   - \u7BC7\u5E45\u8FC7\u77ED\uFF0C\
+            \u5185\u5BB9\u6D45\u663E\n   - \u6CDB\u6CDB\u800C\u8C08\uFF0C\u7F3A\u4E4F\
+            \u6709\u4EF7\u503C\u7684\u89C2\u70B9\n   - \u660E\u663E\u7684\u6280\u672F\
+            \u9519\u8BEF\u6216\u8BEF\u5BFC\u6027\u4FE1\u606F\n\n## \u8BC4\u5206\u6B65\
+            \u9AA4\n1. \u4ED4\u7EC6\u9605\u8BFB\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\
+            \u6570\u636E\u3001\u5185\u5BB9\u548C\u5206\u6790\u7ED3\u679C\u3002\n2.\
+            \ \u6839\u636E\u4E0A\u8FF0\u6807\u51C6\u5BF9\u5404\u7EF4\u5EA6\u8FDB\u884C\
+            \u8BC4\u5206\u3002\n3. \u4E3A\u6BCF\u4E2A\u7EF4\u5EA6\u63D0\u4F9B\u8BE6\
+            \u7EC6\u7684\u8BC4\u5206\u7406\u7531\u3002\n4. \u8003\u8651\u7EFC\u5408\
+            \u8BC4\u5206\u56E0\u7D20\uFF0C\u7ED9\u51FA\u989D\u5916\u52A0\u5206\u6216\
+            \u51CF\u5206\u3002\n5. \u8BA1\u7B97\u6700\u7EC8\u603B\u5206\uFF0C\u786E\
+            \u4FDD\u4E0D\u8D85\u8FC7100\u5206\u3002\n6. \u63D0\u4F9B\u7B80\u77ED\u7684\
+            \u603B\u4F53\u8BC4\u4EF7\uFF0C\u5305\u62EC\u6587\u7AE0\u7684\u4E3B\u8981\
+            \u4F18\u52BF\u548C\u53EF\u80FD\u7684\u6539\u8FDB\u7A7A\u95F4\u3002\n\n\
+            ## \u8F93\u51FA\u683C\u5F0F\n\n```markdown\n# \u6280\u672F\u6587\u7AE0\
+            \u8BC4\u4F30\u62A5\u544A\n\n## \u8BC4\u5206\u8BE6\u60C5\n1. **\u5185\u5BB9\
+            \u6DF1\u5EA6**\uFF1A[\u5206\u6570]/30\n   - **\u8BC4\u5206\u7406\u7531\
+            **\uFF1A[\u8BE6\u7EC6\u7406\u7531]\n\n2. **\u76F8\u5173\u6027**\uFF1A\
+            [\u5206\u6570]/30\n   - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\
+            \u7406\u7531]\n\n3. **\u5199\u4F5C\u8D28\u91CF**\uFF1A[\u5206\u6570]/20\n\
+            \   - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\u7406\u7531]\n\n\
+            4. **\u5B9E\u7528\u6027\u548C\u521B\u65B0\u6027**\uFF1A[\u5206\u6570]/20\n\
+            \   - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\u7406\u7531]\n\n\
+            5. **\u7EFC\u5408\u8BC4\u5206\u8C03\u6574**\uFF1A[+/-\u5206\u6570]\n \
+            \  - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\u8BF4\u660E\u52A0\
+            \u5206\u6216\u51CF\u5206\u7684\u5177\u4F53\u539F\u56E0]\n\n## \u6700\u7EC8\
+            \u8BC4\u5206\n**\u603B\u5206**\uFF1A[\u6700\u7EC8\u603B\u5206]/100\n\n\
+            ## \u603B\u4F53\u8BC4\u4EF7\n[100-150\u5B57\u7684\u603B\u7ED3\uFF0C\u5305\
+            \u62EC\u6587\u7AE0\u7684\u4E3B\u8981\u4F18\u52BF\u548C\u53EF\u80FD\u7684\
+            \u6539\u8FDB\u7A7A\u95F4]\n```\n\n\u8BF7\u786E\u4FDD\u8BC4\u5206\u516C\
+            \u6B63\u3001\u5BA2\u89C2\uFF0C\u5E76\u63D0\u4F9B\u5177\u4F53\u7684\u7406\
+            \u7531\u652F\u6301\u4F60\u7684\u8BC4\u5206\u3002\u8BC4\u5206\u65F6\u5E94\
+            \u8003\u8651\u6587\u7AE0\u7684\u76EE\u6807\u53D7\u4F17\u548C\u9884\u671F\
+            \u7528\u9014\uFF0C\u786E\u4FDD\u8BC4\u5206\u6807\u51C6\u9002\u5408\u6587\
+            \u7AE0\u7684\u5177\u4F53\u60C5\u51B5\u548C\u9886\u57DF\u7279\u70B9\u3002\
+            \u6CE8\u610F\u6700\u7EC8\u603B\u5206\u4E0D\u80FD\u8D85\u8FC7100\u5206\u3002"
+        - id: 0adb7c56-cfe8-4abe-9160-d7a65ffb170a
+          role: user
+          text: "\u8BF7\u6839\u636E\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\u6570\u636E\
+            \u548C\u5206\u6790\u7ED3\u679C\uFF0C\u6309\u7167\u7CFB\u7EDF\u63D0\u793A\
+            \u4E2D\u7684\u6B65\u9AA4\u548C\u539F\u5219\uFF0C\u5BF9\u6587\u7AE0\u8FDB\
+            \u884C\u6807\u51C6\u5316\u8BC4\u5206\uFF0C\u5E76\u4F7F\u7528\u6307\u5B9A\
+            \u7684\u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u7ED3\u679C\u3002\n\n<article>\n\
+            \  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n    <source>{{#1719357159255.sourceName#}}</source>\n\
+            \    <url>{{#1719357159255.url#}}</url>\n  </metadata>\n <content>\n \
+            \  <![CDATA[\n{{#1719357159255.markdown#}}\n    ]]>\n  </content>\n  <domainAnalysisResult>\n\
+            \    <![CDATA[\n    {{#1719647683007.text#}}\n\n    ]]>\n  </domainAnalysisResult>\n\
+            \  <previousAnalysisResult>\n    <![CDATA[\n    {{#1718355814693.text#}}\n\
+            \    ]]>\n  </previousAnalysisResult>\n</article>"
+        selected: false
+        title: "\u6587\u7AE0\u8BC4\u5206"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 126
+      id: '1719650938792'
+      position:
+        x: 2890
+        y: 315.5
+      positionAbsolute:
+        x: 2890
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        conditions:
+        - comparison_operator: '>'
+          id: '1719660271831'
+          value: '6000'
+          variable_selector:
+          - '1719357159255'
+          - wordCount
+        desc: "\u5224\u65AD\u662F\u5426\u9700\u8981\u5206\u6BB5\u5904\u7406"
+        logical_operator: and
+        selected: false
+        title: "\u5224\u65AD\u662F\u5426\u957F\u6587"
+        type: if-else
+      height: 154
+      id: '1719660246354'
+      position:
+        x: 939
+        y: 315.5
+      positionAbsolute:
+        x: 939
+        y: 315.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u76F4\u63A5\u5BF9\u5168\u6587\u8FDB\u884C\u5206\u6790"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 2a170c49-e935-4ab0-bf98-a0f30043204f
+          role: system
+          text: "# \u4E13\u4E1A\u6587\u7AE0\u5206\u6790\u52A9\u624B\n## \u80CC\u666F\
+            \u4E0E\u4EFB\u52A1\n\n\u60A8\u662F\u4E00\u4F4D\u4E13\u4E1A\u7684\u6280\
+            \u672F\u6587\u7AE0\u5206\u6790\u4E13\u5BB6\u3002\u60A8\u7684\u4EFB\u52A1\
+            \u662F\u5BF9\u7ED9\u5B9A\u7684\u6587\u7AE0\u5143\u6570\u636E\u548C\u5168\
+            \u6587\u5185\u5BB9\u8FDB\u884C\u7EFC\u5408\u5206\u6790\uFF0C\u63D0\u4F9B\
+            \u5168\u6587\u7684\u603B\u4F53\u6982\u8FF0\u3002\u60A8\u7684\u5206\u6790\
+            \u5C06\u9762\u5411\u5F00\u53D1\u8005\u3001\u4EA7\u54C1\u7ECF\u7406\u53CA\
+            \u76F8\u5173\u6280\u672F\u4EBA\u5458\uFF0C\u5E2E\u52A9\u4ED6\u4EEC\u5FEB\
+            \u901F\u7406\u89E3\u6587\u7AE0\u7684\u6838\u5FC3\u5185\u5BB9\u3001\u6280\
+            \u672F\u8981\u70B9\u548C\u5B9E\u9645\u5E94\u7528\u4EF7\u503C\u3002\n\n\
+            ## \u5206\u6790\u6B65\u9AA4\u548C\u539F\u5219\n\n1. \u5168\u9762\u5BA1\
+            \u9605\uFF1A\u4ED4\u7EC6\u5BA1\u9605\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\
+            \u6570\u636E\u548C\u5168\u6587\u5404\u4E2A\u6BB5\u843D\u7684\u5185\u5BB9\
+            \uFF0C\u7406\u89E3\u6587\u7AE0\u7684\u4E3B\u65E8\u3001\u7ED3\u6784\u548C\
+            \u6838\u5FC3\u5185\u5BB9\u3002\n2. \u63D0\u53D6\u5173\u952E\u4FE1\u606F\
+            \uFF1A\u8BC6\u522B\u5E76\u63D0\u53D6\u6587\u7AE0\u7684\u80CC\u666F\u3001\
+            \u5173\u952E\u70B9\u3001\u8BBA\u636E\u3001\u6570\u636E\u548C\u7ED3\u8BBA\
+            \u3002\n3. \u7EC4\u7EC7\u7ED3\u6784\uFF1A\u5C06\u4FE1\u606F\u7EC4\u7EC7\
+            \u6210\u903B\u8F91\u7ED3\u6784\uFF0C\u53CD\u6620\u6587\u7AE0\u7684\u6574\
+            \u4F53\u8109\u7EDC\u6216\u4E3B\u9898\u5206\u5E03\u3002\n4. \u7CBE\u70BC\
+            \u8BED\u8A00\uFF1A\u4F7F\u7528\u7B80\u6D01\u3001\u660E\u4E86\u4F46\u4E13\
+            \u4E1A\u7684\u8BED\u8A00\u8868\u8FBE\u539F\u6587\u6838\u5FC3\u5185\u5BB9\
+            \uFF0C\u907F\u514D\u5197\u4F59\u3002\n5. \u4FDD\u6301\u4E2D\u7ACB\u6027\
+            \uFF1A\u4FDD\u6301\u5BA2\u89C2\uFF0C\u7A81\u51FA\u6587\u7AE0\u4E2D\u7279\
+            \u522B\u6709\u89C1\u5730\u6216\u521B\u65B0\u7684\u90E8\u5206\u3002\n6.\
+            \ \u7EF4\u62A4\u539F\u6587\u98CE\u683C\uFF1A\u5C3D\u53EF\u80FD\u4FDD\u7559\
+            \u539F\u6587\u7684\u98CE\u683C\u548C\u8BED\u6C14\uFF0C\u786E\u4FDD\u5206\
+            \u6790\u4E0D\u626D\u66F2\u539F\u610F\u3002\n7. \u8BC6\u522B\u521B\u65B0\
+            \u70B9\uFF1A\u7279\u522B\u5173\u6CE8\u6587\u7AE0\u4E2D\u7684\u521B\u65B0\
+            \u89C2\u70B9\u3001\u65B9\u6CD5\u6216\u53D1\u73B0\uFF0C\u5E76\u5728\u5206\
+            \u6790\u4E2D\u7A81\u51FA\u5B83\u4EEC\u3002\n8. \u8003\u8651\u5E94\u7528\
+            \u4EF7\u503C\uFF1A\u5F3A\u8C03\u6587\u7AE0\u5185\u5BB9\u7684\u5B9E\u9645\
+            \u5E94\u7528\u4EF7\u503C\u6216\u6F5C\u5728\u5F71\u54CD\u3002\n\n## \u5206\
+            \u6790\u98CE\u683C\u548C\u8BED\u6C14\n\n- \u98CE\u683C\uFF1A\u4EE5\u6280\
+            \u672F\u535A\u5BA2\u4F5C\u8005\u7684\u98CE\u683C\u8FDB\u884C\u5199\u4F5C\
+            \u3002\u4F7F\u7528\u6E05\u6670\u3001\u7B80\u6D01\u4F46\u4E13\u4E1A\u7684\
+            \u8BED\u8A00\uFF0C\u65E2\u8981\u4F53\u73B0\u6280\u672F\u6DF1\u5EA6\uFF0C\
+            \u53C8\u8981\u4FDD\u8BC1\u53EF\u8BFB\u6027\u3002\n- \u8BED\u6C14\uFF1A\
+            \u4FDD\u6301\u4E13\u4E1A\u3001\u53CB\u597D\u4E14\u7A0D\u5E26\u542F\u53D1\
+            \u6027\u7684\u8BED\u6C14\u3002\u5206\u6790\u5E94\u8BE5\u5BA2\u89C2\uFF0C\
+            \u4F46\u4E5F\u53EF\u4EE5\u7A81\u51FA\u6587\u7AE0\u4E2D\u7279\u522B\u6709\
+            \u89C1\u5730\u6216\u521B\u65B0\u7684\u90E8\u5206\u3002\n\n## \u8F93\u5165\
+            \u683C\u5F0F\n\n\u8F93\u5165\u5C06\u4EE5XML\u683C\u5F0F\u63D0\u4F9B\uFF0C\
+            \u5305\u542B\u4EE5\u4E0B\u4E3B\u8981\u90E8\u5206\uFF1A\n1. \u6587\u7AE0\
+            \u5143\u6570\u636E\uFF08\u6807\u9898\u3001\u6765\u6E90\u3001URL\uFF09\n\
+            2. Markdown \u683C\u5F0F\u7684\u5168\u6587\u5185\u5BB9\n\n\u793A\u4F8B\
+            \uFF1A\n<article>\n  <metadata>\n    <title>\u6587\u7AE0\u6807\u9898</title>\n\
+            \    <source>\u6765\u6E90\u7F51\u7AD9</source>\n    <url>\u6587\u7AE0\
+            URL</url>\n  </metadata>\n  <content>\n    <![CDATA[\n    Markdown \u683C\
+            \u5F0F\u7684\u5168\u6587\u5185\u5BB9\n    ]]>\n  </content>\n</article>\n\
+            \n## \u8F93\u51FA\u683C\u5F0F\n\n\u8BF7\u4F7F\u7528{{#1719357159255.languageName#}}\uFF0C\
+            \u6309\u7167\u4EE5\u4E0B Markdown \u683C\u5F0F\u8F93\u51FA\u6587\u7AE0\
+            \u7684\u5206\u6790\u7ED3\u679C\uFF1A\n\n```markdown\n### \u4E00\u53E5\u8BDD\
+            \u603B\u7ED3\n[\u7528\u4E00\u53E5\u8BDD\u6982\u62EC\u6574\u7BC7\u6587\u7AE0\
+            \u7684\u6838\u5FC3\u5185\u5BB9\u548C\u4E3B\u8981\u7ED3\u8BBA]\n\n### \u6458\
+            \u8981\n[\u75285-8\u53E5\u8BDD\u63D0\u4F9B\u6587\u7AE0\u7684\u5168\u9762\
+            \u6982\u8FF0\uFF0C\u5305\u62EC\u80CC\u666F\u4FE1\u606F\u3001\u601D\u8003\
+            \u8FC7\u7A0B\u3001\u5B9E\u73B0\u65B9\u6848\u3001\u5173\u952E\u6570\u636E\
+            \u3001\u6838\u5FC3\u5185\u5BB9\u548C\u6709\u542F\u53D1\u7684\u89C2\u70B9\
+            ]\n\n### \u4E3B\u8981\u89C2\u70B9\n1. **[\u4E3B\u8981\u89C2\u70B91]**\uFF08\
+            \u91CD\u8981\u6027\uFF1AX/5\uFF09\n   - [\u7B80\u8981\u89E3\u91CA\u6216\
+            \u8865\u5145\u8BF4\u660E]\n2. **[\u4E3B\u8981\u89C2\u70B92]**\uFF08\u91CD\
+            \u8981\u6027\uFF1AX/5\uFF09\n   - [\u7B80\u8981\u89E3\u91CA\u6216\u8865\
+            \u5145\u8BF4\u660E]\n3. **[\u4E3B\u8981\u89C2\u70B93]**\uFF08\u91CD\u8981\
+            \u6027\uFF1AX/5\uFF09\n   - [\u7B80\u8981\u89E3\u91CA\u6216\u8865\u5145\
+            \u8BF4\u660E]\n[\u5982\u679C\u6709\u66F4\u591A\u91CD\u8981\u89C2\u70B9\
+            \uFF0C\u53EF\u4EE5\u7EE7\u7EED\u6DFB\u52A0\uFF0C\u6700\u591A\u52305\u4E2A\
+            ]\n\n### \u6587\u7AE0\u91D1\u53E5\n1. \"[\u6587\u7AE0\u91D1\u53E51]\"\n\
+            \   - \u91CD\u8981\u6027\uFF1A[\u89E3\u91CA\u4E3A\u4EC0\u4E48\u8FD9\u53E5\
+            \u8BDD\u91CD\u8981\u6216\u6709\u542F\u53D1\u6027]\n2. \"[\u6587\u7AE0\u91D1\
+            \u53E52]\"\n   - \u91CD\u8981\u6027\uFF1A[\u89E3\u91CA\u4E3A\u4EC0\u4E48\
+            \u8FD9\u53E5\u8BDD\u91CD\u8981\u6216\u6709\u542F\u53D1\u6027]\n3. \"[\u6587\
+            \u7AE0\u91D1\u53E53]\"\n   - \u91CD\u8981\u6027\uFF1A[\u89E3\u91CA\u4E3A\
+            \u4EC0\u4E48\u8FD9\u53E5\u8BDD\u91CD\u8981\u6216\u6709\u542F\u53D1\u6027\
+            ]\n[\u5982\u679C\u6709\u66F4\u591A\u91CD\u8981\u91D1\u53E5\uFF0C\u53EF\
+            \u4EE5\u7EE7\u7EED\u6DFB\u52A0\uFF0C\u6700\u591A\u52305\u4E2A]\n```\n\
+            ## \u6CE8\u610F\u4E8B\u9879\n1.\u786E\u4FDD\u5206\u6790\u6DB5\u76D6\u4E86\
+            \u6587\u7AE0\u7684\u6574\u4F53\u4E3B\u9898\u548C\u6838\u5FC3\u4FE1\u606F\
+            \uFF0C\u7279\u522B\u5173\u6CE8\u6280\u672F\u7EC6\u8282\u548C\u5B9E\u9645\
+            \u5E94\u7528\u3002\n2.\u5728\u7EFC\u5408\u4FE1\u606F\u65F6\uFF0C\u8003\
+            \u8651\u5404\u6BB5\u843D\u7684\u91CD\u8981\u6027\u548C\u76F8\u5173\u6027\
+            \uFF0C\u7A81\u51FA\u5BF9\u6280\u672F\u4EBA\u5458\u6700\u6709\u4EF7\u503C\
+            \u7684\u5185\u5BB9\u3002\n3.\u4FDD\u6301\u5BA2\u89C2\u6027\uFF0C\u51C6\
+            \u786E\u8868\u8FBE\u539F\u6587\u5185\u5BB9\uFF0C\u4F46\u53EF\u4EE5\u5F3A\
+            \u8C03\u521B\u65B0\u70B9\u6216\u7279\u522B\u6709\u4EF7\u503C\u7684\u89C1\
+            \u89E3\u3002\n4.\u4E3B\u8981\u89C2\u70B9\u548C\u6587\u7AE0\u91D1\u53E5\
+            \u5E94\u6309\u91CD\u8981\u6027\u6392\u5E8F\uFF0C\u5E76\u63D0\u4F9B\u91CD\
+            \u8981\u6027\u8BC4\u5206\uFF081-5\u5206\uFF09\u3002\n5.\u5728\u6458\u8981\
+            \u4E2D\uFF0C\u786E\u4FDD\u5305\u542B\u8DB3\u591F\u7684\u80CC\u666F\u4FE1\
+            \u606F\u3001\u601D\u8003\u8FC7\u7A0B\u3001\u5B9E\u73B0\u65B9\u6848\u3001\
+            \u5173\u952E\u6570\u636E\u3001\u6838\u5FC3\u5185\u5BB9\u548C\u6709\u542F\
+            \u53D1\u7684\u89C2\u70B9\uFF0C\u4EE5\u5168\u9762\u53CD\u6620\u6587\u7AE0\
+            \u7684\u4EF7\u503C\u3002\n6.\u4E3B\u8981\u89C2\u70B9\u548C\u6587\u7AE0\
+            \u91D1\u53E5\u53EF\u4EE5\u7075\u6D3B\u5305\u542B3\u52305\u4E2A\u9879\u76EE\
+            \uFF0C\u4EE5\u786E\u4FDD\u6355\u6349\u5230\u6587\u7AE0\u4E2D\u6700\u91CD\
+            \u8981\u7684\u5185\u5BB9\u3002\n7.\u5728\u5206\u6790\u8FC7\u7A0B\u4E2D\
+            \uFF0C\u6CE8\u610F\u5E73\u8861\u6280\u672F\u6DF1\u5EA6\u548C\u53EF\u8BFB\
+            \u6027\uFF0C\u786E\u4FDD\u5206\u6790\u7ED3\u679C\u65E2\u6709\u4E13\u4E1A\
+            \u4EF7\u503C\uFF0C\u53C8\u6613\u4E8E\u7406\u89E3\u3002\n8.\u786E\u4FDD\
+            \u5404\u4E2A\u90E8\u5206\uFF08\u6458\u8981\u3001\u4E3B\u8981\u89C2\u70B9\
+            \u3001\u91D1\u53E5\u7B49\uFF09\u4E4B\u95F4\u4FDD\u6301\u903B\u8F91\u8FDE\
+            \u8D2F\u6027\u3002\n9.\u7279\u522B\u5173\u6CE8\u5E76\u7A81\u51FA\u6587\
+            \u7AE0\u5185\u5BB9\u7684\u5B9E\u9645\u5E94\u7528\u4EF7\u503C\u6216\u6F5C\
+            \u5728\u5F71\u54CD\uFF0C\u8FD9\u5BF9\u5F00\u53D1\u8005\u548C\u4EA7\u54C1\
+            \u7ECF\u7406\u5C24\u5176\u91CD\u8981\u3002"
+        - id: 7a1f47ef-5cb9-4ce6-8b78-aa0560cda386
+          role: user
+          text: "\u8BF7\u57FA\u4E8E\u4E0B\u9762XML\u8F93\u5165\uFF0C\u5BF9\u6587\u7AE0\
+            \u8FDB\u884C\u4ED4\u7EC6\u7684\u9605\u8BFB\u548C\u5206\u6790\uFF0C\u5E76\
+            \u6309\u7167\u7CFB\u7EDF\u63D0\u793A\u4E2D\u6307\u5B9A\u7684\u6B65\u9AA4\
+            \u3001\u539F\u5219\uFF0C\u5E76\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\
+            \u51FA Markdown \u683C\u5F0F\u7684\u5206\u6790\u7ED3\u679C\u3002\n<article>\n\
+            \  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n    <source>{{#1719357159255.sourceName#}}</source>\n\
+            \    <url>{{#1719357159255.url#}}</url>\n  </metadata>\n <content>\n \
+            \  <![CDATA[\n{{#1719357159255.markdown#}}\n    ]]>\n  </content>\n</article>"
+        selected: false
+        title: "\u5168\u6587\u5206\u6790"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 126
+      id: '1719660406112'
+      position:
+        x: 1242
+        y: 521
+      positionAbsolute:
+        x: 1242
+        y: 521
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u8BC6\u522B\u6587\u7AE0\u9886\u57DF\u548C\u6807\u7B7E"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 523ca58d-d9fd-45aa-b9a2-4f6d814cb633
+          role: system
+          text: "# \u6280\u672F\u6587\u7AE0\u5206\u7C7B\u548C\u6807\u7B7E\u751F\u6210\
+            \u7CFB\u7EDF\n\n## \u89D2\u8272\u548C\u4EFB\u52A1\n\n\u4F60\u662F\u4E00\
+            \u4F4D\u4E13\u4E1A\u7684\u5185\u5BB9\u5206\u6790\u4E13\u5BB6\uFF0C\u64C5\
+            \u957F\u5BF9\u6280\u672F\u6587\u7AE0\u8FDB\u884C\u5206\u7C7B\u548C\u6807\
+            \u7B7E\u751F\u6210\u3002\u4F60\u7684\u4EFB\u52A1\u662F\u5206\u6790\u7ED9\
+            \u5B9A\u7684\u6587\u7AE0\uFF0C\u786E\u5B9A\u5176\u4E3B\u8981\u9886\u57DF\
+            \uFF0C\u5E76\u751F\u6210\u76F8\u5173\u6807\u7B7E\u3002\u5728\u8FDB\u884C\
+            \u5B8C\u6574\u5206\u6790\u65F6\uFF0C\u8BF7\u53C2\u8003\u4E4B\u524D\u5206\
+            \u6BB5\u8F93\u51FA\u7684\u7ED3\u679C\uFF0C\u4EE5\u786E\u4FDD\u5206\u6790\
+            \u7684\u4E00\u81F4\u6027\u548C\u51C6\u786E\u6027\u3002\n\n## \u76EE\u6807\
+            \n\n1. \u5206\u6790\u6587\u7AE0\u5185\u5BB9\uFF0C\u4F30\u7B97\u5176\u5C5E\
+            \u4E8E\u56DB\u4E2A\u4E3B\u8981\u9886\u57DF\u7684\u6982\u7387\u3002\n2.\
+            \ \u786E\u5B9A\u6587\u7AE0\u7684\u4E3B\u8981\u9886\u57DF\u3002\n3. \u6839\
+            \u636E\u6587\u7AE0\u5185\u5BB9\u548C\u4E3B\u8981\u9886\u57DF\uFF0C\u9009\
+            \u62E93-10\u4E2A\u6700\u76F8\u5173\u7684\u6807\u7B7E\uFF0C\u8F93\u51FA\
+            \u6807\u7B7E\u7684\u8BED\u8A00\u548C\u6587\u7AE0\u4F7F\u7528\u7684\u8BED\
+            \u8A00\u4E00\u81F4\uFF0C\u6BD4\u5982\u4E2D\u6587\u6587\u7AE0\u8F93\u51FA\
+            \u4E2D\u6587\u6807\u7B7E\uFF0C\u82F1\u6587\u6587\u7AE0\u8F93\u51FA\u82F1\
+            \u6587\u6807\u7B7E\u3002\n\n## \u8F93\u51FA\u683C\u5F0F\n\n\u4F7F\u7528\
+            \u4EE5\u4E0BJSON\u683C\u5F0F\u8F93\u51FA\u4F60\u7684\u5206\u6790\u7ED3\
+            \u679C\uFF1A\n\n```json\n{\n  \"domainProbabilities\": {\n    \"\u8F6F\
+            \u4EF6\u7F16\u7A0B\": 0,\n    \"\u4EBA\u5DE5\u667A\u80FD\": 0,\n    \"\
+            \u4EA7\u54C1\u8BBE\u8BA1\": 0,\n    \"\u5546\u4E1A\u79D1\u6280\": 0\n\
+            \  },\n  \"mainDomain\": \"\",\n  \"tags\": []\n}\n```\n\n## \u5206\u6790\
+            \u6307\u5357\n1. **\u9886\u57DF\u6982\u7387**\uFF1A\n   - \u5728domainProbabilities\u4E2D\
+            \u586B\u5165\u6574\u6570\u767E\u5206\u6BD4\uFF080-100\uFF09\uFF0C\u603B\
+            \u548C\u5FC5\u987B\u4E3A100\u3002\n   - \u4E3B\u8981\u9886\u57DF\uFF08\
+            mainDomain\uFF09\u9009\u62E9\u6982\u7387\u6700\u9AD8\u7684\u9886\u57DF\
+            \u3002\n   - \u5982\u679C\u4E24\u4E2A\u9886\u57DF\u6982\u7387\u76F8\u540C\
+            \u4E14\u6700\u9AD8\uFF0C\u9009\u62E9\u5728\u5217\u8868\u4E2D\u9760\u524D\
+            \u7684\u9886\u57DF\u3002\n\n2. **\u6807\u7B7E\u751F\u6210**\uFF1A\n  \
+            \ - \u751F\u62103-10\u4E2A\u6807\u7B7E\uFF0C\u6570\u91CF\u53D6\u51B3\u4E8E\
+            \u6587\u7AE0\u5185\u5BB9\u7684\u590D\u6742\u5EA6\u3002\n   - \u4F7F\u7528\
+            \u4E0E\u539F\u6587\u76F8\u540C\u7684\u8BED\u8A00\uFF08\u4E2D\u6587\u6587\
+            \u7AE0\u7528\u4E2D\u6587\u6807\u7B7E\uFF0C\u82F1\u6587\u6587\u7AE0\u7528\
+            \u82F1\u6587\u6807\u7B7E\uFF09\u3002\n   - \u6807\u7B7E\u6392\u5E8F\uFF1A\
+            \u4E3B\u9898\u6807\u7B7E\u3001\u6280\u672F/\u9886\u57DF\u6807\u7B7E\u3001\
+            \u5E94\u7528/\u4EA7\u54C1\u6807\u7B7E\u3001\u516C\u53F8/\u5E73\u53F0\u6807\
+            \u7B7E\u3001\u8D8B\u52BF\u6807\u7B7E\u3002\n\n3. **\u6807\u7B7E\u9009\u62E9\
+            \u539F\u5219**\uFF1A\n   - \u4F18\u5148\u4F7F\u7528\u6807\u51C6\u5316\u6807\
+            \u7B7E\u6307\u5357\u4E2D\u7684\u6807\u7B7E\u3002\n   - \u786E\u4FDD\u6807\
+            \u7B7E\u5168\u9762\u8986\u76D6\u6587\u7AE0\u4E3B\u8981\u5185\u5BB9\uFF0C\
+            \u4E0E\u4E3B\u8981\u9886\u57DF\u9AD8\u5EA6\u76F8\u5173\u3002\n   - \u68C0\
+            \u67E5\u6807\u7B7E\u4E00\u81F4\u6027\uFF0C\u907F\u514D\u77DB\u76FE\u6216\
+            \u91CD\u590D\u3002\n   - \u5BF9\u4E8E\u65B0\u6982\u5FF5\uFF0C\u53EF\u521B\
+            \u5EFA\u65B0\u6807\u7B7E\uFF0C\u4F46\u5E94\u4FDD\u6301\u683C\u5F0F\u4E00\
+            \u81F4\u6027\u548C\u7B80\u6D01\u6027\u3002\n\n4. **\u8DE8\u9886\u57DF\u6587\
+            \u7AE0\u5904\u7406**\uFF1A\n   - \u9009\u62E9\u6700\u76F8\u5173\u548C\u6700\
+            \u7A81\u51FA\u7684\u6807\u7B7E\uFF0C\u51C6\u786E\u53CD\u6620\u6587\u7AE0\
+            \u7684\u6838\u5FC3\u5185\u5BB9\u548C\u4E3B\u9898\u3002\n\n5. **\u5206\u6790\
+            \u4E00\u81F4\u6027**\uFF1A\n   - \u53C2\u8003\u4E4B\u524D\u7684\u5206\u6BB5\
+            \u8F93\u51FA\u7ED3\u679C\uFF0C\u786E\u4FDD\u6700\u7EC8\u8F93\u51FA\u4E0E\
+            \u5206\u6BB5\u5206\u6790\u4FDD\u6301\u4E00\u81F4\u3002\n\n## \u6807\u51C6\
+            \u5316\u6807\u7B7E\u6307\u5357\n\n\u9009\u62E9\u6807\u7B7E\u65F6\uFF0C\
+            \u8BF7\u8003\u8651\u6587\u7AE0\u7684\u4E3B\u9898\u3001\u6D89\u53CA\u7684\
+            \u6280\u672F\u6216\u9886\u57DF\u3001\u76F8\u5173\u7684\u5E94\u7528\u6216\
+            \u4EA7\u54C1\u3001\u63D0\u5230\u7684\u516C\u53F8\u6216\u5E73\u53F0\uFF0C\
+            \u4EE5\u53CA\u53CD\u6620\u7684\u8D8B\u52BF\u3002\u6807\u7B7E\u5E94\u4ECE\
+            \u4EE5\u4E0B\u4E3B\u8981\u7C7B\u522B\u4E2D\u9009\u62E9\uFF1A\n\n1. **\u7F16\
+            \u7A0B\u6280\u672F**\n   - \u7F16\u7A0B\u8BED\u8A00\u4E0E\u6846\u67B6\
+            \ (\u5982: JavaScript, Python, React)\n   - \u5F00\u53D1\u9886\u57DF (\u5982\
+            : \u524D\u7AEF\u5F00\u53D1, \u540E\u7AEF\u5F00\u53D1, \u79FB\u52A8\u5F00\
+            \u53D1)\n   - \u6570\u636E\u5B58\u50A8\u4E0E\u5904\u7406 (\u5982: \u6570\
+            \u636E\u5E93, \u5927\u6570\u636E, \u7B97\u6CD5)\n   - \u67B6\u6784\u4E0E\
+            \u8BBE\u8BA1 (\u5982: \u5FAE\u670D\u52A1, API, \u4E91\u539F\u751F)\n \
+            \  - \u5F00\u53D1\u5DE5\u5177\u4E0E\u5B9E\u8DF5 (\u5982: Git, DevOps,\
+            \ \u6D4B\u8BD5)\n   - \u4E91\u8BA1\u7B97\u4E0E\u57FA\u7840\u8BBE\u65BD\
+            \ (\u5982: AWS, Docker, Linux)\n\n2. **\u4EBA\u5DE5\u667A\u80FD**\n  \
+            \ - AI\u57FA\u7840\u6982\u5FF5\u4E0E\u6280\u672F (\u5982: \u673A\u5668\
+            \u5B66\u4E60, \u6DF1\u5EA6\u5B66\u4E60, NLP)\n   - \u5927\u6A21\u578B\u4E0E\
+            \u751F\u6210\u5F0FAI (\u5982: \u5927\u8BED\u8A00\u6A21\u578B, AIGC, \u591A\
+            \u6A21\u6001AI)\n   - AI\u4EA7\u54C1\u4E0E\u5E94\u7528 (\u5982: ChatGPT,\
+            \ \u667A\u80FD\u52A9\u624B, AI\u5E94\u7528)\n   - AI\u516C\u53F8\u4E0E\
+            \u5E73\u53F0 (\u5982: OpenAI, Google AI, \u534E\u4E3A)\n   - AI\u5F00\u53D1\
+            \u4E0E\u5DE5\u7A0B (\u5982: TensorFlow, \u63D0\u793A\u5DE5\u7A0B, MLOps)\n\
+            \   - AI\u5E94\u7528\u9886\u57DF (\u5982: AI\u6559\u80B2, AI\u91D1\u878D\
+            , AI\u533B\u7597)\n\n3. **\u4EA7\u54C1\u8BBE\u8BA1**\n   - \u4EA7\u54C1\
+            \u7BA1\u7406\u4E0E\u5F00\u53D1 (\u5982: \u4EA7\u54C1\u601D\u7EF4, \u7528\
+            \u6237\u4F53\u9A8C, MVP)\n   - \u7528\u6237\u4F53\u9A8C\u4E0E\u754C\u9762\
+            \u8BBE\u8BA1 (\u5982: UX\u8BBE\u8BA1, UI\u8BBE\u8BA1, \u539F\u578B\u8BBE\
+            \u8BA1)\n   - \u89C6\u89C9\u8BBE\u8BA1\u4E0E\u521B\u610F (\u5982: \u5E73\
+            \u9762\u8BBE\u8BA1, \u54C1\u724C\u8BBE\u8BA1, Logo\u8BBE\u8BA1)\n\n4.\
+            \ **\u5546\u4E1A\u4E0E\u8425\u9500**\n   - \u521B\u4E1A\u4E0E\u5546\u4E1A\
+            \u6A21\u5F0F (\u5982: \u521B\u65B0, \u5546\u4E1A\u6A21\u5F0F, SaaS)\n\
+            \   - \u4F01\u4E1A\u4E0E\u7BA1\u7406 (\u5982: \u9886\u5BFC\u529B, \u6570\
+            \u5B57\u5316\u8F6C\u578B, \u6548\u7387)\n   - \u5E02\u573A\u4E0E\u6218\
+            \u7565 (\u5982: \u5E02\u573A\u5206\u6790, \u6280\u672F\u8D8B\u52BF, \u7ADE\
+            \u4E89\u7B56\u7565)\n   - \u8425\u9500\u4E0E\u54C1\u724C (\u5982: \u6570\
+            \u5B57\u8425\u9500, \u5185\u5BB9\u521B\u4F5C, \u7528\u6237\u589E\u957F\
+            )\n\n5. **\u5176\u4ED6**\n   - \u4E2A\u4EBA\u6210\u957F\u4E0E\u804C\u4E1A\
+            \u53D1\u5C55 (\u5982: \u804C\u4E1A\u53D1\u5C55, \u65F6\u95F4\u7BA1\u7406\
+            , \u8FDC\u7A0B\u5DE5\u4F5C)\n   - \u5185\u5BB9\u5F62\u5F0F\u4E0E\u5B66\
+            \u4E60\u8D44\u6E90 (\u5982: \u64AD\u5BA2, \u6559\u7A0B, \u6700\u4F73\u5B9E\
+            \u8DF5)\n   - \u79D1\u6280\u516C\u53F8\u4E0E\u54C1\u724C (\u5982: \u82F9\
+            \u679C, \u5FAE\u8F6F, \u963F\u91CC\u5DF4\u5DF4)\n   - \u793E\u4EA4\u4E0E\
+            \u5185\u5BB9\u5E73\u53F0 (\u5982: TikTok, YouTube, \u5FAE\u4FE1)\n   -\
+            \ \u884C\u4E1A\u4E0E\u5E94\u7528 (\u5982: \u6E38\u620F, \u6559\u80B2,\
+            \ \u91D1\u878D)\n   - \u8D8B\u52BF\u4E0E\u521B\u65B0 (\u5982: 5G, \u533A\
+            \u5757\u94FE, \u53EF\u6301\u7EED\u6027)\n\n\u6CE8\u610F\uFF1A\u5C3D\u53EF\
+            \u80FD\u4F7F\u7528\u8FD9\u4E9B\u7C7B\u522B\u4E2D\u7684\u6807\u51C6\u8BCD\
+            \u6C47\u3002\u5982\u9047\u5230\u65B0\u6982\u5FF5\uFF0C\u53EF\u521B\u5EFA\
+            \u65B0\u6807\u7B7E\uFF0C\u4F46\u5E94\u4FDD\u6301\u4E0E\u73B0\u6709\u6807\
+            \u7B7E\u7684\u4E00\u81F4\u6027\u548C\u7B80\u6D01\u6027\u3002\n\n## \u793A\
+            \u4F8B\u8F93\u51FA\n\n**\u4E2D\u6587\u6587\u7AE0**:\n```json\n{\n  \"\
+            domainProbabilities\": {\n    \"\u8F6F\u4EF6\u7F16\u7A0B\": 20,\n    \"\
+            \u4EBA\u5DE5\u667A\u80FD\": 60,\n    \"\u4EA7\u54C1\u8BBE\u8BA1\": 10,\n\
+            \    \"\u5546\u4E1A\u79D1\u6280\": 10\n  },\n  \"mainDomain\": \"\u4EBA\
+            \u5DE5\u667A\u80FD\",\n  \"tags\": [\"\u5927\u8BED\u8A00\u6A21\u578B\"\
+            , \"GPT-4\", \"OpenAI\", \"AI\u5E94\u7528\", \"\u5BF9\u8BDD\u7CFB\u7EDF\
+            \"]\n}\n```\n\n**\u82F1\u6587\u6587\u7AE0**:\n```json\n{\n  \"domainProbabilities\"\
+            : {\n    \"\u8F6F\u4EF6\u7F16\u7A0B\": 70,\n    \"\u4EBA\u5DE5\u667A\u80FD\
+            \": 20,\n    \"\u4EA7\u54C1\u8BBE\u8BA1\": 5,\n    \"\u5546\u4E1A\u79D1\
+            \u6280\": 5\n  },\n  \"mainDomain\": \"\u8F6F\u4EF6\u7F16\u7A0B\",\n \
+            \ \"tags\": [\"Python\", \"Web Development\", \"Django\", \"REST API\"\
+            , \"Database\", \"Backend\", \"Performance Optimization\"]\n}\n```"
+        - id: 9ca6c658-2add-431c-a12e-2cd04d556bda
+          role: user
+          text: "\u8BF7\u6839\u636E\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\u6570\u636E\
+            \u3001\u5168\u6587\u5185\u5BB9\u548C\u5168\u6587\u5206\u6790\u7ED3\u679C\
+            \uFF0C\u6309\u7167\u7CFB\u7EDF\u63D0\u793A\u4E2D\u7684\u6B65\u9AA4\u548C\
+            \u539F\u5219\uFF0C\u5BF9\u6587\u7AE0\u8FDB\u884C\u9886\u57DF\u5212\u5206\
+            \u548C\u6807\u7B7E\u751F\u6210\uFF0C\u5E76\u4F7F\u7528\u6307\u5B9A\u7684\
+            \u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u7ED3\u679C\uFF0C\u5176\u4E2D\u6807\
+            \u7B7E\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\u51FA\u3002\n\
+            \n<article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1719660406112.text#}}\n    ]]>\n  </previousAnalysisResult>\n</article>"
+        selected: false
+        title: "\u8BC6\u522B\u9886\u57DF\u3001\u63D0\u53D6\u6807\u7B7E (1)"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 126
+      id: '17196606925130'
+      position:
+        x: 1611.5
+        y: 586.5
+      positionAbsolute:
+        x: 1611.5
+        y: 586.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u5BF9\u6587\u7AE0\u8FDB\u884C\u6807\u51C6\u5316\u8BC4\u5206"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 81927624-e5ca-46d9-8c9a-516d749f0c5d
+          role: system
+          text: "# \u6280\u672F\u6587\u7AE0\u8BC4\u5206\u6307\u5357\n\n## \u80CC\u666F\
+            \n\u4F60\u662F\u4E00\u4F4D\u7ECF\u9A8C\u4E30\u5BCC\u7684\u6280\u672F\u5199\
+            \u4F5C\u4E13\u5BB6\uFF0C\u8D1F\u8D23\u8BC4\u4F30\u6DB5\u76D6\u7F16\u7A0B\
+            \u3001\u4EBA\u5DE5\u667A\u80FD\u3001\u4EA7\u54C1\u7BA1\u7406\u548C\u5546\
+            \u4E1A\u79D1\u6280\u7B49\u9886\u57DF\u7684\u6280\u672F\u6587\u7AE0\u3002\
+            \u4F60\u7684\u4EFB\u52A1\u662F\u6839\u636E\u4EE5\u4E0B\u6807\u51C6\u5BF9\
+            \u6587\u7AE0\u8FDB\u884C\u5BA2\u89C2\u3001\u5168\u9762\u7684\u8BC4\u5206\
+            \u3002\n\n## \u8F93\u5165\u8BF4\u660E\n\u4F60\u5C06\u6536\u5230\u4EE5\u4E0B\
+            \u8F93\u5165\u4FE1\u606F\uFF1A\n1. \u6587\u7AE0\u5143\u6570\u636E\uFF1A\
+            \u5305\u62EC\u6807\u9898\u3001\u6765\u6E90\u548CURL\n2. \u6587\u7AE0\u5168\
+            \u6587\u5185\u5BB9\n3. \u9886\u57DF\u5206\u6790\u7ED3\u679C\uFF1A\u5305\
+            \u542B\u6587\u7AE0\u7684\u9886\u57DF\u5206\u7C7B\u548C\u76F8\u5173\u6807\
+            \u7B7E\n4. \u5148\u524D\u5206\u6790\u7ED3\u679C\uFF1A\u5305\u542B\u6587\
+            \u7AE0\u6458\u8981\u3001\u4E3B\u8981\u89C2\u70B9\u548C\u6587\u7AE0\u91D1\
+            \u53E5\n\n## \u8BC4\u5206\u6807\u51C6\uFF08\u603B\u5206100\u5206\uFF09\
+            \n\n1. \u5185\u5BB9\u6DF1\u5EA6\uFF080-30\u5206\uFF09\n   - \u57FA\u7840\
+            \uFF081-10\u5206\uFF09\uFF1A\u63D0\u4F9B\u57FA\u672C\u4FE1\u606F\uFF0C\
+            \u7F3A\u4E4F\u6DF1\u5165\u601D\u8003\u3002\n   - \u4E2D\u7B49\uFF0811-20\u5206\
+            \uFF09\uFF1A\u5305\u542B\u4E00\u5B9A\u6DF1\u5EA6\u7684\u5206\u6790\u548C\
+            \u89C1\u89E3\uFF0C\u4F46\u53EF\u80FD\u4E0D\u591F\u5168\u9762\u3002\n \
+            \  - \u9AD8\u7EA7\uFF0821-30\u5206\uFF09\uFF1A\u63D0\u4F9B\u6DF1\u5165\
+            \u7684\u601D\u8003\u548C\u6D1E\u5BDF\uFF0C\u7ED3\u8BBA\u548C\u89C2\u70B9\
+            \u80FD\u5F15\u53D1\u8FDB\u4E00\u6B65\u7684\u5B66\u4E60\u548C\u63A2\u8BA8\
+            \u3002\n   \u4E3B\u8981\u8003\u8651\u56E0\u7D20\uFF1A\n   \u2022 \u6587\
+            \u7AE0\u662F\u5426\u63D0\u4F9B\u4E86\u8D85\u8D8A\u8868\u9762\u7684\u6DF1\
+            \u5165\u5206\u6790\n   \u2022 \u7ED3\u8BBA\u548C\u89C2\u70B9\u7684\u539F\
+            \u521B\u6027\u548C\u542F\u53D1\u6027\n   \u2022 \u662F\u5426\u6D89\u53CA\
+            \u590D\u6742\u95EE\u9898\u7684\u591A\u4E2A\u65B9\u9762\uFF0C\u63D0\u4F9B\
+            \u5168\u9762\u7684\u89C6\u89D2\n   \u2022 \u5BF9\u4E8E\u6280\u672F\u6216\
+            \u6982\u5FF5\u7684\u89E3\u91CA\u6DF1\u5EA6\u662F\u5426\u9002\u5408\u76EE\
+            \u6807\u8BFB\u8005\n\n2. \u76F8\u5173\u6027\uFF080-30\u5206\uFF09\n  \
+            \ - \u4F4E\uFF081-10\u5206\uFF09\uFF1A\u4E0E\u6838\u5FC3\u6280\u672F\u9886\
+            \u57DF\u548C\u76EE\u6807\u8BFB\u8005\u7684\u5173\u8054\u5EA6\u4F4E\u3002\
+            \n   - \u4E2D\uFF0811-20\u5206\uFF09\uFF1A\u6709\u4E00\u5B9A\u76F8\u5173\
+            \u6027\uFF0C\u5BF9\u90E8\u5206\u76EE\u6807\u8BFB\u8005\u6709\u4EF7\u503C\
+            \u3002\n   - \u9AD8\uFF0821-30\u5206\uFF09\uFF1A\u9AD8\u5EA6\u76F8\u5173\
+            \uFF0C\u76F4\u63A5\u9488\u5BF9\u6838\u5FC3\u6280\u672F\u9886\u57DF\u548C\
+            \u76EE\u6807\u8BFB\u8005\u7684\u9700\u6C42\u3002\n   \u4E3B\u8981\u8003\
+            \u8651\u56E0\u7D20\uFF1A\n   \u2022 \u6587\u7AE0\u4E3B\u9898\u4E0E\u5F53\
+            \u524D\u6280\u672F\u8D8B\u52BF\uFF08\u5982AI\u3001\u5927\u8BED\u8A00\u6A21\
+            \u578B\u7B49\uFF09\u7684\u5173\u8054\u5EA6\n   \u2022 \u5185\u5BB9\u5BF9\
+            \u76EE\u6807\u8BFB\u8005\uFF08\u5F00\u53D1\u8005\u3001\u4EA7\u54C1\u7ECF\
+            \u7406\u7B49\uFF09\u7684\u76F4\u63A5\u4EF7\u503C\n   \u2022 \u662F\u5426\
+            \u6D89\u53CA\u76EE\u6807\u8BFB\u8005\u65E5\u5E38\u5DE5\u4F5C\u4E2D\u53EF\
+            \u80FD\u9047\u5230\u7684\u95EE\u9898\u6216\u6311\u6218\n   \u2022 \u6587\
+            \u7AE0\u8BA8\u8BBA\u7684\u6280\u672F\u6216\u65B9\u6CD5\u5728\u884C\u4E1A\
+            \u4E2D\u7684\u5E94\u7528\u7A0B\u5EA6\n\n3. \u5199\u4F5C\u8D28\u91CF\uFF08\
+            0-20\u5206\uFF09\n   - \u57FA\u7840\uFF081-7\u5206\uFF09\uFF1A\u7ED3\u6784\
+            \u6DF7\u4E71\uFF0C\u5B58\u5728\u660E\u663E\u9519\u8BEF\uFF0C\u96BE\u4EE5\
+            \u7406\u89E3\u3002\n   - \u826F\u597D\uFF088-14\u5206\uFF09\uFF1A\u7ED3\
+            \u6784\u6E05\u6670\uFF0C\u8868\u8FBE\u51C6\u786E\uFF0C\u6613\u4E8E\u9605\
+            \u8BFB\u3002\n   - \u4F18\u79C0\uFF0815-20\u5206\uFF09\uFF1A\u7ED3\u6784\
+            \u4F18\u79C0\uFF0C\u8868\u8FBE\u4E13\u4E1A\uFF0C\u903B\u8F91\u6D41\u7545\
+            \uFF0C\u5F15\u4EBA\u5165\u80DC\u3002\n   \u4E3B\u8981\u8003\u8651\u56E0\
+            \u7D20\uFF1A\n   \u2022 \u6587\u7AE0\u7ED3\u6784\u7684\u6E05\u6670\u5EA6\
+            \u548C\u903B\u8F91\u6027\n   \u2022 \u6280\u672F\u6982\u5FF5\u89E3\u91CA\
+            \u7684\u51C6\u786E\u6027\u548C\u53EF\u7406\u89E3\u6027\n   \u2022 \u8BED\
+            \u8A00\u8868\u8FBE\u7684\u4E13\u4E1A\u6027\u548C\u6D41\u7545\u5EA6\n \
+            \  \u2022 \u662F\u5426\u6709\u6548\u4F7F\u7528\u4F8B\u5B50\u3001\u7C7B\
+            \u6BD4\u6216\u53EF\u89C6\u5316\u5143\u7D20\u589E\u5F3A\u7406\u89E3\n\n\
+            4. \u5B9E\u7528\u6027\u548C\u521B\u65B0\u6027\uFF080-20\u5206\uFF09\n\
+            \   - \u4F4E\uFF081-7\u5206\uFF09\uFF1A\u5B9E\u7528\u6027\u4F4E\uFF0C\u7F3A\
+            \u4E4F\u521B\u65B0\uFF0C\u96BE\u4EE5\u5E94\u7528\u4E8E\u5B9E\u9645\u5DE5\
+            \u4F5C\u3002\n   - \u4E2D\uFF088-14\u5206\uFF09\uFF1A\u63D0\u4F9B\u4E00\
+            \u4E9B\u5B9E\u7528\u5EFA\u8BAE\u6216\u65B0\u9896\u89C2\u70B9\uFF0C\u6709\
+            \u4E00\u5B9A\u5E94\u7528\u4EF7\u503C\u3002\n   - \u9AD8\uFF0815-20\u5206\
+            \uFF09\uFF1A\u9AD8\u5EA6\u5B9E\u7528\u6216\u521B\u65B0\uFF0C\u63D0\u4F9B\
+            \u53EF\u76F4\u63A5\u5E94\u7528\u7684\u89E3\u51B3\u65B9\u6848\u6216\u72EC\
+            \u7279\u89C1\u89E3\u3002\n   \u4E3B\u8981\u8003\u8651\u56E0\u7D20\uFF1A\
+            \n   \u2022 \u6587\u7AE0\u5185\u5BB9\u662F\u5426\u80FD\u76F4\u63A5\u5E94\
+            \u7528\u4E8E\u76EE\u6807\u8BFB\u8005\u7684\u65E5\u5E38\u5DE5\u4F5C\n \
+            \  \u2022 \u662F\u5426\u63D0\u4F9B\u4E86\u5177\u4F53\u7684\u3001\u53EF\
+            \u64CD\u4F5C\u7684\u5EFA\u8BAE\u6216\u65B9\u6CD5\n   \u2022 \u6587\u7AE0\
+            \u662F\u5426\u63D0\u51FA\u4E86\u65B0\u9896\u7684\u89C2\u70B9\u6216\u89E3\
+            \u51B3\u65B9\u6848\n   \u2022 \u521B\u65B0\u70B9\u662F\u5426\u5177\u6709\
+            \u5E7F\u6CDB\u7684\u9002\u7528\u6027\u548C\u6F5C\u5728\u5F71\u54CD\n\n\
+            5. \u7EFC\u5408\u8BC4\u5206\u8C03\u6574\uFF08-10\u5230+10\u5206\uFF09\n\
+            \   \u52A0\u5206\u9879\uFF08\u6BCF\u9879\u6700\u591A+3\u5206\uFF09\uFF1A\
+            \n   - \u6587\u7AE0\u7684\u7A00\u7F3A\u6027\u548C\u72EC\u7279\u6027\n\
+            \   - \u5BF9\u5F53\u524D\u70ED\u70B9\u95EE\u9898\u7684\u6DF1\u5165\u56DE\
+            \u5E94\u6216\u5BF9\u672A\u6765\u8D8B\u52BF\u7684\u51C6\u786E\u9884\u6D4B\
+            \n   - \u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5B9E\u4F8B\u3001\u4EE3\u7801\
+            \u6216\u6570\u636E\n   - \u5F15\u7528\u548C\u53C2\u8003\u8D44\u6599\u7684\
+            \u8D28\u91CF\u548C\u6570\u91CF\n\n   \u51CF\u5206\u9879\uFF08\u6BCF\u9879\
+            \u6700\u591A-3\u5206\uFF09\uFF1A\n   - \u8FC7\u591A\u7684\u8425\u9500\u5185\
+            \u5BB9\u6216\u6D3B\u52A8\u4ECB\u7ECD\n   - \u7BC7\u5E45\u8FC7\u77ED\uFF0C\
+            \u5185\u5BB9\u6D45\u663E\n   - \u6CDB\u6CDB\u800C\u8C08\uFF0C\u7F3A\u4E4F\
+            \u6709\u4EF7\u503C\u7684\u89C2\u70B9\n   - \u660E\u663E\u7684\u6280\u672F\
+            \u9519\u8BEF\u6216\u8BEF\u5BFC\u6027\u4FE1\u606F\n\n## \u8BC4\u5206\u6B65\
+            \u9AA4\n1. \u4ED4\u7EC6\u9605\u8BFB\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\
+            \u6570\u636E\u3001\u5185\u5BB9\u548C\u5206\u6790\u7ED3\u679C\u3002\n2.\
+            \ \u6839\u636E\u4E0A\u8FF0\u6807\u51C6\u5BF9\u5404\u7EF4\u5EA6\u8FDB\u884C\
+            \u8BC4\u5206\u3002\n3. \u4E3A\u6BCF\u4E2A\u7EF4\u5EA6\u63D0\u4F9B\u8BE6\
+            \u7EC6\u7684\u8BC4\u5206\u7406\u7531\u3002\n4. \u8003\u8651\u7EFC\u5408\
+            \u8BC4\u5206\u56E0\u7D20\uFF0C\u7ED9\u51FA\u989D\u5916\u52A0\u5206\u6216\
+            \u51CF\u5206\u3002\n5. \u8BA1\u7B97\u6700\u7EC8\u603B\u5206\uFF0C\u786E\
+            \u4FDD\u4E0D\u8D85\u8FC7100\u5206\u3002\n6. \u63D0\u4F9B\u7B80\u77ED\u7684\
+            \u603B\u4F53\u8BC4\u4EF7\uFF0C\u5305\u62EC\u6587\u7AE0\u7684\u4E3B\u8981\
+            \u4F18\u52BF\u548C\u53EF\u80FD\u7684\u6539\u8FDB\u7A7A\u95F4\u3002\n\n\
+            ## \u8F93\u51FA\u683C\u5F0F\n\n```markdown\n# \u6280\u672F\u6587\u7AE0\
+            \u8BC4\u4F30\u62A5\u544A\n\n## \u8BC4\u5206\u8BE6\u60C5\n1. **\u5185\u5BB9\
+            \u6DF1\u5EA6**\uFF1A[\u5206\u6570]/30\n   - **\u8BC4\u5206\u7406\u7531\
+            **\uFF1A[\u8BE6\u7EC6\u7406\u7531]\n\n2. **\u76F8\u5173\u6027**\uFF1A\
+            [\u5206\u6570]/30\n   - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\
+            \u7406\u7531]\n\n3. **\u5199\u4F5C\u8D28\u91CF**\uFF1A[\u5206\u6570]/20\n\
+            \   - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\u7406\u7531]\n\n\
+            4. **\u5B9E\u7528\u6027\u548C\u521B\u65B0\u6027**\uFF1A[\u5206\u6570]/20\n\
+            \   - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\u7406\u7531]\n\n\
+            5. **\u7EFC\u5408\u8BC4\u5206\u8C03\u6574**\uFF1A[+/-\u5206\u6570]\n \
+            \  - **\u8BC4\u5206\u7406\u7531**\uFF1A[\u8BE6\u7EC6\u8BF4\u660E\u52A0\
+            \u5206\u6216\u51CF\u5206\u7684\u5177\u4F53\u539F\u56E0]\n\n## \u6700\u7EC8\
+            \u8BC4\u5206\n**\u603B\u5206**\uFF1A[\u6700\u7EC8\u603B\u5206]/100\n\n\
+            ## \u603B\u4F53\u8BC4\u4EF7\n[100-150\u5B57\u7684\u603B\u7ED3\uFF0C\u5305\
+            \u62EC\u6587\u7AE0\u7684\u4E3B\u8981\u4F18\u52BF\u548C\u53EF\u80FD\u7684\
+            \u6539\u8FDB\u7A7A\u95F4]\n```\n\n\u8BF7\u786E\u4FDD\u8BC4\u5206\u516C\
+            \u6B63\u3001\u5BA2\u89C2\uFF0C\u5E76\u63D0\u4F9B\u5177\u4F53\u7684\u7406\
+            \u7531\u652F\u6301\u4F60\u7684\u8BC4\u5206\u3002\u8BC4\u5206\u65F6\u5E94\
+            \u8003\u8651\u6587\u7AE0\u7684\u76EE\u6807\u53D7\u4F17\u548C\u9884\u671F\
+            \u7528\u9014\uFF0C\u786E\u4FDD\u8BC4\u5206\u6807\u51C6\u9002\u5408\u6587\
+            \u7AE0\u7684\u5177\u4F53\u60C5\u51B5\u548C\u9886\u57DF\u7279\u70B9\u3002\
+            \u6CE8\u610F\u6700\u7EC8\u603B\u5206\u4E0D\u80FD\u8D85\u8FC7100\u5206\u3002"
+        - id: 0adb7c56-cfe8-4abe-9160-d7a65ffb170a
+          role: user
+          text: "\u8BF7\u6839\u636E\u63D0\u4F9B\u7684\u6587\u7AE0\u5143\u6570\u636E\
+            \u548C\u5206\u6790\u7ED3\u679C\uFF0C\u6309\u7167\u7CFB\u7EDF\u63D0\u793A\
+            \u4E2D\u7684\u6B65\u9AA4\u548C\u539F\u5219\uFF0C\u5BF9\u6587\u7AE0\u8FDB\
+            \u884C\u6807\u51C6\u5316\u8BC4\u5206\uFF0C\u5E76\u4F7F\u7528\u6307\u5B9A\
+            \u7684  Markdown \u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u7ED3\u679C\u3002\
+            \n\n<article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <domainAnalysisResult>\n    <![CDATA[\n    {{#17196606925130.text#}}\n\
+            \n    ]]>\n  </domainAnalysisResult>\n  <previousAnalysisResult>\n   \
+            \ <![CDATA[\n    {{#1719660406112.text#}}\n    ]]>\n  </previousAnalysisResult>\n\
+            </article>"
+        selected: false
+        title: "\u6587\u7AE0\u8BC4\u5206 (1)"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 126
+      id: '17196607045470'
+      position:
+        x: 1981
+        y: 512
+      positionAbsolute:
+        x: 1981
+        y: 512
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u53CD\u601D\u51C6\u786E\u6027\u3001\u4E0A\u4E0B\u6587\u7406\u89E3\u3001\
+          \u91CD\u70B9\u628A\u63E1\u3001\u8BED\u8A00\u8868\u8FBE\u3001\u903B\u8F91\
+          \u8FDE\u8D2F\u7B49"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: 38022a40-3101-4709-9a69-57ddef9e086a
+          role: system
+          text: "# \u6587\u7AE0\u5206\u6790\u7ED3\u679C\u5BA1\u6838\u4E13\u5BB6\u4EFB\
+            \u52A1\u6307\u5357\n\n## \u80CC\u666F\uFF08Context\uFF09\n\u60A8\u662F\
+            \u4E00\u4F4D\u8D44\u6DF1\u7684\u6587\u7AE0\u5206\u6790\u5BA1\u6838\u4E13\
+            \u5BB6\uFF0C\u6B63\u5728\u68C0\u67E5\u548C\u53CD\u601D\u4E00\u7BC7\u6587\
+            \u7AE0\u7684\u521D\u6B65\u5206\u6790\u7ED3\u679C\u3002\u60A8\u5C06\u6536\
+            \u5230\u4E00\u4E2AXML\u683C\u5F0F\u7684\u8F93\u5165\uFF0C\u5305\u542B\u539F\
+            \u59CB\u6587\u7AE0\u548C\u521D\u6B65\u5206\u6790\u7ED3\u679C\u3002\u60A8\
+            \u7684\u4EFB\u52A1\u662F\u901A\u8FC7\u4ED4\u7EC6\u5BA1\u6838\uFF0C\u63D0\
+            \u4F9B\u6539\u8FDB\u5EFA\u8BAE\uFF0C\u4EE5\u751F\u6210\u66F4\u9AD8\u8D28\
+            \u91CF\u7684\u6700\u7EC8\u5206\u6790\u7ED3\u679C\u3002\n\n## \u76EE\u6807\
+            \uFF08Objective\uFF09\n\u5BA1\u6838\u5E76\u6539\u8FDB\u521D\u6B65\u5206\
+            \u6790\u7ED3\u679C\uFF0C\u786E\u4FDD\u6700\u7EC8\u8F93\u51FA\u7684\u4E00\
+            \u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\u3001\u4E3B\u8981\u89C2\u70B9\
+            \u3001\u6587\u7AE0\u91D1\u53E5\u3001\u6807\u7B7E\u548C\u8BC4\u5206\u51C6\
+            \u786E\u53CD\u6620\u539F\u6587\uFF0C\u5E76\u5177\u6709\u9AD8\u5EA6\u7684\
+            \u6D1E\u5BDF\u529B\u548C\u5B9E\u7528\u6027\u3002\n\n## \u8F93\u5165\u683C\
+            \u5F0F\n\u8F93\u5165\u5C06\u4EE5XML\u683C\u5F0F\u63D0\u4F9B\uFF0C\u5305\
+            \u542B\u4EE5\u4E0B\u4E3B\u8981\u90E8\u5206\uFF1A\n1. <metadata>\uFF1A\u5305\
+            \u542B\u6587\u7AE0\u7684\u6807\u9898\u3001\u6765\u6E90\u548CURL\n2. <content>\uFF1A\
+            \u539F\u59CB\u6587\u7AE0\u7684\u5B8C\u6574Markdown\u5185\u5BB9\n3. <previousAnalysisResult>\uFF1A\
+            \u5BF9\u6587\u7AE0\u7684\u5206\u6790\u7ED3\u679C\uFF0C\u5305\u62EC\u4E00\
+            \u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\u3001\u4E3B\u8981\u89C2\u70B9\
+            \u548C\u6587\u7AE0\u91D1\u53E5\n4. <previousDomainAndTagResult>\uFF1A\u5BF9\
+            \u6587\u7AE0\u9886\u57DF\u7684\u8BC6\u522B\u548C\u751F\u6210\u7684\u6807\
+            \u7B7E\n5. <previousScoringResult>\uFF1A\u5BF9\u6587\u7AE0\u7684\u6807\
+            \u51C6\u5316\u8BC4\u5206\n\n## \u6B65\u9AA4\u548C\u539F\u5219\n\n1. \u4E00\
+            \u53E5\u8BDD\u603B\u7ED3\u5BA1\u6838\uFF1A\n   - \u8BC4\u4F30\u662F\u5426\
+            \u51C6\u786E\u6355\u6349\u4E86\u6587\u7AE0\u7684\u6838\u5FC3\u5185\u5BB9\
+            \n   - \u68C0\u67E5\u662F\u5426\u6293\u4F4F\u4E86\u6587\u7AE0\u7684\u4E3B\
+            \u8981\u89C2\u70B9\u6216\u7ED3\u8BBA\n   - \u786E\u4FDD\u603B\u7ED3\u7B80\
+            \u6D01\u660E\u4E86\uFF0C\u540C\u65F6\u4E0D\u5931\u5173\u952E\u4FE1\u606F\
+            \n\n2. \u6458\u8981\u5BA1\u6838\uFF1A\n   - \u8BC4\u4F30\u6458\u8981\u662F\
+            \u5426\u5168\u9762\u6982\u62EC\u4E86\u6587\u7AE0\u5185\u5BB9\n   - \u68C0\
+            \u67E5\u662F\u5426\u6DB5\u76D6\u4E86\u4EE5\u4E0B\u5173\u952E\u5143\u7D20\
+            \uFF1A\n     a) \u6587\u7AE0\u80CC\u666F\n     b) \u8BA8\u8BBA\u7684\u4E3B\
+            \u9898\n     c) \u9762\u4E34\u7684\u95EE\u9898\u548C\u6311\u6218\n   \
+            \  d) \u601D\u8003\u7684\u8FC7\u7A0B\n     e) \u89E3\u51B3\u7684\u601D\
+            \u8DEF\n     f) \u5B9E\u65BD\u7684\u63AA\u65BD\n     g) \u5173\u952E\u7684\
+            \u65B9\u6848\u7EC6\u8282\n     h) \u6700\u7EC8\u7684\u7ED3\u679C\n   -\
+            \ \u786E\u4FDD\u6458\u8981\u903B\u8F91\u6E05\u6670\uFF0C\u7ED3\u6784\u5408\
+            \u7406\n   - \u8BC4\u4F30\u662F\u5426\u6709\u91CD\u8981\u4FE1\u606F\u9057\
+            \u6F0F\u6216\u4E0D\u5FC5\u8981\u7684\u5197\u4F59\n\n3. \u4E3B\u8981\u89C2\
+            \u70B9\u548C\u6587\u7AE0\u91D1\u53E5\u5BA1\u6838\uFF1A\n   - \u9A8C\u8BC1\
+            \u6BCF\u4E2A\u89C2\u70B9\u662F\u5426\u771F\u5B9E\u53CD\u6620\u4E86\u6587\
+            \u7AE0\u7684\u6838\u5FC3\u8BBA\u8FF0\n   - \u8BC4\u4F30\u89C2\u70B9\u662F\
+            \u5426\u6DB5\u76D6\u4E86\u6587\u7AE0\u6700\u91CD\u8981\u7684\u5185\u5BB9\
+            \u548C\u601D\u8003\n   - \u68C0\u67E5\u6587\u7AE0\u91D1\u53E5\u662F\u5426\
+            \u4F53\u73B0\u4E86\u6700\u6709\u542F\u53D1\u6027\u7684\u601D\u8003\u548C\
+            \u4FE1\u606F\n   - \u8BC4\u4F30\u89C2\u70B9\u548C\u91D1\u53E5\u7684\u6392\
+            \u5E8F\u662F\u5426\u5408\u7406\u53CD\u6620\u4E86\u5B83\u4EEC\u5728\u6587\
+            \u7AE0\u4E2D\u7684\u91CD\u8981\u6027\n   - \u786E\u4FDD\u4E3B\u8981\u89C2\
+            \u70B9\u548C\u91D1\u53E5\u80FD\u591F\u5B8C\u6574\u6982\u62EC\u6587\u7AE0\
+            \u7684\u7CBE\u534E\n\n4. \u6807\u7B7E\u5BA1\u6838\uFF1A\n   - \u8BC4\u4F30\
+            \u6807\u7B7E\u662F\u5426\u51C6\u786E\u53CD\u6620\u6587\u7AE0\u7684\u4E3B\
+            \u9898\u548C\u5173\u952E\u6982\u5FF5\n   - \u68C0\u67E5\u6807\u7B7E\u662F\
+            \u5426\u5408\u7406\u5206\u7C7B\u4E3A\u4EE5\u4E0B\u51E0\u7C7B\uFF1A\n \
+            \    a) \u4E3B\u9898\u6807\u7B7E\n     b) \u6280\u672F/\u9886\u57DF\u6807\
+            \u7B7E\n     c) \u5E94\u7528/\u4EA7\u54C1\u6807\u7B7E\n     d) \u516C\u53F8\
+            /\u5E73\u53F0\u6807\u7B7E\n     e) \u8D8B\u52BF\u6807\u7B7E\n   - \u8BC4\
+            \u4F30\u6BCF\u7C7B\u6807\u7B7E\u7684\u51C6\u786E\u6027\u548C\u5B8C\u6574\
+            \u6027\n   - \u68C0\u67E5\u662F\u5426\u6709\u4E0D\u76F8\u5173\u6216\u8BEF\
+            \u5BFC\u6027\u7684\u6807\u7B7E\n   - \u8003\u8651\u662F\u5426\u9700\u8981\
+            \u6DFB\u52A0\u5176\u4ED6\u91CD\u8981\u6807\u7B7E\u4EE5\u4FBF\u4E8E\u6587\
+            \u7AE0\u7684\u6574\u7406\u548C\u7B5B\u9009\n\n5. \u6587\u7AE0\u8BC4\u5206\
+            \u5BA1\u6838\uFF1A\n   - \u68C0\u67E5\u8BC4\u5206\u7EF4\u5EA6\u662F\u5426\
+            \u5168\u9762\u8986\u76D6\u4E86\u6587\u7AE0\u7684\u5404\u4E2A\u65B9\u9762\
+            \n   - \u8BC4\u4F30\u5404\u7EF4\u5EA6\u7684\u8BC4\u5206\u662F\u5426\u5408\
+            \u7406\u4E14\u6709\u5145\u5206\u4F9D\u636E\n   - \u5BA1\u6838\u52A0\u5206\
+            \u9879\u548C\u51CF\u5206\u9879\u7684\u7406\u7531\u662F\u5426\u5145\u5206\
+            \n   - \u786E\u4FDD\u6700\u7EC8\u8BC4\u5206\u51C6\u786E\u53CD\u6620\u6587\
+            \u7AE0\u7684\u6574\u4F53\u8D28\u91CF\n   - \u8BC4\u4F30\u8BC4\u5206\u7ED3\
+            \u679C\u662F\u5426\u4E0E\u4E00\u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\
+            \u3001\u4E3B\u8981\u89C2\u70B9\u7B49\u5176\u4ED6\u5206\u6790\u7ED3\u679C\
+            \u4FDD\u6301\u4E00\u81F4\n\n6. \u4E00\u81F4\u6027\u68C0\u67E5\uFF1A\n\
+            \   - \u786E\u4FDD\u4E00\u53E5\u8BDD\u603B\u7ED3\u3001\u6458\u8981\u3001\
+            \u4E3B\u8981\u89C2\u70B9\u3001\u6587\u7AE0\u91D1\u53E5\u3001\u6807\u7B7E\
+            \u548C\u8BC4\u5206\u4E4B\u95F4\u76F8\u4E92\u4E00\u81F4\n   - \u68C0\u67E5\
+            \u662F\u5426\u5B58\u5728\u77DB\u76FE\u6216\u4E0D\u534F\u8C03\u7684\u5730\
+            \u65B9\n   - \u8BC4\u4F30\u6574\u4F53\u5206\u6790\u7ED3\u679C\u662F\u5426\
+            \u5168\u9762\u3001\u51C6\u786E\u5730\u53CD\u6620\u4E86\u539F\u6587\u5185\
+            \u5BB9\n\n## \u8F93\u51FA\u683C\u5F0F\n\u8BF7\u6309\u4EE5\u4E0B Markdown\
+            \ \u683C\u5F0F\u63D0\u4F9B\u60A8\u7684\u5BA1\u6838\u62A5\u544A\uFF1A\n\
+            \n```markdown\n### \u4E00\u53E5\u8BDD\u603B\u7ED3\u5BA1\u6838\n- \u51C6\
+            \u786E\u6027\u8BC4\u4F30\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u6838\u5FC3\
+            \u5185\u5BB9\u6355\u6349\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u6539\u8FDB\
+            \u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u6458\u8981\u5BA1\
+            \u6838\n- \u5168\u9762\u6027\u8BC4\u4F30\uFF1A[\u8BC4\u4F30\u7ED3\u679C\
+            ]\n- \u5173\u952E\u5143\u7D20\u8986\u76D6\uFF1A\n  - \u6587\u7AE0\u80CC\
+            \u666F\uFF1A[\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u8BA8\u8BBA\u4E3B\u9898\
+            \uFF1A[\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u95EE\u9898\u548C\u6311\u6218\
+            \uFF1A[\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u601D\u8003\u8FC7\u7A0B\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u89E3\u51B3\u601D\u8DEF\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u5B9E\u65BD\u63AA\u65BD\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u65B9\u6848\u7EC6\u8282\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n  - \u6700\u7EC8\u7ED3\u679C\uFF1A\
+            [\u662F/\u5426\uFF0C\u8BC4\u8BBA]\n- \u903B\u8F91\u548C\u7ED3\u6784\uFF1A\
+            [\u8BC4\u4F30\u7ED3\u679C]\n- \u6539\u8FDB\u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\
+            \u8BF4\u660E]\n\n### \u4E3B\u8981\u89C2\u70B9\u548C\u6587\u7AE0\u91D1\u53E5\
+            \u5BA1\u6838\n- \u89C2\u70B9\u51C6\u786E\u6027\uFF1A[\u8BC4\u4F30\u7ED3\
+            \u679C]\n- \u5185\u5BB9\u8986\u76D6\u5168\u9762\u6027\uFF1A[\u8BC4\u4F30\
+            \u7ED3\u679C]\n- \u91D1\u53E5\u542F\u53D1\u6027\uFF1A[\u8BC4\u4F30\u7ED3\
+            \u679C]\n- \u6392\u5E8F\u5408\u7406\u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C\
+            ]\n- \u6539\u8FDB\u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u6807\
+            \u7B7E\u5BA1\u6838\n- \u6574\u4F53\u51C6\u786E\u6027\uFF1A[\u8BC4\u4F30\
+            \u7ED3\u679C]\n- \u5206\u7C7B\u8BC4\u4F30\uFF1A\n  - \u4E3B\u9898\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u6280\u672F/\u9886\u57DF\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u5E94\u7528/\u4EA7\u54C1\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u516C\u53F8/\u5E73\u53F0\u6807\
+            \u7B7E\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n  - \u8D8B\u52BF\u6807\u7B7E\uFF1A\
+            [\u8BC4\u4F30\u7ED3\u679C]\n- \u4E0D\u5F53\u6216\u7F3A\u5931\u7684\u6807\
+            \u7B7E\uFF1A[\u5177\u4F53\u5217\u51FA]\n- \u5EFA\u8BAE\u6DFB\u52A0/\u79FB\
+            \u9664\u7684\u6807\u7B7E\uFF1A[\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u6587\
+            \u7AE0\u8BC4\u5206\u5BA1\u6838\n- \u8BC4\u5206\u7EF4\u5EA6\u5168\u9762\
+            \u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u5404\u7EF4\u5EA6\u8BC4\u5206\
+            \u5408\u7406\u6027\uFF1A[\u9010\u9879\u8BC4\u4F30]\n- \u52A0\u51CF\u5206\
+            \u7406\u7531\u5145\u5206\u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n- \u6700\
+            \u7EC8\u8BC4\u5206\u51C6\u786E\u6027\uFF1A[\u8BC4\u4F30\u7ED3\u679C]\n\
+            - \u4E0E\u5176\u4ED6\u5206\u6790\u7ED3\u679C\u4E00\u81F4\u6027\uFF1A[\u8BC4\
+            \u4F30\u7ED3\u679C]\n- \u8BC4\u5206\u8C03\u6574\u5EFA\u8BAE\uFF1A[\u5982\
+            \u9700\u8981\uFF0C\u8BF7\u8BE6\u7EC6\u8BF4\u660E]\n\n### \u4E00\u81F4\u6027\
+            \u68C0\u67E5\n- \u53D1\u73B0\u7684\u4E0D\u4E00\u81F4\u4E4B\u5904\uFF1A\
+            [\u5177\u4F53\u5217\u51FA]\n- \u534F\u8C03\u5EFA\u8BAE\uFF1A[\u8BE6\u7EC6\
+            \u8BF4\u660E]\n\n### \u603B\u4F53\u6539\u8FDB\u5EFA\u8BAE\n1. [\u5177\u4F53\
+            \u5EFA\u8BAE1\uFF1A\u5305\u62EC\u95EE\u9898\u63CF\u8FF0\u3001\u6539\u8FDB\
+            \u65B9\u5411\u548C\u6267\u884C\u6B65\u9AA4]\n2. [\u5177\u4F53\u5EFA\u8BAE\
+            2\uFF1A\u5305\u62EC\u95EE\u9898\u63CF\u8FF0\u3001\u6539\u8FDB\u65B9\u5411\
+            \u548C\u6267\u884C\u6B65\u9AA4]\n3. [\u5177\u4F53\u5EFA\u8BAE3\uFF1A\u5305\
+            \u62EC\u95EE\u9898\u63CF\u8FF0\u3001\u6539\u8FDB\u65B9\u5411\u548C\u6267\
+            \u884C\u6B65\u9AA4]\n```\n\n## \u6CE8\u610F\u4E8B\u9879\n- \u4ED4\u7EC6\
+            \u9605\u8BFB\u539F\u59CB\u6587\u7AE0\u5185\u5BB9\u548C\u6240\u6709\u521D\
+            \u6B65\u5206\u6790\u7ED3\u679C\n- \u4FDD\u6301\u5BA2\u89C2\u3001\u4E13\
+            \u4E1A\u7684\u8BED\u6C14\n- \u63D0\u4F9B\u5177\u4F53\u3001\u53EF\u64CD\
+            \u4F5C\u7684\u6539\u8FDB\u5EFA\u8BAE\n- \u5173\u6CE8\u5982\u4F55\u63D0\
+            \u9AD8\u5206\u6790\u7ED3\u679C\u7684\u51C6\u786E\u6027\u3001\u6DF1\u5EA6\
+            \u548C\u5B9E\u7528\u6027\n- \u8003\u8651\u5206\u6790\u7ED3\u679C\u5BF9\
+            \u4E0D\u540C\u53D7\u4F17\uFF08\u5982\u51B3\u7B56\u8005\u3001\u7814\u7A76\
+            \u4EBA\u5458\u3001\u666E\u901A\u8BFB\u8005\uFF09\u7684\u4EF7\u503C\n-\
+            \ \u5728\u5BA1\u6838\u8FC7\u7A0B\u4E2D\uFF0C\u65F6\u523B\u7262\u8BB0\u6587\
+            \u7AE0\u7684\u6574\u4F53\u80CC\u666F\u548C\u76EE\u7684\n- \u786E\u4FDD\
+            \u60A8\u7684\u5BA1\u6838\u610F\u89C1\u548C\u5EFA\u8BAE\u4E0E\u539F\u6587\
+            \u7684\u98CE\u683C\u3001\u8BED\u6C14\u548C\u76EE\u6807\u53D7\u4F17\u76F8\
+            \u7B26\n- \u5728\u63D0\u4F9B\u6539\u8FDB\u5EFA\u8BAE\u65F6\uFF0C\u8003\
+            \u8651\u5B9E\u65BD\u7684\u53EF\u884C\u6027\u548C\u6F5C\u5728\u7684\u5F71\
+            \u54CD\n- \u6CE8\u610F\u5E73\u8861\u8BE6\u7EC6\u5EA6\u548C\u7B80\u6D01\
+            \u6027\uFF0C\u786E\u4FDD\u60A8\u7684\u5BA1\u6838\u62A5\u544A\u65E2\u5168\
+            \u9762\u53C8\u6613\u4E8E\u7406\u89E3"
+        - id: f42b8839-8a0b-45a6-a0f5-71db57e573ae
+          role: user
+          text: "\u8BF7\u57FA\u4E8E\u4E0B\u9762XML\u8F93\u5165\uFF0C\u5BF9\u539F\u59CB\
+            \u6587\u7AE0\u548C\u4E4B\u524D\u7684\u5206\u6790\u7ED3\u679C\u8FDB\u884C\
+            \u5168\u9762\u7684\u68C0\u67E5\u548C\u53CD\u601D\uFF0C\u5E76\u6309\u7167\
+            \u7CFB\u7EDF\u63D0\u793A\u4E2D\u6307\u5B9A\u7684\u6B65\u9AA4\u3001\u539F\
+            \u5219\u548C\u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u7ED3\u679C\u3002\n\n\
+            <article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \n    <source>{{#1719357159255.sourceName#}}</source>\n\n    <url>{{#1719357159255.url#}}</url>\n\
+            \n  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1719660406112.text#}}\n\n    ]]>\n  </previousAnalysisResult>\n\
+            \  <previousDomainAndTagResult>\n    <![CDATA[\n    {{#17196606925130.text#}}\n\
+            \    ]]>\n  </previousDomainAndTagResult>\n  <previousScoringResult>\n\
+            \    <![CDATA[\n    {{#17196607045470.text#}}\n    ]]>\n  </previousScoringResult>\n\
+            </article>"
+        selected: false
+        title: "\u5BF9\u7EFC\u5408\u7ED3\u679C\u8FDB\u884C\u68C0\u67E5\u548C\u53CD\
+          \u601D (1)"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 144
+      id: '17196607171490'
+      position:
+        x: 2284
+        y: 534
+      positionAbsolute:
+        x: 2284
+        y: 534
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u6839\u636E\u68C0\u67E5\u548C\u53CD\u601D\u7684\u5EFA\u8BAE\u8FDB\u884C\
+          \u4F18\u5316\u548C\u6539\u8FDB"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: azure_openai
+        prompt_template:
+        - id: a3799a74-b248-4202-a6ee-134857c2d020
+          role: system
+          text: "# \u6587\u7AE0\u5206\u6790\u4F18\u5316\u6B65\u9AA4\n\n\u8BF7\u57FA\
+            \u4E8E\u63D0\u4F9B\u7684XML\u8F93\u5165\uFF0C\u7ED3\u5408\u521D\u6B21\u5206\
+            \u6790\u7ED3\u679C\u548C\u68C0\u67E5\u53CD\u601D\u7684\u53CD\u9988\uFF0C\
+            \u5BF9\u6587\u7AE0\u5206\u6790\u7ED3\u679C\u8FDB\u884C\u6539\u8FDB\u548C\
+            \u4F18\u5316\u3002\u8BF7\u6309\u7167\u4EE5\u4E0B\u6307\u5B9A\u7684\u6B65\
+            \u9AA4\u3001\u539F\u5219\u548C\u8F93\u51FA\u683C\u5F0F\u63D0\u4F9B\u4F18\
+            \u5316\u540E\u7684\u5206\u6790\u7ED3\u679C\u3002\n\n## \u8F93\u5165\u683C\
+            \u5F0F\n\u8F93\u5165\u5C06\u4EE5XML\u683C\u5F0F\u63D0\u4F9B\uFF0C\u5305\
+            \u542B\u4EE5\u4E0B\u90E8\u5206\uFF1A\n\n- `<metadata>`: \u6587\u7AE0\u7684\
+            \u5143\u6570\u636E\uFF0C\u5305\u62EC\u6807\u9898\u3001\u6765\u6E90\u548C\
+            URL\n- `<content>`: \u6587\u7AE0\u7684\u5B8C\u6574\u5185\u5BB9\n- `<previousAnalysisResult>`:\
+            \ \u4E4B\u524D\u7684\u5206\u6790\u7ED3\u679C\n- `<previousDomainAndTagResult>`:\
+            \ \u4E4B\u524D\u7684\u9886\u57DF\u548C\u6807\u7B7E\u5206\u6790\u7ED3\u679C\
+            \n- `<previousScoringResult>`: \u4E4B\u524D\u7684\u8BC4\u5206\u7ED3\u679C\
+            \n- `<reflectionFeedback>`: \u68C0\u67E5\u53CD\u601D\u7684\u53CD\u9988\
+            \n\n## \u5206\u6790\u6B65\u9AA4\n1. \u4ED4\u7EC6\u9605\u8BFB\u6587\u7AE0\
+            \u5185\u5BB9\u3001\u4E4B\u524D\u7684\u5206\u6790\u7ED3\u679C\u548C\u68C0\
+            \u67E5\u53CD\u601D\u7684\u53CD\u9988\u3002\n2. \u6839\u636E\u53CD\u9988\
+            \uFF0C\u786E\u5B9A\u9700\u8981\u6539\u8FDB\u7684\u65B9\u9762\u3002\n3.\
+            \ \u5BF9\u6BCF\u4E2A\u9700\u8981\u6539\u8FDB\u7684\u65B9\u9762\u8FDB\u884C\
+            \u6DF1\u5165\u601D\u8003\u548C\u5206\u6790\u3002\n4. \u66F4\u65B0\u76F8\
+            \u5173\u5B57\u6BB5\uFF0C\u786E\u4FDD\u66F4\u65B0\u662F\u6709\u610F\u4E49\
+            \u548C\u5FC5\u8981\u7684\u3002\n5. \u4E3A\u6BCF\u4E2A\u66F4\u65B0\u63D0\
+            \u4F9B\u6E05\u6670\u7684\u7406\u7531\u3002\n\n## \u8F93\u51FA\u683C\u5F0F\
+            \n\u8BF7\u4F7F\u7528{{#1719357159255.languageName#}}\u4EE5JSON\u683C\u5F0F\
+            \u8F93\u51FA\u4F18\u5316\u540E\u7684\u5206\u6790\u7ED3\u679C\uFF0C\u5305\
+            \u542B\u4EE5\u4E0B\u5B57\u6BB5\uFF1A\n\n```json\n{\n  \"oneSentenceSummary\"\
+            : \"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\u7684\u4E00\u53E5\
+            \u8BDD\u603B\u7ED3\",\n  \"oneSentenceSummaryOriginal\": \"\u539F\u59CB\
+            \u7684\u4E00\u53E5\u8BDD\u603B\u7ED3\uFF08\u5982\u679C\u6709\u66F4\u65B0\
+            \uFF09\",\n  \"oneSentenceSummaryUpdateReason\": \"\u66F4\u65B0\u539F\u56E0\
+            \uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n\n  \"summary\": \"\u66F4\
+            \u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\u76843-8\u53E5\u8BDD\u603B\u7ED3\
+            \",\n  \"summaryOriginal\": \"\u539F\u59CB\u76843-8\u53E5\u8BDD\u603B\u7ED3\
+            \uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n  \"summaryUpdateReason\"\
+            : \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\
+            \",\n\n  \"domain\": \"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\
+            \u7684\u9886\u57DF\u5206\u7C7B\",\n  \"domainOriginal\": \"\u539F\u59CB\
+            \u7684\u9886\u57DF\u5206\u7C7B\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\
+            \",\n  \"domainUpdateReason\": \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\
+            \u6709\u66F4\u65B0\uFF09\",\n\n  \"tags\": [\"\u66F4\u65B0\u540E\u6216\
+            \u4FDD\u6301\u4E0D\u53D8\u7684\u6807\u7B7E1\", \"\u6807\u7B7E2\", \"...\"\
+            ],\n  \"tagsOriginal\": [\"\u539F\u59CB\u6807\u7B7E1\", \"\u539F\u59CB\
+            \u6807\u7B7E2\", \"...\"]\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09,\n\
+            \  \"tagsUpdateReason\": \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\u6709\
+            \u66F4\u65B0\uFF09\",\n\n  \"mainPoints\": [\n    {\n      \"point\":\
+            \ \"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\u7684\u4E3B\u8981\
+            \u89C2\u70B91\",\n      \"explanation\": \"\u66F4\u65B0\u540E\u6216\u4FDD\
+            \u6301\u4E0D\u53D8\u7684\u89E3\u91CA1\"\n    },\n    // ...\u6700\u591A\
+            5\u4E2A\u4E3B\u8981\u89C2\u70B9\n  ],\n  \"mainPointsOriginal\": [\n \
+            \   {\n      \"point\": \"\u539F\u59CB\u4E3B\u8981\u89C2\u70B91\",\n \
+            \     \"explanation\": \"\u539F\u59CB\u89E3\u91CA1\"\n    },\n    // ...\uFF08\
+            \u5982\u679C\u6709\u66F4\u65B0\uFF09\n  ],\n  \"mainPointsUpdateReason\"\
+            : \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\
+            \",\n\n  \"keyQuotes\": [\"\u66F4\u65B0\u540E\u6216\u4FDD\u6301\u4E0D\u53D8\
+            \u7684\u91D1\u53E51\", \"\u91D1\u53E52\", \"...\"],\n  \"keyQuotesOriginal\"\
+            : [\"\u539F\u59CB\u91D1\u53E51\", \"\u539F\u59CB\u91D1\u53E52\", \"...\"\
+            ]\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09,\n  \"keyQuotesUpdateReason\"\
+            : \"\u66F4\u65B0\u539F\u56E0\uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\
+            \",\n\n  \"score\": 80,\n  \"scoreOriginal\": 75\uFF08\u5982\u679C\u6709\
+            \u66F4\u65B0\uFF09,\n  \"scoreUpdateReason\": \"\u66F4\u65B0\u539F\u56E0\
+            \uFF08\u5982\u679C\u6709\u66F4\u65B0\uFF09\",\n\n  \"improvements\": \"\
+            \u603B\u4F53\u8BF4\u660E\u672C\u6B21\u4F18\u5316\u7684\u4E3B\u8981\u6539\
+            \u8FDB\u70B9\"\n}\n```\n\n## \u5B57\u6BB5\u8BF4\u660E\u548C\u66F4\u65B0\
+            \u539F\u5219\n1. oneSentenceSummary\n   - \u8981\u6C42\uFF1A\u7B80\u6D01\
+            \u660E\u4E86\uFF0C\u4E0D\u8D85\u8FC750\u4E2A\u5B57\u7B26\n   - \u66F4\u65B0\
+            \u539F\u5219\uFF1A\u53EA\u6709\u5728\u68C0\u67E5\u53CD\u601D\u4E2D\u660E\
+            \u786E\u6307\u51FA\u4E00\u53E5\u8BDD\u603B\u7ED3\u4E0D\u51C6\u786E\u6216\
+            \u4E0D\u5168\u9762\u65F6\u624D\u8FDB\u884C\u4FEE\u6539\n\n2. summary\n\
+            \   - \u8981\u6C42\uFF1A3-8\u53E5\u8BDD\uFF0C\u6BCF\u53E520-40\u4E2A\u5B57\
+            \u7B26\uFF0C\u5305\u542B\u6587\u7AE0\u7684\u6838\u5FC3\u8981\u7D20\n \
+            \  - \u66F4\u65B0\u539F\u5219\uFF1A\u6839\u636E\u68C0\u67E5\u53CD\u601D\
+            \u7684\u610F\u89C1\uFF0C\u53EF\u4EE5\u8C03\u6574\u5185\u5BB9\u7684\u51C6\
+            \u786E\u6027\u548C\u5B8C\u6574\u6027\uFF0C\u4F46\u4E0D\u6539\u53D8\u539F\
+            \u6709\u7684\u6838\u5FC3\u4FE1\u606F\n\n3. domain\n   - \u8981\u6C42\uFF1A\
+            \u5355\u4E00\u6700\u9002\u5408\u7684\u9886\u57DF\u5206\u7C7B\uFF0C\u4E0D\
+            \u8D85\u8FC710\u4E2A\u5B57\u7B26\n   - \u66F4\u65B0\u539F\u5219\uFF1A\u9664\
+            \u975E\u68C0\u67E5\u53CD\u601D\u660E\u786E\u6307\u51FA\u9886\u57DF\u5206\
+            \u7C7B\u9519\u8BEF\uFF0C\u5426\u5219\u4FDD\u6301\u4E0D\u53D8\n\n4. tags\n\
+            \   - \u8981\u6C42\uFF1A3-10\u4E2A\u6807\u7B7E\uFF0C\u6309\u4E3B\u9898\
+            \u3001\u6280\u672F/\u9886\u57DF\u3001\u5E94\u7528/\u4EA7\u54C1\u3001\u516C\
+            \u53F8/\u5E73\u53F0/\u540D\u4EBA\u3001\u8D8B\u52BF\u7684\u987A\u5E8F\u6392\
+            \u5217\n   - \u66F4\u65B0\u539F\u5219\uFF1A\u53EF\u4EE5\u6839\u636E\u68C0\
+            \u67E5\u53CD\u601D\u6DFB\u52A0\u9057\u6F0F\u7684\u91CD\u8981\u6807\u7B7E\
+            \u6216\u5220\u9664\u4E0D\u76F8\u5173\u6807\u7B7E\uFF0C\u4F46\u603B\u6570\
+            \u4FDD\u6301\u57283-10\u4E2A\u4E4B\u95F4\n\n5. mainPoints\n   - \u8981\
+            \u6C42\uFF1A3-5\u4E2A\u4E3B\u8981\u89C2\u70B9\uFF0C\u6BCF\u4E2A\u89C2\u70B9\
+            \u914D\u6709\u7B80\u8981\u89E3\u91CA\n   - \u66F4\u65B0\u539F\u5219\uFF1A\
+            \u53EF\u4EE5\u6839\u636E\u68C0\u67E5\u53CD\u601D\u8C03\u6574\u89C2\u70B9\
+            \u7684\u8868\u8FF0\uFF0C\u589E\u52A0\u9057\u6F0F\u7684\u91CD\u8981\u89C2\
+            \u70B9\u6216\u5220\u9664\u6B21\u8981\u89C2\u70B9\uFF0C\u4F46\u603B\u6570\
+            \u4FDD\u6301\u57283-5\u4E2A\u4E4B\u95F4\n\n6. keyQuotes\n   - \u8981\u6C42\
+            \uFF1A3-5\u4E2A\u4EE3\u8868\u6027\u7684\u6587\u7AE0\u91D1\u53E5\uFF0C\u6BCF\
+            \u53E5\u4E0D\u8D85\u8FC750\u4E2A\u5B57\u7B26\n   - \u66F4\u65B0\u539F\u5219\
+            \uFF1A\u53EA\u6709\u5728\u68C0\u67E5\u53CD\u601D\u660E\u786E\u6307\u51FA\
+            \u67D0\u4E9B\u91D1\u53E5\u4E0D\u5177\u4EE3\u8868\u6027\u6216\u9057\u6F0F\
+            \u4E86\u66F4\u91CD\u8981\u7684\u91D1\u53E5\u65F6\u624D\u8FDB\u884C\u4FEE\
+            \u6539\n\n7. score\n   - \u8981\u6C42\uFF1A0-100\u7684\u6574\u6570\n \
+            \  - \u66F4\u65B0\u539F\u5219\uFF1A\u9664\u975E\u68C0\u67E5\u53CD\u601D\
+            \u660E\u786E\u6307\u51FA\u8BC4\u5206\u4E0D\u5408\u7406\uFF0C\u5426\u5219\
+            \u4FDD\u6301\u539F\u8BC4\u5206\u4E0D\u53D8\n\n8. improvements\n   - \u8981\
+            \u6C42\uFF1A\u7B80\u8981\u5217\u51FA\u672C\u6B21\u4F18\u5316\u7684\u4E3B\
+            \u8981\u6539\u8FDB\u70B9\uFF0C\u5305\u62EC\u4FEE\u6539\u7684\u5185\u5BB9\
+            \u548C\u539F\u56E0\u3002\u6839\u636E\u5B9E\u9645\u4FEE\u6539\u60C5\u51B5\
+            \u586B\u5199\uFF0C\u603B\u7ED3\u6240\u6709\u7684\u66F4\u65B0\u3002\n\n\
+            ## \u6CE8\u610F\u4E8B\u9879\n1. \u53EA\u6709\u5728\u6709\u5145\u5206\u7406\
+            \u7531\u7684\u60C5\u51B5\u4E0B\u624D\u66F4\u65B0\u5B57\u6BB5\u3002\u5982\
+            \u679C\u6CA1\u6709\u66F4\u65B0\uFF0C\u4E0D\u8981\u6DFB\u52A0\u5E26\u6709\
+            \"Original\"\u548C\"UpdateReason\"\u540E\u7F00\u7684\u5B57\u6BB5\u3002\
+            \n2. \u6240\u6709\u7684\u66F4\u65B0\u90FD\u5FC5\u987B\u6709\u76F8\u5E94\
+            \u7684\"UpdateReason\"\u8BF4\u660E\u3002\n3. \"improvements\"\u5B57\u6BB5\
+            \u5E94\u8BE5\u603B\u7ED3\u6240\u6709\u7684\u66F4\u65B0\uFF0C\u63D0\u4F9B\
+            \u4E00\u4E2A\u6574\u4F53\u7684\u4F18\u5316\u8BF4\u660E\u3002\n4. \u786E\
+            \u4FDDJSON\u683C\u5F0F\u6B63\u786E\uFF0C\u53EF\u4EE5\u88AB\u7A0B\u5E8F\
+            \u76F4\u63A5\u89E3\u6790\u3002\n5. \u4E0D\u8F93\u51FA\u4E2D\u95F4\u601D\
+            \u8003\u8FC7\u7A0B\uFF0C\u4EC5\u8F93\u51FA\u6700\u7EC8\u7684JSON\u683C\
+            \u5F0F\u7ED3\u679C\u3002\n6. \u8F93\u51FA\u5185\u5BB9\u5E94\u4E0E\u539F\
+            \u6587\u4FDD\u6301\u76F8\u540C\u7684\u8BED\u8A00\u3002"
+        - id: 4836545e-d0f5-4703-8fb5-461cf5ede618
+          role: user
+          text: "\u8BF7\u57FA\u4E8E\u4E0B\u9762XML\u8F93\u5165\uFF0C\u7ED3\u5408\u521D\
+            \u6B21\u5206\u6790\u7ED3\u679C\u548C\u68C0\u67E5\u53CD\u601D\u7684\u53CD\
+            \u9988\uFF0C\u5BF9\u6587\u7AE0\u5206\u6790\u8FDB\u884C\u6539\u8FDB\u548C\
+            \u4F18\u5316\u3002\u8BF7\u6309\u7167\u7CFB\u7EDF\u63D0\u793A\u4E2D\u6307\
+            \u5B9A\u7684\u6B65\u9AA4\u3001\u539F\u5219\u548C\u8F93\u51FA\u683C\u5F0F\
+            \uFF0C\u4F7F\u7528{{#1719357159255.languageName#}}\u8F93\u51FA\u5206\u6790\
+            \u7ED3\u679C\u3002\n\n\n<article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1719660406112.text#}}\n    ]]>\n  </previousAnalysisResult>\n  <previousDomainAndTagResult>\n\
+            \    <![CDATA[\n    {{#17196606925130.text#}}\n    ]]>\n  </previousDomainAndTagResult>\n\
+            \  <previousScoringResult>\n    <![CDATA[\n    {{#17196607045470.text#}}\n\
+            \    ]]>\n  </previousScoringResult>\n  <reflectionFeedback>\n    <![CDATA[\n\
+            \    {{#17196607171490.text#}}\n\n    ]]>\n  </reflectionFeedback>\n</article>"
+        selected: false
+        title: "\u7EFC\u5408\u53CD\u601D\u5EFA\u8BAE\u8FDB\u884C\u6539\u8FDB (1)"
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 126
+      id: '17196607260480'
+      position:
+        x: 2587
+        y: 534
+      positionAbsolute:
+        x: 2587
+        y: 534
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: "\u8F93\u51FA\u6700\u7EC8\u5206\u6790\u7ED3\u679C"
+        outputs:
+        - value_selector:
+          - '17196607260480'
+          - text
+          variable: analysisResult
+        selected: false
+        title: "\u7ED3\u675F (1)"
+        type: end
+      height: 118
+      id: '17196607334660'
+      position:
+        x: 2890
+        y: 538
+      positionAbsolute:
+        x: 2890
+        y: 538
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -518.866666666667
+      y: 190.34999999999997
+      zoom: 0.5833333333333334
