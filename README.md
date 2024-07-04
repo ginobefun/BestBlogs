@@ -29,7 +29,12 @@ https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml
 
 ![Main Flow](./images/main_flow.png)
 
-## 依赖的项目
+1. 文章爬取流程：基于 RSS 协议，爬取所有订阅源的文章信息，包括标题、链接、发布时间等，通过链接和无头浏览器爬取文章内容。通过订阅源上定义的文章正文选择器等提取正文，并对正文的 HTML、图片等进行处理，放入待处理文章列表。
+2. 文章初评流程：通过语言、文章内容等特征，对文章进行初次评分，剔除低质量文章，减少后续步骤处理。使用 Dify Workflow 项目进行文章初评，详细说明参见 [BestBlogs 文章初评流程](./flows/Dify/ArticleFIlterFlow.md)
+3. 文章分析流程：通过大语言模型（如 GPT-4o）对文章进行摘要、分类和评分，生成一句话总结、文章摘要、主要观点、文章金句、所属领域、标签列表和评分等，便于读者快速过滤筛选及了解全文主要内容，判断是否继续阅读。使用 Dify Workflow 项目进行文章分析，包括 *分段分析 - 汇总分析 - 领域划分和标签生成 - 文章评分 - 检查反思 - 优化改进* 等环节，详细说明参见 [BestBlogs 文章分析流程](./flows/Dify/ArticleAnalysisFlow.md)
+4. 文章分析结果翻译流程：通过大语言模型（如 GPT-4o）对文章分析结果进行翻译，目前网站支持中英两种语言，根据原文的语言生成目标语言的摘要、主要观点、文章金句、标签列表等。使用 Dify Workflow 项目进行文章分析结果翻译，包括 *识别专业术语 - 初次翻译 - 检查翻译 - 意译* 等环节，详细说明参见 [BestBlogs 文章分析结果翻译流程](./flows/Dify/ArticleAnalysisResultTranslateFlow.md)
+
+## 鸣谢
 
 - [RSS Hub](https://github.com/DIYgod/RSSHub)
 - [wewe-rss](https://github.com/cooderl/wewe-rss)
