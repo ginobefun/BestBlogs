@@ -1,4 +1,4 @@
-# BestBlogs.dev 使用 Dify Workflow 实现文章自动化分析
+# BestBlogs.dev 基于 Dify Workflow 的文章智能分析实践
 
 ## 摘要
 
