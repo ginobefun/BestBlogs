@@ -4,9 +4,12 @@
 
 ![Filter Article Workflow](./flowImages/filter_article_flow_chinese_article_result.png)
 
-- 通过 HTTP 请求获取文章的元数据（标题、来源、链接、语言）和 Markdown 内容。
-- 根据测试结果，分别使用 DeepSeek 和 Gemini 1.5 Pro 模型对中文和英文文章进行初评。
-- 返回 JSON 格式，便于代码解析和后续处理。
+流程说明：
+
+- 为了便于测试和接口调用，流程的输入为网站的文章 ID，然后通过 Workflow 内置的 HTTP 调用节点和代码节点，调用网站的 API 获取文章的元数据（标题、来源、链接、语言等）和全文内容。
+- 为中文和英文文章采用不同的模型和提示词，可以更加灵活的调整和优化。
+- 文章初评 LLM 节点通过 CO-STAR 提示词框架定义上下文、目标、分析步骤、输入输出格式，提供输出示例，完整的提示词可以在上述项目地址查看。
+- 网站应用通过 Dify Workflow 开放的 API 传入文章 ID，获取文章的初评结果，根据 ignore 和 value 属性判断是否继续往下处理。
 
 ## DSL File
 

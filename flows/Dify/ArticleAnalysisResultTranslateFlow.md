@@ -4,476 +4,291 @@
 
 ![Article Analysis Result Translate Workflow](./flowImages/translate_article_flow_result.png)
 
+流程说明：
+
+- 分析结果翻译流程的输入为网站的文章 ID，然后通过 Workflow 内置的 HTTP 调用节点和代码节点，调用网站的 API 获取文章的元数据（标题、来源、链接、语言、目标语言等）、全文内容和分析结果。
+- 翻译流程采用了 *初次翻译 -- 检查反思 -- 优化改进，意译* 三段式翻译流程，从而让翻译更加符合目标语言的表达习惯。
+- API 调用分析结果翻译流程返回结果后，该文章自动化分析流程结束，标记为已处理状态。
+
 ## DSL 文件
 
 [Article Analysis Result Translate Workflow DSL](./dsl/article_analysis_result_translate_workflow_zh.yml)
 
 ## 流程说明
 
-### 识别专有名词系统提示词
-
-````markdown
-<任务>
-识别用户输入的JSON文本中所有字段的技术性或领域特定的专业术语。使用 {原文术语} -> {翻译后术语} 的格式展示术语对应关系。
-
-翻译规则：
-1. 如果原文为中文，将术语翻译为英文。对于英文缩写，保留原样并在括号中提供英文全称。
-   例：人工智能 -> Artificial Intelligence (AI)
-2. 如果原文为英文，将术语翻译为中文。对于常用的英文缩写，保留原样并在括号中提供中文全称。
-   例：AI -> 人工智能 (AI)
-
-请注意：
-1. 仅识别真正的专业术语，避免普通词汇。
-2. 每个独特的术语只需输出一次，即使它在文本中多次出现。
-3. 按技术领域对术语进行分组（如AI、UX、产品设计等）。
-4. 根据输入文本的主要语言（中文或英文）来决定翻译方向。
-
-<输入格式> 
-输入是一个JSON字符串，包含以下字段：oneSentenceSummary, summary, tags, mainPoints (包含point和explanation), keyQuotes。请从所有这些字段中识别专业术语。
-
-<输入示例>
-{
-    "oneSentenceSummary": "AI产品在用户入口设计上的创新和竞争策略变得越来越重要，超级入口将成为未来AI应用的关键所在。",
-    "summary": "本文探讨了AI产品在争夺用户入口方面的设计问题，指出随着流量的宝贵，各个产品、平台都在相互竞争，AI产品更是如此。。。。。。",
-    "tags": [
-        "人工智能",
-        "用户体验",
-        "用户入口设计",
-        "超级入口",
-        "ChatGPT",
-        "大模型",
-        "AI应用",
-        "产品设计"
-    ],
-    "mainPoints": [
-        {
-            "point": "AI产品的用户入口设计越来越重要。",
-            "explanation": "AI产品的市场竞争越来越激烈，用户入口设计是吸引用户的关键。"
-        },
-        {
-            "point": "平衡用户体验和功能的重要性。",
-            "explanation": "用户入口设计需要平衡用户体验和功能，不能只注重功能而忽略用户体验。"
-        }
-    ],
-    "keyQuotes": [
-        "AI产品的用户入口设计越来越重要，它不仅仅是产品的门面，也是产品的生命线。",
-        "在用户入口设计上，既要有差异化，又要保持友好性，这是一个非常微妙的平衡。"
-    ]
-}
-
-<输出格式>
-[技术领域1]
-{原文术语1} -> {翻译后术语1}
-{原文术语2} -> {翻译后术语2}
-
-[技术领域2]
-{原文术语3} -> {翻译后术语3}
-{原文术语4} -> {翻译后术语4}
-
-<中文到英文输出示例>
-[人工智能]
-人工智能 -> Artificial Intelligence (AI)
-大模型 -> Large Language Model (LLM)
-ChatGPT -> ChatGPT
-
-[用户体验与产品设计]
-用户入口 -> User Entry Point
-超级入口 -> Super Entry Point
-用户体验 -> User Experience (UX)
-
-[机器学习]
-零样本学习 -> Zero-shot Learning
-少样本学习 -> Few-shot Learning
-
-<英文到中文输出示例>
-[Artificial Intelligence]
-AI -> 人工智能 (AI)
-Large Language Model -> 大语言模型 (LLM)
-ChatGPT -> ChatGPT
-
-[User Experience & Product Design]
-User Entry Point -> 用户入口
-Super Entry Point -> 超级入口
-UX -> 用户体验 (User Experience)
-
-[Machine Learning]
-Zero-shot Learning -> 零样本学习
-Few-shot Learning -> 少样本学习
-````
-
-### 识别专有名词输入
-
-请根据要求识别以下输入 JSON 字符串中的术语，输出对应的翻译结果。
-
-```json
-{{#1719357159255.analysisResult#}}
-
-```json
-{{#1719357159255.analysisResult#}}
-```
-
-### 识别专有名词输出示例
-
-以以下文章为例：https://www.bestblogs.dev/article/93a670
-
-```
-[人工智能]
-AI云经济 -> AI Cloud Economy
-基础模型 -> foundational model
-生成式AI -> generative AI
-小模型运动 -> Small model movement
-AI Agent -> AI代理
-语音AI -> Voice AI
-多模态AI -> multimodal AI
-AI模型部署 -> AI model deployment
-OpenAI -> OpenAI
-
-[云计算]
-开源与闭源 -> Open Source vs. Closed Source
-
-[自然语言处理]
-GPT-4 -> GPT-4
-
-[未来技术趋势]
-2030年 -> 2030s
-
-[机器学习]
-Llama3 -> Llama3
-
-[软件工程]
-企业软件开发者 -> Enterprise software developers
-```
-
 ## 直接翻译
 
 ### 直接翻译系统提示词
 
 ````markdown
-<任务> 
-使用提供的原始JSON字符串和识别的专业术语列表，将内容翻译为目标语言。如果原始语言是中文，则翻译为英文；如果原始语言是英文，则翻译为中文。请确保翻译准确、流畅，并遵循以下规则：
-1. 保留专业术语的正确性，使用提供的专业术语列表。
-2. 对于已经是目标语言的术语，保持原样。
-3. 直接使用常见缩写（如AI、UX等），无需展开。
-4. 如遇到未在专业术语列表中的术语，尝试翻译即可。
-5. 保持原文的语气和风格。
-6. 对于模糊或不确定的内容，尝试直接翻译，无需额外说明。
+# AI 翻译专家
 
-<输入格式> 
-输入包括三个部分：
-1. 文章分析结果JSON字符串
-2. 识别的专业术语列表
-3. 原始语言（"中文"或"英文"）
+## 任务
+识别并翻译给定JSON文本中的专业术语和内容。将原始语言翻译成目标语言。
 
-<文章分析结果JSON字符串输入示例>
-{
-    "oneSentenceSummary": "AI产品在用户入口设计上的创新和竞争策略变得越来越重要，超级入口将成为未来AI应用的关键所在。",
-    "summary": "本文探讨了AI产品在争夺用户入口方面的设计问题，指出随着流量的宝贵，各个产品、平台都在相互竞争，AI产品更是如此。。。。。。",
-    "tags": [
-        "人工智能",
-        "用户体验",
-        "用户入口设计",
-        "超级入口",
-        "ChatGPT",
-        "大模型",
-        "AI应用",
-        "产品设计"
-    ],
-    "mainPoints": [
-        {
-            "point": "AI产品的用户入口设计越来越重要。",
-            "explanation": "AI产品的市场竞争越来越激烈，用户入口设计是吸引用户的关键。"
-        },
-        {
-            "point": "平衡用户体验和功能的重要性。",
-            "explanation": "用户入口设计需要平衡用户体验和功能，不能只注重功能而忽略用户体验。"
-        }
-    ],
-    "keyQuotes": [
-        "AI产品的用户入口设计越来越重要，它不仅仅是产品的门面，也是产品的生命线。",
-        "在用户入口设计上，既要有差异化，又要保持友好性，这是一个非常微妙的平衡。"
-    ]
-}
+## 步骤
+1. 识别所有字段中的专业术语。
+2. 使用识别的专业术语，翻译整个JSON内容。
 
-<识别的专业术语列表输入示例>
-人工智能 -> Artificial Intelligence
-用户体验 -> User Experience
-用户入口设计 -> User Entry Design
-超级入口 -> Super Entry
-ChatGPT -> ChatGPT
-大模型 -> Large Model
-AI应用 -> AI Application
-产品设计 -> Product Design
+## 翻译规则与注意事项
+1. 准确翻译专业术语：
+   - 按照通用使用习惯处理全称和缩写。
+   - 保留常用缩写，如AI、UX、LLM、Java等。
+2. 保持原文术语：如果术语已经是目标语言，保持不变。
+3. 未识别术语：对未在专业术语列表中的术语，尝试合理翻译。
+4. 保持风格：维持原文的语气和表达方式。
+5. 考虑上下文：翻译时注意整体语境，确保语义连贯。
+6. 保持格式：维持原JSON结构，包括保留原有的key名称。
 
-<原始语言>
-中文
+## 质量检查
+- 确保翻译准确性和流畅性
+- 检查专业术语使用的一致性
+- 验证是否保持了原文的核心含义和语气
 
-<输出格式>
-{
-    "oneSentenceSummary": "Translated one sentence summary",
-    "summary": "Translated full summary",
-    "tags": [
-        "Translated Tag1",
-        "Translated Tag2"
-    ],
-    "mainPoints": [
-        {
-            "point": "Translated main point 1",
-            "explanation": "Translated explanation 1"
-        },
-        {
-            "point": "Translated main point 2",
-            "explanation": "Translated explanation 2"
-        }
-    ],
-    "keyQuotes": [
-        "Translated key quote 1",
-        "Translated key quote 2"
-    ]
-}
+## 输入
+1. 原始语言：[在用户提示词中指定]
+2. 目标语言：[在用户提示词中指定]
+3. 待翻译的JSON字符串：
+[在用户提示词中提供]
 
-注意：请确保翻译准确、流畅，并保持原文的专业性和语气。
+## 输出格式
+
+### 1. 专业术语列表
+{原文术语1} -> {翻译后术语1}
+{原文术语2} -> {翻译后术语2}
+{原文术语3} -> {翻译后术语3}
+
+### 2. 翻译后的JSON（保持原有结构和key名称）
+[完整的翻译后JSON]
 ````
 
 ### 直接翻译输入
 
-请根据要求识别对以下文章分析结果 JSON 字符串进行翻译，按要求输出翻译后的目标语言的 JSON 字符串。
+````markdown
+请根据要求识别专业术语，并对 JSON 字符串进行翻译，按要求输出翻译后的目标语言的 JSON 字符串，包括保留原有的key名称。
 
-<文章分析结果 JSON 字符串>
+1. 原始语言：
+{{#1719357159255.languageName#}}
+
+2. 目标语言：
+{{#1719357159255.destLanguageName#}}
+
+3. 待翻译的JSON字符串：
+   
 ```json
 {{#1719357159255.analysisResult#}}
 ```
-
-<识别的专业术语列表>
-{{#1719665748274.text#}}
-
-<原始语言>
-{{#1719357159255.languageName#}}
+````
 
 ### 直接翻译输出示例
 
+````markdown
+### 1. 专业术语列表
+
+搜索广告 -> Search Advertising
+召回技术 -> Retrieval Technology
+生成式召回 -> Generative Retrieval
+大模型 -> Large Model
+多模态表征 -> Multimodal Representation
+关键词挖掘 -> Keyword Mining
+扩散模型 -> Diffusion Model
+美团 -> Meituan
+人工智能 -> Artificial Intelligence
+在线广告 -> Online Advertising
+广告大模型 -> Advertising Large Model
+生成式算法优化 -> Generative Algorithm Optimization
+
+### 2. 翻译后的JSON（保持原有结构和key名称）
+
 ```json
 {
-    "title": "BVP releases State of the Cloud 2024, summarizing five major trends in the AI Cloud Economy for 2024 and predicting the outlook for 2030.",
-    "oneSentenceSummary": "The State of the Cloud 2024 report released by BVP explores five major trends in the AI Cloud Economy and predicts the outlook for 2030.",
-    "summary": "US venture capital company BVP has released the State of the Cloud 2024 report, which delves into five major trends in the AI Cloud Economy for 2024. The report states that foundational models are the new 'oil' of the AI era, driving the development of downstream AI applications and tools. The open source vs. closed source debate is intensifying, the small model movement is on the rise, and new architectures and specific-purpose foundational models are emerging, leading to continued fierce competition in the AI model space. Emerging technologies such as voice AI, image processing, and AI agents will lead the next wave of AI innovation. The report also predicts the outlook for 2030, emphasizing the critical role of AI in driving economic growth and corporate transformation.",
-    "tags": [
-        "AI Cloud Economy",
-        "Foundational Model",
-        "Generative AI",
-        "Open Source vs. Closed Source",
-        "Small Model Movement",
-        "AI Agent",
-        "Voice AI",
-        "Multimodal AI",
-        "AI Model Deployment",
-        "OpenAI"
-    ],
-    "mainPoints": [
-        {
-            "explanation": "Foundational models provide the impetus for downstream AI applications and tools and are the key attractor of venture capital in the AI field.",
-            "point": "Foundational models are the new 'oil' of the AI era."
-        },
-        {
-            "explanation": "In the next few years, the AI model competition will determine which major technology companies dominate the cloud and computing markets.",
-            "point": "The AI model competition will continue to be fierce."
-        },
-        {
-            "explanation": "Small models have significant advantages in terms of cost and latency and are becoming a new trend in the AI field.",
-            "point": "The small model movement is on the rise."
-        },
-        {
-            "explanation": "With the release of Llama3, open source models are catching up with market leaders, but closed source models will drive most LLM computing cycles.",
-            "point": "The open source vs. closed source debate is intensifying."
-        },
-        {
-            "explanation": "New models such as GPT-4 can process and reason about raw audio data, bringing real-time dialog voice experiences and improving user problem-solving efficiency.",
-            "point": "Voice AI applications are on the rise."
-        }
-    ],
-    "keyQuotes": [
-        "Foundational models are the new 'oil' and will provide the impetus for downstream AI applications and tools.",
-        "The AI model competition will continue to be fierce in the foreseeable future, which is a key 'battle' to decide which major technology companies will dominate the cloud and computing markets in the next few years.",
-        "The small model movement is on the rise, and larger models are not always better in terms of performance and cost.",
-        "This transformation will enable dialog voice products to have lower latency and greater non-textual information understanding capabilities, such as emotion, tone, and sentiment, which are often lost in cascade architectures. These advances will bring truly real-time dialog voice experiences, helping users solve problems more quickly and reducing the frustration often associated with voice automation in the past.",
-        "By 2030, most enterprise software developers will become roles similar to that of software reviewers."
-    ]
+  "title": "Practice of Search Advertising Retrieval Technology at Meituan",
+  "oneSentenceSummary": "This article details Meituan's practice in search advertising retrieval technology, covering multi-strategy keyword mining, hierarchical retrieval systems, and generative retrieval, and discusses the future development direction of generative retrieval.",
+  "summary": "The article 'Practice of Search Advertising Retrieval Technology at Meituan' by Meituan's technical team details the company's exploration and application in search advertising retrieval technology. It first analyzes the traffic characteristics and challenges faced by Meituan's search advertising, pointing out features such as poor content quality from Meituan merchants and the dominance of product intent. To address these challenges, Meituan began building search advertising retrieval technology in 2019, going through three main development stages: multi-strategy keyword mining, hierarchical retrieval systems, and generative retrieval. In the multi-strategy keyword mining stage, Meituan adopted rule-based mining strategies and gradually introduced model methods to automatically mine keywords, including extractive and generative methods. As technology evolved, Meituan shifted its focus to generative mining, hoping to break through literal limits with generative large model technology and explore larger traffic spaces. In the hierarchical retrieval system stage, Meituan used both offline and online retrieval methods, enhancing online matching efficiency through keyword mining and query rewriting. During the generative retrieval stage, Meituan focused on exploring generative keyword retrieval and multimodal generative vector retrieval, improving vector representation capabilities and keyword generation consistency. Additionally, the article introduces Meituan's efforts in building an advertising large model, optimizing offline keyword retrieval efficiency by integrating domain and scenario knowledge. The article summarizes Meituan's practical experience and future development direction in generative retrieval, emphasizing the advantages of generative algorithms in expanding retrieval strategy spaces.",
+  "tags": ["Search Advertising", "Retrieval Technology", "Generative Retrieval", "Large Model", "Multimodal Representation", "Keyword Mining", "Diffusion Model", "Meituan", "Artificial Intelligence", "Online Advertising", "Advertising Large Model", "Generative Algorithm Optimization"],
+  "mainPoints": [
+    {
+      "explanation": "Mainly includes the dominance of product intent and poor content quality from Meituan merchants. Challenges include computational anxiety and iteration efficiency with larger model sizes.",
+      "point": "Traffic Characteristics and Challenges of Meituan's Search Advertising"
+    },
+    {
+      "explanation": "Mainly went through three stages: multi-strategy keyword mining, hierarchical retrieval systems, and generative retrieval, with generative retrieval being the future development direction.",
+      "point": "Development Stages of Meituan's Search Advertising Retrieval Technology"
+    },
+    {
+      "explanation": "Includes generative keyword retrieval and multimodal generative vector retrieval, enhancing decision space and matching capabilities through the construction of probability contribution graphs and the introduction of multi-information multi-step fusion.",
+      "point": "Application and Optimization of Generative Retrieval Technology"
+    },
+    {
+      "explanation": "Optimized offline keyword retrieval efficiency by integrating domain and scenario knowledge, and incorporated diffusion models in multimodal generative vector retrieval for optimization.",
+      "point": "Construction and Optimization of Meituan's Advertising Large Model"
+    }
+  ],
+  "keyQuotes": [
+    "The traffic characteristics of Meituan's search advertising include the dominance of product intent, with searches for merchants making up a small portion; thus, retrieval is mainly focused on products, with Meituan having a supply scale of millions of merchants and billions of products.",
+    "Generative algorithms can effectively expand the entire retrieval strategy space compared to discriminative ones. In 2023, we leveraged large model technology to enhance existing retrieval models and achieved some results, but we are far from reaching the upper limit of this new technology approach.",
+    "In practice, we adopted a generative retrieval approach, combining it with large models or generative technology concepts to enhance the decision space of retrieval algorithms and improve model matching capabilities."
+  ]
 }
 ```
+````
 
 ## 指出直接翻译的问题
 
 ### 指出直接翻译的问题系统提示词
 
 ````markdown
-(C) 上下文：为任务提供背景信息
-大语言模型需要检查并改进一段已有的翻译文本。原文可能涉及各种与技术相关的主题，如AI产品、软件开发、用户体验设计等。目标是确保翻译文本符合目标语言（中文或英文）的表达习惯，句子结构自然且表达清晰。原文、分析结果和已有翻译的文本将以指定格式提供，以便模型进行详细分析。翻译方向可能是英译中或中译英，将在输入中指定。
+# AI 翻译检查专家
 
-(O) 目标：明确你要求大语言模型完成的任务
-模型需要识别并指出已有翻译文本中的具体问题，包括但不限于不符合目标语言表达习惯、句子结构笨拙、表达含糊不清、术语翻译不一致或不准确等方面的问题。同时，模型应尝试解释不清楚的部分，并为每个问题提供具体的改进建议，以优化整体翻译质量。
+## 简介
+指导大语言模型分析技术文章预处理结果的初次翻译，识别问题，为后续优化奠定基础。
 
-(S) 风格：明确你期望的写作风格
-希望大语言模型以专业且实用的风格撰写反馈，确保用词准确，描述详细，符合开发者、产品经理等技术人员的需求。反馈应包含相关的技术术语和概念，并确保这些术语在中英文之间的对应准确。
+## 背景
+- 内容：网站中涵盖人工智能、编程、产品、设计、商业和科技等领域技术文章
+- 预处理：已提取标题、摘要、主要观点、关键金句和标签
+- 翻译方向：英译中或中译英
+- 目的：将预处理的信息进行翻译，便于目标语言读者阅读
+- 要求：准确传达原意，符合目标语言习惯
 
-(T) 语气：设置回应的情感调
-语气应保持正式且专业，确保反馈具有权威性和实用性。
+## 任务目标
+全面检查初次翻译，识别问题，为后续优化提供指南。
 
-(A) 受众：识别目标受众
-目标受众为需要阅读和理解这篇文章的技术人员，包括开发者、产品经理等。他们需要通过优化后的翻译来准确理解原文内容，同时也期望翻译符合目标语言的表达习惯。
+## 输入格式
+1. 原始语言
+2. 目标语言
+3. 原文（Markdown）
+4. 分析结果（JSON）
+5. 专业术语识别及初次翻译结果
 
-(R) 响应：规定输出的格式
-输出格式应为详细的分点列表，使用Markdown格式。每个问题单独列出并详细说明，包括具体位置、问题描述及改进建议。如果翻译的目标语言是中文，在中文和英文、数字之间增加空格，以满足排版要求。
+## JSON 结构
+- title: 标题
+- oneSentenceSummary: 一句话总结
+- summary: 全文摘要
+- tags: 标签列表
+- mainPoints: 主要观点（point 和 explanation）
+- keyQuotes: 关键引用
 
-<输入>
-输入包含以下几个部分：
+## 分析要点
+1. 术语与技术概念
+   - 定位：术语或技术概念的翻译问题
+   - 描述：准确性、一致性或表达问题
+   - 建议：改进方向
+   - 示例：统一 "机器学习"、"深度学习" 等术语翻译；优化 "端到端学习" 的解释
 
-1. 原始文章的 Markdown 格式
-2. 文章分析结果 JSON 字符串
-3. 直接翻译结果
-4. 原始语言
+2. 语言表达与结构
+   - 定位：不自然或不流畅的表达
+   - 描述：不符合目标语言习惯的原因
+   - 建议：改进方向
+   - 示例：调整 "这个功能是很酷的" 为更专业的表达；重构复杂句子提高可读性
 
-JSON 字符串结构包括以下字段：
-- oneSentenceSummary: 文章的一句话摘要
-- summary: 文章摘要
-- tags: 文章标签（列表）
-- mainPoints: 文章的主要观点（列表），每个观点包含 point 和 explanation 字段
-- keyQuotes: 文章中的关键引用（列表）
+3. 行业特定表达与文化适应
+   - 定位：不符合行业惯例或存在文化差异的表达
+   - 描述：潜在误解或不当之处
+   - 建议：适应性表达建议
+   - 示例：将 "用户友好" 调整为 "直观的用户界面"；适当处理文化特定词语如 "画饼"
 
-请指出直接翻译中的具体问题，包括但不限于以下方面：
+4. 格式一致性
+   - 定位：格式不一致处
+   - 描述：不一致的具体问题
+   - 建议：统一格式建议
+   - 示例：统一中英文混排的空格使用，在中文和英文、数字之间增加空格
 
-1. **不符合目标语言表达习惯**：
-   - 具体位置：请指出具体的句子或词组。
-   - 问题描述：简要解释为什么不符合目标语言表达习惯。
-   - 改进建议：提供更符合目标语言习惯的表达方式。
-
-2. **句子结构笨拙**：
-   - 具体位置：请指出具体位置。
-   - 问题描述：简要说明结构上为什么显得笨拙或不自然。
-   - 改进建议：提供更流畅的句子结构。
-
-3. **表达含糊不清，难以理解**：
-   - 具体位置：请指出具体句子或词组。
-   - 问题描述：指出表达不清楚的部分，并尝试解释其含义。
-   - 改进建议：提供更清晰、准确的表达方式。
-
-4. **术语翻译不一致或不准确**：
-   - 具体位置：请检查术语的翻译是否一致和准确。
-   - 问题描述：确保专业术语在整个文本中统一使用，并指出不一致或不准确的地方。
-   - 改进建议：提供正确和一致的术语翻译。
-
-5. **其他问题**：
-   - 具体位置：请指出任何其他存在的问题，如标点符号使用、排版等。
-   - 问题描述：详细说明其他可能影响翻译质量的问题。
-   - 改进建议：提供解决方案或替代表达。
-
-注意：请确保翻译准确传达原文的意思，同时符合目标语言的表达习惯。对于中文翻译，请特别注意在中文和英文、数字之间增加空格，以满足排版要求。
+## 输出要求与质量保证
+1. 使用 Markdown 格式的分点列表，每个问题包括位置、描述和建议
+2. 保持专业、客观的语气，使用准确的技术术语
+3. 聚焦问题识别，不需提供完整重写
+4. 关注技术术语和行业表达的准确性，确保术语使用一致
+5. 考虑目标读者（如开发者、产品经理）需求
+6. 分析应覆盖文章各部分（标题、摘要、主要观点等）
+7. 指出任何影响整体理解的翻译问题
+8. 确保问题描述清晰具体，与文章技术性相符
+9. 最后总结主要问题类型和改进方向
 ````
 
 ### 指出直接翻译的问题输入
 
-请根据要求对文章分析结果 JSON 字符串及其翻译结果进行检查，按要求输出翻译中存在的问题。
+````markdown
+请根据要求对文章分析结果 JSON 字符翻译结果进行检查，按要求输出翻译中存在的问题。
 
-<原始文章的 Markdown 格式>
+1. 原始语言：
+{{#1719357159255.languageName#}}
+
+2. 目标语言：
+{{#1719357159255.destLanguageName#}}
+
+3. 原文（Markdown）：
 ```markdown
 {{#1719357159255.markdown#}}
 ```
 
-<文章分析结果 JSON 字符串>
+4. 原文分析结果（JSON）：
 ```json
 {{#1719357159255.analysisResult#}}
 ```
-<直接翻译结果>
-{{#1719665970105.text#}}
 
-<原始语言>
-{{#1719357159255.languageName#}}
+5. 专业术语识别及初次翻译结果
+{{#1719665970105.text#}}
+````
 
 ### 指出直接翻译的问题输出示例
 
 ````markdown
-### 翻译质量检查和改进建议
+## 翻译检查结果
 
-以下是对直接翻译结果的详细检查，指出问题并提出改进建议。
+**总体评价:** 翻译结果基本准确，但存在一些语言表达和专业术语使用问题，需要进行优化。
 
-#### 1. 不符合目标语言表达习惯
+**问题列表:**
 
-- **具体位置**: Summary 部分的第一句
-  - **问题描述**: "US venture capital company BVP has released the State of the Cloud 2024 report, which delves into five major trends in the AI Cloud Economy for 2024."
-  - **改进建议**: 英文的表达习惯中，通常会简洁地介绍背景和主要内容。建议改为："The US venture capital firm BVP has published the State of the Cloud 2024 report, which explores five key trends in the AI Cloud Economy for 2024."
+1. **位置:** 标题
+   - **描述:** "Practice of Search Advertising Retrieval Technology at Meituan" 表达过于直白，缺乏吸引力。
+   - **建议:** 调整为更具吸引力和专业性的标题，例如 "Meituan's Journey to Generative Retrieval for Search Ads" 或 "Unlocking Search Ad Efficiency: Meituan's Generative Retrieval Approach"。
 
-#### 2. 句子结构笨拙
+2. **位置:** 一句话总结
+   - **描述:** 翻译较为生硬，缺少流畅度。
+   - **建议:** 调整为更简洁流畅的表达，例如 "This article explores Meituan's innovative use of generative retrieval for enhancing search ad efficiency."
 
-- **具体位置**: Summary 部分的第二句
-  - **问题描述**: "The report states that foundational models are the new 'oil' of the AI era, driving the development of downstream AI applications and tools."
-  - **改进建议**: 结构稍显冗长，可以简化为："The report highlights that foundational models, dubbed as the new 'oil' of the AI era, are driving the development of downstream AI applications and tools."
+3. **位置:** 摘要
+   - **描述:** 翻译整体较为流畅，但部分表达略显冗长，可精简。例如 "The article 'Practice of Search Advertising Retrieval Technology at Meituan' by Meituan's technical team details the company's exploration and application in search advertising retrieval technology." 可简化为 "This article by Meituan's technical team details the company's exploration and application of search advertising retrieval technology."
+   - **建议:** 针对冗长部分进行精简，确保摘要简洁明了，突出文章的核心内容。
 
-#### 3. 表达含糊不清，难以理解
+4. **位置:** 术语翻译
+   - **描述:** "Retrieval Technology" 翻译为 "召回技术"，在广告领域更倾向于使用 "检索技术" 或 "推荐技术"。
+   - **建议:** 统一使用更准确的术语 "检索技术" 或 "推荐技术"，避免歧义。
 
-- **具体位置**: MainPoints 部分的第四条解释
-  - **问题描述**: "With the release of Llama3, open source models are catching up with market leaders, but closed source models will drive most LLM computing cycles."
-  - **改进建议**: 可以更明确地表达开源和闭源模型的竞争关系："With the release of Llama3, open source models are closing the gap with market leaders; however, closed source models are expected to dominate most of the LLM computing cycles."
+5. **位置:** 术语翻译
+   - **描述:** "Keyword Mining" 翻译为 "关键词挖掘"，在广告领域更倾向于使用 "关键词提取" 或 "关键词匹配"。
+   - **建议:** 统一使用更准确的术语 "关键词提取" 或 "关键词匹配"，避免歧义。
 
-#### 4. 术语翻译不一致或不准确
+6. **位置:** 术语翻译
+   - **描述:** "Advertising Large Model" 翻译为 "广告大模型"，在行业内更倾向于使用 "广告领域大模型" 或 "广告专用大模型"。
+   - **建议:** 统一使用更准确的术语 "广告领域大模型" 或 "广告专用大模型"，避免歧义。
 
-- **具体位置**: Tags 部分
-  - **问题描述**: "Foundational Model" 和 "AI Model Deployment"
-  - **改进建议**: "Foundational Model" 应统一为 "基础模型"。"AI Model Deployment" 应翻译为 "AI 模型部署"。
+7. **位置:** 术语翻译
+   - **描述:** "Generative Algorithm Optimization" 翻译为 "生成式算法优化"，可改为更简洁的 "生成式算法优化" 或 "生成式模型优化"。
+   - **建议:** 统一使用更简洁的术语 "生成式算法优化" 或 "生成式模型优化"，避免冗长。
 
-#### 5. 其他问题
+8. **位置:** 主要观点
+   - **描述:** 部分观点翻译过于直白，缺乏专业性。例如 "Challenges include computational anxiety and iteration efficiency with larger model sizes." 可改为 "Challenges include computational resource constraints and model scalability."
+   - **建议:** 针对过于直白的表达进行调整，使用更专业的术语和表达方式。
 
-- **具体位置**: KeyQuotes 部分的第二条
-  - **问题描述**: "The AI model competition will continue to be fierce in the foreseeable future, which is a key 'battle' to decide which major technology companies will dominate the cloud and computing markets in the next few years."
-  - **改进建议**: 句子过长且结构复杂，建议分成两句话："The AI model competition will continue to be fierce in the foreseeable future. This is a key 'battle' that will determine which major technology companies will dominate the cloud and computing markets in the coming years."
+9. **位置:** 关键引用
+   - **描述:** 部分关键引用翻译存在语义偏差。例如 "Generative algorithms can effectively expand the entire retrieval strategy space compared to discriminative ones." 翻译为 "生成式算法相比判别式，能够有效的拓展整个召回的策略空间"，实际含义应为 "生成式算法相比判别式算法，能够更有效地扩展整个检索策略空间"。
+   - **建议:** 仔细核对关键引用翻译的准确性，确保传达原文意思。
 
-### 修正后的翻译结果
+**主要问题类型:**
 
-```json
-{
-    "title": "BVP releases State of the Cloud 2024, summarizing five major trends in the AI Cloud Economy for 2024 and predicting the outlook for 2030.",
-    "oneSentenceSummary": "The State of the Cloud 2024 report released by BVP explores five major trends in the AI Cloud Economy and predicts the outlook for 2030.",
-    "summary": "The US venture capital firm BVP has published the State of the Cloud 2024 report, which explores five key trends in the AI Cloud Economy for 2024. The report highlights that foundational models, dubbed as the new 'oil' of the AI era, are driving the development of downstream AI applications and tools. The open source vs. closed source debate is intensifying, the small model movement is on the rise, and new architectures and specific-purpose foundational models are emerging, leading to continued fierce competition in the AI model space. Emerging technologies such as voice AI, image processing, and AI agents will lead the next wave of AI innovation. The report also predicts the outlook for 2030, emphasizing the critical role of AI in driving economic growth and corporate transformation.",
-    "tags": [
-        "AI Cloud Economy",
-        "Foundational Models",
-        "Generative AI",
-        "Open Source vs. Closed Source",
-        "Small Model Movement",
-        "AI Agent",
-        "Voice AI",
-        "Multimodal AI",
-        "AI Model Deployment",
-        "OpenAI"
-    ],
-    "mainPoints": [
-        {
-            "explanation": "Foundational models provide the impetus for downstream AI applications and tools and are the key attractor of venture capital in the AI field.",
-            "point": "Foundational models are the new 'oil' of the AI era."
-        },
-        {
-            "explanation": "In the next few years, the AI model competition will determine which major technology companies dominate the cloud and computing markets.",
-            "point": "The AI model competition will continue to be fierce."
-        },
-        {
-            "explanation": "Small models have significant advantages in terms of cost and latency and are becoming a new trend in the AI field.",
-            "point": "The small model movement is on the rise."
-        },
-        {
-            "explanation": "With the release of Llama3, open source models are closing the gap with market leaders; however, closed source models are expected to dominate most of the LLM computing cycles.",
-            "point": "The open source vs. closed source debate is intensifying."
-        },
-        {
-            "explanation": "New models such as GPT-4 can process and reason about raw audio data, bringing real-time dialog voice experiences and improving user problem-solving efficiency.",
-            "point": "Voice AI applications are on the rise."
-        }
-    ],
-    "keyQuotes": [
-        "Foundational models are the new 'oil' and will provide the impetus for downstream AI applications and tools.",
-        "The AI model competition will continue to be fierce in the foreseeable future. This is a key 'battle' that will determine which major technology companies will dominate the cloud and computing markets in the coming years.",
-        "The small model movement is on the rise, and larger models are not always better in terms of performance and cost.",
-        "This transformation will enable dialog voice products to have lower latency and greater non-textual information understanding capabilities, such as emotion, tone, and sentiment, which are often lost in cascade architectures. These advances will bring truly real-time dialog voice experiences, helping users solve problems more quickly and reducing the frustration often associated with voice automation in the past.",
-        "By 2030, most enterprise software developers will become roles similar to that of software reviewers."
-    ]
-}
-```
+- 语言表达问题：部分翻译存在生硬、冗长或不准确的问题。
+- 术语使用问题：部分专业术语翻译存在偏差或不一致。
+
+**改进方向:**
+
+- 优化语言表达：使用更简洁流畅的表达，提高可读性。
+- 统一术语使用：使用更准确和一致的专业术语。
+- 确保翻译准确性：仔细核对翻译内容，确保传达原文意思。
+
+**总结:**
+
+通过对翻译结果进行检查，可以发现一些需要改进的地方，例如语言表达、专业术语使用和翻译准确性。对这些问题进行优化，可以提升翻译质量，使目标语言读者更易理解文章内容。
 ````
 
 ## 意译，第二次翻译
@@ -481,169 +296,249 @@ JSON 字符串结构包括以下字段：
 ### 意译系统提示词
 
 ````markdown
-(C) 上下文：为任务提供背景信息
-大语言模型需要对一段初次翻译的文本进行重新翻译和意译。原文涉及各种与技术相关的主题，如AI产品、软件开发、用户体验设计、商业科技等。目标是确保重新翻译后的文本既忠于原意，又更加符合目标语言（英语或中文）的表达习惯，易于理解。原文为JSON格式，初次翻译的文本为JSON格式，存在的问题为Markdown格式。
+# AI 翻译优化专家
 
-(O) 目标：明确你要求大语言模型完成的任务
-模型需要基于初次翻译的成果及随后识别的各项问题，进行一次重新翻译和意译，旨在更准确地传达原文的意义。确保内容既忠于原意，又更加贴近目标语言的表达方式，更容易被理解。翻译后返回的JSON字符串应该和原始输入的JSON字符串有相同的结构，保留相同的key。
+## 简介
+对初次翻译的技术文章进行优化和意译，确保翻译既忠实原意又符合目标语言表达习惯。
 
-(S) 风格：明确你期望的写作风格
-希望大语言模型以专业且实用的风格进行意译，确保用词准确，描述清晰，符合开发者、产品经理等技术人员的需求。翻译应保持原文的专业性和技术深度，同时提高可读性和流畅度。
+## 背景
+- 内容：网站上关于人工智能、编程技术、产品、设计、商业、科技类的文章，已提取文章标题、一句话总结、文章摘要、主要观点、关键金句和标签等信息的 JSON 字符串
+- 初次翻译：已完成，但可能存在问题
+- 翻译方向：英译中或中译英
+- 目标：提高翻译质量，使其更易于目标读者理解
 
-(T) 语气：设置回应的情感调
-语气应保持正式且专业，确保翻译具有权威性和实用性。同时，翻译应体现出对目标读者的考虑，使用更自然、更符合目标语言习惯的表达方式。
+## 任务目标
+基于初次翻译和识别出的问题，进行重新翻译和意译，提高准确性、可读性和文化适应性。
 
-(A) 受众：识别目标受众
-目标受众为开发者、产品经理等技术人员，他们需要翻译精确且易于理解的内容。翻译应考虑这些读者的专业背景，在保持技术准确性的同时，确保内容易于理解和应用。
+## 输入格式
+1. 原始语言
+2. 目标语言
+3. 原文分析结果（JSON）
+4. 识别的专业术语列表和初次翻译结果
+5. 翻译问题分析结果（Markdown）
 
-(R) 响应：规定输出的格式
-输出格式应保持原有JSON格式不变，确保重新翻译后的文本结构与初次翻译一致。如果目标语言是中文，在中英文、数字间加空格以提高可读性。
+## JSON 结构
+- title: 标题
+- oneSentenceSummary: 一句话总结
+- summary: 全文摘要
+- tags: 标签列表
+- mainPoints: 主要观点（point 和 explanation）
+- keyQuotes: 关键引用
 
-<输入>
-输入包含以下几个部分：
-1. 原始语言：指明原文是中文还是英文
-2. 原始文章分析结果JSON字符串：包含以下字段
-   - oneSentenceSummary: 文章的一句话摘要
-   - summary: 文章摘要
-   - tags: 文章标签（列表）
-   - mainPoints: 文章的主要观点（列表），每个观点包含point和explanation字段
-   - keyQuotes: 文章中的关键引用（列表）
-3. 直接翻译结果：与原始文章分析结果具有相同结构的JSON字符串
-4. 翻译中存在的问题：Markdown格式的文本，列出了直接翻译中的具体问题
+## 分析要点
+1. 术语与技术概念
+   - 确保专业术语翻译准确且一致
+   - 对难懂概念适当添加简短解释
+   - 参考提供的专业术语列表进行翻译
 
-<输出>
-输出应为一个JSON字符串，具有与输入相同的结构和字段。具体要求如下：
-1. 保持原有的JSON结构和key不变
-2. 对每个字段的内容进行优化和意译，确保：
-   - 准确传达原文的核心意思和关键信息
-   - 符合目标语言的表达习惯和语言特点
-   - 适当使用目标语言中的习语、俗语或专业术语
-   - 保持专业术语的一致性和准确性
-   - 提高整体可读性和流畅度
-3. 如果目标语言是中文，在中英文、数字间加空格
-4. 对于难以直译的概念，可采用意译或增加简短解释，但不应显著增加文本长度
+2. 语言表达与结构
+   - 调整句式以符合目标语言习惯
+   - 提高表达的流畅性和自然度
+   - 避免直译导致的生硬表达
 
-请根据以上指导原则，对提供的输入进行综合分析处理和意译，输出改进后的翻译，以JSON字符串格式返回。确保改进后的翻译符合上述所有要求，特别是在准确传达原意的同时，充分适应目标语言的表达习惯和阅读偏好。
+3. 文化适应
+   - 考虑目标语言的文化背景，适当调整表达
+   - 使用目标语言中的习语或俗语增加亲和力
+   - 注意跨文化交流中可能存在的敏感话题
+
+4. 格式一致性
+   - 保持 JSON 结构不变
+   - 统一格式，如中英文间加空格
+   - 保持标点符号使用的一致性
+
+## 输出要求与质量保证
+1. 输出格式：仅输出 JSON 字符串，保持结构和原始 JSON 字符串一致，仅将其中的值翻译为目标语言
+2. 准确性：
+   - 准确传达原文核心意思，不遗漏关键信息
+   - 保持专业性，符合技术人员阅读需求
+3. 可读性：
+   - 确保翻译后的内容逻辑连贯，易于理解
+   - 提高整体可读性，避免直译造成的不自然表达
+4. 术语处理：
+   - 保持术语一致性，特别是关键的技术词汇
+   - 对难译概念可采用意译或增加简短解释，但不显著增加长度
+5. 文化适应：
+   - 注意不同文化背景下的表达差异
+   - 对原文中的例子或引用，根据需要进行适当的本地化处理
+6. 格式要求：
+   - 中文翻译时在中英文、数字间加空格
+   - 保持 JSON 结构和键名不变
+
+请根据以上指南，对提供的输入进行全面分析和优化翻译，以 JSON 格式输出改进后的结果。确保翻译既准确传达原意，又充分适应目标语言的表达习惯和文化背景。
 ````
 
 ### 意译输入
 
-请根据要求识别对以下文章分析结果 JSON 字符串、直接翻译结果、翻译问题进行综合分析处理，按要求输出改进后的翻译，以 JSON 字符串输出。
+````markdown
+请根据要求识别对文章分析结果 JSON 字符串、直接翻译结果、翻译问题分析结果进行综合分析处理，按要求输出改进后的翻译，以 JSON 字符串输出。
 
-<原始语言>
+1. 原始语言：
 {{#1719357159255.languageName#}}
 
-<原始文章分析结果 JSON 字符串>
+2. 目标语言：
+{{#1719357159255.destLanguageName#}}
+
+3. 原文分析结果（JSON）：
 ```json
 {{#1719357159255.analysisResult#}}
 ```
-<直接翻译结果>
-```json
-{{#1719665970105.text#}}
-```
 
-<翻译中存在的问题>
+4. 识别的专业术语列表和初次翻译结果：
+{{#1719665970105.text#}}
+
+5. 初次翻译问题分析结果：
 {{#1719666182344.text#}}
+````
 
 ### 意译输出示例
 
+````markdown
 ```json
 {
-    "title": "BVP Releases State of the Cloud 2024: Five Major Trends in AI Cloud Economy and 2030 Outlook",
-    "oneSentenceSummary": "The State of the Cloud 2024 report by BVP outlines five key trends in the AI Cloud Economy and predicts the outlook for 2030.",
-    "summary": "The US venture capital firm BVP has published the State of the Cloud 2024 report, which explores five key trends in the AI Cloud Economy for 2024. The report highlights that foundational models, described as the new 'oil' of the AI era, are driving the development of downstream AI applications and tools. The open source vs. closed source debate is intensifying, the small model movement is gaining momentum, and new architectures and specific-purpose foundational models are emerging, leading to continued fierce competition in the AI model space. Emerging technologies such as voice AI, image processing, and AI agents are expected to lead the next wave of AI innovation. The report also forecasts the outlook for 2030, emphasizing AI's critical role in driving economic growth and corporate transformation.",
-    "tags": [
-        "AI Cloud Economy",
-        "Foundational Models",
-        "Generative AI",
-        "Open Source vs. Closed Source",
-        "Small Model Movement",
-        "AI Agents",
-        "Voice AI",
-        "Multimodal AI",
-        "AI Model Deployment",
-        "OpenAI"
-    ],
-    "mainPoints": [
-        {
-            "explanation": "Foundational models are crucial for driving downstream AI applications and tools, making them a key attractor of venture capital in the AI field.",
-            "point": "Foundational models are the new 'oil' of the AI era."
-        },
-        {
-            "explanation": "In the coming years, the competition among AI models will determine which major tech companies dominate the cloud and computing markets.",
-            "point": "The AI model competition will continue to be fierce."
-        },
-        {
-            "explanation": "Small models offer significant advantages in cost and latency, making them a new trend in the AI field.",
-            "point": "The small model movement is on the rise."
-        },
-        {
-            "explanation": "With the release of Llama3, open source models are closing the gap with market leaders; however, closed source models are expected to dominate most LLM computing cycles.",
-            "point": "The open source vs. closed source debate is intensifying."
-        },
-        {
-            "explanation": "New models like GPT-4 can process and reason about raw audio data, providing real-time dialog voice experiences and improving user problem-solving efficiency.",
-            "point": "Voice AI applications are on the rise."
-        }
-    ],
-    "keyQuotes": [
-        "Foundational models are the new 'oil' and will provide the impetus for downstream AI applications and tools.",
-        "The AI model competition will continue to be fierce in the foreseeable future. This is a key 'battle' that will determine which major technology companies will dominate the cloud and computing markets in the coming years.",
-        "The small model movement is on the rise, and larger models are not always better in terms of performance and cost.",
-        "This transformation will enable dialog voice products to have lower latency and greater non-textual information understanding capabilities, such as emotion, tone, and sentiment, which are often lost in cascade architectures. These advances will bring truly real-time dialog voice experiences, helping users solve problems more quickly and reducing the frustration often associated with voice automation in the past.",
-        "By 2030, most enterprise software developers will take on roles similar to software reviewers."
-    ]
+  "title": "Meituan's Journey to Generative Retrieval for Search Ads",
+  "oneSentenceSummary": "This article explores Meituan's innovative use of generative retrieval to enhance search ad efficiency, covering multi-strategy keyword extraction, hierarchical retrieval systems, and generative retrieval.",
+  "summary": "This article by Meituan's technical team details the company's exploration and application of search advertising retrieval technology. It analyzes the traffic characteristics and challenges of Meituan's search advertising, highlighting the dominance of product intent and the need to improve merchant content quality. To address these challenges, Meituan has developed a search advertising retrieval technology that has evolved through three stages: multi-strategy keyword extraction, hierarchical retrieval systems, and generative retrieval. The article emphasizes the shift towards generative retrieval, leveraging large language models to break through literal limitations and explore larger traffic spaces. Meituan's hierarchical retrieval system utilizes both offline and online retrieval methods, enhancing online matching efficiency through keyword extraction and query rewriting. The generative retrieval stage focuses on exploring generative keyword retrieval and multimodal generative vector retrieval, improving vector representation capabilities and keyword generation consistency. The article also discusses Meituan's efforts in building an advertising domain large model, optimizing offline keyword retrieval efficiency by integrating domain and scenario knowledge. The article concludes by summarizing Meituan's practical experience and future development direction in generative retrieval, highlighting the advantages of generative algorithms in expanding retrieval strategy spaces.",
+  "tags": ["Search Advertising", "Retrieval Technology", "Generative Retrieval", "Large Model", "Multimodal Representation", "Keyword Extraction", "Diffusion Model", "Meituan", "Artificial Intelligence", "Online Advertising", "Advertising Domain Large Model", "Generative Algorithm Optimization"],
+  "mainPoints": [
+    {
+      "explanation": "Key characteristics include the dominance of product intent and the need to improve merchant content quality. Challenges include computational resource constraints and model scalability.",
+      "point": "Traffic Characteristics and Challenges of Meituan's Search Advertising"
+    },
+    {
+      "explanation": "The development of Meituan's search advertising retrieval technology has progressed through three stages: multi-strategy keyword extraction, hierarchical retrieval systems, and generative retrieval, with generative retrieval being the future development direction.",
+      "point": "Development Stages of Meituan's Search Advertising Retrieval Technology"
+    },
+    {
+      "explanation": "Generative retrieval techniques include generative keyword retrieval and multimodal generative vector retrieval, enhancing decision space and matching capabilities through the construction of probability contribution graphs and the introduction of multi-information multi-step fusion.",
+      "point": "Application and Optimization of Generative Retrieval Technology"
+    },
+    {
+      "explanation": "Meituan's advertising domain large model optimizes offline keyword retrieval efficiency by integrating domain and scenario knowledge, and incorporates diffusion models in multimodal generative vector retrieval for optimization.",
+      "point": "Construction and Optimization of Meituan's Advertising Domain Large Model"
+    }
+  ],
+  "keyQuotes": [
+    "The traffic characteristics of Meituan's search advertising include the dominance of product intent, with searches for merchants making up a small portion; thus, retrieval is mainly focused on products, with Meituan having a supply scale of millions of merchants and billions of products.",
+    "Generative algorithms, compared to discriminative algorithms, can more effectively expand the entire retrieval strategy space. In 2023, we leveraged large model technology to enhance existing retrieval models and achieved some results, but we are far from reaching the upper limit of this new technology approach.",
+    "In practice, we adopted a generative retrieval approach, combining it with large models or generative technology concepts to enhance the decision space of retrieval algorithms and improve model matching capabilities."
+  ]
 }
 ```
+
+**优化说明:**
+
+1. **标题:** 调整为更具吸引力和专业性的标题，例如 "Meituan's Journey to Generative Retrieval for Search Ads" 或 "Unlocking Search Ad Efficiency: Meituan's Generative Retrieval Approach"。
+2. **一句话总结:** 调整为更简洁流畅的表达，例如 "This article explores Meituan's innovative use of generative retrieval for enhancing search ad efficiency."
+3. **摘要:** 针对冗长部分进行精简，确保摘要简洁明了，突出文章的核心内容。
+4. **术语翻译:** 统一使用更准确的术语 "检索技术" 或 "推荐技术"，避免歧义。
+5. **术语翻译:** 统一使用更准确的术语 "关键词提取" 或 "关键词匹配"，避免歧义。
+6. **术语翻译:** 统一使用更准确的术语 "广告领域大模型" 或 "广告专用大模型"，避免歧义。
+7. **术语翻译:** 统一使用更简洁的术语 "生成式算法优化" 或 "生成式模型优化"，避免冗长。
+8. **主要观点:** 针对过于直白的表达进行调整，使用更专业的术语和表达方式。
+9. **关键引用:** 仔细核对关键引用翻译的准确性，确保传达原文意思。
+
+**其他改进:**
+
+* 调整部分句子结构，使其更符合英文表达习惯。
+* 添加一些连接词，使文章更加流畅。
+* 保持 JSON 结构和键名不变。
+
+**注意:** 翻译结果仅供参考，建议您根据具体情况进行调整。
+````
 
 ## 测试用例
 
 ### 测试用例1 (中翻英)
 
-[深度｜BVP 发布《State of the Cloud 2024》，万字总结 2024 年 AI Cloud 经济五大趋势](https://www.bestblogs.dev/article/93a670)
+[Claude 上新：一键生成、测试和评估 prompt，让 prompt 写作零门槛！](https://www.bestblogs.dev/article/4b9d6d)
 
-![Test Case1](./flowImages/translate_workflow_testcase1.png)
-
-### 测试用例2（英翻中）
-
-[Data Privacy with Qdrant: Implementing Role-Based Access Control (RBAC)](https://www.bestblogs.dev/article/30ef70)
-
-![Test Case2](./flowImages/translate_workflow_testcase2.png)
+![Test Case1](./flowImages/translate_article_flow_result_1.png)
 
 输出 JSON 字符串：
 
 ```json
 {
-  "title": "Data Privacy with Qdrant: Implementing Role-Based Access Control (RBAC)",
-  "oneSentenceSummary": "本文探讨了 Qdrant 如何通过实现基于角色的访问控制 (RBAC) 来确保向量数据库中的数据隐私和安全。文章还强调了细粒度访问控制和合规性的重要性。",
-  "summary": "本文探讨了在向量数据库中存储敏感企业数据时所需的强大安全措施。文章讨论了静态 API 密钥的局限性，并提出基于角色的访问控制 (RBAC) 作为一种更安全的替代方案。详细介绍了 Qdrant 的安全功能实现，包括基于 API 密钥的身份验证、TLS 加密和 JSON Web 令牌 (JWTs)，以提供细粒度的访问控制。文章还强调了 Qdrant 的部署灵活性，以满足数据居留地法规的要求，并构建数据主权架构。实际示例和代码片段说明了这些安全实现。",
-  "tags": ["数据隐私", "RBAC", "向量数据库", "Qdrant", "API 身份验证", "TLS 加密", "JWT", "数据主权", "数据合规", "安全架构"],
+  "title": "Claude's New Feature: Generate, Test, and Evaluate Prompts with One Click, Making Prompt Writing Accessible to Everyone!",
+  "oneSentenceSummary": "Anthropic's Claude introduces a new feature that empowers even non-technical users to easily generate, test, and evaluate prompts, significantly boosting the accessibility and efficiency of AI application development.",
+  "summary": "Anthropic has unveiled a new feature for its AI tool Claude, introducing a prompt generation, testing, and evaluation tool designed to streamline the prompt creation process. Users simply need to describe the task, and Claude will generate high-quality prompts, providing test cases and quality scores, making prompt optimization and iteration more convenient. This feature automates the process, significantly reducing the time users spend on prompt optimization, earning praise from AI bloggers who believe it saves considerable time and provides a rapid iteration starting point.",
+  "tags": ["AI Applications", "Large Language Models (LLMs)", "Prompt Engineering", "Development Tools", "Anthropic", "Claude", "Automated Process", "AI Development Efficiency", "Non-Technical User Friendly", "User Experience"],
   "mainPoints": [
     {
-      "point": "向量数据库中数据安全的重要性",
-      "explanation": "向量数据库经常存储敏感和专有数据，因此需要强大的安全措施来防止数据泄露并遵守行业规定。"
+      "explanation": "Users input task descriptions, and Claude automatically generates high-quality prompts, simplifying the prompt creation process.",
+      "point": "Claude's New Prompt Generator"
     },
     {
-      "point": "静态 API 密钥身份验证的挑战",
-      "explanation": "静态 API 密钥提供全有或全无的访问权限，这对于企业环境来说是不够的，并且密钥泄露会带来重大安全风险。"
+      "explanation": "It provides test case generation and one-click running functionality, along with a 5-point scoring system, enabling users to easily evaluate and optimize prompts.",
+      "point": "Test Cases and Evaluation Tools"
     },
     {
-      "point": "基于角色的访问控制 (RBAC) 的实现",
-      "explanation": "RBAC 通过定义用户角色和分配特定权限来提供细粒度的数据访问，增强了安全性和合规性。"
+      "explanation": "The automated process saves time, accelerating prompt iteration, which contributes to efficient AI application development.",
+      "point": "Boosting Development Efficiency"
     },
     {
-      "point": "使用 JSON Web 令牌 (JWTs) 进行访问控制",
-      "explanation": "Qdrant 中使用 JSON Web 令牌 (JWTs) 创建精细的访问控制，通过密码签名声明确保数据隐私和安全。"
-    },
-    {
-      "point": "数据主权的部署灵活性",
-      "explanation": "Qdrant 支持各种部署选项以符合数据居留地法规，实现本地部署或地理分布式云部署。"
+      "explanation": "The new feature not only enhances development efficiency but also significantly improves user experience and satisfaction when using AI tools.",
+      "point": "Enhancing User Experience"
     }
   ],
   "keyQuotes": [
-    "在选择正确的向量数据库时，支持数据隐私、安全和主权的功能是决定性因素。",
-    "JWT 声明通过 Qdrant 创建强大的杠杆，可以在其中创建精细的访问控制。",
-    "通过实现 RBAC，您可以确保适当的角色分离和其特权，并避免应用程序中的隐私漏洞。"
+    "Anthropic Console is an excellent research tool, and its automated design and prompt optimization process can save a significant amount of time.",
+    "In Claude, writing a good prompt is as simple as describing the task.",
+    "These features make optimizing prompts easy, as users can create new versions of prompts and re-run test suites to quickly iterate and improve results."
+  ]
+}
+```
+
+### 测试用例2（英翻中）
+
+[Data Privacy with Qdrant: Implementing Role-Based Access Control (RBAC)](https://www.bestblogs.dev/article/30ef70)
+
+![Test Case2](./flowImages/translate_article_flow_result_2.png)
+
+输出 JSON 字符串：
+
+```json
+{
+  "title": "Qdrant 的数据隐私：实施基于角色的访问控制 (RBAC)",
+  "oneSentenceSummary": "本文探讨了 Qdrant 如何通过实施基于角色的访问控制 (RBAC) 来确保向量数据库中的数据隐私和安全性，强调了细粒度访问控制和法规遵从性的重要性。",
+  "summary": "本文探讨了存储敏感企业数据的向量数据库对强大安全措施的需求。文章分析了静态 API 密钥的局限性，并提出基于角色的访问控制 (RBAC) 作为更安全的替代方案。文章详细介绍了 Qdrant 的安全功能，包括基于 API 密钥的认证、TLS 加密和 JSON Web 令牌 (JWT)，这些功能提供了细粒度的访问控制。此外，文章还强调了 Qdrant 的部署灵活性，使其能够遵守数据驻留法规，并构建数据主权架构。文章通过实际示例和代码片段说明了这些安全实现。",
+  "tags": [
+    "数据隐私",
+    "RBAC",
+    "向量数据库",
+    "Qdrant",
+    "API 认证",
+    "TLS 加密",
+    "JWT",
+    "数据主权",
+    "数据合规",
+    "安全架构"
+  ],
+  "mainPoints": [
+    {
+      "explanation": "向量数据库通常存储敏感和专有数据，因此需要强大的安全措施来防止数据泄露并遵守行业法规。",
+      "point": "向量数据库中数据安全的重要性"
+    },
+    {
+      "explanation": "静态 API 密钥提供全有或全无的访问权限，这对于企业环境来说是不够的，如果被泄露会带来重大安全风险。",
+      "point": "静态 API 密钥认证的挑战"
+    },
+    {
+      "explanation": "RBAC 通过定义用户角色并分配特定权限来提供细粒度的数据访问方法，从而增强了安全性和合规性。",
+      "point": "基于角色的访问控制 (RBAC) 的实施"
+    },
+    {
+      "explanation": "Qdrant 使用 JWT 来创建细粒度的访问控制，通过加密签名的声明确保数据隐私和安全。",
+      "point": "使用 JSON Web 令牌 (JWT) 进行访问控制"
+    },
+    {
+      "explanation": "Qdrant 支持多种部署选项，以遵守数据驻留法规，例如本地部署或地理分布式云部署。",
+      "point": "数据主权的部署灵活性"
+    }
+  ],
+  "keyQuotes": [
+    "选择合适的向量数据库时，数据隐私、安全和主权功能至关重要。这些功能决定了数据库是否符合您的需求。",
+    "JWT 声明提供了强大的机制，可以在 Qdrant 上创建细粒度的访问控制。",
+    "通过实施 RBAC，您可以确保角色的适当分离及其权限，避免应用程序中的隐私漏洞。"
   ]
 }
 ```
