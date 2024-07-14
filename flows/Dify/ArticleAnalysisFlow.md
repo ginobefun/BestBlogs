@@ -4,11 +4,189 @@
 
 ![Article Analysis Workflow](./flowImages/analyze_article_flow_long_article_result2.png)
 
+流程说明：
+
+- 同初评流程，分析流程的输入也是网站的文章 ID，然后通过 Workflow 内置的 HTTP 调用节点和代码节点，调用网站的 API 获取文章的元数据（标题、来源、链接、语言等）和全文内容。
+- 为了能不遗漏各个段落的关键信息，分析流程首先判断文章的长度，如果超过 6000 个字符则进行分段处理，否则直接对全文进行分析。
+- 分析的内容输出主要包括一句话总结、文章摘要、文章关键词、主要观点和文章金句等，方便读者快速了解文章内容。
+- 这里运用了 Workflow 中的分支、迭代、变量聚合等节点，使得我们能对流程进行灵活控制，对于不同的分支处理结果，可以采用变量聚合将全文分析的内容归集为一个，便于后续节点处理。
+- 随后是领域划分和标签生成节点，通过大语言模型对文章内容进行分类，生成文章所属领域和标签列表，这里的标签主要包括主题、技术、领域、应用、产品、公司、平台、名人、趋势等，便于后续文章的组织，增强后续搜索和推荐的实现。
+- 再之后的文章评分节点，通过大语言模型对文章内容进行评分，主要包括内容深度、写作质量、实用性、相关性等多维度评估，生成文章的评分，便于读者快速筛选优质文章。
+- 然后是检查反思节点，输入为文章元数据和全文内容，以及分析结果、领域和标签列表、评分等，要求大语言模型扮演技术文章评审专家，按照全面性、准确性、一致性等原则，对前述输出进行检查，输出检查结果和反思内容。
+- 最后是基于检查反思结果的优化改进节点，要求大语言模分析检查和分析结果，并再次确认输出格式和语言，输出最终的分析结果和更新原因。
+- 网站应用通过 Dify Workflow 开放的 API 传入文章 ID，获取并保存文章的分析结果，根据文章评分判断是否继续往下处理。
+
 ## DSL 文件
 
 [Article Analysis Workflow DSL](./dsl/analyze_article_flow_zh.yml)
 
 ## 流程说明
+
+### 开始节点
+
+定义流程入参为文章 ID，用于获取文章的元数据和全文内容。
+
+![开始节点](./flowImages/analyze_article_flow_start.png)
+
+### 获取文章元数据和全文节点
+
+通过调用网站的 API 获取文章的元数据和全文内容。
+
+![获取文章元数据和全文](./flowImages/analyze_article_flow_get_article.png)
+
+### 解析请求节点
+
+使用 Python3 解析请求，获取文章的标题、来源、链接、语言等信息。
+
+![解析请求](./flowImages/analyze_article_flow_parse_request.png)
+
+```python
+import json
+
+def main(json_body):
+    """
+    处理 REST 请求返回的 JSON 字符串。
+    
+    若输入为空字符串或JSON解析失败，则返回 {'success': 'false'}。
+    若 JSON 字符串解析成功且 'success' 为 'true'，则返回包含指定键值的字典。
+    否则返回 {'success': 'false'}。
+
+    参数:
+        json_body (str): 包含 JSON 数据的字符串。
+    
+    返回:
+        dict: 包含 'success' 键和指定的数据键值对的字典。
+    """
+    
+    result = {'success': 'false'}
+    
+    if not json_body:
+        return result
+
+    try:
+        data = json.loads(json_body)
+        if isinstance(data, dict) and data.get('success') == 'true':
+            result['success'] = 'true'
+            result['markdown'] = data.get('markdown', '')
+            result['sourceName'] = data.get('sourceName', '')
+            result['languageName'] = data.get('languageName', '中文')
+            result['destLanguageName'] = data.get('destLanguageName', '英文')
+            result['title'] = data.get('title', '')
+            result['url'] = data.get('url', '')
+            result['wordCount'] = data.get('wordCount', 100)
+        return result
+    except json.JSONDecodeError:
+        return result
+    except Exception:
+        return result
+```
+
+### 文章分段处理节点
+
+判断文章长度，如果超过 6000 个字符则进行分段处理。分段处理时根据 Markdown 格式的换行符和特殊标签进行分段。
+
+![文章分段处理](./flowImages/analyze_article_flow_segment.png)
+
+```python
+import re
+
+def main(markdown_text: str) -> dict:
+    """
+    将 Markdown 文本划分为段落，并合并较小的段落使其长度不超过 3000 个字符。
+
+    参数：
+        markdown_text (str): Markdown格式的文本。
+
+    返回：
+        Dict[str, List[str]]: 包含段落列表的字典，每个段落作为列表中的一项，长度不超过 3000 个字符。
+    """
+    max_length = 3000
+
+    # 预处理：移除YAML前置元数据（如果存在）
+    markdown_text = re.sub(r'^---\n.*?\n---\n', '', markdown_text, flags=re.DOTALL)
+
+    # 初步按换行分隔，保留空行
+    initial_paragraphs = markdown_text.split('\n')
+    
+    paragraphs = []
+    current_paragraph = ""
+    in_code_block = False
+    
+    for line in initial_paragraphs:
+        stripped_line = line.strip()
+        
+        # 处理代码块
+        if stripped_line.startswith('```'):
+            in_code_block = not in_code_block
+            if current_paragraph:
+                paragraphs.append(current_paragraph)
+                current_paragraph = ""
+            paragraphs.append(line)
+            continue
+        
+        if in_code_block:
+            paragraphs.append(line)
+            continue
+        
+        # 处理标题、引用、列表等
+        if (stripped_line.startswith(('#', '>', '-', '*', '+')) or 
+            re.match(r'^\d+\.', stripped_line) or
+            stripped_line.startswith('|') or  # 表格
+            stripped_line == '---' or  # 水平线
+            re.match(r'^\[.*\]:.*', stripped_line)):  # 链接引用
+            if current_paragraph:
+                paragraphs.append(current_paragraph)
+                current_paragraph = ""
+            paragraphs.append(line)
+        elif stripped_line == "":
+            if current_paragraph:
+                paragraphs.append(current_paragraph)
+                current_paragraph = ""
+        else:
+            if current_paragraph:
+                current_paragraph += " " + stripped_line
+            else:
+                current_paragraph = stripped_line
+    
+    if current_paragraph:
+        paragraphs.append(current_paragraph)
+    
+    # 合并段落使其长度不超过max_length
+    merged_paragraphs = []
+    current_paragraph = ""
+
+    for para in paragraphs:
+        if len(current_paragraph) + len(para) + 2 <= max_length:  # +2 for potential '\n\n'
+            if current_paragraph:
+                current_paragraph += "\n\n" + para
+            else:
+                current_paragraph = para
+        else:
+            if current_paragraph:
+                merged_paragraphs.append(current_paragraph)
+            if len(para) > max_length:
+                # 如果单个段落超过最大长度，进行分割
+                words = para.split()
+                temp_para = ""
+                for word in words:
+                    if len(temp_para) + len(word) + 1 <= max_length:
+                        temp_para += " " + word if temp_para else word
+                    else:
+                        merged_paragraphs.append(temp_para)
+                        temp_para = word
+                if temp_para:
+                    merged_paragraphs.append(temp_para)
+            else:
+                current_paragraph = para
+
+    if current_paragraph:
+        merged_paragraphs.append(current_paragraph)
+
+    return {
+        "paragraphs": merged_paragraphs,
+        "totalParagraphCount": len(merged_paragraphs)
+    }
+```
 
 ### 分段分析 LLM 节点
 
@@ -21,54 +199,57 @@
 您将收到一个 XML 格式的文章段落信息，包含标题、来源、网址和段落内容等元素。文章段落内容将包含在 CDATA 部分中。
 
 ## 目标
-分析给定的 XML 格式段落信息，提取核心内容，并按指定格式输出分析结果。重点关注大模型、AIGC、AI 应用、AI 开发技术和框架（如提示词、RAG、WorkFlow、Agent、LangChain、Dify 等）。其次关注开发、产品、设计、影响、商业、创业等主题。使用{{#1719357159255.languageName#}}输出。
+分析给定的 XML 格式段落信息，提取核心内容、主要观点、潜在金句和相关标签，为后续全文汇总和检查步骤做准备。重点关注大模型、AIGC、AI 应用、AI 开发技术和框架（如提示词、RAG、WorkFlow、Agent、LangChain、Dify 等）。其次关注开发、产品、设计、影响、商业、创业等主题。使用{{#1719357159255.languageName#}}输出。
 
 ## 输出格式
 请使用{{#1719357159255.languageName#}}，按照以下 Markdown 格式输出该段落的分析结果：
 
 ```markdown
-### 段落摘要
-[全面概括本段落的核心内容，包括背景和问题说明、思考和策略、实施方案细节、重要的思考和结论等]
+### 段落核心内容
+[简明扼要地概括本段落的核心内容，50-80 字]
 
-### 段落标签（2-5个）
-[按以下顺序选择并列出标签：主题标签、技术/领域标签、应用/产品标签、公司/平台/名人标签、趋势标签]
+### 主要观点（2-3 个）
+- [观点 1]
+- [观点 2]
+- [观点 3]（如果有）
 
-### 段落主要观点（2-5个）
-- [观点1的核心陈述]：[简短解释]
-- [观点2的核心陈述]：[简短解释]
-- [观点3的核心陈述]：[简短解释]（如果有）
-- [观点4的核心陈述]：[简短解释]（如果有）
-- [观点5的核心陈述]：[简短解释]（如果有）
+### 潜在金句（2-3 句）
+> [金句 1]
+> [金句 2]
+> [金句 3]（如果有）
 
-### 潜在金句（1-3句）
-> [金句1]
-> [金句2]（如果有）
-> [金句3]（如果有）
+### 段落标签（2-4 个）
+[标签 1], [标签 2], [标签 3], [标签 4]
 ```
 
 ## 注意事项
 1. 仔细分析 XML 中的所有信息，包括标题、来源和网址，这些可能对理解内容背景很重要。
-2. 段落摘要应全面概括整个段落的核心内容，不限制字数，但要确保涵盖所有关键信息。
-3. 段落标签选择：
-   - 从标准化标签列表中选择 2-5 个最相关的标签。
-   - 优先选择能反映段落独特内容的标签，避免过于宽泛的标签。
-   - 按照以下顺序排列选择的标签：主题标签（人工智能、编程技术、产品、设计、商业、营销、科技、个人成长等）、技术/领域标签（提示词、智能体、Web 开发、UX 设计、数据分析、架构设计、案例分享、创业等）、应用/产品标签（ChatGPT、GitHub、Midjourney、TensorFlow、Dify、Coze 等）、公司/平台/名人标签（Google、OpenAI、LangChain、Spring、微软、马斯克、杨植麟等）、趋势标签（大语言模型、云原生、元宇宙、可持续发展等）。
+
+2. 段落核心内容应简洁明了，突出关键信息，控制在 50-80 字内。
+
+3. 主要观点应完整概括本段落的所有重要内容，不遗漏任何关键信息。
+
+4. 潜在金句应选择最能代表段落核心内容或最有洞见的句子。选择既能独立成句又能概括段落核心思想的句子。
+
+5. 段落标签选择：
+   - 从以下类别中选择 2-4 个最相关的标签：主题标签、技术/领域标签、应用/产品标签、公司/平台/名人标签、趋势标签。
+   - 优先选择能反映段落独特内容的标签，避免过于宽泛的描述。
    - 标签应反映段落的主要主题、涉及的技术或领域、相关的应用或产品、提到的公司/平台/名人，以及任何明显的趋势。
    - 选择的标签应该能够有效地组织和筛选文章，而不仅仅是关键词。
 
-4. 段落主要观点应完整概括本段落的所有重要内容。每个观点应包含一个核心陈述和一个简短解释，不遗漏任何关键信息。
-5. 潜在金句应选择最能代表段落核心内容或最有洞见的句子。选择既能独立成句又能概括段落核心思想的句子。
 6. 保持客观、专业的语言风格，避免使用过于口语化或情感化的表达。
+
 7. 确保分析准确反映段落内容，不添加推测。
-8. 排版要求：对于中文输出时，请在中文和英文、数字等符号之间增加空格。
-9. 确保输出的信息的语言与原文使用的语言一致。
+
+8. 确保输出的信息的语言与原文使用的语言一致。对于中文输出时，请在中文和英文、数字等符号之间增加空格。
 ````
 
 #### 分段分析输入
 
+````markdown
 请按照系统提示中的步骤和原则，对这段内容进行分析，并使用{{#1719357159255.languageName#}}输出指定格式的分析结果。
 
-````xml
+```xml
 <article>
   <title>{{#1719357159255.title#}}</title>
   <source>{{#1719357159255.sourceName#}}</source>
@@ -82,6 +263,7 @@
     </content>
   </paragraph>
 </article>
+```
 ````
 
 #### 分段分析 LLM 输出示例
@@ -116,41 +298,22 @@
 #### 综合汇总系统提示词
 
 ````markdown
-# 技术文章分析汇总专家
+# 技术文章分析专家
 
-## 背景与任务
-
-您是一位专业的技术文章分析汇总专家。您的任务是对给定的文章元数据和分段分析结果进行综合分析，提供全文的总体概述。您的分析将面向开发者、产品经理及相关技术人员，帮助他们快速理解文章的核心内容、技术要点和实际应用价值。特别关注AI相关领域，如大模型、AIGC、AI应用、AI开发技术和框架（如提示词、RAG、WorkFlow、Agent、LangChain、Dify等），但也应适当分析其他技术领域的文章。
+您是一位专业的技术文章分析专家。您的任务是对给定的文章元数据和分段分析结果进行综合分析，提供全文的总体概述。分析面向开发者、产品经理及技术人员，帮助快速理解文章核心内容、技术要点和应用价值。重点关注AI相关领域(如大模型、AIGC、AI应用、开发技术和框架等)，但也应适当分析其他技术领域。
 
 ## 分析指南
 
-1. 全面性与重点突出：
-   - 仔细审阅所有提供的信息，包括元数据和分段分析结果。
-   - 识别并提取文章的背景、关键点、论据、数据和结论。
-   - 特别关注创新观点、方法或发现，以及实际应用价值或潜在影响。
-
-2. 内容组织与表达：
-   - 将信息组织成逻辑结构，反映文章的整体脉络。
-   - 使用简洁、专业的语言表达核心内容，避免冗余。
-   - 保持客观中立，但突出特别有见地或创新的部分。
-
-3. 技术准确性与深度：
-   - 确保所有技术术语和概念的使用准确无误，特别是在AI相关领域。
-   - 平衡技术深度和可读性，确保分析结果既有专业价值，又易于理解。
-
-4. 标签与重点内容选择：
-   - 合并和去重各段落标签，选择3-10个最具代表性的标签。
-   - 标签顺序：主题、技术/领域、应用/产品、公司/平台/名人、趋势。
-   - 主要观点和文章金句按重要性排序，每类选择3-5个最重要的项目。
-
-5. 格式与语言要求：
-   - 确保输出语言与原文一致。
-   - 中文输出时，在中文和英文、数字等符号之间增加空格。
-   - 保持各部分（摘要、主要观点、金句等）之间的逻辑连贯性。
+1. 全面审阅所有信息，识别文章背景、关键点、论据、数据和结论。突出创新观点和实际应用价值。
+2. 将信息组织成逻辑结构，用简洁专业的语言表达核心内容。保持客观中立，突出有见地或创新的部分。
+3. 确保技术术语使用准确，平衡专业深度和可读性。
+4. 合并去重标签，选择3-10个最具代表性的。按主题、技术/领域、应用/产品、公司/平台/名人、趋势排序。
+5. 主要观点和金句按重要性排序，各选3-5个最重要项目。
+6. 输出语言与原文一致。中文时在中英文、数字间增加空格。保持各部分逻辑连贯。
 
 ## 输入格式
 
-输入将以XML格式提供，包含文章元数据（标题、来源、URL）和之前步骤生成的分段分析结果。
+XML格式，包含文章元数据和分段分析结果。
 
 ## 输出格式
 
@@ -158,36 +321,37 @@
 
 ```markdown
 ### 一句话总结
-[用一句话概括整篇文章的核心内容和主要结论]
+[核心内容和主要结论]
 
 ### 文章标签（3-10个）
-[列出合并后的关键标签，按重要性排序]
+[关键标签，按重要性排序]
 
 ### 摘要
-[提供文章的全面概述，包括背景信息、思考过程、实施方案细节、关键数据、核心内容和有启发的观点。不限制字数，确保全面性。]
+[全面概述，包括背景、思路、细节、数据、核心内容和启发性观点]
 
 ### 主要观点
-1. **[主要观点1的核心陈述]**（重要性：X/5）
-   - [简短解释]
-2. **[主要观点2的核心陈述]**（重要性：X/5）
-   - [简短解释]
-3. **[主要观点3的核心陈述]**（重要性：X/5）
-   - [简短解释]
-[如果有更多重要观点，可以继续添加，最多到5个]
+1. **[观点1]**
+   - [解释]
+2. **[观点2]**
+   - [解释]
+3. **[观点3]**
+   - [解释]
+[最多5个]
 
 ### 文章金句
-1. "[文章金句1]"
-   - 重要性：[解释为什么这句话重要或有启发性]
-2. "[文章金句2]"
-   - 重要性：[解释为什么这句话重要或有启发性]
-3. "[文章金句3]"
-   - 重要性：[解释为什么这句话重要或有启发性]
-[如果有更多重要金句，可以继续添加，最多到5个]
+1. "[金句1]"
+   - 重要性：[解释]
+2. "[金句2]"
+   - 重要性：[解释]
+3. "[金句3]"
+   - 重要性：[解释]
+[最多5个]
 ```
 ````
 
 #### 综合汇总输入
 
+````markdown
 请根据提供的文章元数据和分段分析结果，按照系统提示中的步骤和原则，对全文进行综合分析，并使用{{#1719357159255.languageName#}}输出指定格式的分析结果。
 
 ```xml
@@ -204,6 +368,7 @@
   </analysis>
 </article>
 ```
+````
 
 #### 综合汇总 LLM 输出示例
 
@@ -975,135 +1140,114 @@ XML格式，包含：
 
 ## 测试结果
 
-### 测试结果1（中文、AI相关、优质文章）
+### 测试结果1
 
-[AGI 大会上好评如潮的演讲：创新工场汪华解读 AI 应用爆发何时到来？](https://www.bestblogs.dev/en/article/777dd5)
+[微软中国 CTO 韦青：亲身经历大模型落地的体会与思考](https://www.bestblogs.dev/article/5fcd8b)
 
-![分析结果1](./flowImages/analysis_workflow_testcase1.png)
-
-### 测试结果2（英文、编程相关、优质文章）
-
-[First Input Delay (FID) vs. Interaction to Next Paint (INP) – Vercel](https://www.bestblogs.dev/article/eed72d)
-
-![分析结果2](./flowImages/analysis_workflow_testcase2.png)
+![分析结果1](./flowImages/analyze_article_flow_long_article_result3.png)
 
 输出 JSON
 
 ```json
 {
-  "oneSentenceSummary": "Interaction to Next Paint (INP) will replace First Input Delay (FID) in March 2024 as a new Core Web Vital, providing a more comprehensive measure of user interaction performance by considering input, processing, and presentational delays.",
-  "oneSentenceSummaryUpdateReason": "Added the full name of INP and emphasized its importance as a new Core Web Vital for better clarity and context.",
-
-  "summary": "As of March 2024, Interaction to Next Paint (INP) will replace First Input Delay (FID) as a Core Web Vital. FID measures the time between a user's first interaction with a web page and when the browser's main thread begins processing that interaction. However, FID has limitations, such as only considering the first input event and not accounting for the entire user interaction lifecycle. INP addresses these issues by measuring not only the input delay but also the processing delay and presentational delay, offering a more holistic view of user interaction performance.\n\nINP aggregates all user interactions throughout the page's lifetime and returns the worst-measured score, thus providing a comprehensive metric for web performance. Optimizing INP involves addressing various performance factors beyond event queuing times, such as efficiently executing event handlers, recalculating layouts, and painting updates to the screen. Developers should focus on profiling code to identify performance bottlenecks, using techniques like debouncing and throttling, code splitting, and reducing forced synchronous layouts. Tools like Vercel Speed Insights, PageSpeed Insights, and Lighthouse's Timespan feature can be used to measure INP, even before it becomes an officially stable metric.",
-  "summaryUpdateReason": "Included more specific optimization strategies and tools, highlighted INP's advantages over FID, and simplified redundant information for better readability and practicality.",
-
-  "domain": "软件编程",
-  "tags": ["Web Performance", "Core Web Vitals", "INP", "FID", "User Experience", "JavaScript Optimization", "Browser Performance", "Vercel", "Performance Optimization Tools", "Frontend Development"],
-  "tagsUpdateReason": "Added 'Performance Optimization Tools' and 'Frontend Development' to better classify and enhance the discoverability of the article.",
-
+  "oneSentenceSummary": "微软中国 CTO 韦青探讨了人工智能时代企业生存和发展之道，强调思想转型、数据质量和从“AI+”到“AI 化”转变的重要性，以此迎接智能机器带来的机遇与挑战。",
+  "oneSentenceSummaryUpdateReason": "在原先总结基础上，强调了\"AI 化\"这一概念，并补充说明了文章主题是关于人工智能时代企业生存和发展，使总结更加清晰完整。",
+  "summary": "微软中国 CTO 韦青在演讲中，结合自身在大模型落地过程中的经验和思考，深入探讨了人工智能时代企业生存和发展的关键问题。他指出，企业需要破除思想局限，重视数据质量，进行组织重构和流程再造，才能真正实现从“AI+”到“AI 化”的转变。韦青认为，人工智能不应仅仅被视为一种技术工具，而应深度融合到企业和社会的各个环节，从而带来更深层次的变革。他以马车与发动机的例子，生动地阐释了“AI 化”的必要性和重要性，并强调企业需要构建全新的架构和流程，才能充分释放人工智能的潜力。此外，韦青还分享了关于数字化转型、AI 应用和流程重构的深刻见解，强调数据的重要性及人与机器的协同作用，并鼓励企业家和开发者积极拥抱变化，迎接智能机器带来的机遇与挑战。",
+  "summaryUpdateReason": "在原先摘要基础上，增加了对“AI 化”概念的解释和重要性的强调，并补充了韦青关于人工智能与企业和社会关系的观点，以及他对企业家和开发者的建议，使摘要更加全面、深入、有吸引力。",
+  "domain": "人工智能",
+  "aiSubcategory": "AI开发",
+  "tags": ["大模型", "AIGC", "思想转型", "数据质量", "AI化", "数字化转型", "企业发展", "技术领导力", "流程重构"],
+  "tagsUpdateReason": "在原先标签基础上，增加了“技术领导力”和“流程重构”，以涵盖文章在企业战略和技术管理方面的应用，使标签更全面、准确。",
   "mainPoints": [
     {
-      "point": "INP will replace FID as a Core Web Vital in March 2024.",
-      "explanation": "INP provides a more comprehensive measure of user interaction performance by considering input, processing, and presentational delays."
+      "point": "企业需重视内部关键问题，破除思想局限，推动思想转型。",
+      "explanation": "在大模型和 AIGC 的冲击下，企业需要关注数据质量、人才问题等内部关键问题，并破除思想上的局限性，才能更好地适应新的技术环境，实现持续发展。"
     },
     {
-      "point": "FID's limitations and INP's broader scope.",
-      "explanation": "FID only measures the first input delay, ignoring subsequent interactions and visual feedback delays. INP addresses these shortcomings by measuring the entire interaction lifecycle."
+      "point": "人工智能发展需要从“AI+”向“AI 化”转变。",
+      "explanation": "“AI+”只是将 AI 视为一种工具，而“AI 化”则是将 AI 深度融合到企业和社会各个环节，从而引发更深层次的变革，释放更大的潜力。"
     },
     {
-      "point": "Optimizing INP involves multiple performance factors.",
-      "explanation": "Developers need to optimize not just for event queuing times but also for efficient event handler execution, layout recalculations, and painting updates."
+      "point": "数据质量和结构的优化是 AI 应用成功的关键。",
+      "explanation": "高质量、结构化的数据是 AI 算法有效学习和发挥作用的基础，企业需要重视数据治理和优化，才能提升 AI 应用的效率和效果。"
     },
     {
-      "point": "Tools for measuring INP.",
-      "explanation": "Tools like Vercel Speed Insights, PageSpeed Insights, and Lighthouse's Timespan feature can help measure INP before it becomes officially stable."
+      "point": "数字化转型需要整个生态系统的协同和匹配。",
+      "explanation": "数字化转型并非单一企业或部门的任务，需要产业链上下游的协同合作，才能构建完整的数字化生态系统，实现价值最大化。"
     },
     {
-      "point": "Specific optimization strategies for INP.",
-      "explanation": "Techniques such as debouncing and throttling, code splitting, and reducing forced synchronous layouts are essential for improving INP scores."
+      "point": "人与机器的协同是未来发展的重要方向。",
+      "explanation": "在人工智能时代，人与机器并非相互替代的关系，而是协同合作的关系，企业需要探索人机协同的新模式，才能更好地发挥各自优势，创造更大的价值。"
     }
   ],
-  "mainPointsUpdateReason": "Added a new point on specific optimization strategies to enhance the practical value of the analysis.",
-
+  "mainPointsUpdateReason": "在原先主要观点基础上，对每个观点进行了精简和提炼，并补充了解释说明，使其更加清晰易懂，并与文章内容更加贴合。",
   "keyQuotes": [
-    "Interaction to Next Paint (INP) will replace the First Input Delay (FID) as a new Core Web Vital.",
-    "INP measures not only the input delay but also the processing delay and presentational delay.",
-    "The INP score is measured when the user leaves the page by aggregating all interactions the user made with the page throughout the page's lifetime and returning the worst-measured score.",
-    "Optimizing for INP will not only result in more responsive and seamless interactions but also greatly enhance the overall user experience."
+    "观点就像<人体的排泄出口>，每个人都有。",
+    "人工智能就像一个孩子，是被数据培养出来的。",
+    "如果思想不改变，无论你拥有的新工具有多么先进，它又能改变什么呢？",
+    "少信一点，多验证一点\"，我们应该对所有像素构成的信息采取零信任的态度。",
+    "AIGC技术正以惊人的速度重塑着创新的边界。"
   ],
-  "keyQuotesUpdateReason": "Maintained original quotes as they accurately reflect the core insights and significance of the article.",
-
-  "score": 93,
-  "scoreUpdateReason": "No changes made to the score as the initial evaluation accurately reflects the article's quality and relevance.",
-
-  "improvements": "The primary improvements in this optimization include adding more specific optimization strategies and tools to the summary and main points, enhancing the practicality and actionable insights for readers. Additional tags were added to improve the article's discoverability. The one-sentence summary was refined to provide clearer context and emphasize the importance of INP as a new Core Web Vital."
+  "score": 91,
+  "scoreUpdateReason": "在原先评分基础上，将“实用性和创新性”维度增加1分，以更好地体现文章在“AI 化”这一新概念上的创新性，使评分更精准。",
+  "improvements": "1. 优化了一句话总结和摘要，使其更突出文章的核心观点和创新性。\n2. 增加了“技术领导力”和“流程重构”标签，以更好地反映文章的主题和受众。\n3. 对主要观点进行了精简和提炼，并补充了解释说明，使其更清晰易懂。\n4. 调整了评分，以更好地体现文章的价值。"
 }
 ```
 
-### 测试结果3（英文、电子、非相关文章）
+### 测试结果2
 
-[JLab's Flex Open Earbuds are a $50 version of the Bose Ultra Open](https://www.bestblogs.dev/article/2b7a59)
+[First Input Delay (FID) vs. Interaction to Next Paint (INP) – Vercel](https://www.bestblogs.dev/article/eed72d)
 
-
-![分析结果3](./flowImages/analysis_workflow_testcase3.png)
+![分析结果2](./flowImages/analyze_article_flow_long_article_result4.png)
 
 输出 JSON
 
 ```json
 {
-  "oneSentenceSummary": "JLab's Flex Open Earbuds offer a budget-friendly alternative to Bose's Ultra Open Earbuds, featuring enhanced durability and longer battery life for just $50.",
-  "oneSentenceSummaryUpdateReason": "Added 'enhanced durability and longer battery life' to increase information density and capture key product features.",
+  "oneSentenceSummary": "This article explains the transition from First Input Delay (FID) to Interaction to Next Paint (INP) as a Core Web Vital, emphasizing its broader scope in measuring and improving user interaction responsiveness.",
+  
+  "summary": "This Vercel News article announces the replacement of First Input Delay (FID) with Interaction to Next Paint (INP) as a Core Web Vital by March 2024. INP provides a more comprehensive view of user interaction responsiveness by considering not only the initial delay but also the processing and rendering time for each interaction. The article details the limitations of FID, focusing only on the first input and neglecting subsequent interactions. It then explains how INP addresses these limitations by measuring the input delay, processing delay, and presentational delay for all interactions throughout a page's lifespan, ultimately reporting the worst-case INP score. The article further provides practical optimization strategies for minimizing INP, including code profiling, debouncing and throttling event handlers, efficient code splitting, and leveraging React 18's concurrent features for improved performance. Lastly, it introduces tools like Vercel Speed Insights, PageSpeed Insights, and Lighthouse for effectively measuring INP.",
+  "summaryUpdateReason": "Added specifics about how React 18 can improve INP scores and provided more context on the overall content of the article.",
 
-  "summary": "The article introduces JLab's new Flex Open Earbuds, a budget-friendly alternative to Bose's Ultra Open Earbuds. While Bose's model costs $299, JLab offers a similar open-ear design for just $50, making it more accessible for users interested in the unique wear style. The Flex Open Earbuds clip onto the back of the ear and position a speaker outside the ear canal, allowing users to hear ambient sounds while listening to audio. Notably, JLab's model surpasses Bose's in durability with an IP55 rating and offers over seven hours of battery life, compared to the Bose model's IPX4 rating and shorter battery life. The Flex Open Earbuds feature 12mm drivers and a Bass Boost function, promising decent audio quality, though not on par with Bose. The article highlights JLab's established reputation for delivering sound quality and features at a low cost, and briefly discusses the competitive market landscape, making these earbuds a compelling option for those on a budget.",
-  "summaryUpdateReason": "Added more details about JLab's reputation and market positioning, and mentioned competitive market landscape for added depth.",
-
-  "domain": "商业科技",
-  "domainUpdateReason": "No update needed as the initial domain classification is accurate.",
-
-  "tags": ["Audio Technology", "Earbuds", "JLab", "Bose", "Consumer Electronics", "Budget Gadgets", "Product Comparison", "Bluetooth", "Tech Reviews", "Audio Quality", "Durability", "Battery Life", "Consumer Review"],
-  "tagsUpdateReason": "Added 'Durability', 'Battery Life', and 'Consumer Review' to better reflect the article's content and focus on consumer aspects.",
-
+  "domain": "软件工程",
+  
+  "aiSubcategory": "AI资讯",
+  
+  "tags": ["Web Performance", "Core Web Vitals", "User Interaction", "Browser Metrics", "Vercel", "JavaScript Optimization", "Real User Monitoring", "React 18", "Event Handling", "Layout Optimization", "User Experience"],
+  "tagsUpdateReason": "Added 'User Experience' tag as INP is directly related to enhancing user experience.",
+  
   "mainPoints": [
     {
-      "point": "Affordable Alternative",
-      "explanation": "JLab's Flex Open Earbuds provide a similar experience to Bose's Ultra Open Earbuds at a fraction of the cost ($50 vs. $299)."
+      "point": "Transition from FID to INP",
+      "explanation": "INP will replace FID as a Core Web Vital, offering a more comprehensive and user-centric approach to measuring web page interactivity."
     },
     {
-      "point": "Open-Ear Design",
-      "explanation": "Both models feature an open-ear design, allowing users to hear ambient sounds, enhancing safety and comfort."
+      "point": "Components of INP",
+      "explanation": "INP measures input delay, processing delay, and presentational delay, capturing the entire lifecycle of a user interaction and providing a holistic view of its performance."
     },
     {
-      "point": "Durability and Battery Life",
-      "explanation": "JLab's earbuds offer better durability (IP55 rating) and longer battery life (over seven hours) compared to Bose's IPX4 rating and shorter battery life."
+      "point": "Optimization Strategies for INP",
+      "explanation": " Developers can optimize INP by using techniques like code profiling, debouncing, throttling, efficient event handling, and leveraging React 18's concurrent features. These strategies ensure smoother and more responsive user interactions."
     },
     {
-      "point": "Audio Quality",
-      "explanation": "JLab employs 12mm drivers and a Bass Boost feature, providing satisfactory audio quality for most users, though not matching Bose's premium sound."
+      "point": "Tools for Measuring INP",
+      "explanation": " Tools like Vercel Speed Insights, PageSpeed Insights, and Lighthouse can effectively measure INP, allowing developers to track and analyze real-user performance data."
     },
     {
-      "point": "Ease of Use",
-      "explanation": "Features like multipoint Bluetooth and Google Fast Pair make the Flex Open Earbuds user-friendly and versatile for different devices."
-    },
-    {
-      "point": "User Experience and Comfort",
-      "explanation": "The Flex Open Earbuds are designed to be comfortable for prolonged use, clipping onto the back of the ear and positioning a speaker outside the ear canal."
+      "point": "Impact on User Experience",
+      "explanation": "Optimizing for INP directly enhances user experience by reducing perceived latency and creating a more responsive and enjoyable browsing experience."
     }
   ],
-  "mainPointsUpdateReason": "Added a point on 'User Experience and Comfort' to provide more information on user experience and appeal to potential users.",
-
+  "mainPointsUpdateReason": "Added a new main point about the impact of INP on User Experience to emphasize its importance.",
+  
   "keyQuotes": [
-    "JLab's Flex Open Earbuds offer the same basic premise as the Bose model.",
-    "The $50 JLab version is IP55 rated where the Bose model is IPX4.",
-    "The Flex Open Earbuds will also last over seven hours on a charge.",
-    "JLab's reputation is solid enough that these will probably get the job done audio-wise.",
-    "You're saving $250 in the process.",
-    "The open-ear design allows for a safer and more comfortable listening experience."
+    "As of March 2024, Interaction to Next Paint (INP) will replace the First Input Delay (FID) as a new Core Web Vital.",
+    "With INP, we no longer have to focus solely on optimizing event queuing times and main thread availability, as was the case with FID.",
+    "Optimizing for INP will not only result in more responsive and seamless interactions but also greatly enhance the overall user experience."
   ],
-  "keyQuotesUpdateReason": "Added a quote about the open-ear design to emphasize user safety and comfort, which is a significant selling point.",
-
-  "score": 62,
-  "scoreUpdateReason": "Adjusted the score based on reflection feedback. Increased 'Content Depth' to 15/30 and 'Relevance' to 20/30. Increased 'Practicality and Innovation' to 12/20 for providing practical product choice advice. Final adjusted score reflects these changes.",
-
-  "improvements": "Enhanced the one-sentence summary to include key product features. Added more details about JLab's reputation and market positioning in the summary. Included tags for 'Durability', 'Battery Life', and 'Consumer Review' to better reflect article content. Added a main point on 'User Experience and Comfort' to provide more comprehensive information. Included a key quote on the open-ear design to emphasize user safety and comfort. Adjusted the score to more accurately reflect the article's content depth, relevance, and practical value."
+  
+  "score": 87,
+  "scoreUpdateReason": "Increased the score by 1 point in the 'Practicality and Innovation' category due to the article's introduction of the new INP metric and its practical optimization strategies.",
+  "improvements": "The optimization process involved several key improvements:\n- Added specifics about how React 18 can improve INP scores in the summary.\n- Included a new main point highlighting the impact of INP on User Experience.\n- Added the 'User Experience' tag to reflect the article's focus.\n- Increased the score by 1 point in the 'Practicality and Innovation' category due to the article's introduction of the new INP metric."
 }
 ```
