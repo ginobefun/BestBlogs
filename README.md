@@ -27,7 +27,9 @@ https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml
 
 ## 实现原理
 
-![Main Flow](./images/main_flow.png)
+[BestBlogs.dev 基于 Dify Workflow 的文章智能分析实践](./flows/Dify/BestBlogs.dev%20基于%20Dify%20Workflow%20的文章智能分析实践.md)
+
+![Main Flow](./flows/Dify/flowImages/bestblogs_main_flow.png)
 
 1. 文章爬取流程：基于 RSS 协议，爬取所有订阅源的文章信息，包括标题、链接、发布时间等，通过链接和无头浏览器爬取文章内容。通过订阅源上定义的文章正文选择器等提取正文，并对正文的 HTML、图片等进行处理，放入待处理文章列表。
 2. 文章初评流程：通过语言、文章内容等特征，对文章进行初次评分，剔除低质量文章，减少后续步骤处理。使用 Dify Workflow 项目进行文章初评，详细说明参见 [BestBlogs 文章初评流程](./flows/Dify/ArticleFIlterFlow.md)
