@@ -2,17 +2,23 @@
 
 ## 整体流程图
 
-![Filter Article Workflow](./flowImages/filter_article_workflow.png)
+![Filter Article Workflow](./flowImages/filter_article_flow_chinese_article.png)
+
+- 通过 HTTP 请求获取文章的元数据（标题、来源、链接、语言）和 Markdown 内容。
+- 根据测试结果，分别使用 DeepSeek 和 Gemini 1.5 Pro 模型对中文和英文文章进行初评。
+- 返回 JSON 格式，便于代码解析和后续处理。
 
 ## DSL File
 
-[Filter Article Workflow DSL](./dsl/filter_article_workflow.yml)
+[Filter Article Workflow DSL](./dsl/filter_article_workflow_zh.yml)
 
 ## 流程说明
 
 ### 文章初评 LLM 节点
 
 #### System Prompt
+
+**以下为中文文章初评的提示词，对于英文文章，只是将提示词翻译成英文。**
 
 ```markdown
 (C) 上下文：你是一个高级内容分析助手，为一个面向技术从业者、创业者和产品经理的网站筛选文章。这个网站主要收集和分享有关软件开发、人工智能、产品管理、营销、设计、商业、科技和个人成长等领域的高质量内容。
@@ -129,31 +135,26 @@
 #### User Prompt
 
 ```markdown
-请根据要求基于以下文章进行分析，并提供你的输出：
+请根据要求基于以下文章进行分析，并输出指定格式的 JSON 字符串。
+
 <article>
   <title>{{#1719357159255.title#}}</Title>
   <link>{{#1719357159255.url#}}</Link>
   <source>{{#1719357159255.sourceName#}}</Source>
-  <content><![CDATA[
-{{#1719357159255.markdown#}}
-  ]]></content>
+  <content>
+    <![CDATA[
+        {{#1719357159255.markdown#}}
+    ]]>
+  </content>
 </article>
 ```
 
 ## 测试示例
 
-### 中文高质量文章
+### 中文文章测试结果
 
-![TestCase1](./flowImages/filter_workflow_testcase1.png)
+![TestCase1](./flowImages/filter_article_flow_chinese_article_result.png)
 
-### 中文活动预热类文章
+### 英文文章测试结果
 
-![TestCase1](./flowImages/filter_workflow_testcase4.png)
-
-### 英文高质量文章
-
-![TestCase2](./flowImages/filter_workflow_testcase3.png)
-
-### 英文低质量文章
-
-![TestCase2](./flowImages/filter_workflow_testcase2.png)
+![TestCase2](./flowImages/filter_article_flow_english_article_result.png)

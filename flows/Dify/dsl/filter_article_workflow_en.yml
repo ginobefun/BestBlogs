@@ -1,0 +1,561 @@
+app:
+  description: Leveraging LLM to conduct preliminary assessments of articles, determining
+    whether further evaluation is necessary.
+  icon: helicopter
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: BestBlogs Article Initial Review Workflow
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1718352852007-source-1719356422842-target
+      source: '1718352852007'
+      sourceHandle: source
+      target: '1719356422842'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1719356422842-source-1719357159255-target
+      source: '1719356422842'
+      sourceHandle: source
+      target: '1719357159255'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1718355814693-source-1718356146046-target
+      source: '1718355814693'
+      sourceHandle: source
+      target: '1718356146046'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: if-else
+      id: 1719357159255-source-1720858070182-target
+      source: '1719357159255'
+      sourceHandle: source
+      target: '1720858070182'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1720858070182-true-1718355814693-target
+      source: '1720858070182'
+      sourceHandle: 'true'
+      target: '1718355814693'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1720858070182-false-17208581506250-target
+      source: '1720858070182'
+      sourceHandle: 'false'
+      target: '17208581506250'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 17208581506250-source-17208581527480-target
+      source: '17208581506250'
+      sourceHandle: source
+      target: '17208581527480'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: Input article ID
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Article ID
+          max_length: 20
+          options: []
+          required: true
+          type: text-input
+          variable: input_article_id
+      height: 120
+      id: '1718352852007'
+      position:
+        x: 30
+        y: 282
+      positionAbsolute:
+        x: 30
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1718355718469'
+          - output
+        desc: Use LLM for initial article evaluation to determine if further reading
+          is warranted.
+        model:
+          completion_params:
+            temperature: 0.3
+          mode: chat
+          name: deepseek-chat
+          provider: deepseek
+        prompt_template:
+        - id: 2e9ab6fb-4504-4891-95a1-39dff0e8ed6d
+          role: system
+          text: "(C) \u4E0A\u4E0B\u6587\uFF1A\u4F60\u662F\u4E00\u4E2A\u9AD8\u7EA7\u5185\
+            \u5BB9\u5206\u6790\u52A9\u624B\uFF0C\u4E3A\u4E00\u4E2A\u9762\u5411\u6280\
+            \u672F\u4ECE\u4E1A\u8005\u3001\u521B\u4E1A\u8005\u548C\u4EA7\u54C1\u7ECF\
+            \u7406\u7684\u7F51\u7AD9\u7B5B\u9009\u6587\u7AE0\u3002\u8FD9\u4E2A\u7F51\
+            \u7AD9\u4E3B\u8981\u6536\u96C6\u548C\u5206\u4EAB\u6709\u5173\u8F6F\u4EF6\
+            \u5F00\u53D1\u3001\u4EBA\u5DE5\u667A\u80FD\u3001\u4EA7\u54C1\u7BA1\u7406\
+            \u3001\u8425\u9500\u3001\u8BBE\u8BA1\u3001\u5546\u4E1A\u3001\u79D1\u6280\
+            \u548C\u4E2A\u4EBA\u6210\u957F\u7B49\u9886\u57DF\u7684\u9AD8\u8D28\u91CF\
+            \u5185\u5BB9\u3002\n\n(O) \u76EE\u6807\uFF1A\u4F60\u7684\u4EFB\u52A1\u662F\
+            \u5FEB\u901F\u5206\u6790\u7ED9\u5B9A\u7684\u6587\u7AE0\uFF0C\u5E76\u51B3\
+            \u5B9A\u662F\u5426\u5E94\u8BE5\u5FFD\u7565\u8FD9\u7BC7\u6587\u7AE0\u3002\
+            \u4F60\u9700\u8981\u8BC6\u522B\u51FA\u4F4E\u4EF7\u503C\u3001\u4E0D\u76F8\
+            \u5173\u6216\u8D28\u91CF\u8F83\u5DEE\u7684\u5185\u5BB9\uFF0C\u540C\u65F6\
+            \u786E\u4FDD\u4E0D\u4F1A\u9519\u8FC7\u6F5C\u5728\u7684\u9AD8\u4EF7\u503C\
+            \u6587\u7AE0\u3002\n\n(S) \u98CE\u683C\uFF1A\u8BF7\u4EE5\u4E00\u4E2A\u7ECF\
+            \u9A8C\u4E30\u5BCC\u7684\u5185\u5BB9\u7B56\u5C55\u4EBA\u7684\u98CE\u683C\
+            \u6765\u5206\u6790\u548C\u8BC4\u5224\u6587\u7AE0\u3002\u4F60\u5E94\u8BE5\
+            \u7B80\u6D01\u660E\u4E86\uFF0C\u76F4\u51FB\u8981\u70B9\uFF0C\u5E76\u80FD\
+            \u591F\u5FEB\u901F\u8BC6\u522B\u51FA\u6587\u7AE0\u7684\u6838\u5FC3\u4EF7\
+            \u503C\u3002\n\n(T) \u8BED\u6C14\uFF1A\u4FDD\u6301\u4E13\u4E1A\u3001\u5BA2\
+            \u89C2\u7684\u8BED\u6C14\u3002\u4F60\u7684\u5206\u6790\u5E94\u8BE5\u57FA\
+            \u4E8E\u4E8B\u5B9E\u548C\u660E\u786E\u7684\u6807\u51C6\uFF0C\u800C\u4E0D\
+            \u662F\u4E3B\u89C2\u611F\u53D7\u3002\n\n(A) \u53D7\u4F17\uFF1A\u4F60\u7684\
+            \u5206\u6790\u7ED3\u679C\u5C06\u88AB\u7F51\u7AD9\u7684\u5185\u5BB9\u7BA1\
+            \u7406\u56E2\u961F\u4F7F\u7528\uFF0C\u4ED6\u4EEC\u9700\u8981\u5FEB\u901F\
+            \u51B3\u7B56\u662F\u5426\u5C06\u6587\u7AE0\u7EB3\u5165\u7F51\u7AD9\u7684\
+            \u5185\u5BB9\u5E93\u3002\n\n(R) \u54CD\u5E94\uFF1A\u8BF7\u4F7F\u7528\u4E2D\
+            \u6587\u4EE5JSON\u683C\u5F0F\u8F93\u51FA\u4F60\u7684\u5206\u6790\u7ED3\
+            \u679C\uFF0C\u5305\u62EC\u4EE5\u4E0B\u5B57\u6BB5\uFF1A\n- ignore: \u5E03\
+            \u5C14\u503C\uFF0C\u8868\u793A\u662F\u5426\u5E94\u8BE5\u5FFD\u7565\u8FD9\
+            \u7BC7\u6587\u7AE0\n- reason: \u5B57\u7B26\u4E32\uFF0C\u7B80\u8981\u8BF4\
+            \u660E\u505A\u51FA\u8BE5\u5224\u65AD\u7684\u4E3B\u8981\u539F\u56E0\uFF08\
+            \u965030-50\u5B57\uFF09\n- value: \u75280-5\u7684\u6574\u6570\u8BC4\u5206\
+            \u8868\u793A\u6587\u7AE0\u7684\u4EF7\u503C\uFF080\u8868\u793A\u5E94\u88AB\
+            \u5FFD\u7565\uFF0C1-5\u8868\u793A\u4EF7\u503C\u7B49\u7EA7\uFF09\n- summary:\
+            \ \u7528\u4E00\u53E5\u8BDD\u603B\u7ED3\u6587\u7AE0\u7684\u4E3B\u8981\u5185\
+            \u5BB9\n- language: \u5B57\u7B26\u4E32\uFF0C\u8868\u793A\u6587\u7AE0\u7684\
+            \u8BED\u8A00\u7C7B\u578B\uFF08\u5982\"\u4E2D\u6587\"\u3001\"\u82F1\u6587\
+            \"\u3001\"\u65E5\u6587\"\u7B49\uFF09\n\n\u8BF7\u6839\u636E\u4EE5\u4E0B\
+            \u6807\u51C6\u5206\u6790\u6587\u7AE0\uFF1A\n\n1. \u8BED\u8A00\uFF1A\u662F\
+            \u5426\u4E3A\u4E2D\u6587\u6216\u82F1\u6587\u3002\u5982\u679C\u4E0D\u662F\
+            \uFF0C\u76F4\u63A5\u5FFD\u7565\u3002\n2. \u5185\u5BB9\u7C7B\u578B\uFF1A\
+            \u662F\u5426\u4E3A\u5B9E\u8D28\u6027\u5185\u5BB9\uFF0C\u800C\u975E\u7B80\
+            \u5355\u7684\u516C\u544A\u3001\u6D3B\u52A8\u9884\u70ED\u3001\u5E7F\u544A\
+            \u6216\u95F2\u804A\u3002\n3. \u4E3B\u9898\u76F8\u5173\u6027\uFF1A\u662F\
+            \u5426\u4E0E\u76EE\u6807\u9886\u57DF\u76F8\u5173\uFF08\u8F6F\u4EF6\u5F00\
+            \u53D1\u3001\u4EBA\u5DE5\u667A\u80FD\u3001\u4EA7\u54C1\u7BA1\u7406\u3001\
+            \u8425\u9500\u3001\u8BBE\u8BA1\u3001\u5546\u4E1A\u3001\u79D1\u6280\u548C\
+            \u4E2A\u4EBA\u6210\u957F\u7B49\uFF09\u3002\n4. \u8D28\u91CF\u548C\u4EF7\
+            \u503C\uFF1A \n   - \u5185\u5BB9\u6DF1\u5EA6\uFF1A\u662F\u5426\u63D0\u4F9B\
+            \u6DF1\u5165\u89C1\u89E3\u3001\u72EC\u7279\u89C2\u70B9\u6216\u6709\u4EF7\
+            \u503C\u4FE1\u606F\n   - \u6280\u672F\u6DF1\u5EA6\uFF1A\u5BF9\u4E8E\u6280\
+            \u672F\u6587\u7AE0\uFF0C\u8BC4\u4F30\u5176\u4E13\u4E1A\u7A0B\u5EA6\u548C\
+            \u6280\u672F\u7EC6\u8282\n   - \u5B9E\u7528\u6027\uFF1A\u662F\u5426\u80FD\
+            \u542F\u53D1\u601D\u8003\u6216\u63D0\u4F9B\u5B9E\u7528\u89E3\u51B3\u65B9\
+            \u6848\n\n\u8BC4\u5206\u6807\u51C6\uFF1A\n- 0\uFF1A\u5E94\u88AB\u5FFD\u7565\
+            \u7684\u6587\u7AE0\uFF08\u975E\u4E2D\u82F1\u6587\u6216\u5B8C\u5168\u4E0D\
+            \u76F8\u5173\uFF09\n- 1\uFF1A\u4F4E\u8D28\u91CF\u6216\u57FA\u672C\u4E0D\
+            \u76F8\u5173\uFF0C\u4E0D\u63A8\u8350\u9605\u8BFB\n- 2\uFF1A\u8D28\u91CF\
+            \u8F83\u4F4E\u6216\u76F8\u5173\u6027\u8F83\u5F31\uFF0C\u4F46\u53EF\u80FD\
+            \u6709\u5C11\u91CF\u53C2\u8003\u4EF7\u503C\n- 3\uFF1A\u4E00\u822C\u8D28\
+            \u91CF\uFF0C\u5185\u5BB9\u76F8\u5173\u4E14\u6709\u4E00\u5B9A\u6DF1\u5EA6\
+            \uFF0C\u4F46\u7F3A\u4E4F\u72EC\u7279\u89C1\u89E3\u6216\u521B\u65B0\u6027\
+            \uFF0C\u503C\u5F97\u4E00\u8BFB\n- 4\uFF1A\u9AD8\u8D28\u91CF\uFF0C\u63D0\
+            \u4F9B\u4E86\u6709\u4EF7\u503C\u7684\u89C1\u89E3\u6216\u5B9E\u7528\u4FE1\
+            \u606F\uFF0C\u63A8\u8350\u9605\u8BFB\n- 5\uFF1A\u6781\u9AD8\u8D28\u91CF\
+            \uFF0C\u63D0\u4F9B\u4E86\u6DF1\u5EA6\u5206\u6790\u3001\u521B\u65B0\u601D\
+            \u8DEF\u6216\u91CD\u8981\u89E3\u51B3\u65B9\u6848\uFF0C\u5F3A\u70C8\u63A8\
+            \u8350\u9605\u8BFB\n\n\u6CE8\u610F\uFF1A\u5BF9\u4E8E\u660E\u663E\u4E0D\
+            \u76F8\u5173\u6216\u4F4E\u8D28\u91CF\u7684\u6587\u7AE0\uFF0C\u53EF\u4EE5\
+            \u4EC5\u57FA\u4E8E\u6807\u9898\u548C\u5F00\u5934\u90E8\u5206\u505A\u51FA\
+            \u5224\u65AD\uFF0C\u65E0\u9700\u9605\u8BFB\u5168\u6587\u3002\n\n\u6587\
+            \u7AE0\u7684\u8F93\u5165\u683C\u5F0F\u4E3A XML\uFF0C\u5305\u62EC\u4EE5\
+            \u4E0B\u5B57\u6BB5\uFF1A\n- `<title>`: \u6587\u7AE0\u7684\u6807\u9898\n\
+            - `<link>`: \u6587\u7AE0\u7684\u94FE\u63A5\n- `<source>`: \u6587\u7AE0\
+            \u7684\u6765\u6E90\n- `<content>`: \u6587\u7AE0\u7684\u5185\u5BB9\uFF0C\
+            \u4F7F\u7528 Markdown \u683C\u5F0F\u5E76\u5305\u542B\u5728 CDATA \u4E2D\
+            \n\n\u4EE5\u4E0B\u662F\u4E00\u4E9B\u8F93\u51FA\u793A\u4F8B\uFF0C\u4F9B\
+            \u4F60\u53C2\u8003\uFF1A\n\n\u793A\u4F8B1\uFF08\u9AD8\u4EF7\u503C\u7684\
+            \u6280\u672F\u6587\u7AE0\uFF09\uFF1A\n{\n  \"ignore\": false,\n  \"reason\"\
+            : \"\u6DF1\u5165\u63A2\u8BA8\u673A\u5668\u5B66\u4E60\u5728\u63A8\u8350\
+            \u7CFB\u7EDF\u4E2D\u7684\u5E94\u7528\uFF0C\u6709\u8BE6\u7EC6\u7B97\u6CD5\
+            \u8BF4\u660E\u548C\u4EE3\u7801\u793A\u4F8B\",\n  \"value\": 5,\n  \"summary\"\
+            : \"\u8BE6\u7EC6\u4ECB\u7ECD\u534F\u540C\u8FC7\u6EE4\u7B97\u6CD5\u6784\
+            \u5EFA\u63A8\u8350\u7CFB\u7EDF\uFF0C\u5305\u62EC\u7406\u8BBA\u89E3\u91CA\
+            \u548C\u5B9E\u73B0\u7EC6\u8282\",\n  \"language\": \"\u82F1\u6587\"\n\
+            }\n\n\u793A\u4F8B2\uFF08\u9AD8\u8D28\u91CF\u7684\u8BBE\u8BA1\u7C7B\u6587\
+            \u7AE0\uFF09\uFF1A\n{\n  \"ignore\": false,\n  \"reason\": \"\u5C55\u793A\
+            \u4F18\u79C0UI\u8BBE\u8BA1\u6848\u4F8B\uFF0C\u5206\u6790\u8BBE\u8BA1\u7279\
+            \u70B9\u548C\u7528\u6237\u4F53\u9A8C\u8003\u8651\",\n  \"value\": 4,\n\
+            \  \"summary\": \"\u5C55\u793A10\u4E2A\u521B\u65B0\u79FB\u52A8\u5E94\u7528\
+            UI\u8BBE\u8BA1\uFF0C\u5206\u6790\u6BCF\u4E2A\u8BBE\u8BA1\u7684\u7279\u70B9\
+            \u548C\u7528\u6237\u4F53\u9A8C\",\n  \"language\": \"\u82F1\u6587\"\n\
+            }\n\n\u793A\u4F8B3\uFF08\u76F8\u5173\u4E14\u8D28\u91CF\u4E00\u822C\u7684\
+            \u6587\u7AE0\uFF09\uFF1A\n{\n  \"ignore\": false,\n  \"reason\": \"\u8BA8\
+            \u8BBA\u8FDC\u7A0B\u5DE5\u4F5C\u5229\u5F0A\uFF0C\u5185\u5BB9\u76F8\u5173\
+            \u4F46\u7F3A\u4E4F\u6DF1\u5EA6\u89C1\u89E3\",\n  \"value\": 3,\n  \"summary\"\
+            : \"\u63A2\u8BA8\u8FDC\u7A0B\u5DE5\u4F5C\u5BF9\u751F\u4EA7\u529B\u548C\
+            \u534F\u4F5C\u7684\u5F71\u54CD\uFF0C\u5217\u4E3E\u5E38\u89C1\u6311\u6218\
+            \u548C\u89E3\u51B3\u65B9\u6848\",\n  \"language\": \"\u4E2D\u6587\"\n\
+            }\n\n\u793A\u4F8B4\uFF08\u8FC7\u5EA6\u8425\u9500\u503E\u5411\u7684\u6587\
+            \u7AE0\uFF09\uFF1A\n{\n  \"ignore\": true,\n  \"reason\": \"\u8FC7\u5EA6\
+            \u8425\u9500\uFF0C\u7F3A\u4E4F\u5B9E\u8D28\u5185\u5BB9\u548C\u72EC\u7279\
+            \u89C1\u89E3\",\n  \"value\": 0,\n  \"summary\": \"\u5BA3\u4F20\u65B0\u9879\
+            \u76EE\u7BA1\u7406\u5DE5\u5177\uFF0C\u7F3A\u4E4F\u8BE6\u7EC6\u529F\u80FD\
+            \u5206\u6790\u548C\u7528\u6237\u6848\u4F8B\",\n  \"language\": \"\u4E2D\
+            \u6587\"\n}\n\n\u793A\u4F8B5\uFF08\u8FB9\u754C\u6848\u4F8B\uFF1A\u76F8\
+            \u5173\u4F46\u4E0D\u591F\u4E13\u4E1A\u7684\u6587\u7AE0\uFF09\uFF1A\n{\n\
+            \  \"ignore\": false,\n  \"reason\": \"\u6280\u672F\u76F8\u5173\u4F46\u504F\
+            \u5411\u6D88\u8D39\u8005\u5EFA\u8BAE\uFF0C\u5BF9\u90E8\u5206\u8BFB\u8005\
+            \u6709\u53C2\u8003\u4EF7\u503C\",\n  \"value\": 2,\n  \"summary\": \"\u8BC4\
+            \u6D4B2024\u5E745\u6B3E\u70ED\u95E8\u7535\u8111\u9F20\u6807\uFF0C\u6BD4\
+            \u8F83\u7CBE\u51C6\u5EA6\u3001\u8212\u9002\u6027\u548C\u4EF7\u683C\",\n\
+            \  \"language\": \"\u4E2D\u6587\"\n}\n\n\u793A\u4F8B6\uFF08\u4F4E\u4EF7\
+            \u503C\u7684\u6587\u7AE0\uFF09\uFF1A\n{\n  \"ignore\": true,\n  \"reason\"\
+            : \"\u7B80\u5355\u4EA7\u54C1\u53D1\u5E03\u901A\u77E5\uFF0C\u7F3A\u4E4F\
+            \u5B9E\u8D28\u5185\u5BB9\",\n  \"value\": 0,\n  \"summary\": \"\u67D0\u516C\
+            \u53F8\u5C06\u53D1\u5E03\u65B0\u6B3E\u667A\u80FD\u624B\u673A\uFF0C\u4EC5\
+            \u5305\u542B\u53D1\u5E03\u65F6\u95F4\u548C\u5730\u70B9\u4FE1\u606F\",\n\
+            \  \"language\": \"\u4E2D\u6587\"\n}\n\n\u793A\u4F8B7\uFF08\u975E\u76EE\
+            \u6807\u8BED\u8A00\u7684\u6587\u7AE0\uFF09\uFF1A\n{\n  \"ignore\": true,\n\
+            \  \"reason\": \"\u6587\u7AE0\u4E0D\u662F\u4E2D\u6587\u6216\u82F1\u6587\
+            \",\n  \"value\": 0,\n  \"summary\": \"\u6587\u7AE0\u8BED\u8A00\u4E0D\u7B26\
+            \u5408\u8981\u6C42\",\n  \"language\": \"\u65E5\u6587\"\n}\n\n\u8BF7\u6CE8\
+            \u610F\uFF0C\u5373\u4F7F\u5BF9\u4E8E\u5EFA\u8BAE\u5FFD\u7565\u7684\u6587\
+            \u7AE0\uFF0C\u4E5F\u8981\u63D0\u4F9B value\u3001summary \u548C language\
+            \ \u5B57\u6BB5\u3002value \u5E94\u8BE5\u53CD\u6620\u6587\u7AE0\u5BF9\u76EE\
+            \u6807\u53D7\u4F17\u7684\u6F5C\u5728\u4EF7\u503C\uFF0C\u5373\u4F7F\u8FD9\
+            \u4E2A\u503C\u5F88\u4F4E\u6216\u4E3A0\u3002summary \u5E94\u8BE5\u7B80\u8981\
+            \u6982\u62EC\u6587\u7AE0\u7684\u4E3B\u8981\u5185\u5BB9\uFF0C\u65E0\u8BBA\
+            \u662F\u5426\u76F8\u5173\u3002language \u5B57\u6BB5\u5E94\u59CB\u7EC8\u6307\
+            \u660E\u6587\u7AE0\u7684\u8BED\u8A00\u7C7B\u578B\u3002"
+        - id: cde18505-a2fe-45a5-a765-40dbe1c10c0f
+          role: user
+          text: "\u8BF7\u6839\u636E\u8981\u6C42\u57FA\u4E8E\u4EE5\u4E0B\u6587\u7AE0\
+            \u8FDB\u884C\u5206\u6790\uFF0C\u5E76\u8F93\u51FA\u6307\u5B9A\u683C\u5F0F\
+            \u7684 JSON \u5B57\u7B26\u4E32\u3002\n\n<article>\n  <title>{{#1719357159255.title#}}</Title>\n\
+            \  <link>{{#1719357159255.url#}}</Link>\n  <source>{{#1719357159255.sourceName#}}</Source>\n\
+            \  <content>\n<![CDATA[\n{{#1719357159255.markdown#}}\n  ]]></content>\n\
+            </article>"
+        selected: false
+        title: Review Chinese Article
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 164
+      id: '1718355814693'
+      position:
+        x: 1246
+        y: 282
+      positionAbsolute:
+        x: 1246
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: Output the result in JSON format
+        outputs:
+        - value_selector:
+          - '1718355814693'
+          - text
+          variable: analysisResult
+        selected: false
+        title: Chinese Article Result
+        type: end
+      height: 120
+      id: '1718356146046'
+      position:
+        x: 1550
+        y: 282
+      positionAbsolute:
+        x: 1550
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: ''
+          type: none
+        desc: Call HTTP API to fetch article content.
+        headers: ''
+        method: get
+        params: 'id:{{#1718352852007.input_article_id#}}
+
+          language:en'
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Retrieve Article Information
+        type: http-request
+        url: https://api.bestblogs.dev/api/resource/markdown
+        variables: []
+      height: 154
+      id: '1719356422842'
+      position:
+        x: 334
+        y: 282
+      positionAbsolute:
+        x: 334
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(json_body):\n    \"\"\"\n    Process the JSON\
+          \ string returned by a REST request.\n    \n    If the input is an empty\
+          \ string or JSON parsing fails, return {'success': 'false'}.\n    If JSON\
+          \ string parsing succeeds and 'success' is 'true', return a dictionary with\
+          \ specified key-value pairs.\n    Otherwise, return {'success': 'false'}.\n\
+          \n    Parameters:\n        json_body (str): A string containing JSON data.\n\
+          \    \n    Returns:\n        dict: A dictionary containing the 'success'\
+          \ key and specified data key-value pairs.\n    \"\"\"\n    \n    result\
+          \ = {'success': 'false'}\n    \n    if not json_body:\n        return result\n\
+          \n    try:\n        data = json.loads(json_body)\n        if isinstance(data,\
+          \ dict) and data.get('success') == 'true':\n            result['success']\
+          \ = 'true'\n            result['markdown'] = data.get('markdown', '')\n\
+          \            result['sourceName'] = data.get('sourceName', '')\n       \
+          \     result['title'] = data.get('title', '')\n            result['languageName']\
+          \ = data.get('languageName', '')\n            result['url'] = data.get('url',\
+          \ '')\n        return result\n    except json.JSONDecodeError:\n       \
+          \ return result\n    except Exception:\n        return result"
+        code_language: python3
+        desc: Parse response and extract article content.
+        outputs:
+          languageName:
+            children: null
+            type: string
+          markdown:
+            children: null
+            type: string
+          sourceName:
+            children: null
+            type: string
+          success:
+            children: null
+            type: string
+          title:
+            children: null
+            type: string
+          url:
+            children: null
+            type: string
+        selected: false
+        title: Parse article information
+        type: code
+        variables:
+        - value_selector:
+          - '1719356422842'
+          - body
+          variable: json_body
+      height: 102
+      id: '1719357159255'
+      position:
+        x: 638
+        y: 282
+      positionAbsolute:
+        x: 638
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        conditions:
+        - comparison_operator: is
+          id: '1720858075698'
+          value: Chinese
+          variable_selector:
+          - '1719357159255'
+          - languageName
+        desc: ''
+        logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 126
+      id: '1720858070182'
+      position:
+        x: 942
+        y: 282
+      positionAbsolute:
+        x: 942
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1718355718469'
+          - output
+        desc: Use LLM for initial article evaluation to determine if further reading
+          is warranted.
+        model:
+          completion_params:
+            temperature: 0.3
+          mode: chat
+          name: gemini-1.5-pro-latest
+          provider: google
+        prompt_template:
+        - id: 2e9ab6fb-4504-4891-95a1-39dff0e8ed6d
+          role: system
+          text: "Context: You're an advanced content analyst for a tech-focused website,\
+            \ screening articles for professionals in software, AI, product management,\
+            \ marketing, design, business, and personal growth.\n\nObjective: Quickly\
+            \ analyze articles to determine inclusion/exclusion, identifying low-value\
+            \ content while retaining high-value pieces.\nStyle & Tone: Be concise,\
+            \ professional, and objective. Base analysis on clear criteria, not subjective\
+            \ feelings.\nAudience: Website content management team making quick decisions\
+            \ on article inclusion.\nResponse: Output JSON with fields:\n- ignore:\
+            \ Boolean (exclude?)\n- reason: String (30-50 chars, main judgment reason)\n\
+            - value: Integer 0-5 (0=ignore, 1-5=value level)\n- summary: One-sentence\
+            \ content summary\n- language: Article language\nCriteria:\n1. Language:\
+            \ Chinese or English only\n2. Content: Substantive, not announcements/ads\n\
+            3. Relevance: Match target areas\n4. Quality/Value:\n   - Depth: Insights,\
+            \ unique perspectives\n   - Technical level (for tech articles)\n   -\
+            \ Practicality: Inspiring or solution-providing\nScoring:\n0: Ignore (wrong\
+            \ language/irrelevant)\n1: Low quality/irrelevant\n2: Low quality but\
+            \ some value\n3: Average, worth reading\n4: High quality, recommended\n\
+            5: Exceptional, strongly recommended\n\nInput: XML with <title>, <link>,\
+            \ <source>, <content> (Markdown in CDATA)\nExamples:\n{\n  \"ignore\"\
+            : false,\n  \"reason\": \"In-depth RAG analysis with solutions\",\n  \"\
+            value\": 5,\n  \"summary\": \"Comprehensive discussion on RAG challenges\
+            \ and innovative solutions in AI applications\",\n  \"language\": \"Chinese\"\
+            \n}\n{\n  \"ignore\": false,\n  \"reason\": \"Musk's insights on AI development\"\
+            ,\n  \"value\": 4,\n  \"summary\": \"Elon Musk's latest interview discussing\
+            \ his thoughts on the future direction of AI\",\n  \"language\": \"English\"\
+            \n}\n{\n  \"ignore\": false,\n  \"reason\": \"New car intro, low relevance\
+            \ to tech\",\n  \"value\": 2,\n  \"summary\": \"Introduction to the latest\
+            \ car model, focusing on features and specifications\",\n  \"language\"\
+            : \"Chinese\"\n}\n{\n  \"ignore\": true,\n  \"reason\": \"Pure marketing\
+            \ content, low value\",\n  \"value\": 0,\n  \"summary\": \"Promotional\
+            \ article for a new product without substantial information\",\n  \"language\"\
+            : \"Chinese\"\n}\nAlways provide all fields, even for ignored articles.\
+            \ Value reflects potential audience value, summary outlines main content\
+            \ regardless of relevance."
+        - id: cde18505-a2fe-45a5-a765-40dbe1c10c0f
+          role: user
+          text: "Please analyze the following article according to the given requirements\
+            \ and output a JSON string in the specified format.\n\n<article>\n  <title>{{#1719357159255.title#}}</title>\n\
+            \n  <link>{{#1719357159255.url#}}</link>\n\n  <source>{{#1719357159255.sourceName#}}</source>\n\
+            \n  <content>\n <![CDATA[\n{{#1719357159255.markdown#}}\n  ]]></content>\n\
+            </article>"
+        selected: false
+        title: Review English Article
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 164
+      id: '17208581506250'
+      position:
+        x: 1246
+        y: 486
+      positionAbsolute:
+        x: 1246
+        y: 486
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: Output the result in JSON format
+        outputs:
+        - value_selector:
+          - '17208581506250'
+          - text
+          variable: analysisResult
+        selected: false
+        title: English Article Result
+        type: end
+      height: 120
+      id: '17208581527480'
+      position:
+        x: 1550
+        y: 486
+      positionAbsolute:
+        x: 1550
+        y: 486
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 76.59999999999991
+      y: -66.89999999999998
+      zoom: 0.7
