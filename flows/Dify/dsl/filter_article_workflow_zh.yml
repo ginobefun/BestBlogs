@@ -306,7 +306,7 @@ workflow:
       positionAbsolute:
         x: 1246
         y: 273
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -560,6 +560,6 @@ workflow:
       type: custom
       width: 244
     viewport:
-      x: 85.59999999999991
-      y: -58.799999999999955
+      x: 93.59999999999991
+      y: -54.599999999999994
       zoom: 0.7

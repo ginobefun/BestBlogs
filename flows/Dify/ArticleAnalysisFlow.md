@@ -2,11 +2,11 @@
 
 ## 整体流程图
 
-![Article Analysis Workflow](./flowImages/article_analysis_workflow.png)
+![Article Analysis Workflow](./flowImages/analyze_article_flow_long_article_result2.png)
 
 ## DSL 文件
 
-[Article Analysis Workflow DSL](./dsl/article_analysis_workflow.yml)
+[Article Analysis Workflow DSL](./dsl/analyze_article_flow_zh.yml)
 
 ## 流程说明
 

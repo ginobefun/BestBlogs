@@ -2,7 +2,7 @@
 
 ## 整体流程图
 
-![Filter Article Workflow](./flowImages/filter_article_flow_chinese_article.png)
+![Filter Article Workflow](./flowImages/filter_article_flow_chinese_article_result.png)
 
 - 通过 HTTP 请求获取文章的元数据（标题、来源、链接、语言）和 Markdown 内容。
 - 根据测试结果，分别使用 DeepSeek 和 Gemini 1.5 Pro 模型对中文和英文文章进行初评。
