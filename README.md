@@ -1,13 +1,20 @@
 # [BestBlogs.dev](https://bestblogs.dev)
+
 汇集顶级编程、人工智能、产品、科技文章，大语言模型摘要评分辅助阅读，探索编程和技术未来。
 
 ## 介绍
 
 bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业科技和个人成长领域的价值导向内容，汇集自顶级技术公司和社区。我们利用先进语言模型，为您摘要、评分和翻译这些文章，节省您的阅读时间。我们了解数据筛选的痛点，致力于为您呈现精选内容。立即订阅，探索未来技术的无限可能！
 
+![主要特性](./images/main_page.png)
+
 ## 订阅
 
 网站订阅地址：https://www.bestblogs.dev/#subscribe
+
+每周五将推送本周最新的[精选推送](https://www.bestblogs.dev/newsletter)，让您第一时间了解最新人工智能开发技术和动态。
+
+![精选推送](./images/newsletter_list.png)
 
 ## RSS 源
 
