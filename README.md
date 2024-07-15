@@ -11,11 +11,11 @@ bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业
 
 ## RSS 源
 
-网站文章来源于以下所有 RSS 订阅源（205个）：
+网站文章来源于以下所有 RSS 订阅源（240个）：
 
 https://github.com/ginobefun/BestBlogs/blob/main/BestBlogsRSS.opml
 
-其中微信公众号转 RSS 采用 wewe-rss 项目搭建，目前已支持的微信公众号 RSS 订阅源（187个）整理如下：
+其中微信公众号转 RSS 采用 wewe-rss 项目搭建，目前已支持的微信公众号 RSS 订阅源（200个）整理如下：
 
 https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml
 

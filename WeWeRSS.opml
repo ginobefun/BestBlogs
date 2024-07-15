@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <opml version="2.0">
       <head>
-        <title>WeWeRSS 所有订阅源</title>
+        <title>BestBlogs.dev 所有微信公众号订阅源</title>
       </head>
       <body>
         <outline text="腾讯科技" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2756372660.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2756372660.atom"/>
@@ -191,5 +191,18 @@
     <outline text="AI大航海" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3266465967.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3266465967.atom"/>
     <outline text="华为云" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253753329.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253753329.atom"/>
     <outline text="产品二姐" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3528641488.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3528641488.atom"/>
+    <outline text="机器之心SOTA模型" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3923700221.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3923700221.atom"/>
+    <outline text="DeeplearningAI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3217248187.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3217248187.atom"/>
+    <outline text="AI大模型工场" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3928230266.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3928230266.atom"/>
+    <outline text="科技新知" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3876864624.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3876864624.atom"/>
+    <outline text="夕小瑶科技说" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3207765945.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3207765945.atom"/>
+    <outline text="光子星球" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082518302.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082518302.atom"/>
+    <outline text="DeepTech深科技" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075228534.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075228534.atom"/>
+    <outline text="i黑马" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1074353501.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1074353501.atom"/>
+    <outline text="AINLP" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398933301.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398933301.atom"/>
+    <outline text="緑洲资本 Vitalbridge" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3883289079.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3883289079.atom"/>
+    <outline text="阶跃星辰" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3925617892.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3925617892.atom"/>
+    <outline text="快手技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867580341.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867580341.atom"/>
+    <outline text="数据派THU" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3252469476.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3252469476.atom"/>
     </body>
     </opml>
