@@ -18,7 +18,7 @@ bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业
 
 ## RSS 源
 
-网站文章来源于以下所有 RSS 订阅源（240个）：
+网站文章来源于以下所有 RSS 订阅源（200个）：
 
 https://github.com/ginobefun/BestBlogs/blob/main/BestBlogsRSS.opml
 
