@@ -22,7 +22,7 @@ bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业
 
 [https://github.com/ginobefun/BestBlogs/blob/main/BestBlogsRSS.opml](https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_V2.opml)
 
-其中微信公众号转 RSS 采用 wewe-rss 项目搭建，目前已支持的微信公众号 RSS 订阅源（180个）整理如下：
+其中微信公众号转 RSS 采用 wewe-rss 项目搭建，目前已支持的微信公众号 RSS 订阅源（160个）整理如下：
 
 https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml
 
