@@ -71,10 +71,6 @@
         <outline text="笔记侠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3215037546.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3215037546.atom"/>
         <outline text="华尔街见闻" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397003540.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397003540.atom"/>
         <outline text="赛博禅心" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3934419561.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3934419561.atom"/>
-        <outline text="差评" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3094757480.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3094757480.atom"/>
-        <outline text="投资界" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3298956650.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3298956650.atom"/>
-        <outline text="虎嗅APP" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1432156401.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1432156401.atom"/>
-        <outline text="雷峰网" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1368348621.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1368348621.atom"/>
         <outline text="微软科技" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3071048628.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3071048628.atom"/>
         <outline text="谷歌开发者" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3008689962.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3008689962.atom"/>
         <outline text="机器之心" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3073282833.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3073282833.atom"/>
@@ -86,13 +82,11 @@
         <outline text="阿里通义千问" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3911621034.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3911621034.atom"/>
         <outline text="GLM大模型" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3916332374.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3916332374.atom"/>
         <outline text="Moonshot AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3944550926.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3944550926.atom"/>
-        <outline text="MongoDB数据平台" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3591703333.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3591703333.atom"/>
         <outline text="比尔盖茨" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3282540708.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3282540708.atom"/>
         <outline text="腾讯混元" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3908569425.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3908569425.atom"/>
         <outline text="零一万物 01AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3949515344.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3949515344.atom"/>
         <outline text="智谱" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3923277442.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3923277442.atom"/>
         <outline text="小红书技术REDtech" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3889763736.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3889763736.atom"/>
-        <outline text="量子学派" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3223590053.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3223590053.atom"/>
         <outline text="ToB行业头条" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553153625.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553153625.atom"/>
         <outline text="槽边往事" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392038560.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392038560.atom"/>
         <outline text="刘润" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396392481.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396392481.atom"/>
@@ -112,8 +106,6 @@
         <outline text="王建硕" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397242840.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397242840.atom"/>
         <outline text="老俞闲话" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082299315.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082299315.atom"/>
         <outline text="OSC开源社区" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397342721.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397342721.atom"/>
-        <outline text="少数派" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3582870021.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3582870021.atom"/>
-        <outline text="知危" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3897528098.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3897528098.atom"/>
         <outline text="Thoughtworks洞见" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392679800.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392679800.atom"/>
         <outline text="武志红" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3568298336.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3568298336.atom"/>
         <outline text="优设AIGC" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2395046680.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2395046680.atom"/>
@@ -125,7 +117,6 @@
         <outline text="集智俱乐部" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3232427490.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3232427490.atom"/>
         <outline text="山行AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3567914646.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3567914646.atom"/>
         <outline text="刘言飞语" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394925538.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394925538.atom"/>
-        <outline text="微软亚洲研究院" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3001073387.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3001073387.atom"/>
         <outline text="MacTalk" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398460220.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398460220.atom"/>
         <outline text="飞哥说AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3898891122.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3898891122.atom"/>
         <outline text="AI科技评论" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3098132220.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3098132220.atom"/>
@@ -135,13 +126,9 @@
         <outline text="范冰的二次学习" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3084999832.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3084999832.atom"/>
         <outline text="快刀青衣" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396422154.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396422154.atom"/>
         <outline text="喔家ArchiSelf" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3009727049.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3009727049.atom"/>
-        <outline text="效率火箭" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3262128188.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3262128188.atom"/>
-        <outline text="自象限" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867973398.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867973398.atom"/>
         <outline text="凯凯而谈" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399377006.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399377006.atom"/>
-        <outline text="哥飞" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399233620.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399233620.atom"/>
         <outline text="L先生说" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3015646136.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3015646136.atom"/>
         <outline text="古典古少侠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3085361438.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3085361438.atom"/>
-        <outline text="牛村木木山" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3860613813.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3860613813.atom"/>
         <outline text="共识粉碎机" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3261361815.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3261361815.atom"/>
         <outline text="VMIC UED" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3250239812.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3250239812.atom"/>
         <outline text="Cloudflare" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3590960798.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3590960798.atom"/>
@@ -155,19 +142,12 @@
         <outline text="硅星人Pro" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3926568365.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3926568365.atom"/>
         <outline text="白鲸出海" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075486737.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075486737.atom"/>
         <outline text="甲子光年" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3599245772.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3599245772.atom"/>
-        <outline text="水木人工智能学堂" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3546124746.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3546124746.atom"/>
         <outline text="Z Potentials" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3285810954.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3285810954.atom"/>
         <outline text="土猛的员外" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3229095358.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3229095358.atom"/>
         <outline text="THU基础模型" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3903550339.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3903550339.atom"/>
         <outline text="AI炼金术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868900251.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868900251.atom"/>
         <outline text="暗涌Waves" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3940324519.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3940324519.atom"/>
-        <outline text="春暖花开" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3555649254.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3555649254.atom"/>
-        <outline text="功夫财经" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3239075092.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3239075092.atom"/>
-        <outline text="Datawhale" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3226363426.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3226363426.atom"/>
         <outline text="PaperAgent" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3941633310.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3941633310.atom"/>
-        <outline text="中国企业家杂志" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1275451641.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1275451641.atom"/>
-        <outline text="新周刊" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398330323.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398330323.atom"/>
-        <outline text="人人都是产品经理" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399106260.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399106260.atom"/>
         <outline text="大语言模型论文跟踪" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3269165433.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3269165433.atom"/>
         <outline text="AI大模型应用实践" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3942503650.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3942503650.atom"/>
         <outline text="AI大航海" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3266465967.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3266465967.atom"/>
