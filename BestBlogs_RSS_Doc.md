@@ -83,19 +83,19 @@ BestBlogs.dev 提供了灵活的 RSS 订阅功能，让您可以根据自己的�
 https://www.bestblogs.dev/zh/feeds/rss?category=programming&minScore=85
 ```
 
-1. 订阅最近一天的 AI 精选文章：
+2. 订阅最近一天的 AI 精选文章：
 
 ```url
 https://www.bestblogs.dev/zh/feeds/rss?category=ai&featured=y&timeFilter=1d
 ```
 
-1. 订阅包含特定关键词的高分文章：
+3. 订阅包含特定关键词的高分文章：
 
 ```url
 https://www.bestblogs.dev/zh/feeds/rss?keyword=Agent&minScore=85
 ```
 
-1. 订阅英文精选文章：
+4. 订阅英文精选文章：
 
 ```url
 https://www.bestblogs.dev/en/feeds/rss?featured=y&language=en
