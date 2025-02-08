@@ -26,7 +26,7 @@ bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业
 
 [https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml](https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml)
 
-[https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml](https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml)
+[https://github.com/ginobefun/BestBlogs/blob/main/WeRSS.opml](https://github.com/ginobefun/BestBlogs/blob/main/WeRSS.opml)
 
 
 
