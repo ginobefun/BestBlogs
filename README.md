@@ -18,13 +18,17 @@ bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业
 
 ## 3. RSS 源
 
-网站文章来源于以下所有 RSS 订阅源（160个）：
+网站文章来源于以下所有 RSS 订阅源（178 个）：
 
-[https://github.com/ginobefun/BestBlogs/blob/main/BestBlogsRSS.opml](https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_V2.opml)
+[https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_V2.opml](https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_V2.opml)
 
-其中微信公众号转 RSS 采用 wewe-rss 项目搭建，目前已支持的微信公众号 RSS 订阅源（160个）整理如下：
+其中微信公众号转 RSS 采用 wewe-rss 项目搭建，目前已支持的微信公众号 RSS 订阅源（140个），由于 wewe-rss 项目限制每天最多请求 200 次，因此搭建了两个微信公众号转 RSS 项目，分别是：
 
 [https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml](https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml)
+
+[https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml](https://github.com/ginobefun/BestBlogs/blob/main/WeWeRSS.opml)
+
+
 
 你可以在网页 [https://www.bestblogs.dev/sources](https://www.bestblogs.dev/sources) 上浏览所有 RSS 订阅源信息，包括订阅源最近 3 个月的文章数量、精选文章数量和阅读数。
 
@@ -59,3 +63,4 @@ BestBlogs.dev 提供了灵活的 RSS 订阅功能，让您可以根据自己的�
 - [RSS Hub](https://github.com/DIYgod/RSSHub)
 - [wewe-rss](https://github.com/cooderl/wewe-rss)
 - [Dify](https://github.com/langgenius/dify)
+- [Bark](https://github.com/Finb/Bark)

@@ -1,167 +1,186 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <opml version="2.0">
-    <head>
-        <title>All RSS Subscriptions for bestblogs.dev</title>
-    </head>
-    <body>
-        <outline text="人人都是产品经理" title="人人都是产品经理" type="rss" xmlUrl="https://rsshub.bestblogs.dev/woshipm/popular"/>
-        <outline text="量子位" title="量子位" type="rss" xmlUrl="https://www.qbitai.com/feed"/>
-        <outline text="LangChain Blog" title="LangChain Blog" type="rss" xmlUrl="https://blog.langchain.dev/rss/"/>
-        <outline text="Hugging Face Blog" title="Hugging Face Blog" type="rss" xmlUrl="https://huggingface.co/blog/feed.xml"/>
-        <outline text="AWS Machine Learning Blog" title="AWS Machine Learning Blog" type="rss" xmlUrl="https://aws.amazon.com/blogs/amazon-ai/feed/"/>
-        <outline text="Apple Machine Learning Research" title="Apple Machine Learning Research" type="rss" xmlUrl="https://machinelearning.apple.com/rss.xml"/>
-        <outline text="Uber Engineering Blog" title="Uber Engineering Blog" type="rss" xmlUrl="https://rsshub.bestblogs.dev/uber/blog"/>
-        <outline text="Engineering at Meta" title="Engineering at Meta" type="rss" xmlUrl="https://engineering.fb.com/feed/"/>
-        <outline text="Microsoft Azure Blog" title="Microsoft Azure Blog" type="rss" xmlUrl="https://azure.microsoft.com/en-us/blog/feed/"/>
-        <outline text="Netflix TechBlog" title="Netflix TechBlog" type="rss" xmlUrl="https://netflixtechblog.com/feed"/>
-        <outline text="Discord Blog" title="Discord Blog" type="rss" xmlUrl="https://discord.com/blog/rss.xml"/>
-        <outline text="Elastic Blog" title="Elastic Blog" type="rss" xmlUrl="https://www.elastic.co/blog/feed"/>
-        <outline text="Grafana Labs" title="Grafana Labs" type="rss" xmlUrl="https://grafana.com/categories/engineering/index.xml"/>
-        <outline text="宝玉的分享" title="宝玉的分享" type="rss" xmlUrl="https://baoyu.io/feed.xml"/>
-        <outline text="掘金本周最热" title="掘金本周最热" type="rss" xmlUrl="https://rsshub.bestblogs.dev/juejin/trending/all/weekly"/>
-        <outline text="deeplearning.ai" title="deeplearning.ai" type="rss" xmlUrl="https://rsshub.bestblogs.dev/deeplearning/the-batch"/>
-        <outline text="Replicate’s blog" title="Replicate’s blog" type="rss" xmlUrl="https://replicate.com/blog/rss"/>
-        <outline text="腾讯技术工程" title="腾讯技术工程" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2398602260.atom"/>
-        <outline text="ByteByteGo Newsletter" title="ByteByteGo Newsletter" type="rss" xmlUrl="https://blog.bytebytego.com/feed"/>
-        <outline text="Google Cloud Blog" title="Google Cloud Blog" type="rss" xmlUrl="https://cloudblog.withgoogle.com/rss/"/>
-        <outline text="Last Week in AI" title="Last Week in AI" type="rss" xmlUrl="https://lastweekin.ai/feed/"/>
-        <outline text="Next.js Blog" title="Next.js Blog" type="rss" xmlUrl="https://nextjs.org/feed.xml"/>
-        <outline text="David Heinemeier Hansson" title="David Heinemeier Hansson" type="rss" xmlUrl="https://world.hey.com/dhh/feed.atom"/>
-        <outline text="Google DeepMind Blog" title="Google DeepMind Blog" type="rss" xmlUrl="https://deepmind.com/blog/feed/basic/"/>
-        <outline text="Martin Fowler" title="Martin Fowler" type="rss" xmlUrl="https://martinfowler.com/feed.atom"/>
-        <outline text="AWS Architecture Blog" title="AWS Architecture Blog" type="rss" xmlUrl="http://www.awsarchitectureblog.com/atom.xml"/>
-        <outline text="Spring Blog" title="Spring Blog" type="rss" xmlUrl="http://spring.io/blog.atom"/>
-        <outline text="UX Magazine" title="UX Magazine" type="rss" xmlUrl="https://uxmag.com/feed/"/>
-        <outline text="Y Combinator Blog" title="Y Combinator Blog" type="rss" xmlUrl="https://blog.ycombinator.com/feed/"/>
-        <outline text="The JetBrains Blog" title="The JetBrains Blog" type="rss" xmlUrl="http://blog.jetbrains.com/feed/"/>
-        <outline text="Microsoft Research Blog" title="Microsoft Research Blog" type="rss" xmlUrl="http://research.microsoft.com/rss/news.xml"/>
-        <outline text="InfoQ" title="InfoQ" type="rss" xmlUrl="http://www.infoq.com/rss/rss.action"/>
-        <outline text="Smashing Magazine" title="Smashing Magazine" type="rss" xmlUrl="http://rss1.smashingmagazine.com/feed/"/>
-        <outline text="机器之心" title="机器之心" type="rss" xmlUrl="https://www.jiqizhixin.com/rss"/>
-        <outline text="爱范儿" title="爱范儿" type="rss" xmlUrl="http://www.ifanr.com/feed"/>
-        <outline text="The IntelliJ IDEA Blog" title="The IntelliJ IDEA Blog" type="rss" xmlUrl="http://blogs.jetbrains.com/idea/feed/"/>
-        <outline text="阮一峰的网络日志" title="阮一峰的网络日志" type="rss" xmlUrl="http://feeds.feedburner.com/ruanyifeng"/>
-        <outline text="The GitHub Blog" title="The GitHub Blog" type="rss" xmlUrl="https://github.blog/feed/"/>
-        <outline text="freeCodeCamp.org" title="freeCodeCamp.org" type="rss" xmlUrl="https://www.freecodecamp.org/news/rss/"/>
-        <outline text="MongoDB Blog" title="MongoDB Blog" type="rss" xmlUrl="https://www.mongodb.com/blog/rss"/>
-        <outline text="Databricks" title="Databricks" type="rss" xmlUrl="https://www.databricks.com/feed"/>
-        <outline text="Visual Studio Blog" title="Visual Studio Blog" type="rss" xmlUrl="https://devblogs.microsoft.com/visualstudio/feed/"/>
-        <outline text="Google Developers Blog" title="Google Developers Blog" type="rss" xmlUrl="https://developers.googleblog.com/feeds/posts/default"/>
-        <outline text="Node.js Blog" title="Node.js Blog" type="rss" xmlUrl="https://nodejs.org/en/feed/blog.xml"/>
-        <outline text="Canva Engineering Blog" title="Canva Engineering Blog" type="rss" xmlUrl="https://www.canva.dev/blog/engineering/feed.xml"/>
-        <outline text="Docker" title="Docker" type="rss" xmlUrl="https://www.docker.com/feed/"/>
-        <outline text="阿里技术" title="阿里技术" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3885737868.atom"/>
-        <outline text="小米技术" title="小米技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3510410326.atom"/>
-        <outline text="哔哩哔哩技术" title="哔哩哔哩技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3876745802.atom"/>
-        <outline text="阿里云开发者" title="阿里云开发者" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3239545440.atom"/>
-        <outline text="字节跳动技术团队" title="字节跳动技术团队" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253632141.atom"/>
-        <outline text="极客公园" title="极客公园" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_1304308441.atom"/>
-        <outline text="美团技术团队" title="美团技术团队" type="rss" xmlUrl="https://tech.meituan.com/feed/"/>
-        <outline text="Stack Overflow Blog" title="Stack Overflow Blog" type="rss" xmlUrl="http://blog.stackoverflow.com/feed/"/>
-        <outline text="Vercel News" title="Vercel News" type="rss" xmlUrl="https://vercel.com/atom"/>
-        <outline text="The Cloudflare Blog" title="The Cloudflare Blog" type="rss" xmlUrl="https://blog.cloudflare.com/rss"/>
-        <outline text="ShowMeAI研究中心" title="ShowMeAI研究中心" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3869621703.atom"/>
-        <outline text="滴滴技术" title="滴滴技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3558136264.atom"/>
-        <outline text="GitHub精选" title="GitHub精选" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3003197367.atom"/>
-        <outline text="奇舞精选" title="奇舞精选" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3881603653.atom"/>
-        <outline text="京东技术" title="京东技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553167232.atom"/>
-        <outline text="SV Technology Review" title="SV Technology Review" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3070588926.atom"/>
-        <outline text="得物技术" title="得物技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3915178544.atom"/>
-        <outline text="百度Geek说" title="百度Geek说" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3892545299.atom"/>
-        <outline text="百度MEUX" title="百度MEUX" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3265918330.atom"/>
-        <outline text="大淘宝技术" title="大淘宝技术" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3014106999.atom"/>
-        <outline text="Web3天空之城" title="Web3天空之城" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3218535860.atom"/>
-        <outline text="AI前线" title="AI前线" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3554086560.atom"/>
-        <outline text="新智元" title="新智元" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3271041950.atom"/>
-        <outline text="51CTO技术栈" title="51CTO技术栈" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2398296760.atom"/>
-        <outline text="优设" title="优设" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3568103147.atom"/>
-        <outline text="前端充电宝" title="前端充电宝" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3561224500.atom"/>
-        <outline text="ByteByteGo（公众号）" title="ByteByteGo（公众号）" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3910197182.atom"/>
-        <outline text="稀土掘金技术社区" title="稀土掘金技术社区" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3566577862.atom"/>
-        <outline text="腾讯云开发者" title="腾讯云开发者" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3264589119.atom"/>
-        <outline text="体验进阶" title="体验进阶" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3222834839.atom"/>
-        <outline text="高可用架构" title="高可用架构" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3000551159.atom"/>
-        <outline text="前端早读课" title="前端早读课" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2391052011.atom"/>
-        <outline text="开源服务指南" title="开源服务指南" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3865969368.atom"/>
-        <outline text="dbaplus社群" title="dbaplus社群" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3932636937.atom"/>
-        <outline text="超人的电话亭" title="超人的电话亭" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3246797399.atom"/>
-        <outline text="Qunar技术沙龙" title="Qunar技术沙龙" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3074721425.atom"/>
-        <outline text="42章经" title="42章经" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3220199623.atom"/>
-        <outline text="随机小分队" title="随机小分队" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3245003550.atom"/>
-        <outline text="携程技术" title="携程技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2390272091.atom"/>
-        <outline text="腾讯ISUX" title="腾讯ISUX" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397410902.atom"/>
-        <outline text="阿里研究院" title="阿里研究院" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2395844153.atom"/>
-        <outline text="深思SenseAI" title="深思SenseAI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3016155866.atom"/>
-        <outline text="Hugging Face" title="Hugging Face" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3940425683.atom"/>
-        <outline text="Founder Park" title="Founder Park" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3895742803.atom"/>
-        <outline text="vivo互联网技术" title="vivo互联网技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3286681597.atom"/>
-        <outline text="歸藏的AI工具箱" title="歸藏的AI工具箱" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3540975510.atom"/>
-        <outline text="Clip设计夹" title="Clip设计夹" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3297773927.atom"/>
-        <outline text="The Keyword (blog.google) " title="The Keyword (blog.google) " type="rss" xmlUrl="https://blog.google/rss"/>
-        <outline text="腾讯科技" title="腾讯科技" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2756372660.atom"/>
-        <outline text="InfoQ 中文" title="InfoQ 中文" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2390142780.atom"/>
-        <outline text="LlamaIndex Blog" title="LlamaIndex Blog" type="rss" xmlUrl="https://www.llamaindex.ai/blog/feed"/>
-        <outline text="Dify" title="Dify" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3890929674.atom"/>
-        <outline text="海外独角兽" title="海外独角兽" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3869640945.atom"/>
-        <outline text="LLM SPACE" title="LLM SPACE" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3942646359.atom"/>
-        <outline text="CSDN" title="CSDN" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3930654829.atom"/>
-        <outline text="Jina AI" title="Jina AI" type="rss" xmlUrl="https://jina.ai/feed.rss"/>
-        <outline text="谷歌开发者" title="谷歌开发者" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3008689962.atom"/>
-        <outline text="赛博禅心" title="赛博禅心" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3934419561.atom"/>
-        <outline text="笔记侠" title="笔记侠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3215037546.atom"/>
-        <outline text="傅盛" title="傅盛" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396833901.atom"/>
-        <outline text="ToB行业头条" title="ToB行业头条" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553153625.atom"/>
-        <outline text="小红书技术REDtech" title="小红书技术REDtech" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3889763736.atom"/>
-        <outline text="智谱" title="智谱" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3923277442.atom"/>
-        <outline text="Moonshot AI" title="Moonshot AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3944550926.atom"/>
-        <outline text="百度AI" title="百度AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3297523352.atom"/>
-        <outline text="HelloGitHub" title="HelloGitHub" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3093627441.atom"/>
-        <outline text="投资实习所" title="投资实习所" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3220072307.atom"/>
-        <outline text="经纬创投" title="经纬创投" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3078999138.atom"/>
-        <outline text="腾讯混元" title="腾讯混元" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3908569425.atom"/>
-        <outline text="Qdrant" title="Qdrant" type="rss" xmlUrl="https://qdrant.tech/index.xml"/>
-        <outline text="刘润" title="刘润" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396392481.atom"/>
-        <outline text="吴晓波频道" title="吴晓波频道" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3079395914.atom"/>
-        <outline text="智东西" title="智东西" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3081486433.atom"/>
-        <outline text="腾讯研究院" title="腾讯研究院" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399148061.atom"/>
-        <outline text="SuperTechFans" title="SuperTechFans" type="rss" xmlUrl="https://www.supertechfans.com/cn/index.xml"/>
-        <outline text="橘子汽水铺" title="橘子汽水铺" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3903697567.atom"/>
-        <outline text="OneFlow" title="OneFlow" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3598661977.atom"/>
-        <outline text="浮之静" title="浮之静" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3236165275.atom"/>
-        <outline text="数字生命卡兹克" title="数字生命卡兹克" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3223096120.atom"/>
-        <outline text="飞哥说AI" title="飞哥说AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3898891122.atom"/>
-        <outline text="AI产品黄叔" title="AI产品黄叔" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398553439.atom"/>
-        <outline text="真格基金" title="真格基金" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394991041.atom"/>
-        <outline text="大模型智能" title="大模型智能" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3576186480.atom"/>
-        <outline text="甲子光年" title="甲子光年" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3599245772.atom"/>
-        <outline text="Z Potentials" title="Z Potentials" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3285810954.atom"/>
-        <outline text="深网腾讯新闻" title="深网腾讯新闻" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3201654887.atom"/>
-        <outline text="从码农到工匠" title="从码农到工匠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3596909863.atom"/>
-        <outline text="AI炼金术" title="AI炼金术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868900251.atom"/>
-        <outline text="白鲸出海" title="白鲸出海" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075486737.atom"/>
-        <outline text="硅星人Pro" title="硅星人Pro" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3926568365.atom"/>
-        <outline text="凯凯而谈" title="凯凯而谈" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2399377006.atom"/>
-        <outline text="快刀青衣" title="快刀青衣" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396422154.atom"/>
-        <outline text="HelloJava" title="HelloJava" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2393633921.atom"/>
-        <outline text="MacTalk" title="MacTalk" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398460220.atom"/>
-        <outline text="刘言飞语" title="刘言飞语" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394925538.atom"/>
-        <outline text="山行AI" title="山行AI" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3567914646.atom"/>
-        <outline text="魔搭ModelScope社区" title="魔搭ModelScope社区" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3915395868.atom"/>
-        <outline text="强少来了" title="强少来了" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3018043842.atom"/>
-        <outline text="MyScale Blog" title="MyScale Blog" type="rss" xmlUrl="https://myscale.com/blog/rss.xml"/>
-        <outline text="产品二姐" title="产品二姐" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3528641488.atom"/>
-        <outline text="AI大模型应用实践" title="AI大模型应用实践" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3942503650.atom"/>
-        <outline text="土猛的员外" title="土猛的员外" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3229095358.atom"/>
-        <outline text="光子星球" title="光子星球" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082518302.atom"/>
-        <outline text="DeeplearningAI" title="DeeplearningAI" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3217248187.atom"/>
-        <outline text="快手技术" title="快手技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867580341.atom"/>
-        <outline text="DeepSeek" title="DeepSeek" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3949607775.atom"/>
-        <outline text="豆包大模型团队" title="豆包大模型团队" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3930693616.atom"/>
-        <outline text="十字路口Crossing" title="十字路口Crossing" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3010319264.atom"/>
-        <outline text="青哥谈AI" title="青哥谈AI" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3927634636.atom"/>
-        <outline text="AI Musings by Mu" title="AI Musings by Mu" type="rss" xmlUrl="https://kelvinmu.substack.com/feed"/>
-        <outline text="Turing Post" title="Turing Post" type="rss" xmlUrl="https://rss.beehiiv.com/feeds/UJIoBuf5BX.xml"/>
-        <outline text="Latent Space" title="Latent Space" type="rss" xmlUrl="https://www.latent.space/feed"/>
-        <outline text="孔某人的低维认知" title="孔某人的低维认知" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3940569956.atom"/>
-    </body>
+  <head>
+    <title>All RSS Subscriptions for bestblogs.dev</title>
+  </head>
+  <body>
+    <outline text="人人都是产品经理" title="人人都是产品经理" type="rss" xmlUrl="https://rsshub.bestblogs.dev/woshipm/popular"/>
+    <outline text="量子位" title="量子位" type="rss" xmlUrl="https://www.qbitai.com/feed"/>
+    <outline text="LangChain Blog" title="LangChain Blog" type="rss" xmlUrl="https://blog.langchain.dev/rss/"/>
+    <outline text="Hugging Face Blog" title="Hugging Face Blog" type="rss" xmlUrl="https://huggingface.co/blog/feed.xml"/>
+    <outline text="AWS Machine Learning Blog" title="AWS Machine Learning Blog" type="rss" xmlUrl="https://aws.amazon.com/blogs/amazon-ai/feed/"/>
+    <outline text="Apple Machine Learning Research" title="Apple Machine Learning Research" type="rss" xmlUrl="https://machinelearning.apple.com/rss.xml"/>
+    <outline text="Uber Engineering Blog" title="Uber Engineering Blog" type="rss" xmlUrl="https://rsshub.bestblogs.dev/uber/blog"/>
+    <outline text="Engineering at Meta" title="Engineering at Meta" type="rss" xmlUrl="https://engineering.fb.com/feed/"/>
+    <outline text="Microsoft Azure Blog" title="Microsoft Azure Blog" type="rss" xmlUrl="https://azure.microsoft.com/en-us/blog/feed/"/>
+    <outline text="Netflix TechBlog" title="Netflix TechBlog" type="rss" xmlUrl="https://netflixtechblog.com/feed"/>
+    <outline text="Discord Blog" title="Discord Blog" type="rss" xmlUrl="https://discord.com/blog/rss.xml"/>
+    <outline text="Elastic Blog" title="Elastic Blog" type="rss" xmlUrl="https://www.elastic.co/blog/feed"/>
+    <outline text="Timescale Blog" title="Timescale Blog" type="rss" xmlUrl="https://blog.timescale.com/feed"/>
+    <outline text="Grafana Labs" title="Grafana Labs" type="rss" xmlUrl="https://grafana.com/categories/engineering/index.xml"/>
+    <outline text="宝玉的分享" title="宝玉的分享" type="rss" xmlUrl="https://baoyu.io/feed.xml"/>
+    <outline text="掘金本周最热" title="掘金本周最热" type="rss" xmlUrl="https://rsshub.bestblogs.dev/juejin/trending/all/weekly"/>
+    <outline text="deeplearning.ai" title="deeplearning.ai" type="rss" xmlUrl="https://rsshub.bestblogs.dev/deeplearning/the-batch"/>
+    <outline text="Replicate’s blog" title="Replicate’s blog" type="rss" xmlUrl="https://replicate.com/blog/rss"/>
+    <outline text="腾讯技术工程" title="腾讯技术工程" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2398602260.atom"/>
+    <outline text="ByteByteGo Newsletter" title="ByteByteGo Newsletter" type="rss" xmlUrl="https://blog.bytebytego.com/feed"/>
+    <outline text="Google Cloud Blog" title="Google Cloud Blog" type="rss" xmlUrl="https://cloudblog.withgoogle.com/rss/"/>
+    <outline text="Last Week in AI" title="Last Week in AI" type="rss" xmlUrl="https://lastweekin.ai/feed/"/>
+    <outline text="Next.js Blog" title="Next.js Blog" type="rss" xmlUrl="https://nextjs.org/feed.xml"/>
+    <outline text="David Heinemeier Hansson" title="David Heinemeier Hansson" type="rss" xmlUrl="https://world.hey.com/dhh/feed.atom"/>
+    <outline text="Google DeepMind Blog" title="Google DeepMind Blog" type="rss" xmlUrl="https://deepmind.com/blog/feed/basic/"/>
+    <outline text="Martin Fowler" title="Martin Fowler" type="rss" xmlUrl="https://martinfowler.com/feed.atom"/>
+    <outline text="AWS Architecture Blog" title="AWS Architecture Blog" type="rss" xmlUrl="http://www.awsarchitectureblog.com/atom.xml"/>
+    <outline text="Spring Blog" title="Spring Blog" type="rss" xmlUrl="http://spring.io/blog.atom"/>
+    <outline text="UX Magazine" title="UX Magazine" type="rss" xmlUrl="https://uxmag.com/feed/"/>
+    <outline text="Y Combinator Blog" title="Y Combinator Blog" type="rss" xmlUrl="https://blog.ycombinator.com/feed/"/>
+    <outline text="The JetBrains Blog" title="The JetBrains Blog" type="rss" xmlUrl="http://blog.jetbrains.com/feed/"/>
+    <outline text="Microsoft Research Blog" title="Microsoft Research Blog" type="rss" xmlUrl="http://research.microsoft.com/rss/news.xml"/>
+    <outline text="InfoQ" title="InfoQ" type="rss" xmlUrl="http://www.infoq.com/rss/rss.action"/>
+    <outline text="Smashing Magazine" title="Smashing Magazine" type="rss" xmlUrl="http://rss1.smashingmagazine.com/feed/"/>
+    <outline text="机器之心" title="机器之心" type="rss" xmlUrl="https://www.jiqizhixin.com/rss"/>
+    <outline text="爱范儿" title="爱范儿" type="rss" xmlUrl="http://www.ifanr.com/feed"/>
+    <outline text="The IntelliJ IDEA Blog" title="The IntelliJ IDEA Blog" type="rss" xmlUrl="http://blogs.jetbrains.com/idea/feed/"/>
+    <outline text="阮一峰的网络日志" title="阮一峰的网络日志" type="rss" xmlUrl="http://feeds.feedburner.com/ruanyifeng"/>
+    <outline text="The GitHub Blog" title="The GitHub Blog" type="rss" xmlUrl="https://github.blog/feed/"/>
+    <outline text="freeCodeCamp.org" title="freeCodeCamp.org" type="rss" xmlUrl="https://www.freecodecamp.org/news/rss/"/>
+    <outline text="MongoDB Blog" title="MongoDB Blog" type="rss" xmlUrl="https://www.mongodb.com/blog/rss"/>
+    <outline text="Databricks" title="Databricks" type="rss" xmlUrl="https://www.databricks.com/feed"/>
+    <outline text="Visual Studio Blog" title="Visual Studio Blog" type="rss" xmlUrl="https://devblogs.microsoft.com/visualstudio/feed/"/>
+    <outline text="Google Developers Blog" title="Google Developers Blog" type="rss" xmlUrl="https://developers.googleblog.com/feeds/posts/default"/>
+    <outline text="Node.js Blog" title="Node.js Blog" type="rss" xmlUrl="https://nodejs.org/en/feed/blog.xml"/>
+    <outline text="Canva Engineering Blog" title="Canva Engineering Blog" type="rss" xmlUrl="https://www.canva.dev/blog/engineering/feed.xml"/>
+    <outline text="Docker" title="Docker" type="rss" xmlUrl="https://www.docker.com/feed/"/>
+    <outline text="阿里技术" title="阿里技术" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3885737868.atom"/>
+    <outline text="爱奇艺技术产品团队" title="爱奇艺技术产品团队" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3242732364.atom"/>
+    <outline text="小米技术" title="小米技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3510410326.atom"/>
+    <outline text="哔哩哔哩技术" title="哔哩哔哩技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3876745802.atom"/>
+    <outline text="阿里云开发者" title="阿里云开发者" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3239545440.atom"/>
+    <outline text="字节跳动技术团队" title="字节跳动技术团队" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253632141.atom"/>
+    <outline text="极客公园" title="极客公园" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_1304308441.atom"/>
+    <outline text="美团技术团队" title="美团技术团队" type="rss" xmlUrl="https://tech.meituan.com/feed/"/>
+    <outline text="Stack Overflow Blog" title="Stack Overflow Blog" type="rss" xmlUrl="http://blog.stackoverflow.com/feed/"/>
+    <outline text="Vercel News" title="Vercel News" type="rss" xmlUrl="https://vercel.com/atom"/>
+    <outline text="The Cloudflare Blog" title="The Cloudflare Blog" type="rss" xmlUrl="https://blog.cloudflare.com/rss"/>
+    <outline text="ShowMeAI研究中心" title="ShowMeAI研究中心" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3869621703.atom"/>
+    <outline text="滴滴技术" title="滴滴技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3558136264.atom"/>
+    <outline text="GitHub精选" title="GitHub精选" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3003197367.atom"/>
+    <outline text="奇舞精选" title="奇舞精选" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3881603653.atom"/>
+    <outline text="京东技术" title="京东技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553167232.atom"/>
+    <outline text="硅谷科技评论" title="硅谷科技评论" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3070588926.atom"/>
+    <outline text="得物技术" title="得物技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3915178544.atom"/>
+    <outline text="百度Geek说" title="百度Geek说" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3892545299.atom"/>
+    <outline text="百度MEUX" title="百度MEUX" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3265918330.atom"/>
+    <outline text="大淘宝技术" title="大淘宝技术" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3014106999.atom"/>
+    <outline text="Web3天空之城" title="Web3天空之城" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3218535860.atom"/>
+    <outline text="AI前线" title="AI前线" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3554086560.atom"/>
+    <outline text="新智元" title="新智元" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3271041950.atom"/>
+    <outline text="51CTO技术栈" title="51CTO技术栈" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398296760.atom"/>
+    <outline text="优设" title="优设" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3568103147.atom"/>
+    <outline text="前端充电宝" title="前端充电宝" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3561224500.atom"/>
+    <outline text="字节前端 ByteFE" title="字节前端 ByteFE" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868459118.atom"/>
+    <outline text="ByteByteGo（公众号）" title="ByteByteGo（公众号）" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3910197182.atom"/>
+    <outline text="稀土掘金技术社区" title="稀土掘金技术社区" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3566577862.atom"/>
+    <outline text="腾讯云开发者" title="腾讯云开发者" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3264589119.atom"/>
+    <outline text="体验进阶" title="体验进阶" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3222834839.atom"/>
+    <outline text="高可用架构" title="高可用架构" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3000551159.atom"/>
+    <outline text="前端早读课" title="前端早读课" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2391052011.atom"/>
+    <outline text="开源服务指南" title="开源服务指南" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3865969368.atom"/>
+    <outline text="dbaplus社群" title="dbaplus社群" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3932636937.atom"/>
+    <outline text="超人的电话亭" title="超人的电话亭" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3246797399.atom"/>
+    <outline text="Qunar技术沙龙" title="Qunar技术沙龙" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3074721425.atom"/>
+    <outline text="42章经" title="42章经" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3220199623.atom"/>
+    <outline text="随机小分队" title="随机小分队" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3245003550.atom"/>
+    <outline text="携程技术" title="携程技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2390272091.atom"/>
+    <outline text="腾讯ISUX" title="腾讯ISUX" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397410902.atom"/>
+    <outline text="阿里研究院" title="阿里研究院" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2395844153.atom"/>
+    <outline text="Hugging Face" title="Hugging Face" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3940425683.atom"/>
+    <outline text="Founder Park" title="Founder Park" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3895742803.atom"/>
+    <outline text="vivo互联网技术" title="vivo互联网技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3286681597.atom"/>
+    <outline text="歸藏的AI工具箱" title="歸藏的AI工具箱" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3540975510.atom"/>
+    <outline text="Clip设计夹" title="Clip设计夹" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3297773927.atom"/>
+    <outline text="The Keyword (blog.google) " title="The Keyword (blog.google) " type="rss" xmlUrl="https://blog.google/rss"/>
+    <outline text="腾讯科技" title="腾讯科技" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2756372660.atom"/>
+    <outline text="InfoQ 中文" title="InfoQ 中文" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2390142780.atom"/>
+    <outline text="LlamaIndex Blog" title="LlamaIndex Blog" type="rss" xmlUrl="https://www.llamaindex.ai/blog/feed"/>
+    <outline text="Dify" title="Dify" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3890929674.atom"/>
+    <outline text="海外独角兽" title="海外独角兽" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3869640945.atom"/>
+    <outline text="LLM SPACE" title="LLM SPACE" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3942646359.atom"/>
+    <outline text="CSDN" title="CSDN" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3930654829.atom"/>
+    <outline text="Jina AI" title="Jina AI" type="rss" xmlUrl="https://jina.ai/feed.rss"/>
+    <outline text="赛博禅心" title="赛博禅心" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3934419561.atom"/>
+    <outline text="笔记侠" title="笔记侠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3215037546.atom"/>
+    <outline text="傅盛" title="傅盛" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2396833901.atom"/>
+    <outline text="ToB行业头条" title="ToB行业头条" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553153625.atom"/>
+    <outline text="小红书技术REDtech" title="小红书技术REDtech" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3889763736.atom"/>
+    <outline text="智谱" title="智谱" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3923277442.atom"/>
+    <outline text="月之暗面 Kimi" title="月之暗面 Kimi" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3944550926.atom"/>
+    <outline text="通义" title="通义" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3911621034.atom"/>
+    <outline text="百川大模型" title="百川大模型" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3937549843.atom"/>
+    <outline text="百度AI" title="百度AI" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3297523352.atom"/>
+    <outline text="HelloGitHub" title="HelloGitHub" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3093627441.atom"/>
+    <outline text="投资实习所" title="投资实习所" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3220072307.atom"/>
+    <outline text="经纬创投" title="经纬创投" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3078999138.atom"/>
+    <outline text="比尔盖茨" title="比尔盖茨" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3282540708.atom"/>
+    <outline text="腾讯混元" title="腾讯混元" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3908569425.atom"/>
+    <outline text="Qdrant" title="Qdrant" type="rss" xmlUrl="https://qdrant.tech/index.xml"/>
+    <outline text="刘润" title="刘润" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396392481.atom"/>
+    <outline text="吴晓波频道" title="吴晓波频道" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3079395914.atom"/>
+    <outline text="硅兔赛跑" title="硅兔赛跑" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3280531772.atom"/>
+    <outline text="智东西" title="智东西" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3081486433.atom"/>
+    <outline text="智能涌现" title="智能涌现" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3900464567.atom"/>
+    <outline text="腾讯研究院" title="腾讯研究院" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2399148061.atom"/>
+    <outline text="SuperTechFans" title="SuperTechFans" type="rss" xmlUrl="https://www.supertechfans.com/cn/index.xml"/>
+    <outline text="橘子汽水铺" title="橘子汽水铺" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3903697567.atom"/>
+    <outline text="OneFlow" title="OneFlow" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3598661977.atom"/>
+    <outline text="零一万物 01AI" title="零一万物 01AI" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3949515344.atom"/>
+    <outline text="浮之静" title="浮之静" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3236165275.atom"/>
+    <outline text="数字生命卡兹克" title="数字生命卡兹克" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3223096120.atom"/>
+    <outline text="AI产品黄叔" title="AI产品黄叔" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2398553439.atom"/>
+    <outline text="真格基金" title="真格基金" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394991041.atom"/>
+    <outline text="大模型智能" title="大模型智能" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3576186480.atom"/>
+    <outline text="甲子光年" title="甲子光年" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3599245772.atom"/>
+    <outline text="Z Potentials" title="Z Potentials" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3285810954.atom"/>
+    <outline text="深网腾讯新闻" title="深网腾讯新闻" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3201654887.atom"/>
+    <outline text="从码农到工匠" title="从码农到工匠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3596909863.atom"/>
+    <outline text="AI炼金术" title="AI炼金术" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3868900251.atom"/>
+    <outline text="白鲸出海" title="白鲸出海" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075486737.atom"/>
+    <outline text="硅星人Pro" title="硅星人Pro" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3926568365.atom"/>
+    <outline text="快刀青衣" title="快刀青衣" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396422154.atom"/>
+    <outline text="HelloJava" title="HelloJava" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2393633921.atom"/>
+    <outline text="AI科技评论" title="AI科技评论" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3098132220.atom"/>
+    <outline text="MacTalk" title="MacTalk" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398460220.atom"/>
+    <outline text="刘言飞语" title="刘言飞语" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394925538.atom"/>
+    <outline text="山行AI" title="山行AI" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3567914646.atom"/>
+    <outline text="魔搭ModelScope社区" title="魔搭ModelScope社区" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3915395868.atom"/>
+    <outline text="强少来了" title="强少来了" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3018043842.atom"/>
+    <outline text="MyScale Blog" title="MyScale Blog" type="rss" xmlUrl="https://myscale.com/blog/rss.xml"/>
+    <outline text="产品二姐" title="产品二姐" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3528641488.atom"/>
+    <outline text="AI大模型应用实践" title="AI大模型应用实践" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3957458995.atom"/>
+    <outline text="土猛的员外" title="土猛的员外" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3229095358.atom"/>
+    <outline text="光子星球" title="光子星球" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082518302.atom"/>
+    <outline text="DeeplearningAI" title="DeeplearningAI" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3217248187.atom"/>
+    <outline text="机器之心SOTA模型" title="机器之心SOTA模型" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3923700221.atom"/>
+    <outline text="阶跃星辰" title="阶跃星辰" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3925617892.atom"/>
+    <outline text="快手技术" title="快手技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867580341.atom"/>
+    <outline text="DeepSeek" title="DeepSeek" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3949607775.atom"/>
+    <outline text="豆包大模型团队" title="豆包大模型团队" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3930693616.atom"/>
+    <outline text="十字路口Crossing" title="十字路口Crossing" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3010319264.atom"/>
+    <outline text="青哥谈AI" title="青哥谈AI" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3927634636.atom"/>
+    <outline text="AI Musings by Mu" title="AI Musings by Mu" type="rss" xmlUrl="https://kelvinmu.substack.com/feed"/>
+    <outline text="Turing Post" title="Turing Post" type="rss" xmlUrl="https://rss.beehiiv.com/feeds/UJIoBuf5BX.xml"/>
+    <outline text="Latent Space" title="Latent Space" type="rss" xmlUrl="https://www.latent.space/feed"/>
+    <outline text="孔某人的低维认知" title="孔某人的低维认知" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3940569956.atom"/>
+    <outline text="AI寒武纪" title="AI寒武纪" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3871912638.atom"/>
+    <outline text="MiniMax 稀宇科技" title="MiniMax 稀宇科技" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3931519653.atom"/>
+    <outline text="Jina AI 中文" title="Jina AI 中文" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3928212730.atom"/>
+    <outline text="花叔" title="花叔" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3869059014.atom"/>
+    <outline text="Datawhale" title="Datawhale" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3226363426.atom"/>
+    <outline text="王吉伟" title="王吉伟" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3096338105.atom"/>
+    <outline text="Madrona" title="Madrona" type="rss" xmlUrl="https://www.madrona.com/feed"/>
+    <outline text="AINLP" title="AINLP" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_2398933301.atom"/>
+    <outline text="大语言模型论文跟踪" title="大语言模型论文跟踪" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3269165433.atom"/>
+    <outline text="GLM大模型" title="GLM大模型" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3916332374.atom"/>
+    <outline text="风叔云" title="风叔云" type="rss" xmlUrl="https://wewerss.bestblogs.dev/feeds/MP_WXS_3010103536.atom"/>
+  </body>
 </opml>

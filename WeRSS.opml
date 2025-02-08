@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<opml version="2.0">
+  <head>
+    <title>werss.bestblogs.dev 所有订阅源</title>
+  </head>
+  <body>
+    <outline text="dbaplus社群" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3932636937.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3932636937.atom"/>
+    <outline text="前端早读课" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2391052011.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2391052011.atom"/>
+    <outline text="ByteByteGo" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3910197182.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3910197182.atom"/>
+    <outline text="GitHub精选" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3003197367.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3003197367.atom"/>
+    <outline text="稀土掘金技术社区" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3566577862.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3566577862.atom"/>
+    <outline text="开源服务指南" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3865969368.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3865969368.atom"/>
+    <outline text="腾讯云中间件" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3011465052.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3011465052.atom"/>
+    <outline text="携程技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2390272091.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2390272091.atom"/>
+    <outline text="阿里研究院" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2395844153.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2395844153.atom"/>
+    <outline text="体验进阶" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3222834839.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3222834839.atom"/>
+    <outline text="超人的电话亭" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3246797399.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3246797399.atom"/>
+    <outline text="vivo互联网技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3286681597.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3286681597.atom"/>
+    <outline text="京东技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553167232.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553167232.atom"/>
+    <outline text="滴滴技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3558136264.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3558136264.atom"/>
+    <outline text="优设" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3568103147.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3568103147.atom"/>
+    <outline text="奇舞精选" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3881603653.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3881603653.atom"/>
+    <outline text="得物技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3915178544.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3915178544.atom"/>
+    <outline text="百度Geek说" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3892545299.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3892545299.atom"/>
+    <outline text="51CTO技术栈" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398296760.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398296760.atom"/>
+    <outline text="腾讯ISUX" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397410902.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397410902.atom"/>
+    <outline text="高可用架构" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3000551159.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3000551159.atom"/>
+    <outline text="Qunar技术沙龙" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3074721425.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3074721425.atom"/>
+    <outline text="百度MEUX" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3265918330.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3265918330.atom"/>
+    <outline text="Clip设计夹" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3297773927.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3297773927.atom"/>
+    <outline text="前端充电宝" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3561224500.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3561224500.atom"/>
+    <outline text="字节前端 ByteFE" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868459118.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3868459118.atom"/>
+    <outline text="经纬创投" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3078999138.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3078999138.atom"/>
+    <outline text="CSDN" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3930654829.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3930654829.atom"/>
+    <outline text="前端之巅" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3513713196.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3513713196.atom"/>
+    <outline text="爱奇艺技术产品团队" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3242732364.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3242732364.atom"/>
+    <outline text="小米技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3510410326.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3510410326.atom"/>
+    <outline text="字节跳动技术团队" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253632141.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3253632141.atom"/>
+    <outline text="哔哩哔哩技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3876745802.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3876745802.atom"/>
+    <outline text="阿里巴巴中间件" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3587540239.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3587540239.atom"/>
+    <outline text="笔记侠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3215037546.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3215037546.atom"/>
+    <outline text="HelloGitHub" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3093627441.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3093627441.atom"/>
+    <outline text="比尔盖茨" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3282540708.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3282540708.atom"/>
+    <outline text="小红书技术REDtech" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3889763736.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3889763736.atom"/>
+    <outline text="ToB行业头条" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553153625.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3553153625.atom"/>
+    <outline text="槽边往事" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392038560.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392038560.atom"/>
+    <outline text="刘润" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396392481.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396392481.atom"/>
+    <outline text="吴晓波频道" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3079395914.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3079395914.atom"/>
+    <outline text="硅兔赛跑" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3280531772.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3280531772.atom"/>
+    <outline text="猫笔刀" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867712154.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867712154.atom"/>
+    <outline text="APPSO" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392024520.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2392024520.atom"/>
+    <outline text="爱范儿" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2831008240.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2831008240.atom"/>
+    <outline text="强少来了" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3018043842.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3018043842.atom"/>
+    <outline text="奇绩创坛" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2393177158.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2393177158.atom"/>
+    <outline text="老俞闲话" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082299315.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082299315.atom"/>
+    <outline text="OSC开源社区" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397342721.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2397342721.atom"/>
+    <outline text="漫话开发者" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3273526927.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3273526927.atom"/>
+    <outline text="caoz的梦呓" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3242052866.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3242052866.atom"/>
+    <outline text="刘言飞语" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394925538.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394925538.atom"/>
+    <outline text="MacTalk" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398460220.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2398460220.atom"/>
+    <outline text="HelloJava" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2393633921.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2393633921.atom"/>
+    <outline text="印记中文" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3239902349.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3239902349.atom"/>
+    <outline text="快刀青衣" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396422154.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2396422154.atom"/>
+    <outline text="L先生说" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3015646136.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3015646136.atom"/>
+    <outline text="古典古少侠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3085361438.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3085361438.atom"/>
+    <outline text="共识粉碎机" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3261361815.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3261361815.atom"/>
+    <outline text="VMIC UED" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3250239812.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3250239812.atom"/>
+    <outline text="从码农到工匠" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3596909863.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3596909863.atom"/>
+    <outline text="阿里云云栖号" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3245186049.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3245186049.atom"/>
+    <outline text="深网腾讯新闻" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3201654887.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3201654887.atom"/>
+    <outline text="真格基金" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394991041.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_2394991041.atom"/>
+    <outline text="白鲸出海" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075486737.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3075486737.atom"/>
+    <outline text="暗涌Waves" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3940324519.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3940324519.atom"/>
+    <outline text="光子星球" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082518302.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3082518302.atom"/>
+    <outline text="快手技术" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867580341.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3867580341.atom"/>
+    <outline text="36氪" type="rss" xmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3264997043.atom" htmlUrl="https://werss.bestblogs.dev/feeds/MP_WXS_3264997043.atom"/>
+  </body>
+</opml>
