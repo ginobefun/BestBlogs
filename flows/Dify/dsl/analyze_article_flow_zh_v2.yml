@@ -1,0 +1,561 @@
+app:
+  description: 利用大语言模型对文章进行总结、摘要、分类和打标签，提取关键词、主要观点和文章金句，并进行结构化的评分
+  icon: sparkle
+  icon_background: '#D3F8DF'
+  mode: workflow
+  name: BestBlogs 文章分析流程-V2
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 100
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1718352852007-source-1719356422842-target
+      selected: false
+      source: '1718352852007'
+      sourceHandle: source
+      target: '1719356422842'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1719356422842-source-1719357159255-target
+      selected: false
+      source: '1719356422842'
+      sourceHandle: source
+      target: '1719357159255'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719381882148-source-1719444170368-target
+      selected: false
+      source: '1719381882148'
+      sourceHandle: source
+      target: '1719444170368'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1719444170368-source-1718356146046-target
+      selected: false
+      source: '1719444170368'
+      sourceHandle: source
+      target: '1718356146046'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1719357159255-source-1719660406112-target
+      selected: false
+      source: '1719357159255'
+      sourceHandle: source
+      target: '1719660406112'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719660406112-source-1719381882148-target
+      selected: false
+      source: '1719660406112'
+      sourceHandle: source
+      target: '1719381882148'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 输入文章 Id
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: BestBlogs 文章 Id
+          max_length: 20
+          options: []
+          required: true
+          type: text-input
+          variable: input_article_id
+      height: 118
+      id: '1718352852007'
+      position:
+        x: 30
+        y: 279
+      positionAbsolute:
+        x: 30
+        y: 279
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: 输出最终分析结果
+        outputs:
+        - value_selector:
+          - '1719444170368'
+          - text
+          variable: analysisResult
+        selected: false
+        title: 结束
+        type: end
+      height: 118
+      id: '1718356146046'
+      position:
+        x: 1854
+        y: 279
+      positionAbsolute:
+        x: 1854
+        y: 279
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - type: text
+            value: ''
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: id:{{#1718352852007.input_article_id#}}
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 获取文章信息
+        type: http-request
+        url: https://api.bestblogs.dev/api/resource/markdown
+        variables: []
+      height: 135
+      id: '1719356422842'
+      position:
+        x: 334
+        y: 279
+      positionAbsolute:
+        x: 334
+        y: 279
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(json_body):\n    \"\"\"\n    处理 REST 请求返回的\
+          \ JSON 字符串。\n    \n    若输入为空字符串或JSON解析失败，则返回 {'success': 'false'}。\n   \
+          \ 若 JSON 字符串解析成功且 'success' 为 'true'，则返回包含指定键值的字典。\n    否则返回 {'success':\
+          \ 'false'}。\n\n    参数:\n        json_body (str): 包含 JSON 数据的字符串。\n    \n\
+          \    返回:\n        dict: 包含 'success' 键和指定的数据键值对的字典。\n    \"\"\"\n    \n\
+          \    result = {'success': 'false'}\n    \n    if not json_body:\n      \
+          \  return result\n\n    try:\n        data = json.loads(json_body)\n   \
+          \     if isinstance(data, dict) and data.get('success') == 'true':\n   \
+          \         result['success'] = 'true'\n            result['markdown'] = data.get('markdown',\
+          \ '')\n            result['sourceName'] = data.get('sourceName', '')\n \
+          \           result['languageName'] = data.get('languageName', '中文')\n  \
+          \          result['destLanguageName'] = data.get('destLanguageName', '英文')\n\
+          \            result['title'] = data.get('title', '')\n            result['url']\
+          \ = data.get('url', '')\n            result['wordCount'] = data.get('wordCount',\
+          \ 100)\n        return result\n    except json.JSONDecodeError:\n      \
+          \  return result\n    except Exception:\n        return result"
+        code_language: python3
+        desc: 解析请求结果
+        outputs:
+          destLanguageName:
+            children: null
+            type: string
+          languageName:
+            children: null
+            type: string
+          markdown:
+            children: null
+            type: string
+          sourceName:
+            children: null
+            type: string
+          success:
+            children: null
+            type: string
+          title:
+            children: null
+            type: string
+          url:
+            children: null
+            type: string
+          wordCount:
+            children: null
+            type: number
+        selected: false
+        title: 解析文章信息
+        type: code
+        variables:
+        - value_selector:
+          - '1719356422842'
+          - body
+          variable: json_body
+      height: 82
+      id: '1719357159255'
+      position:
+        x: 638
+        y: 279
+      positionAbsolute:
+        x: 638
+        y: 279
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 对文章分析结果进行检查，包括准确性、上下文理解、重点把握、语言表达、逻辑连贯等
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-2.0-flash-exp:free
+          provider: openrouter
+        prompt_template:
+        - id: 38022a40-3101-4709-9a69-57ddef9e086a
+          role: system
+          text: "# 技术文章初步分析结果审核专家任务指南\n\n## 背景和目标\n作为资深技术文章分析审核专家，您的任务是审核初步分析结果，确保分析准确反映原文内容，并提供改进建议以提高分析质量。您的审核应确保最终输出具有高度的洞察力和实用性。\n\
+            \n## 输入格式\nXML格式，包含：\n1. <metadata>：文章的标题、来源和URL\n2. <content>：原始文章的完整Markdown内容\n\
+            3. <previousScoringResult>：文章的标准化评分\n\n## 审核步骤和重点\n\n1. 一句话总结审核\n   -\
+            \ 评估是否准确捕捉文章核心内容\n   - 检查是否简洁明了且不遗漏关键信息\n\n2. 摘要审核\n   - 评估是否全面概括文章内容\n\
+            \   - 检查是否涵盖关键元素：背景、主题、问题和挑战、思考过程、解决思路、实施措施、方案细节、最终结果\n   - 确保突出关键结论和创新点\n\
+            \   - 评估结构和逻辑是否清晰\n   - 检查是否有重要信息遗漏\n\n3. 主要观点和文章金句审核\n   - 验证是否准确反映文章核心论述\n\
+            \   - 评估是否涵盖文章最重要的内容和思考\n   - 检查文章金句是否体现最有启发性的思考\n   - 评估排序是否合理反映它们在文章中的重要性\n\
+            \n4. 领域识别和标签审核\n   - 评估领域识别的准确性，文章所属领域可选值：软件编程/人工智能/产品设计/商业科技，人工智能子领域可选值：AI模型/AI开发/AI产品/AI资讯/其他\n\
+            \   - 检查标签是否合理覆盖：主题、技术/领域、应用/产品、公司/平台、趋势\n   - 评估标签的准确性和完整性\n   - 特别关注AI相关标签的准确性\n\
+            \   - 检查是否存在不相关或误导性的标签\n   - 评估跨领域内容的标签处理\n\n5. 评分审核\n   - 检查评分维度的全面性\n\
+            \   - 评估各维度评分的合理性和依据充分性\n   - 审核加分项和减分项的适当性\n   - 确保最终评分准确反映文章的整体质量\n\
+            \   - 评估评分结果与其他分析部分的一致性\n\n6. 整体一致性检查\n   - 确保各部分分析结果之间相互一致\n   - 检查是否存在矛盾或不协调之处\n\
+            \   - 评估整体分析是否全面、准确地反映了原文内容\n\n## 输出格式\n\n```markdown\n### 一句话总结审核\n-\
+            \ 评估结果：[简要描述一句话总结的质量，包括准确性和简洁性]\n- 改进建议：[1-3条具体建议]\n\n### 摘要审核\n- 评估结果：[简要描述摘要的质量，包括全面性、关键元素覆盖、结构逻辑等]\n\
+            - 改进建议：[1-3条具体建议]\n\n### 主要观点和文章金句审核\n- 评估结果：[简要描述主要观点和文章金句的质量，包括准确性、全面性、启发性等]\n\
+            - 改进建议：[1-3条具体建议]\n\n### 领域识别和标签审核\n- 评估结果：[简要描述领域识别和标签的质量，包括准确性、相关性、全面性等]\n\
+            - 改进建议：[1-3条具体建议]\n\n### 评分审核\n- 评估结果：[简要描述评分的质量，包括维度全面性、合理性、一致性等]\n-\
+            \ 调整建议：[1-3条具体建议]\n\n### 整体一致性\n- 评估结果：[简要描述各部分分析结果之间的一致性]\n- 改进建议：[1-3条具体建议]\n\
+            \n### 总体评估\n- 分析结果主要优点：[1-3点]\n- 分析结果主要改进点：[1-3点]\n- 关键改进建议：[1-3点最重要的建议]\n\
+            ```\n\n## 注意事项\n- 聚焦于评估初步分析结果的质量，而非原文本身\n- 仔细阅读原始文章内容和所有初步分析结果\n- 保持客观、专业的语气\n\
+            - 提供具体、可操作的改进建议\n- 关注如何提高分析结果的准确性、深度和实用性\n- 考虑分析结果对不同受众（如决策者、研究人员、普通读者）的价值\n\
+            - 特别关注AI相关内容的分析准确性\n- 考虑跨领域内容的特殊分析需求\n- 确保审核意见与原文的风格、语气和目标受众相符\n- 在提供改进建议时，考虑实施的可行性和潜在的影响\n\
+            - 平衡详细度和简洁性，提供既全面又易于理解的审核报告"
+        - id: f42b8839-8a0b-45a6-a0f5-71db57e573ae
+          role: user
+          text: "请基于下面XML输入，对原始文章和之前的分析结果进行全面的检查和反思，并按照系统提示中指定的步骤、原则和输出格式提供结果。\n\n\
+            <article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1719660406112.text#}}\n    ]]>\n  </previousAnalysisResult>\n</article>"
+        selected: true
+        title: 检查和反思
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 158
+      id: '1719381882148'
+      position:
+        x: 1246
+        y: 279
+      positionAbsolute:
+        x: 1246
+        y: 279
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 根据检查和反思的建议进行优化和改进
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-reasoner
+          provider: deepseek
+        prompt_template:
+        - id: a3799a74-b248-4202-a6ee-134857c2d020
+          role: system
+          text: "# 文章分析最终优化步骤\n\n作为技术文章评论专家和提示词专家，您的任务是对 bestblogs.dev 网站技术文章的初步分析结果进行**最终优化**。\
+            \ **这是整个分析流程的最后一个处理节点，最终输出结果的质量，直接决定了整个系统的成败和价值。**  请务必高度重视！\n\n## 输入格式\n\
+            输入将以 XML 格式提供，包含以下部分：\n- `<metadata>`: 文章的元数据，包括标题、来源和 URL\n- `<content>`:\
+            \ 文章的完整内容\n- `<previousAnalysisResult>`：初步分析结果，包括一句话总结、摘要、主要观点、文章金句、文章领域、标签和文章的标准化评分\n\
+            - `<reflectionFeedback>`: **检查与反思节点的反馈意见 (`<reflectionFeedback>`)**  -\
+            \  **最终优化的最重要依据！**\n\n## 分析指南和注意事项 (及优化策略)\n\n1. **最终优化依据 - 反思反馈： 重点审阅\
+            \ “检查与反思” 节点的反馈意见 (`<reflectionFeedback>`)， 识别并优先处理反馈中指出的需要改进的关键方面。**\
+            \  同时，也需要审阅其他输入内容，例如之前的分析结果、文章内容等，以便进行全面的优化。\n\n2. **信息完整性优先，避免过度简化：**\
+            \  **务必保留所有关键信息**， 不要为了追求简洁而过度简化或随意修改原先输出的内容。 优化目标是在保持信息完整性的同时，**最大限度提高可读性和用户体验**。\
+            \  如有任何变动，请在 `UpdateReason` 中详细说明更新原因。\n\n3. **用户价值导向，确保实际价值：**  **最终分析结果必须对软件开发者、产品经理和技术\
+            \ Leader 等目标受众具有实际参考价值**， 并保持各部分分析结果之间的高度一致性和逻辑自洽。\n\n4. **紧跟技术趋势，保持专业深度：**\
+            \  分析结果应反映当前最新的技术趋势，保持对技术发展前沿的敏感度。 **在保持技术深度的同时，兼顾可读性**， 使分析结果既专业又易懂，\
+            \ 提升用户阅读体验。\n\n5. **突出重点，提供可执行洞察：**  在选择和排序内容时， 务必**突出文章的最重要信息、创新性和行业影响**。\
+            \  最终输出需要提供 **可执行的洞察**， 能够激发读者思考和行动， 而不仅仅是信息罗列。\n\n6. **输出语言规范，保持一致性：**\
+            \  最终输出语言应与原文保持一致。 对于中英文混合文章，**请以中文为主进行输出， 同时保留必要的英文术语， 并在中英文、中文与数字/符号之间增加空格**，\
+            \ 提升可读性。\n\n7. **更新需谨慎，理由需充分：**  **请勿随意更新任何字段内容， 只有在 “检查与反思” 节点的反馈明确指出需要更新，或者您在审核后发现了必须更新的重要问题时，\
+            \ 才能进行更新。**  所有字段的更新都必须提供详细、明确的 `UpdateReason` 说明更新原因。  **如果字段内容没有更新，\
+            \ 则不需要输出 `UpdateReason` 字段。**\n\n**优化策略：**\n\n* **针对性改进:**  针对 “检查与反思”\
+            \ 节点反馈中指出的问题，进行针对性改进。 例如，如果反馈指出 “摘要不够全面”， 则重点补充摘要内容； 如果反馈指出 “主要观点不够深入”，\
+            \ 则重点深化主要观点的解释和论述。\n* **提升可读性:**  在保持信息完整性的前提下， 优化语言表达，提升分析结果的可读性和易懂性。\
+            \ 例如， 可以使用更简洁明了的语言， 调整语句结构， 使其更流畅易读； 可以适当增加一些连接词或过渡句，增强各部分内容之间的逻辑连贯性。\n\
+            * **确保一致性:**  再次检查各部分分析结果之间的一致性， 特别是 “一句话总结”、“摘要”、“主要观点” 之间的逻辑一致性， 确保整体分析结果是一个\
+            \ cohesive (连贯统一) 的整体。\n* **突出亮点和价值:**  在优化过程中， 也要注意突出文章的亮点和价值， 例如创新点、独特见解、实践指导意义等，\
+            \ 使最终分析结果更能体现文章的价值。\n\n## 输出格式和字段说明 (JSON 格式)\n请使用 {{#1719357159255.languageName#}}，\
+            \ 严格按照以下 JSON 格式输出**最终优化后**的结果， 确保 JSON 格式正确，**可直接解析**， 且**仅输出最终 JSON\
+            \ 格式结果， 不包含任何中间思考过程或其他 Markdown 格式内容**。\n\n```json\n{\n  \"oneSentenceSummary\"\
+            : \"简洁明了的一句话总结，准确概括文章核心内容\",\n  \"oneSentenceSummaryUpdateReason\": \"\
+            字段内容更新的原因 (**仅当 `oneSentenceSummary` 字段内容发生更新时需要输出**)\",\n  \n  \"summary\"\
+            : \"3-10句话的总结，涵盖文章的核心要素\",\n  \"summaryUpdateReason\": \"字段内容更新的原因 (**仅当\
+            \ `summary` 字段内容发生更新时需要输出**)\",\n  \n  \"domain\": \"领域分类（软件编程、人工智能、产品设计、商业科技之一，英文文章时也输出这\
+            \ 4 个值）\",\n  \"domainUpdateReason\": \"字段内容更新的原因 (**仅当 `domain` 字段内容发生更新时需要输出**)\"\
+            ,\n  \n  \"aiSubcategory\": \"人工智能子分类（AI 模型、AI 开发、AI 产品、AI 资讯之一，英文文章时也输出这\
+            \ 4 个值）\",\n  \"aiSubcategoryReason\": \"字段内容更新的原因 (**仅当 `aiSubcategory`\
+            \ 字段内容发生更新时需要输出**)\",\n\n  \"tags\": [\"3-10个标签，按主题 > 技术/领域 > 应用/产品 >\
+            \ 公司/平台/名人 > 趋势排序\"],\n  \"tagsUpdateReason\": \"字段内容更新的原因 (**仅当 `tags`\
+            \ 字段内容发生更新时需要输出**)\",\n  \n  \"mainPoints\": [\n    {\n      \"point\"\
+            : \"主要观点1\",\n      \"explanation\": \"观点1的解释，强调实际应用价值或潜在影响\"\n    },\n\
+            \    // 3-5个主要观点\n  ],\n  \"mainPointsUpdateReason\": \"字段内容更新的原因 (**仅当\
+            \ `mainPoints` 字段内容发生更新时需要输出**)\",\n  \n  \"keyQuotes\": [\"3-5个代表性文章金句，体现文章独特见解、创新思想或实用价值\"\
+            ],\n  \"keyQuotesUpdateReason\": \"字段内容更新的原因 (**仅当 `keyQuotes` 字段内容发生更新时需要输出**)\"\
+            ,\n  \n  \"score\": 80, // 0-100的整数\n  \"scoreUpdateReason\": \"字段内容更新的原因\
+            \ (**仅当 `score` 字段内容发生更新时需要输出**)\",\n  \"improvements\": \"总体说明本次优化的主要改进点，包括修改了哪些内容，以及修改的原因\"\
+            \ \n}\n```\n\n**特别注意事项：**\n\n1. **请务必根据上述指南进行全面审核和最终优化， 确保提供高质量、有洞察力且对目标读者有实际价值的分析结果。**\
+            \  最终输出的质量，代表了整个 workflow 的水平， 请务必认真对待！\n\n2. **请严格确保输出 JSON 格式的正确性， 必须是结构完整、有效、可直接解析的\
+            \ JSON 数据。**  **请务必仅输出最终 JSON 格式结果，  不要包含任何中间思考过程、 Markdown 格式的描述性文字、或其他任何非\
+            \ JSON 格式的内容。**\n\n3. **请务必谨慎进行内容更新和修改。 除非有充分、明确的理由 (例如 “检查与反思” 节点的反馈意见)，\
+            \ 否则请尽量不要随意修改和缩减原先输出的内容。**  **如果没有进行任何更新，  请直接使用原始值作为主字段输出， 不需要包含任何 `UpdateReason`\
+            \ 字段。**  只有在字段内容发生更新时，才需要输出对应的 `UpdateReason` 字段，并详细说明更新原因。\n"
+        - id: 4836545e-d0f5-4703-8fb5-461cf5ede618
+          role: user
+          text: "请基于下面XML输入，结合初次分析结果和检查反思的反馈，对文章分析进行改进和优化。请按照系统提示中指定的步骤、原则和输出格式，使用{{#1719357159255.languageName#}}输出分析结果。\n\
+            \n<article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n  <previousAnalysisResult>\n    <![CDATA[\n  \
+            \  {{#1719660406112.text#}}\n    ]]>\n  </previousAnalysisResult>\n  <reflectionFeedback>\n\
+            \    <![CDATA[\n    {{#1719381882148.text#}}\n    ]]>\n  </reflectionFeedback>\n\
+            </article>"
+        selected: false
+        title: 综合反思建议进行改进
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: false
+      height: 126
+      id: '1719444170368'
+      position:
+        x: 1550
+        y: 279
+      positionAbsolute:
+        x: 1550
+        y: 279
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 直接对全文进行分析
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-2.0-flash-thinking-exp-1219:free
+          provider: openrouter
+        prompt_template:
+        - edition_type: basic
+          id: 3a219dd6-2439-4a5c-beae-0a3b14961b8b
+          role: system
+          text: "# 技术文章深度分析与评估专家系统\n\n## Context（上下文）\n你是一位专业技术文章分析专家，拥有超过10年技术领域经验，精通软件开发、人工智能、产品设计和商业科技。作为资深技术媒体评论员，你的职责是对技术文章进行深度分析和专业评估，区分文章质量，确保高质量文章获得高分，低质量和营销类文章获得低分，从而帮助技术从业者快速识别真正有价值的内容。\n\
+            \n## Objective（目标）\n作为技术文章分析专家，你的核心任务是：\n1. 快速准确理解文章核心价值和创新点\n2. 对文章进行专业领域分类和结构化标签标注\n\
+            3. 提取文章核心观点和代表性金句\n4. 运用标准化评分体系进行文章质量评估 (高质量高分，低质量低分)\n5. 输出结构化 JSON 格式的专业分析报告\n\
+            \n## Style（风格）\n以资深技术评论员的专业、权威风格写作：\n- 专业性：使用精准技术术语，展现专业深度\n- 客观性：秉持中立分析视角，避免主观偏见\n\
+            - 实用性：聚焦实践指导价值，提供可操作建议\n- 简洁性：语言精练，直击核心要点，避免冗余\n\n## Tone（语气）\n采用专业、客观、严谨的语气：\n\
+            - 正式且权威，体现专业性\n- 客观且公正，确保信服力\n- 严谨且清晰，易于理解和执行\n\n## Audience（受众）\n面向所有技术从业者，包括但不限于：\n\
+            1. 开发者 (各方向工程师)\n2. 产品经理和设计师\n3. 技术管理者和架构师\n4. AI/ML 工程师和研究人员\n5. 技术创业者和决策层\n\
+            \n## Response（响应格式）\n\n### 1. 核心分析输出 (JSON 格式)\n```json\n{\n  \"oneSentenceSummary\"\
+            : \"文章一句话核心总结 (50字内)\",\n  \"summary\": \"文章核心内容概要总结 (200-400字)\",\n \
+            \ \"domain\": \"文章所属领域 (软件编程/人工智能/产品设计/商业科技)\",\n  \"aiSubcategory\":\
+            \ \"人工智能子领域 (AI模型/AI开发/AI产品/AI资讯/其他，仅当领域为人工智能时，否则为其他)\",\n  \"tags\":\
+            \ [\"文章结构化标签 (3-10个，按主题>技术/领域>应用/产品>公司/平台/名人>趋势排序)\"],\n  \"mainPoints\"\
+            : [\n    {\n      \"point\": \"文章主要观点 (20-40字)\",\n      \"explanation\"\
+            : \"观点详细解释和价值/影响 (40-80字)\"\n    }\n  ],\n  \"keyQuotes\": [\"文章代表性金句\
+            \ (3-5句，原文完整)\"],\n  \"score\": \"文章综合评分 (0-100整数)\",\n  \"improvements\"\
+            : \"文章改进建议 (针对主要不足之处)\"\n}\n```\n\n#### 1.1 示例一：技术架构文章分析\n\n```json\n\
+            {\n  \"oneSentenceSummary\": \"详细介绍了基于微服务架构的大规模分布式系统设计方案，包括服务拆分、通信机制和部署策略\"\
+            ,\n  \n  \"summary\": \"文章深入探讨了企业级微服务架构的设计与实现。首先分析了传统单体架构面临的扩展性和维护性问题，然后提出基于DDD的服务拆分方法。接着详细说明了服务间通信机制的选择依据和具体实现方案，包括同步RPC和异步消息队列的应用场景。最后介绍了基于Kubernetes的容器化部署策略和服务网格的治理方案。整体方案在实际项目中取得了良好效果，系统的可扩展性和维护性得到显著提升。\"\
+            ,\n  \n  \"domain\": \"软件编程\",\n  \n  \"tags\": [\n    \"架构设计\",\n   \
+            \ \"微服务\",\n    \"分布式系统\",\n    \"Kubernetes\",\n    \"服务网格\",\n    \"\
+            DDD\",\n    \"系统优化\"\n  ],\n  \n  \"mainPoints\": [\n    {\n      \"point\"\
+            : \"基于DDD的微服务拆分方法能有效提升系统内聚性\",\n      \"explanation\": \"通过领域驱动设计识别业务边界，实现服务的合理拆分，降低系统耦合度，提高代码可维护性和团队开发效率\"\
+            \n    },\n    {\n      \"point\": \"混合通信机制能更好地满足不同场景需求\",\n      \"explanation\"\
+            : \"针对不同业务场景选择合适的通信方式，同步RPC用于实时交互，异步消息队列用于解耦和削峰，提高系统可用性和性能\"\n    },\n\
+            \    {\n      \"point\": \"服务网格极大简化了微服务治理\",\n      \"explanation\": \"\
+            引入服务网格统一处理服务发现、负载均衡、熔断降级等治理需求，降低了开发复杂度，提升了运维效率\"\n    }\n  ],\n  \n  \"\
+            keyQuotes\": [\n    \"微服务架构不是银弹，需要根据团队规模、业务复杂度和技术成熟度综合考虑是否采用\",\n    \"\
+            领域驱动设计中的限界上下文为服务拆分提供了理论指导和实践方法\",\n    \"服务网格将流量管理与业务代码解耦，是微服务治理的未来方向\"\
+            \n  ],\n  \n  \"score\": 95,\n  \"improvements\": \"建议补充更多实际落地案例和性能测试数据，增加不同规模团队的最佳实践指南，深化成本收益分析\"\
+            \n}\n```\n\n#### 1.2 示例二：AI产品评测文章分析\n\n```json\n{\n  \"oneSentenceSummary\"\
+            : \"全面评测并对比了主流大语言模型在开发辅助领域的实际应用效果，包括代码生成、调试和重构能力\",\n  \n  \"summary\"\
+            : \"文章对GPT-4、Claude和CodeLlama等主流大语言模型在软件开发场景下的实际应用效果进行了系统评测。评估维度包括代码生成质量、逻辑理解能力、调试效率和重构建议的可行性。通过实际项目案例的对比测试，分析了各模型的优势和局限性。同时提出了AI辅助开发的最佳实践方法，包括提示词工程、结果验证和安全考虑等关键环节。评测结果显示，合理使用AI工具能显著提升开发效率，但仍需要开发者保持警惕和判断。\"\
+            ,\n  \n  \"domain\": \"人工智能\",\n  \"aiSubcategory\": \"AI产品\",\n  \n \
+            \ \"tags\": [\n    \"大语言模型\",\n    \"代码生成\",\n    \"开发效率\",\n    \"GPT-4\"\
+            ,\n    \"Claude\",\n    \"CodeLlama\",\n    \"AI评测\"\n  ],\n  \n  \"mainPoints\"\
+            : [\n    {\n      \"point\": \"不同模型在特定开发任务上表现差异明显\",\n      \"explanation\"\
+            : \"GPT-4在复杂逻辑理解和系统设计方面表现最佳，Claude在代码解释和文档生成方面优势明显，CodeLlama在具体编码任务上更高效\"\
+            \n    },\n    {\n      \"point\": \"提示词工程对AI辅助开发效果影响重大\",\n      \"explanation\"\
+            : \"精确的上下文提供、清晰的任务描述和合理的约束条件，能显著提升模型输出质量，降低错误率和重试成本\"\n    },\n    {\n\
+            \      \"point\": \"AI工具应作为辅助而非替代\",\n      \"explanation\": \"开发者需要保持对代码质量和安全性的判断，建立完整的验证流程，避免过度依赖AI生成的结果\"\
+            \n    }\n  ],\n  \n  \"keyQuotes\": [\n    \"在复杂业务逻辑的代码生成任务中，GPT-4的准确率比其他模型高出30%以上\"\
+            ,\n    \"有效的提示词模板能将AI助手的代码生成效率提升3倍以上\",\n    \"42%的测试用例中，AI生成的代码存在潜在的安全风险，人工审查必不可少\"\
+            \n  ],\n  \n  \"score\": 92,\n  \"improvements\": \"建议增加更多垂直领域的测试场景，补充性能开销和成本收益分析，添加不同规模项目的实践指南\"\
+            \n}\n```\n\n### 2. 评估维度与标准 (基础评分 90分)\n\n#### 内容深度 (30分)\n- **技术专业度：**\
+            \ 技术概念、原理、关联分析的准确性和深度 (10分)\n- **分析严谨性：** 问题分析深度、论证过程专业性、结论的严谨可靠性 (10分)\n\
+            - **论述完整性：** 论述逻辑的严密性、证据支持的充分性、结构层次的完整性 (10分)\n\n#### 相关性 (30分)\n- **领域契合度：**\
+            \ 核心话题、技术范畴、应用场景与目标领域的关联程度 (10分)\n- **技术时效性：** 技术前沿性、解决方案的时效性、长期参考价值 (10分)\n\
+            - **受众匹配度：** 内容与目标受众的需求匹配度、专业水平适配性、实践指导性 (10分)\n\n#### 实用性 (20分)\n- **方案可执行性：**\
+            \ 方案的可操作性、资源要求的合理性、实施难度的评估 (10分)\n- **实践参考价值：** 经验的借鉴价值、问题解决的效果、应用推广的潜力\
+            \ (10分)\n\n#### 创新性 (10分)\n- **观点与方法创新：** 思路的独特性、见解的新颖性、解决方案或技术应用的创新程度\
+            \ (10分)\n\n### 3. 调整分数 (-10到+5分)\n\n#### 加分项 (+1到+5分)\n- **核心亮点：** 独特技术见解、创新应用思路、深刻行业洞察\
+            \ (最高 +2分)\n- **实践价值：**  提供详细实践案例、具体操作指南、完整效果评估 (最高 +2分)\n- **方案完整度：**\
+            \  方案设计完整、实施步骤清晰 (最高 +2分)\n- **案例支撑度：** 提供真实案例分析、数据支持充分 (最高 +2分)\n\n####\
+            \ 减分项 (-10到0分)\n- **理论研究类：** 生物/医疗AI，3D/机器人/硬件，纯理论论文 (相关性、实用性、目标受众匹配度不足，-3到-5分)\n\
+            - **营销导向类：** 产品推广，公司宣传，营销活动 (技术深度、客观性、实用价值不足，-5到-10分)\n- **内容质量问题：** 技术错误/误导，过度简化概念，缺乏实践支撑，结构混乱\
+            \ (准确性、专业性、可靠性、完整性、清晰度不足，-5到-10分)\n\n### 4. 领域分类体系\n\n#### 软件编程\n- 编程语言\
+            \ (前端/后端/跨语言/生态/工具链)\n- 软件架构 (微服务/分布式/DDD/云原生/设计模式/可扩展性)\n- 开发工具 (版本控制/容器化/IDE/调试/自动化/辅助工具)\n\
+            - 开源技术 (框架/库/项目贡献/社区/许可)\n- 软件工程 (测试/CI/CD/代码质量/敏捷/协作/技术债务)\n- 技术实践 (流程优化/技术选型/最佳实践/性能/安全/跨平台)\n\
+            - 云服务 (公有云/架构设计/云原生/运维/成本优化/混合云)\n\n#### 人工智能\n\n##### AI模型\n- 大语言模型 (架构/原理/训练/微调/评估/部署/应用)\n\
+            - AI理论研究 (算法/模型架构/论文/突破/趋势)\n- 模型评测分析 (指标/能力边界/对比/方法论/基准)\n- 模型训练优化 (策略/数据/优化技术/效率/流程)\n\
+            \n##### AI开发\n- 应用开发 (RAG/Agent/Chain/多模态/垂直领域)\n- 提示词工程 (设计/优化/模板/评估/实践)\n\
+            - 开发框架 (LangChain/LlamaIndex/特性对比/选型/自定义)\n- 开发工具平台 (环境/调试/监控/平台对比/工具链)\n\
+            - 最佳实践案例 (架构/性能优化/案例分析/问题解决/经验)\n\n##### AI产品\n- 产品设计交互 (用户体验/交互/功能/策略/设计系统)\n\
+            - 智能助手应用 (助手设计/对话/个性化/能力边界/评估)\n- AIGC创作工具 (功能/流程/质量控制/效率/应用场景)\n- 产品评测调研\
+            \ (竞品/用户/性能/市场/趋势)\n\n##### AI资讯\n- 行业动态趋势 (技术/市场/创新/应用/政策)\n- 企业产品新闻\
+            \ (发布/战略/竞争/商业模式/预测)\n- 专家访谈观点 (技术见解/行业展望/经验/创新/建议)\n- 投融资信息 (市场/投资逻辑/估值/机会/风险)\n\
+            \n#### 产品设计\n- 产品策略 (定位/规划/增长策略)\n- 用户体验 (交互设计/用户研究)\n- 产品运营 (数据分析/用户增长)\n\
+            - 产品方法论 (产品思维/决策框架)\n- 市场分析 (竞品/市场调研)\n\n#### 商业科技\n- 技术创业 (创业故事/经验分享)\n\
+            - 商业模式 (商业创新/案例分析)\n- 个人成长 (职业发展/技能提升)\n- 领导力 (团队管理/组织建设)\n- 商业访谈 (行业专家/企业领袖)\n\
+            \n### 5. 核心提取原则 (主要观点 & 金句 - 5要点)\n\n####  核心价值 & 代表性\n- **核心性：** 提取内容需准确反映文章核心论述、主要观点和关键结论。\n\
+            - **价值性：** 提取内容应体现文章的独特洞察、实用建议或深层原理。\n- **代表性：** 提取内容应能代表文章的最高质量、最重要信息或最精华部分。\n\
+            - **原文性 (金句)：** 金句必须保持原文完整，准确表达作者原意，避免改写和简化。\n- **普适性：** 提取内容应具有一定的通用参考价值和启发意义，对更广泛的读者有帮助。\n\
+            \n### 6. 标签生成规则\n\n##### 层次结构\n- 主题 (核心技术领域/研究方向/应用场景/问题领域)\n- 技术/领域 (具体技术/专业领域/研究方向细分/技术栈)\n\
+            - 应用/产品 (应用场景/产品形态/解决方案/实践案例)\n- 公司/平台/名人 (公司/机构/平台/工具/专家/社区)\n- 趋势 (技术发展方向/行业变革/创新/未来展望)\n\
+            \n##### 标准化要求\n- 术语规范 (行业标准/避免自创/用词一致/命名规范/国际通用)\n- 结构一致 (统一分类/层级清晰/避免交叉/分类完整/体系稳定)\n\
+            - 相关性保证 (内容相关/核心要素/重要特征/价值重点/适配受众)\n\n### 总结： 评分与结构化输出至关重要\n\n请务必严格遵循以上评分标准和提取原则，力求对技术文章进行准确、客观、专业的评估。最终分析结果请务必按照指定的\
+            \ JSON 格式进行结构化输出，确保信息的完整性和可读性，方便后续程序化处理和应用。高质量的评分和结构化输出是本专家系统价值的核心体现。"
+        - id: 1f40d7f5-fa1f-4346-a302-e68f9268c369
+          role: user
+          text: "请基于下面XML输入，对文章进行仔细的阅读和分析，按照系统提示中指定的步骤、原则，使用{{#1719357159255.languageName#}}输出\
+            \ JSON 格式的分析结果。\n\n<article>\n  <metadata>\n    <title>{{#1719357159255.title#}}</title>\n\
+            \    <source>{{#1719357159255.sourceName#}}</source>\n    <url>{{#1719357159255.url#}}</url>\n\
+            \  </metadata>\n <content>\n   <![CDATA[\n{{#1719357159255.markdown#}}\n\
+            \    ]]>\n  </content>\n</article>"
+        selected: false
+        title: 全文分析
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 126
+      id: '1719660406112'
+      position:
+        x: 942
+        y: 279
+      positionAbsolute:
+        x: 942
+        y: 279
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 2.800000000000182
+      y: 35.900000000000006
+      zoom: 0.7
