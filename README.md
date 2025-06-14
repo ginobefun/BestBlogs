@@ -82,7 +82,7 @@ BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 - ⭐ 给项目点个 Star
 - 💝 赞赏支持项目发展  
 - 👥 加入读者交流群讨论
-- 📧 邮件反馈建议
+- 📧 邮件反馈建议：[hi@gino.bot](mailto:hi@gino.bot)
 
 ![左侧赞赏支持，右侧扫码加群](https://bestblogs.dev/support.png)
 
