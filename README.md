@@ -4,7 +4,7 @@
 
 ## 1. 介绍
 
-bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业科技和个人成长领域的价值导向内容，汇集自顶级技术公司和社区。我们利用先进语言模型，为您摘要、评分和翻译这些文章，节省您的阅读时间。我们了解数据筛选的痛点，致力于为您呈现精选内容。立即订阅，探索未来技术的无限可能！
+BestBlogs.dev 为您提供编程、人工智能、产品设计、商业科技和个人成长领域的精选内容，汇集自顶级技术公司和社区。我们利用先进的大语言模型，为每篇文章提供智能摘要、评分和翻译服务，帮助您快速筛选高价值内容，节省阅读时间。立即订阅，探索未来技术的无限可能！
 
 ![主要特性](./images/main_page_v3.png)
 
@@ -12,81 +12,85 @@ bestblogs.dev 为您提供独特的编程、人工智能、产品设计、商业
 
 网站订阅地址：[https://www.bestblogs.dev/#subscribe](https://www.bestblogs.dev/#subscribe)
 
-每周五将推送本周最新的[精选推送](https://www.bestblogs.dev/newsletter)，让您第一时间了解最新人工智能开发技术和动态。
+每周五推送最新的[精选推送](https://www.bestblogs.dev/newsletter)，包含本周最具价值的技术文章、人工智能动态、产品设计洞察等优质内容。
 
 ![精选推送](./images/newsletter_list_v3.png)
 
 ## 3. RSS 源
 
-网站来源于以下所有 RSS 订阅源（共 380 个）：
+网站内容来源于以下 RSS 订阅源（共 380 个）：
 
-[https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_ALL.opml](https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_ALL.opml)
+**所有订阅源：** [BestBlogs_RSS_ALL.opml](./BestBlogs_RSS_ALL.opml)
 
-- 其中文章类共 200 个 RSS 订阅源：
+- **文章类**（200 个订阅源）：[BestBlogs_RSS_Articles.opml](./BestBlogs_RSS_Articles.opml)
+- **播客类**（30 个订阅源）：[BestBlogs_RSS_Podcasts.opml](./BestBlogs_RSS_Podcasts.opml)  
+- **Twitter 类**（150 个订阅源，持续添加中）：[BestBlogs_RSS_Twitters.opml](./BestBlogs_RSS_Twitters.opml)
 
-[https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_Articles.opml](https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_Articles.opml)
+您可以在 [订阅源页面](https://www.bestblogs.dev/sources) 浏览所有 RSS 订阅源信息，包括最近 3 个月的文章数量、精选文章数量和阅读数统计。
 
-- 播客类共 30 个 RSS 订阅源：
+![订阅源页面](./images/source_page_v2.png)
 
-[https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_Podcasts.opml](https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_Podcasts.opml)
-
-- Twitter 类共 150 个 RSS 订阅源（持续添加中）：
-
-[https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_Twitters.opml](https://github.com/ginobefun/BestBlogs/blob/main/BestBlogs_RSS_Twitters.opml)
-
-你可以在网页 [https://www.bestblogs.dev/sources](https://www.bestblogs.dev/sources) 上浏览所有 RSS 订阅源信息，包括订阅源最近 3 个月的文章数量、精选文章数量和阅读数。
-
-![Sources Page](./images/source_page_v2.png)
-
-你可以使用 RSS 阅读器进行导入阅读，如有优质的 RSS 订阅源需要添加，可以提 Issue 补充。
+您可以直接导入这些 OPML 文件到您的 RSS 阅读器中。如有优质的 RSS 订阅源推荐，欢迎提 Issue 补充。
 
 ## 4. 本站 RSS 订阅指南
 
-BestBlogs.dev 提供了灵活的 RSS 订阅功能，让您可以根据自己的需求订阅感兴趣的技术文章。
+BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 
-- 全站订阅：[https://www.bestblogs.dev/zh/feeds/rss](https://www.bestblogs.dev/zh/feeds/rss)
-- 精选文章订阅：[https://www.bestblogs.dev/zh/feeds/rss?featured=y](https://www.bestblogs.dev/zh/feeds/rss?featured=y)
-- 编程技术类文章订阅：[https://www.bestblogs.dev/zh/feeds/rss?category=programming](https://www.bestblogs.dev/zh/feeds/rss?category=programming)
-- 人工智能高分文章订阅：[https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90](https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90)
+- **全站订阅：** [https://www.bestblogs.dev/zh/feeds/rss](https://www.bestblogs.dev/zh/feeds/rss)
+- **精选文章订阅：** [https://www.bestblogs.dev/zh/feeds/rss?featured=y](https://www.bestblogs.dev/zh/feeds/rss?featured=y)
+- **编程技术类文章：** [https://www.bestblogs.dev/zh/feeds/rss?category=programming](https://www.bestblogs.dev/zh/feeds/rss?category=programming)
+- **人工智能高分文章：** [https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90](https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90)
 
-参数说明及更多用法请参考 [BestBlogs.dev RSS 订阅指南](./BestBlogs_RSS_Doc.md)
+更多参数说明和用法请参考：[BestBlogs.dev RSS 订阅指南](./BestBlogs_RSS_Doc.md)
 
 ## 5. 实现原理
 
 ### 5.1 文章智能分析
 
-[BestBlogs.dev 基于 Dify Workflow 的文章智能分析实践](./flows/Dify/BestBlogs.dev%20基于%20Dify%20Workflow%20的文章智能分析实践.md)
+详细实践文档：[BestBlogs.dev 基于 Dify Workflow 的文章智能分析实践](./flows/Dify/BestBlogs.dev%20基于%20Dify%20Workflow%20的文章智能分析实践.md)
 
-![Main Flow](./flows/Dify/flowImages/bestblogs_main_flow.png)
+![主要流程](./flows/Dify/flowImages/bestblogs_main_flow.png)
 
-1. 文章爬取流程：基于 RSS 协议，爬取所有订阅源的文章信息，包括标题、链接、发布时间等，通过链接和无头浏览器爬取文章内容。通过订阅源上定义的文章正文选择器等提取正文，并对正文的 HTML、图片等进行处理，放入待处理文章列表。
-2. 文章初评流程：通过语言、文章内容等特征，对文章进行初次评分，剔除低质量文章，减少后续步骤处理。使用 Dify Workflow 项目进行文章初评，DSL 参见 [BestBlogs 文章初评流程](./flows/Dify/dsl/BestBlogs%20文章初评流程.yml)
-3. 文章分析流程：通过大语言模型（如 GPT-4o）对文章进行摘要、分类和评分，生成一句话总结、文章摘要、主要观点、文章金句、所属领域、标签列表和评分等，便于读者快速过滤筛选及了解全文主要内容，判断是否继续阅读。使用 Dify Workflow 项目进行文章分析，包括 *分段分析 - 汇总分析 - 领域划分和标签生成 - 文章评分 - 检查反思 - 优化改进* 等环节，DSL 参见 [BestBlogs 文章分析流程](./flows/Dify/dsl/BestBlogs%20文章分析流程.yml)
-4. 文章分析结果翻译流程：通过大语言模型（如 GPT-4o）对文章分析结果进行翻译，目前网站支持中英两种语言，根据原文的语言生成目标语言的摘要、主要观点、文章金句、标签列表等。使用 Dify Workflow 项目进行文章分析结果翻译，包括 *识别专业术语 - 初次翻译 - 检查翻译 - 意译* 等环节，DSL 参见 [BestBlogs 文章分析结果翻译流程](./flows/Dify/dsl/BestBlogs%20文章分析结果翻译.yml)
+**1. 文章爬取流程**
+基于 RSS 协议爬取所有订阅源的文章信息（标题、链接、发布时间等），通过无头浏览器获取完整文章内容。利用订阅源配置的正文选择器提取文章正文，并对 HTML、图片等进行标准化处理。
+
+**2. 文章初评流程**  
+通过语言类型、内容质量等特征对文章进行初步评分，过滤低质量内容，提高后续处理效率。使用 Dify Workflow 实现，DSL 参见：[BestBlogs 文章初评流程](./flows/Dify/dsl/BestBlogs%20文章初评流程.yml)
+
+**3. 文章深度分析流程**  
+通过大语言模型（GPT-4o）对文章进行全面分析，生成一句话总结、详细摘要、主要观点、文章金句、领域分类、标签列表和质量评分等。包含 *分段分析 → 汇总分析 → 领域划分和标签生成 → 文章评分 → 检查反思 → 优化改进* 等环节。DSL 参见：[BestBlogs 文章分析流程](./flows/Dify/dsl/BestBlogs%20文章分析流程.yml)
+
+**4. 多语言翻译流程**  
+支持中英双语，自动识别原文语言并生成目标语言的分析结果。包含 *识别专业术语 → 初次翻译 → 检查翻译 → 意译优化* 等环节。DSL 参见：[BestBlogs 文章分析结果翻译流程](./flows/Dify/dsl/BestBlogs%20文章分析结果翻译.yml)
 
 ### 5.2 播客智能分析
 
-方案总结中，后续更新到以下文档：
-[BestBlogs.dev 基于通义听悟和 Dify 实现播客智能分析](./docs/BestBlogs.dev%20基于通义听悟和%20Dify%20实现播客智能分析.md)
+实现方案详见：[BestBlogs.dev 基于通义听悟和 Dify 实现播客智能分析](./docs/BestBlogs.dev%20基于通义听悟和%20Dify%20实现播客智能分析.md)
 
 ### 5.3 推文智能分析
 
-方案总结中，后续更新到以下文档：
-[BestBlogs.dev 基于 XGo.ing 和 Dify 实现推文智能分析.md](./docs/BestBlogs.dev%20基于%20XGo.ing%20和%20Dify%20实现推文智能分析.md)
+实现方案详见：[BestBlogs.dev 基于 XGo.ing 和 Dify 实现推文智能分析](./docs/BestBlogs.dev%20基于%20XGo.ing%20和%20Dify%20实现推文智能分析.md)
 
 ### 5.4 视频智能分析
 
-视频方案调研中，预计 7 月底接入 🙂
+方案开发中，敬请期待 🎬
 
-## 6. 赞助与交流群
+## 6. 支持与交流
 
-有疑问欢迎邮件交流，或加入读者群讨论。如觉得网站有帮助，欢迎赞赏支持 ❤️
+如果您觉得 BestBlogs.dev 对您有帮助，欢迎：
+
+- ⭐ 给项目点个 Star
+- 💝 赞赏支持项目发展  
+- 👥 加入读者交流群讨论
+- 📧 邮件反馈建议
 
 ![左侧赞赏支持，右侧扫码加群](https://bestblogs.dev/support.png)
 
-## 7. 鸣谢
+## 7. 致谢
 
-- [RSS Hub](https://github.com/DIYgod/RSSHub)
-- [wewe-rss](https://github.com/cooderl/wewe-rss)
-- [Dify](https://github.com/langgenius/dify)
-- [Bark](https://github.com/Finb/Bark)
+感谢以下开源项目的支持：
+
+- [RSSHub](https://github.com/DIYgod/RSSHub) - 万物皆可 RSS
+- [wewe-rss](https://github.com/cooderl/wewe-rss) - 微信公众号 RSS 化
+- [Dify](https://github.com/langgenius/dify) - LLM 应用开发平台
+- [Bark](https://github.com/Finb/Bark) - iOS 推送通知工具
