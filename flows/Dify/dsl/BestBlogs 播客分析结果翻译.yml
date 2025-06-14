@@ -1,0 +1,574 @@
+app:
+  description: 利用大语言模型对播客分析的结果进行翻译
+  icon: 📻
+  icon_background: '#FFE4E8'
+  mode: workflow
+  name: BestBlogs 播客分析结果翻译
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.1.5@012c9e0467a11910db974e0436348e93a376fdc96381946a3db2c56708377381
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1718352852007-source-1719356422842-target
+      source: '1718352852007'
+      sourceHandle: source
+      target: '1719356422842'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1719356422842-source-1719357159255-target
+      source: '1719356422842'
+      sourceHandle: source
+      target: '1719357159255'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719665970105-source-1719666182344-target
+      source: '1719665970105'
+      sourceHandle: source
+      target: '1719666182344'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1719666182344-source-1719666267591-target
+      source: '1719666182344'
+      sourceHandle: source
+      target: '1719666267591'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1719666267591-source-1719666292377-target
+      source: '1719666267591'
+      sourceHandle: source
+      target: '1719666292377'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: if-else
+      id: 1719357159255-source-1747011839276-target
+      source: '1719357159255'
+      sourceHandle: source
+      target: '1747011839276'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1747011839276-true-1719665970105-target
+      source: '1747011839276'
+      sourceHandle: 'true'
+      target: '1719665970105'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: end
+      id: 1747011839276-false-1747011862569-target
+      source: '1747011839276'
+      sourceHandle: 'false'
+      target: '1747011862569'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 输入播客 Id
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: BestBlogs 播客 Id
+          max_length: 20
+          options: []
+          required: true
+          type: text-input
+          variable: input_article_id
+      height: 118
+      id: '1718352852007'
+      position:
+        x: 30
+        y: 277.5
+      positionAbsolute:
+        x: 30
+        y: 277.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - type: text
+            value: ''
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: id:{{#1718352852007.input_article_id#}}
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 获取播客转录信息
+        type: http-request
+        url: https://api.bestblogs.dev/api/resource/podcast/transcription
+        variables: []
+      height: 155
+      id: '1719356422842'
+      position:
+        x: 334
+        y: 277.5
+      positionAbsolute:
+        x: 334
+        y: 277.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(json_body):\n    \"\"\"\n    处理 REST 请求返回的\
+          \ JSON 字符串。\n    \n    若输入为空字符串或JSON解析失败，则返回 {'success': 'false'}。\n   \
+          \ 若 JSON 字符串解析成功且 'success' 为 'true'，则返回包含指定键值的字典。\n    否则返回 {'success':\
+          \ 'false'}。\n\n    参数:\n        json_body (str): 包含 JSON 数据的字符串。\n    \n\
+          \    返回:\n        dict: 包含 'success' 键和指定的数据键值对的字典。\n    \"\"\"\n    \n\
+          \    result = {'success': 'false'}\n    \n    if not json_body:\n      \
+          \  return result\n\n    try:\n        data = json.loads(json_body)\n   \
+          \     if isinstance(data, dict) and data.get('success') == 'true':\n   \
+          \         result['success'] = 'true'\n            result['contentXml'] =\
+          \ data.get('contentXml', '')\n            result['languageName'] = data.get('languageName',\
+          \ '中文')\n            result['destLanguageName'] = data.get('destLanguageName',\
+          \ '英文')\n            result['analysisResult'] = data.get('analysisResult',\
+          \ '')\n        return result\n    except json.JSONDecodeError:\n       \
+          \ return result\n    except Exception:\n        return result"
+        code_language: python3
+        desc: 解析请求结果
+        outputs:
+          analysisResult:
+            children: null
+            type: string
+          contentXml:
+            children: null
+            type: string
+          destLanguageName:
+            children: null
+            type: string
+          languageName:
+            children: null
+            type: string
+          success:
+            children: null
+            type: string
+        selected: false
+        title: 解析播客转录信息
+        type: code
+        variables:
+        - value_selector:
+          - '1719356422842'
+          - body
+          variable: json_body
+      height: 82
+      id: '1719357159255'
+      position:
+        x: 638
+        y: 277.5
+      positionAbsolute:
+        x: 638
+        y: 277.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 直接翻译
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.0-flash-001
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 9f405119-fd90-46f9-9479-312561ef194c
+          role: system
+          text: "# AI 翻译专家\n\n## 任务\n识别并翻译给定JSON文本中的专业术语和内容。将原始语言（{{#1719357159255.languageName#}}）翻译成目标语言（{{#1719357159255.destLanguageName#}}）。\n\
+            \n## 步骤\n1. 识别所有字段中的专业术语。\n2. 使用识别的专业术语，翻译整个JSON内容，使用字段使用 {{#1719357159255.destLanguageName#}}语言输出。\n\
+            \n## 翻译规则与注意事项\n1. 准确翻译专业术语：\n   - 按照通用使用习惯处理全称和缩写。\n   - 保留常用缩写，如AI、UX、LLM、Java等。\n\
+            2. 保持原文术语：如果术语已经是目标语言，保持不变。\n3. 未识别术语：对未在专业术语列表中的术语，尝试合理翻译。\n4. 保持风格：维持原文的语气和表达方式。\n\
+            5. 考虑上下文：翻译时注意整体语境，确保语义连贯。\n6. 保持格式：维持原JSON结构，包括保留原有的key名称。\n\n## 质量检查\n\
+            - 确保翻译准确性和流畅性\n- 检查专业术语使用的一致性\n- 验证是否保持了原文的核心含义和语气\n\n## 输入\n1. 原始语言：[在用户提示词中指定]\n\
+            2. 目标语言：[在用户提示词中指定]\n3. 待翻译的JSON字符串：\n[在用户提示词中提供]\n\n## 输出格式\n\n### 1.\
+            \ 专业术语列表\n{原文术语1} -> {翻译后术语1}\n{原文术语2} -> {翻译后术语2}\n{原文术语3} -> {翻译后术语3}\n\
+            \n### 2. 翻译后的JSON（保持原有结构和key名称）\n[完整的翻译后JSON]"
+        - id: 7c8529ca-9914-42e7-9132-299528454ba1
+          role: user
+          text: '请根据要求识别专业术语，并对 JSON 字符串进行翻译，按要求输出翻译后的目标语言的 JSON 字符串，包括保留原有的key名称。
+
+
+            1. 原始语言：
+
+            {{#1719357159255.languageName#}}
+
+
+            2. 目标语言：
+
+            {{#1719357159255.destLanguageName#}}
+
+
+            3. 待翻译的JSON字符串：
+
+            ```json
+
+            {{#1719357159255.analysisResult#}}
+
+            ```'
+        selected: false
+        title: 直接翻译
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 118
+      id: '1719665970105'
+      position:
+        x: 1246
+        y: 277.5
+      positionAbsolute:
+        x: 1246
+        y: 277.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 指出直接翻译的问题
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.0-flash-001
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 5a81faa2-6f9c-41ce-99ac-0d464611a548
+          role: system
+          text: "# AI 翻译检查专家\n\n## 简介\n指导大语言模型分析技术文章预处理结果的初次翻译，识别问题，为后续优化奠定基础。\n\n\
+            ## 背景\n- 内容：网站中涵盖人工智能、编程、产品、设计、商业和科技等领域技术文章\n- 预处理：已提取标题、摘要、主要观点、关键金句和标签\n\
+            - 翻译方向：英译中或中译英\n- 目的：将预处理的信息进行翻译，便于目标语言读者阅读\n- 要求：准确传达原意，符合目标语言习惯\n\n\
+            ## 任务目标\n全面检查初次翻译，识别问题，为后续优化提供指南。\n\n## 输入格式\n1. 原始语言\n2. 目标语言\n3. 原文信息（XML）\n\
+            4. 分析结果（JSON）\n5. 专业术语识别及初次翻译结果\n\n## JSON 结构\n- title: 标题\n- oneSentenceSummary:\
+            \ 一句话总结\n- summary: 全文摘要\n- tags: 标签列表\n- mainPoints: 主要观点（point 和 explanation）\n\
+            - keyQuotes: 关键引用\n\n## 分析要点\n1. 术语与技术概念\n   - 定位：术语或技术概念的翻译问题\n   - 描述：准确性、一致性或表达问题\n\
+            \   - 建议：改进方向\n   - 示例：统一 \"机器学习\"、\"深度学习\" 等术语翻译；优化 \"端到端学习\" 的解释\n\n\
+            2. 语言表达与结构\n   - 定位：不自然或不流畅的表达\n   - 描述：不符合目标语言习惯的原因\n   - 建议：改进方向\n \
+            \  - 示例：调整 \"这个功能是很酷的\" 为更专业的表达；重构复杂句子提高可读性\n\n3. 行业特定表达与文化适应\n   - 定位：不符合行业惯例或存在文化差异的表达\n\
+            \   - 描述：潜在误解或不当之处\n   - 建议：适应性表达建议\n   - 示例：将 \"用户友好\" 调整为 \"直观的用户界面\"\
+            ；适当处理文化特定词语如 \"画饼\"\n\n4. 格式一致性\n   - 定位：格式不一致处\n   - 描述：不一致的具体问题\n  \
+            \ - 建议：统一格式建议\n   - 示例：统一中英文混排的空格使用，在中文和英文、数字之间增加空格\n\n## 输出要求与质量保证\n\
+            1. 使用 Markdown 格式的分点列表，每个问题包括位置、描述和建议\n2. 保持专业、客观的语气，使用准确的技术术语\n3. 聚焦问题识别，不需提供完整重写\n\
+            4. 关注技术术语和行业表达的准确性，确保术语使用一致\n5. 考虑目标读者（如开发者、产品经理）需求\n6. 分析应覆盖文章各部分（标题、摘要、主要观点等）\n\
+            7. 指出任何影响整体理解的翻译问题\n8. 确保问题描述清晰具体，与文章技术性相符\n9. 最后总结主要问题类型和改进方向"
+        - id: c2703c48-701c-463a-8977-d5c2b12eaf66
+          role: user
+          text: '请根据要求对文章分析结果 JSON 字符翻译结果进行检查，按要求输出翻译中存在的问题。
+
+
+            1. 原始语言：
+
+            {{#1719357159255.languageName#}}
+
+            2. 目标语言：
+
+            {{#1719357159255.destLanguageName#}}
+
+
+            3. 原文信息（XML）：
+
+            ```xml
+
+            {{#1719357159255.contentXml#}}
+
+            ```
+
+            4. 原文分析结果（JSON）：
+
+            ```json
+
+            {{#1719357159255.analysisResult#}}
+
+            ```
+
+
+            5. 专业术语识别及初次翻译结果
+
+            {{#1719665970105.text#}}'
+        selected: false
+        title: 指出直接翻译的问题
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: false
+      height: 118
+      id: '1719666182344'
+      position:
+        x: 1550
+        y: 277.5
+      positionAbsolute:
+        x: 1550
+        y: 277.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 意译 - 第二次翻译
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.0-flash-001
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 0017c1f5-6a65-463f-98bd-b384f55e1362
+          role: system
+          text: "# AI 翻译优化专家\n\n## 简介\n对初次翻译的技术文章进行优化和意译，确保翻译既忠实原意又符合目标语言表达习惯，原始语言为\
+            \ {{#1719357159255.languageName#}}，目标语言为 {{#1719357159255.destLanguageName#}}。\n\
+            \n## 背景\n- 内容：网站上关于人工智能、编程技术、产品、设计、商业、科技类的文章，已提取文章标题、一句话总结、文章摘要、主要观点、关键金句和标签等信息的\
+            \ JSON 字符串\n- 初次翻译：已完成，但可能存在问题\n- 翻译方向：英译中或中译英\n- 目标：提高翻译质量，使其更易于目标读者理解\n\
+            \n## 任务目标\n基于初次翻译和识别出的问题，进行重新翻译和意译，提高准确性、可读性和文化适应性。\n\n## 输入格式\n1. 原始语言\n\
+            2. 目标语言\n3. 原文分析结果（JSON）\n4. 识别的专业术语列表和初次翻译结果\n5. 翻译问题分析结果（Markdown）\n\
+            \n## JSON 结构\n- title: 标题\n- oneSentenceSummary: 一句话总结\n- summary: 全文摘要\n\
+            - tags: 标签列表\n- mainPoints: 主要观点（point 和 explanation）\n- keyQuotes: 关键引用\n\
+            \n## 分析要点\n1. 术语与技术概念\n   - 确保专业术语翻译准确且一致\n   - 对难懂概念适当添加简短解释\n   - 参考提供的专业术语列表进行翻译\n\
+            \n2. 语言表达与结构\n   - 调整句式以符合目标语言习惯\n   - 提高表达的流畅性和自然度\n   - 避免直译导致的生硬表达\n\
+            \n3. 文化适应\n   - 考虑目标语言的文化背景，适当调整表达\n   - 使用目标语言中的习语或俗语增加亲和力\n   - 注意跨文化交流中可能存在的敏感话题\n\
+            \n4. 格式一致性\n   - 保持 JSON 结构不变\n   - 统一格式，如中英文间加空格\n   - 保持标点符号使用的一致性\n\
+            \n## 输出要求与质量保证\n1. 输出格式：仅输出 JSON 字符串，保持结构和原始 JSON 字符串一致，仅将其中的值翻译为目标语言\n\
+            2. 准确性：\n   - 准确传达原文核心意思，不遗漏关键信息\n   - 保持专业性，符合技术人员阅读需求\n3. 可读性：\n   -\
+            \ 确保翻译后的内容逻辑连贯，易于理解\n   - 提高整体可读性，避免直译造成的不自然表达\n4. 术语处理：\n   - 保持术语一致性，特别是关键的技术词汇\n\
+            \   - 对难译概念可采用意译或增加简短解释，但不显著增加长度\n5. 文化适应：\n   - 注意不同文化背景下的表达差异\n   -\
+            \ 对原文中的例子或引用，根据需要进行适当的本地化处理\n6. 格式要求：\n   - 中文翻译时在中英文、数字间加空格\n   - 保持\
+            \ JSON 结构和键名不变\n\n请根据以上指南，对提供的输入进行全面分析和优化翻译，以 JSON 格式输出改进后的结果。确保翻译既准确传达原意，又充分适应目标语言的表达习惯和文化背景。"
+        - id: b80ef907-73bb-46cf-9c02-57e773e7eab5
+          role: user
+          text: '请根据要求识别对文章分析结果 JSON 字符串、直接翻译结果、翻译问题分析结果进行综合分析处理，按要求输出改进后的翻译，以 JSON
+            字符串输出。
+
+
+            1. 原始语言：
+
+            {{#1719357159255.languageName#}}
+
+            2. 目标语言：
+
+            {{#1719357159255.destLanguageName#}}
+
+
+            3. 原文分析结果（JSON）：
+
+            ```json
+
+            {{#1719357159255.analysisResult#}}
+
+            ```
+
+            4. 识别的专业术语列表和初次翻译结果：
+
+            {{#1719665970105.text#}}
+
+
+            5. 初次翻译问题分析结果：
+
+            {{#1719666182344.text#}}'
+        selected: false
+        title: 意译 - 第二次翻译
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: false
+      height: 118
+      id: '1719666267591'
+      position:
+        x: 1854
+        y: 277.5
+      positionAbsolute:
+        x: 1854
+        y: 277.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: 返回翻译结果
+        outputs:
+        - value_selector:
+          - '1719666267591'
+          - text
+          variable: analysisResult
+        selected: false
+        title: 结束 2
+        type: end
+      height: 118
+      id: '1719666292377'
+      position:
+        x: 2158
+        y: 277.5
+      positionAbsolute:
+        x: 2158
+        y: 277.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 7cd2f910-eb44-44e0-8921-8c7ebb0704ff
+            value: 'true'
+            varType: string
+            variable_selector:
+            - '1719357159255'
+            - success
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 判断是否解析成功
+        type: if-else
+      height: 126
+      id: '1747011839276'
+      position:
+        x: 942
+        y: 277.5
+      positionAbsolute:
+        x: 942
+        y: 277.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs: []
+        selected: false
+        title: 返回空结果
+        type: end
+      height: 54
+      id: '1747011862569'
+      position:
+        x: 1246
+        y: 435.5
+      positionAbsolute:
+        x: 1246
+        y: 435.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.7
