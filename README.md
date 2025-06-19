@@ -84,7 +84,13 @@ BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 - 👥 加入读者交流群讨论
 - 📧 邮件反馈建议：[hi@gino.bot](mailto:hi@gino.bot)
 
-![左侧赞赏支持，右侧扫码加群](https://bestblogs.dev/support.png)
+<div align="center">
+
+| 赞赏支持项目发展 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 添加作者微信加入群聊 |
+|:---:|:---:|:---:|
+| <img src="https://bestblogs.dev/support-qrcode.png" alt="赞赏支持项目发展" width="200" /> | | <img src="https://bestblogs.dev/author-qrcode.png" alt="添加微信加入群聊" width="200" /> |
+
+</div>
 
 ## 7. 致谢
 
