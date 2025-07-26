@@ -43,6 +43,8 @@ BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 
 更多参数说明和用法请参考：[BestBlogs.dev RSS 订阅指南](./BestBlogs_RSS_Doc.md)
 
+另外网站还添加了每周精选推送周刊的 RSS 订阅支持，订阅地址：[https://www.bestblogs.dev/zh/feeds/rss/newsletter](https://www.bestblogs.dev/zh/feeds/rss/newsletter)
+
 ## 5. 开放 API
 
 BestBlogs.dev 提供开放 API 接口，支持文章、播客、推文等内容的智能分析和获取。
