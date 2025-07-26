@@ -43,9 +43,15 @@ BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 
 更多参数说明和用法请参考：[BestBlogs.dev RSS 订阅指南](./BestBlogs_RSS_Doc.md)
 
-## 5. 实现原理
+## 5. 开放 API
 
-### 5.1 文章智能分析
+BestBlogs.dev 提供开放 API 接口，支持文章、播客、推文等内容的智能分析和获取。
+
+API 文档：[BestBlogs_OpenAPI_Doc.md](./BestBlogs_OpenAPI_Doc.md)
+
+## 6. 实现原理
+
+### 6.1 文章智能分析
 
 详细实践文档：[BestBlogs.dev 基于 Dify Workflow 的文章智能分析实践](./flows/Dify/BestBlogs.dev%20基于%20Dify%20Workflow%20的文章智能分析实践.md)
 
@@ -63,19 +69,19 @@ BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 **4. 多语言翻译流程**  
 支持中英双语，自动识别原文语言并生成目标语言的分析结果。包含 *识别专业术语 → 初次翻译 → 检查翻译 → 意译优化* 等环节。DSL 参见：[BestBlogs 文章分析结果翻译流程](./flows/Dify/dsl/BestBlogs%20文章分析结果翻译.yml)
 
-### 5.2 播客智能分析
+### 6.2 播客智能分析
 
 实现方案详见：[BestBlogs.dev 基于通义听悟和 Dify 实现播客智能分析](./docs/BestBlogs.dev%20基于通义听悟和%20Dify%20实现播客智能分析.md)
 
-### 5.3 推文智能分析
+### 6.3 推文智能分析
 
 实现方案详见：[BestBlogs.dev 基于 XGo.ing 和 Dify 实现推文智能分析](./docs/BestBlogs.dev%20基于%20XGo.ing%20和%20Dify%20实现推文智能分析.md)
 
-### 5.4 视频智能分析
+### 6.4 视频智能分析
 
 方案开发中，敬请期待 🎬
 
-## 6. 支持与交流
+## 7. 支持与交流
 
 如果您觉得 BestBlogs.dev 对您有帮助，欢迎：
 
@@ -92,11 +98,14 @@ BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 
 </div>
 
-## 7. 致谢
+## 8. 致谢
 
 感谢以下开源项目的支持：
 
 - [RSSHub](https://github.com/DIYgod/RSSHub) - 万物皆可 RSS
-- [wewe-rss](https://github.com/cooderl/wewe-rss) - 微信公众号 RSS 化
+- [wechat2rss](https://github.com/ttttmr/Wechat2RSS) - 微信公众号转 RSS
 - [Dify](https://github.com/langgenius/dify) - LLM 应用开发平台
+- [Gemini Balancer](https://github.com/snailyp/gemini-balance) - Gemini 轮询代理服务
 - [Bark](https://github.com/Finb/Bark) - iOS 推送通知工具
+- [Uptime Kuma](https://github.com/louislam/uptime-kuma) - 自建监控服务
+- [XGo.ing](https://xGo.ing) - 推文 RSS
