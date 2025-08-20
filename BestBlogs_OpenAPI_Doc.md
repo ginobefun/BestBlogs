@@ -1219,3 +1219,568 @@
   ```
   
 ---
+
+## 推文内容管理模块
+
+管理和获取 BestBlogs 的推文内容，包括 Twitter/X 平台的推文及其分析数据
+
+### 查询推文列表
+
+- **接口地址**：`POST https://api.bestblogs.dev/openapi/v1/tweet/list`
+- **接口描述**：获取分页的推文内容列表，支持多种过滤条件，返回包含推文原始数据和分析结果的高质量内容
+- **请求体**（JSON 格式）：
+
+  | 字段名             | 类型    | 是否必填 | 默认值 | 描述                     | 可选值/枚举                                                                                      |
+  |-------------------|---------|----------|---------|------------------------|---------------------------------------------------------------------------------------------|
+  | currentPage       | Integer | 否       | 1       | 当前页码，从 1 开始              |                                                                                             |
+  | pageSize          | Integer | 否       | 10      | 每页记录数                    |                                                                                             |
+  | userLanguage      | String  | 否       |         | 用户语言偏好，影响翻译显示          | `zh_CN`, `en_US`                                                                            |
+  | keyword           | String  | 否       |         | 搜索关键词                    |                                                                                             |
+  | sourceId          | String  | 否       |         | 推文来源账号 ID 过滤            |                                                                                             |
+  | category          | String  | 否       |         | 分类过滤                     | `Artificial_Intelligence`, `Business_Tech`, `Programming_Technology`, `Product_Development` |
+  | language          | String  | 否       |         | 推文语言过滤                   | `zh_CN`, `en_US`, `all`                                                                     |
+  | qualifiedFilter   | String  | 否       |         | 是否精选过滤                   | `true`, `false`, `ALL`                                                                      |
+  | timeFilter        | String  | 否       |         | 时间范围过滤                   | `1d`, `3d`, `1w`, `1m`, `3m`, `1y`                                                          |
+  | sortType          | String  | 否       |         | 排序方式                     | `default`, `time_desc`, `score_desc`, `read_desc`                                          |
+  | lowerTotalScore   | Integer | 否       |         | 最低总分过滤                   |                                                                                             |
+  | upperTotalScore   | Integer | 否       |         | 最高总分过滤                   |                                                                                             |
+  | mainDomainFilter  | String  | 否       |         | 主领域过滤                    | `Artificial_Intelligence`, `Business_Tech`, `Programming_Technology`, `Product_Development` |
+
+- **响应体**（JSON 格式）：
+  
+  ```json
+  {
+    "success": true,
+    "code": null,
+    "message": null,
+    "requestId": "唯一请求 ID",
+    "data": {
+      "currentPage": 1,
+      "pageSize": 10,
+      "totalCount": 337,
+      "pageCount": 34,
+      "dataList": [
+        {
+          "resourceMeta": {
+            "id": "资源唯一 ID",
+            "originalTitle": "原始标题",
+            "title": "优化后标题",
+            "oneSentenceSummary": "一句话摘要",
+            "summary": "详细摘要",
+            "translateContent": "翻译后的推文内容（当用户语言与原文不符时）",
+            "tags": ["标签 1", "标签 2"],
+            "url": "推文链接",
+            "domain": "域名",
+            "language": "内容语言",
+            "languageDesc": "语言描述",
+            "sourceId": "来源 ID",
+            "sourceName": "来源名称",
+            "sourceImage": "来源头像 URL",
+            "mainDomain": "主领域",
+            "mainDomainDesc": "主领域描述",
+            "aiSubCategory": "AI 子分类",
+            "aiSubCategoryDesc": "AI 子分类描述",
+            "category": "分类",
+            "categoryDesc": "分类描述",
+            "resourceType": "TWITTER",
+            "resourceTypeDesc": "推特",
+            "score": 91,
+            "readCount": 6,
+            "wordCount": 2997,
+            "readTime": 12,
+            "authors": ["作者名称"],
+            "publishTimeStamp": 1755533392000,
+            "publishDateStr": "08-18",
+            "publishDateTimeStr": "2025-08-18 16:09:52",
+            "qualified": false,
+            "processFlowStatus": "COMPLETED",
+            "processFlowStatusDesc": "已完成"
+          },
+          "tweet": {
+            "id": "推文唯一 ID",
+            "url": "推文链接",
+            "text": "推文文本内容（可能是翻译后的）",
+            "retweetCount": 134,
+            "replyCount": 36,
+            "likeCount": 446,
+            "quoteCount": 4,
+            "bookmarkCount": 28,
+            "viewCount": 45090,
+            "influenceScore": 90,
+            "createdAt": "2025-08-18T16:09:52.000+00:00",
+            "lang": "推文原始语言",
+            "isReply": false,
+            "inReplyToId": null,
+            "conversationId": "会话 ID",
+            "author": {
+              "id": "作者 ID",
+              "name": "作者显示名",
+              "userName": "作者用户名",
+              "profileImageUrl": "作者头像 URL"
+            },
+            "quotedTweetId": "引用推文 ID（如有）",
+            "quotedTweet": null,
+            "retweetedTweetId": "转推推文 ID（如有）",
+            "retweetedTweet": null,
+            "mediaList": [
+              {
+                "type": "photo",
+                "mediaUrlHttps": "媒体文件 URL",
+                "url": "短链接"
+              }
+            ],
+            "urlInfos": [
+              {
+                "url": "短链接",
+                "expandedUrl": "完整链接",
+                "displayUrl": "显示链接"
+              }
+            ],
+            "userMentions": [
+              {
+                "userId": "用户 ID",
+                "name": "用户名",
+                "userName": "用户名"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+  ```
+
+- **响应字段说明**：
+  
+  | 字段名                           | 类型     | 说明                                               | 枚举值（如果有）                                                                                    |
+  |----------------------------------|----------|-------------------------------------------------|---------------------------------------------------------------------------------------------|
+  | success                          | Boolean  | 请求是否成功                                           |                                                                                             |
+  | code                             | String   | 错误代码（成功时为 null）                                |                                                                                             |
+  | message                          | String   | 错误消息（成功时为 null）                                |                                                                                             |
+  | requestId                        | String   | 唯一请求 ID，用于追踪问题                                 |                                                                                             |
+  | data                             | Object   | 分页数据容器                                           |                                                                                             |
+  | └ currentPage                    | Integer  | 当前页码                                             |                                                                                             |
+  | └ pageSize                       | Integer  | 每页记录数                                            |                                                                                             |
+  | └ totalCount                     | Integer  | 总记录数                                             |                                                                                             |
+  | └ pageCount                      | Integer  | 总页数                                              |                                                                                             |
+  | └ dataList                       | Array    | 推文列表                                             |                                                                                             |
+  | └ resourceMeta                   | Object   | 推文的资源元数据和分析结果                                  |                                                                                             |
+  |   └ id                           | String   | 资源唯一 ID                                          |                                                                                             |
+  |   └ originalTitle                | String   | 原始标题                                             |                                                                                             |
+  |   └ title                        | String   | 经过优化的标题                                          |                                                                                             |
+  |   └ oneSentenceSummary           | String   | 一句话摘要，快速了解核心内容                                 |                                                                                             |
+  |   └ summary                      | String   | 详细摘要，包含深度分析                                    |                                                                                             |
+  |   └ translateContent             | String   | 翻译后的推文内容（当用户语言偏好与原文不符时显示）                    |                                                                                             |
+  |   └ tags                         | Array    | 内容标签列表                                           |                                                                                             |
+  |   └ url                          | String   | 推文链接                                             |                                                                                             |
+  |   └ domain                       | String   | 推文域名                                             |                                                                                             |
+  |   └ language                     | String   | 内容语言                                             | `zh_CN`, `en_US`                                                                            |
+  |   └ languageDesc                 | String   | 语言描述                                             | 中文，英文                                                                                       |
+  |   └ sourceId                     | String   | 来源 ID                                            |                                                                                             |
+  |   └ sourceName                   | String   | 来源名称                                             |                                                                                             |
+  |   └ sourceImage                  | String   | 来源头像 URL                                         |                                                                                             |
+  |   └ mainDomain                   | String   | 主领域分类                                            | `Artificial_Intelligence`, `Business_Tech`, `Programming_Technology`, `Product_Development` |
+  |   └ mainDomainDesc               | String   | 主领域描述                                            | 人工智能，商业科技，软件编程，产品设计                                                                         |
+  |   └ aiSubCategory                | String   | AI 细分类别                                          | `MODELS`, `DEV`, `PRODUCT`, `NEWS`                                                          |
+  |   └ aiSubCategoryDesc            | String   | AI 细分类别描述                                        | AI 模型，AI 开发，AI 产品，AI 资讯                                                                     |
+  |   └ category                     | String   | 内容分类                                             | `Artificial_Intelligence`, `Business_Tech`, `Programming_Technology`, `Product_Development` |
+  |   └ categoryDesc                 | String   | 分类描述                                             | 人工智能，商业科技，软件编程，产品设计                                                                         |
+  |   └ resourceType                 | String   | 资源类型                                             | `TWITTER`                                                                                   |
+  |   └ resourceTypeDesc             | String   | 资源类型描述                                           | 推特                                                                                          |
+  |   └ score                        | Integer  | 内容质量评分（0-100）                                   |                                                                                             |
+  |   └ readCount                    | Integer  | 阅读次数                                             |                                                                                             |
+  |   └ wordCount                    | Integer  | 字数统计                                             |                                                                                             |
+  |   └ readTime                     | Integer  | 预估阅读时间（分钟）                                      |                                                                                             |
+  |   └ authors                      | Array    | 作者列表                                             |                                                                                             |
+  |   └ publishTimeStamp             | Long     | 发布时间戳（毫秒）                                        |                                                                                             |
+  |   └ publishDateStr               | String   | 发布日期字符串（MM-dd 格式）                               |                                                                                             |
+  |   └ publishDateTimeStr           | String   | 发布时间字符串                                          |                                                                                             |
+  |   └ qualified                    | Boolean  | 是否为精选内容                                          | `true`, `false`                                                                             |
+  |   └ processFlowStatus            | String   | 处理流程状态                                           | `COMPLETED`                                                                                 |
+  |   └ processFlowStatusDesc        | String   | 处理流程状态描述                                         | 已完成                                                                                         |
+  | └ tweet                          | Object   | 推文原始数据                                           |                                                                                             |
+  |   └ id                           | String   | 推文 ID                                            |                                                                                             |
+  |   └ url                          | String   | 推文链接                                             |                                                                                             |
+  |   └ text                         | String   | 推文文本内容（可能经过翻译处理）                               |                                                                                             |
+  |   └ retweetCount                 | Integer  | 转推数                                              |                                                                                             |
+  |   └ replyCount                   | Integer  | 回复数                                              |                                                                                             |
+  |   └ likeCount                    | Integer  | 点赞数                                              |                                                                                             |
+  |   └ quoteCount                   | Integer  | 引用数                                              |                                                                                             |
+  |   └ bookmarkCount                | Integer  | 收藏数                                              |                                                                                             |
+  |   └ viewCount                    | Integer  | 查看数                                              |                                                                                             |
+  |   └ influenceScore               | Integer  | 影响力评分                                            |                                                                                             |
+  |   └ createdAt                    | String   | 创建时间（ISO 8601 格式）                               |                                                                                             |
+  |   └ lang                         | String   | 推文原始语言                                           | `zh`, `en`                                                                                  |
+  |   └ isReply                      | Boolean  | 是否为回复                                            | `true`, `false`                                                                             |
+  |   └ conversationId               | String   | 会话 ID                                            |                                                                                             |
+  |   └ author                       | Object   | 推文作者信息                                           |                                                                                             |
+  |     └ id                         | String   | 作者 ID                                            |                                                                                             |
+  |     └ name                       | String   | 作者显示名                                            |                                                                                             |
+  |     └ userName                   | String   | 作者用户名                                            |                                                                                             |
+  |     └ profileImageUrl            | String   | 作者头像 URL                                         |                                                                                             |
+  |   └ quotedTweetId                | String   | 引用的推文 ID（如有）                                    |                                                                                             |
+  |   └ quotedTweet                  | Object   | 引用的推文对象（如有）                                     |                                                                                             |
+  |   └ mediaList                    | Array    | 媒体文件列表                                           |                                                                                             |
+  |     └ type                       | String   | 媒体类型                                             | `photo`, `video`                                                                            |
+  |     └ mediaUrlHttps              | String   | 媒体文件 URL                                         |                                                                                             |
+  |     └ url                        | String   | 媒体短链接                                            |                                                                                             |
+  |   └ urlInfos                     | Array    | 链接信息列表                                           |                                                                                             |
+  |     └ url                        | String   | 短链接                                              |                                                                                             |
+  |     └ expandedUrl                | String   | 完整链接                                             |                                                                                             |
+  |     └ displayUrl                 | String   | 显示链接                                             |                                                                                             |
+  |   └ userMentions                 | Array    | 提及的用户列表                                          |                                                                                             |
+  |     └ userId                     | String   | 用户 ID                                            |                                                                                             |
+  |     └ name                       | String   | 用户显示名                                            |                                                                                             |
+  |     └ userName                   | String   | 用户名                                              |                                                                                             |
+
+- **枚举值详细说明**：
+  - **用户语言**：
+    - `zh_CN`：中文
+    - `en_US`：英文
+  
+  - **主领域分类**：
+    - `Artificial_Intelligence`：人工智能
+    - `Business_Tech`：商业科技
+    - `Programming_Technology`：软件编程
+    - `Product_Development`：产品设计
+  
+  - **AI 细分类别**：
+    - `MODELS`：AI 模型（模型发布、技术研究等）
+    - `DEV`：AI 开发（开发工具、技术教程等）
+    - `PRODUCT`：AI 产品（产品分析、用户体验等）
+    - `NEWS`：AI 资讯（行业动态、投资融资等）
+  
+  - **精选内容过滤**：
+    - `true`：仅精选内容
+    - `false`：仅非精选内容
+    - `ALL`：全部内容
+  
+  - **时间范围过滤**：
+    - `1d`：最近 1 天
+    - `3d`：最近 3 天
+    - `1w`：最近 1 周
+    - `1m`：最近 1 个月
+    - `3m`：最近 3 个月
+    - `1y`：最近 1 年
+  
+  - **排序方式**：
+    - `default`：默认排序
+    - `time_desc`：按时间倒序
+    - `score_desc`：按评分倒序
+    - `read_desc`：按阅读量倒序
+
+- **请求示例**：
+  
+  ```json
+  {
+    "timeFilter": "3d",
+    "language": "all",
+    "sortType": "default",
+    "userLanguage": "zh",
+    "currentPage": 1,
+    "pageSize": 10
+  }
+  ```
+
+- **响应示例**：
+  
+  ```json
+  {
+    "success": true,
+    "code": null,
+    "message": null,
+    "requestId": "T1c91a7cc2b0a4982978c82f292a30638",
+    "data": {
+      "currentPage": 1,
+      "pageSize": 10,
+      "totalCount": 337,
+      "pageCount": 34,
+      "dataList": [
+        {
+          "resourceMeta": {
+            "id": "RAW_1957475040523644936",
+            "originalTitle": "Andrew Ng Advocates for Universities to Embrace AI Across All Fields",
+            "title": "吴恩达：大学也应拥抱人工智能转型",
+            "oneSentenceSummary": "吴恩达强调了埃克塞特大学在环境、科学与经济学院中整合人工智能的前瞻性做法，并强调所有大学都必须成为"人工智能大学"，不仅要教授人工智能，还要利用它来推进每个研究领域。",
+            "summary": "吴恩达分享了他访问埃克塞特大学的见解，并在那里获得了荣誉博士学位...",
+            "translateContent": "正如许多企业正在转型通过使用人工智能变得更有能力一样，大学也是如此...",
+            "tags": ["Andrew Ng", "埃克塞特大学", "教育中的人工智能"],
+            "url": "https://x.com/AndrewYNg/status/1957475040523644936",
+            "domain": "x.com",
+            "language": "en_US",
+            "languageDesc": "英文",
+            "sourceId": "SOURCE_ef9dba",
+            "sourceName": "Andrew Ng(@AndrewYNg)",
+            "sourceImage": "https://pbs.twimg.com/profile_images/733174243714682880/oyG30NEH_normal.jpg",
+            "mainDomain": "Artificial_Intelligence",
+            "mainDomainDesc": "人工智能",
+            "aiSubCategory": "NEWS",
+            "aiSubCategoryDesc": "AI 资讯",
+            "category": "Artificial_Intelligence",
+            "categoryDesc": "人工智能",
+            "resourceType": "TWITTER",
+            "resourceTypeDesc": "推特",
+            "score": 91,
+            "readCount": 6,
+            "wordCount": 2997,
+            "readTime": 12,
+            "authors": ["Andrew Ng"],
+            "publishTimeStamp": 1755533392000,
+            "publishDateStr": "08-18",
+            "publishDateTimeStr": "2025-08-18 16:09:52",
+            "qualified": false,
+            "processFlowStatus": "COMPLETED",
+            "processFlowStatusDesc": "已完成"
+          },
+          "tweet": {
+            "id": "1957475040523644936",
+            "url": "https://x.com/AndrewYNg/status/1957475040523644936",
+            "text": "正如许多企业正在转型通过使用人工智能变得更有能力一样，大学也是如此...",
+            "retweetCount": 134,
+            "replyCount": 36,
+            "likeCount": 446,
+            "quoteCount": 4,
+            "bookmarkCount": 28,
+            "viewCount": 45090,
+            "influenceScore": 90,
+            "createdAt": "2025-08-18T16:09:52.000+00:00",
+            "lang": "en",
+            "isReply": false,
+            "conversationId": "1957475040523644936",
+            "author": {
+              "id": "216939636",
+              "name": "Andrew Ng",
+              "userName": "AndrewYNg",
+              "profileImageUrl": "https://pbs.twimg.com/profile_images/733174243714682880/oyG30NEH_normal.jpg"
+            },
+            "mediaList": [
+              {
+                "type": "photo",
+                "mediaUrlHttps": "https://pbs.twimg.com/media/GypY0xxbEAA_waR.jpg",
+                "url": "https://t.co/0ZY1B35xXQ"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+  ```
+
+### 获取推文详情
+
+- **接口地址**：`GET https://api.bestblogs.dev/openapi/v1/tweet/detail`
+- **接口描述**：根据推文资源 ID 获取单个推文的详细信息，包括推文原始数据和 AI 分析结果
+- **请求参数**（Query 参数）：
+
+  | 参数名   | 类型   | 是否必填 | 描述                     | 可选值/枚举 |
+  |----------|--------|----------|--------------------------|-------------|
+  | id       | String | 是       | 推文资源唯一 ID           |             |
+  | language | String | 否       | 返回内容的语言偏好        | `zh_CN`, `en_US` |
+
+- **响应体**（JSON 格式）：
+
+  ```json
+  {
+    "success": true,
+    "code": null,
+    "message": null,
+    "requestId": "唯一请求 ID",
+    "data": {
+      "resourceMeta": {
+        "id": "推文资源唯一 ID",
+        "originalTitle": "原始标题",
+        "title": "优化后标题",
+        "oneSentenceSummary": "一句话摘要",
+        "summary": "详细摘要",
+        "translateContent": "翻译后的推文内容（当语言偏好与原文不符时）",
+        "tags": ["标签 1", "标签 2"],
+        "url": "推文链接",
+        "domain": "域名",
+        "language": "内容语言",
+        "languageDesc": "语言描述",
+        "sourceId": "来源 ID",
+        "sourceName": "来源名称",
+        "sourceImage": "来源头像 URL",
+        "mainDomain": "主领域",
+        "mainDomainDesc": "主领域描述",
+        "aiSubCategory": "AI 子分类",
+        "aiSubCategoryDesc": "AI 子分类描述",
+        "category": "分类",
+        "categoryDesc": "分类描述",
+        "resourceType": "TWITTER",
+        "resourceTypeDesc": "推特",
+        "score": 91,
+        "readCount": 6,
+        "wordCount": 2997,
+        "readTime": 12,
+        "authors": ["作者名称"],
+        "publishTimeStamp": 1755533392000,
+        "publishDateStr": "08-18",
+        "publishDateTimeStr": "2025-08-18 16:09:52",
+        "qualified": false,
+        "processFlowStatus": "COMPLETED",
+        "processFlowStatusDesc": "已完成"
+      },
+      "tweet": {
+        "id": "推文唯一 ID",
+        "url": "推文链接",
+        "text": "推文文本内容（可能是翻译后的）",
+        "retweetCount": 134,
+        "replyCount": 36,
+        "likeCount": 446,
+        "quoteCount": 4,
+        "bookmarkCount": 28,
+        "viewCount": 45090,
+        "influenceScore": 90,
+        "createdAt": "2025-08-18T16:09:52.000+00:00",
+        "lang": "推文原始语言",
+        "isReply": false,
+        "conversationId": "会话 ID",
+        "author": {
+          "id": "作者 ID",
+          "name": "作者显示名",
+          "userName": "作者用户名",
+          "profileImageUrl": "作者头像 URL"
+        },
+        "quotedTweetId": "引用推文 ID（如有）",
+        "quotedTweet": "引用的推文对象（如有，结构与tweet相同）",
+        "mediaList": [
+          {
+            "type": "photo",
+            "mediaUrlHttps": "媒体文件 URL",
+            "url": "短链接"
+          }
+        ],
+        "urlInfos": [
+          {
+            "url": "短链接",
+            "expandedUrl": "完整链接",
+            "displayUrl": "显示链接"
+          }
+        ],
+        "userMentions": [
+          {
+            "userId": "用户 ID",
+            "name": "用户名",
+            "userName": "用户名"
+          }
+        ]
+      }
+    }
+  }
+  ```
+
+- **响应字段说明**：
+
+  字段说明与推文列表查询接口相同，但返回单个 TwitterResource 对象而不是列表。
+
+- **特殊功能说明**：
+  - **智能翻译**：当用户语言偏好设置为中文，而推文原文为其他语言时，系统会自动返回翻译后的内容
+  - **引用推文处理**：如果推文包含引用内容，同样支持翻译功能
+  - **数据完整性**：确保返回的推文数据与原始推文保持一致性
+
+- **请求示例**：
+
+  ```
+  GET https://api.bestblogs.dev/openapi/v1/tweet/detail?id=RAW_1957475040523644936&language=zh_CN
+  ```
+
+- **响应示例**：
+
+  ```json
+  {
+    "success": true,
+    "code": null,
+    "message": null,
+    "requestId": "Tbd7f1e8a2c4e4db29a8e1b3f4567891a",
+    "data": {
+      "resourceMeta": {
+        "id": "RAW_1957475040523644936",
+        "originalTitle": "Andrew Ng Advocates for Universities to Embrace AI Across All Fields",
+        "title": "吴恩达：大学也应拥抱人工智能转型",
+        "oneSentenceSummary": "吴恩达强调了埃克塞特大学在环境、科学与经济学院中整合人工智能的前瞻性做法，并强调所有大学都必须成为"人工智能大学"，不仅要教授人工智能，还要利用它来推进每个研究领域。",
+        "summary": "吴恩达分享了他访问埃克塞特大学的见解，并在那里获得了荣誉博士学位。他赞扬了埃克塞特大学独特的学院结构（环境、科学与经济），因为它促进了与人工智能的跨学科合作...",
+        "translateContent": "正如许多企业正在转型通过使用人工智能变得更有能力一样，大学也是如此。我最近访问英国，在埃克塞特大学环境、科学与经济学院接受了荣誉博士学位...",
+        "tags": ["Andrew Ng", "埃克塞特大学", "教育中的人工智能", "跨学科人工智能", "气候人工智能"],
+        "url": "https://x.com/AndrewYNg/status/1957475040523644936",
+        "domain": "x.com",
+        "language": "en_US",
+        "languageDesc": "英文",
+        "sourceId": "SOURCE_ef9dba",
+        "sourceName": "Andrew Ng(@AndrewYNg)",
+        "sourceImage": "https://pbs.twimg.com/profile_images/733174243714682880/oyG30NEH_normal.jpg",
+        "mainDomain": "Artificial_Intelligence",
+        "mainDomainDesc": "人工智能",
+        "aiSubCategory": "NEWS",
+        "aiSubCategoryDesc": "AI 资讯",
+        "category": "Artificial_Intelligence",
+        "categoryDesc": "人工智能",
+        "resourceType": "TWITTER",
+        "resourceTypeDesc": "推特",
+        "score": 91,
+        "readCount": 6,
+        "wordCount": 2997,
+        "readTime": 12,
+        "authors": ["Andrew Ng"],
+        "publishTimeStamp": 1755533392000,
+        "publishDateStr": "08-18",
+        "publishDateTimeStr": "2025-08-18 16:09:52",
+        "qualified": false,
+        "processFlowStatus": "COMPLETED",
+        "processFlowStatusDesc": "已完成"
+      },
+      "tweet": {
+        "id": "1957475040523644936",
+        "url": "https://x.com/AndrewYNg/status/1957475040523644936",
+        "text": "正如许多企业正在转型通过使用人工智能变得更有能力一样，大学也是如此。我最近访问英国，在埃克塞特大学环境、科学与经济学院接受了荣誉博士学位...",
+        "retweetCount": 134,
+        "replyCount": 36,
+        "likeCount": 446,
+        "quoteCount": 4,
+        "bookmarkCount": 28,
+        "viewCount": 45090,
+        "influenceScore": 90,
+        "createdAt": "2025-08-18T16:09:52.000+00:00",
+        "lang": "en",
+        "isReply": false,
+        "conversationId": "1957475040523644936",
+        "author": {
+          "id": "216939636",
+          "name": "Andrew Ng",
+          "userName": "AndrewYNg",
+          "profileImageUrl": "https://pbs.twimg.com/profile_images/733174243714682880/oyG30NEH_normal.jpg"
+        },
+        "quotedTweetId": null,
+        "quotedTweet": null,
+        "mediaList": [
+          {
+            "displayUrl": "pic.x.com/0ZY1B35xXQ",
+            "expandedUrl": "https://x.com/AndrewYNg/status/1957475040523644936/photo/1",
+            "idStr": "1957474651782975488",
+            "mediaUrlHttps": "https://pbs.twimg.com/media/GypY0xxbEAA_waR.jpg",
+            "type": "photo",
+            "url": "https://t.co/0ZY1B35xXQ"
+          }
+        ],
+        "urlInfos": [
+          {
+            "displayUrl": "deeplearning.ai/the-batch/issu…",
+            "expandedUrl": "https://www.deeplearning.ai/the-batch/issue-314/",
+            "indices": [2972, 2995],
+            "url": "https://t.co/Y1PyN17Qzs"
+          }
+        ],
+        "userMentions": [
+          {
+            "userId": "60642183",
+            "name": "University of Exeter",
+            "userName": "UniofExeter"
+          }
+        ]
+      }
+    }
+  }
+  ```
+
+---
