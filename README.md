@@ -18,13 +18,13 @@ BestBlogs.dev 为您提供编程、人工智能、产品设计、商业科技和
 
 ## 3. RSS 源
 
-网站内容来源于以下 RSS 订阅源（共 380 个）：
+网站内容来源于以下 RSS 订阅源（共 360 个）：
 
 **所有订阅源：** [BestBlogs_RSS_ALL.opml](./BestBlogs_RSS_ALL.opml)
 
-- **文章类**（200 个订阅源）：[BestBlogs_RSS_Articles.opml](./BestBlogs_RSS_Articles.opml)
+- **文章类**（170 个订阅源）：[BestBlogs_RSS_Articles.opml](./BestBlogs_RSS_Articles.opml)
 - **播客类**（30 个订阅源）：[BestBlogs_RSS_Podcasts.opml](./BestBlogs_RSS_Podcasts.opml)  
-- **Twitter 类**（150 个订阅源，持续添加中）：[BestBlogs_RSS_Twitters.opml](./BestBlogs_RSS_Twitters.opml)
+- **Twitter 类**（160 个订阅源，持续添加中）：[BestBlogs_RSS_Twitters.opml](./BestBlogs_RSS_Twitters.opml)
 
 您可以在 [订阅源页面](https://www.bestblogs.dev/sources) 浏览所有 RSS 订阅源信息，包括最近 3 个月的文章数量、精选文章数量和阅读数统计。
 
