@@ -31,7 +31,7 @@
 		<outline text="Microsoft Research Blog" title="Microsoft Research Blog" type="rss" xmlUrl="http://research.microsoft.com/rss/news.xml"/>
 		<outline text="InfoQ" title="InfoQ" type="rss" xmlUrl="http://www.infoq.com/rss/rss.action"/>
 		<outline text="Smashing Magazine" title="Smashing Magazine" type="rss" xmlUrl="http://rss1.smashingmagazine.com/feed/"/>
-		<outline text="机器之心" title="机器之心" type="rss" xmlUrl="https://www.jiqizhixin.com/rss"/>
+		<outline text="机器之心" title="机器之心" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/8d97af31b0de9e48da74558af128a4673d78c9a3.xml"/>
 		<outline text="爱范儿" title="爱范儿" type="rss" xmlUrl="http://www.ifanr.com/feed"/>
 		<outline text="The IntelliJ IDEA Blog" title="The IntelliJ IDEA Blog" type="rss" xmlUrl="http://blogs.jetbrains.com/idea/feed/"/>
 		<outline text="阮一峰的网络日志" title="阮一峰的网络日志" type="rss" xmlUrl="http://feeds.feedburner.com/ruanyifeng"/>
@@ -55,7 +55,6 @@
 		<outline text="Vercel News" title="Vercel News" type="rss" xmlUrl="https://vercel.com/atom"/>
 		<outline text="The Cloudflare Blog" title="The Cloudflare Blog" type="rss" xmlUrl="https://blog.cloudflare.com/rss"/>
 		<outline text="ShowMeAI研究中心" title="ShowMeAI研究中心" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/854a592a3bac3c2574d092daf4628cf65dfd1858.xml"/>
-		<outline text="滴滴技术" title="滴滴技术" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/b9a02e7d9e35178ef44fc560fcb5ec4995613af2.xml"/>
 		<outline text="奇舞精选" title="奇舞精选" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/156a64fe3e95eebe4b85bf981d6ebb85441897bf.xml"/>
 		<outline text="京东技术" title="京东技术" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/fa0be550682410cc187c0d1eab1a0fc4e073b949.xml"/>
 		<outline text="硅谷科技评论" title="硅谷科技评论" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/4515ee058133ff68570ad586abdd81f54f2b6ee3.xml"/>
@@ -102,7 +101,6 @@
 		<outline text="通义大模型" title="通义大模型" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/4ebee6222ae08705b8aabc9116f0defbcb6b17c6.xml"/>
 		<outline text="百度AI" title="百度AI" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/d0767d885e6ba213344fb0c0408c51331e23a994.xml"/>
 		<outline text="HelloGitHub" title="HelloGitHub" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/e6cc80b97bf64eeef61cc5927c78ba6ce3356422.xml"/>
-		<outline text="投资实习所" title="投资实习所" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/1324caa248157b73a64412393f5612931368dd52.xml"/>
 		<outline text="经纬创投" title="经纬创投" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/05efb1c4cf91e5a37443cc323150ea38a838e9fd.xml"/>
 		<outline text="腾讯混元" title="腾讯混元" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/306ce19a1ca590c9c2df781789e828d1acfa1356.xml"/>
 		<outline text="Qdrant" title="Qdrant" type="rss" xmlUrl="https://qdrant.tech/index.xml"/>
@@ -127,7 +125,7 @@
 		<outline text="硅星人Pro" title="硅星人Pro" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/c62ceda9eed269d851802bdbc5f33c4fabbf7462.xml"/>
 		<outline text="AI科技评论" title="AI科技评论" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/789e5fefb9cc2646ba7b680cb7a88378a34eb7a4.xml"/>
 		<outline text="山行AI" title="山行AI" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/98bc16b6f53902a2ab511b4faa3499e0a1c78eb1.xml"/>
-		<outline text="魔搭ModelScope社区" title="魔搭ModelScope社区" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/1c9a456343eb36dedda106d6ac644c8ab8c31d72.xml"/>
+		<outline text="魔搭ModelScope社区" title="魔搭ModelScope社区" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/d993a885260f96057b9a4c96212cb2c95bb5054b.xml"/>
 		<outline text="强少来了" title="强少来了" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/3c36fe804f63a7b936e372a37929d81fa0ad948a.xml"/>
 		<outline text="土猛的员外" title="土猛的员外" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/3ee671d065adc460bc20bbd269115987098c54a0.xml"/>
 		<outline text="暗涌Waves" title="暗涌Waves" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/bd586c1499b56aaec02dfefa87126232d234b010.xml"/>
@@ -174,6 +172,48 @@
 		<outline text="少数派" title="少数派" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/f0e37a7d597231efed4bf6dd05b5d904de6dbcc1.xml"/>
 		<outline text="语言即世界language is world" title="语言即世界language is world" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/e1ed0d3edd93f90aef602105eb7ca51b35b7060a.xml"/>
 		<outline text="刘小排r" title="刘小排r" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/484d4199ae6c0b72ea01e7e0597a1f74933dfb62.xml"/>
+		<outline text="Elevate" title="Elevate" type="rss" xmlUrl="https://addyo.substack.com/feed"/>
+		<outline text="43 Talks" title="43 Talks" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/4efe7ec6970afd4a050d6f10b9e8131a9d5e6816.xml"/>
+		<outline text="Anthropic" title="Anthropic" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA"/>
+		<outline text="AI Engineer" title="AI Engineer" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCLKPca3kwwd-B59HNr-_lvA"/>
+		<outline text="No Priors" title="No Priors" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCSI7h9hydQ40K5MJHnCrQvw"/>
+		<outline text="OpenAI" title="OpenAI" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A"/>
+		<outline text="Google DeepMind" title="Google DeepMind" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCP7jMXSY2xbc3KCAE0MHQ-A"/>
+		<outline text="leerob" title="leerob" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCZMli3czZnd1uoc1ShTouQw"/>
+		<outline text="Y Combinator" title="Y Combinator" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCcefcZRL2oaA_uBNeo5UOWg"/>
+		<outline text="Lenny's Podcast" title="Lenny's Podcast" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC6t1O76G0jYXOAoYCm153dA"/>
+		<outline text="Sequoia Capital" title="Sequoia Capital" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCWrF0oN6unbXrWsTN7RctTw"/>
+		<outline text="Stripe" title="Stripe" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCM1guA1E-RHLO2OyfQPOkEQ"/>
+		<outline text="Fireship" title="Fireship" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA"/>
+		<outline text="Spring I/O" title="Spring I/O" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCLMPXsvSrhNPN3i9h-u8PYg"/>
+		<outline text="Dwarkesh Patel" title="Dwarkesh Patel" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCXl4i9dYBrFOabk0xGmbkRA"/>
+		<outline text="Lex Fridman" title="Lex Fridman" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCSHZKyawb77ixDdsGog4iWA"/>
+		<outline text="Hung-yi Lee" title="Hung-yi Lee" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC2ggjtuuWvxrHHHiaDH1dlQ"/>
+		<outline text="a16z" title="a16z" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC9cn0TuPq4dnbTY-CBsm8XA"/>
+		<outline text="The Diary Of A CEO Clips" title="The Diary Of A CEO Clips" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCnjgxChqYYnyoqO4k_Q1d6Q"/>
+		<outline text="AI Master" title="AI Master" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC0yHbz4OxdQFwmVX2BBQqLg"/>
+		<outline text="Matt Wolfe" title="Matt Wolfe" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UChpleBmo18P08aKCIgti38g"/>
+		<outline text="AICodeKing" title="AICodeKing" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC0m81bQuthaQZmFbXEY9QSw"/>
+		<outline text="Liam Ottley" title="Liam Ottley" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCui4jxDaMb53Gdh-AZUTPAg"/>
+		<outline text="Wes Roth" title="Wes Roth" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCqcbQf6yw5KzRoDDcZ_wBSw"/>
+		<outline text="Andrej Karpathy" title="Andrej Karpathy" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCXUPKJO5MZQN11PqgIvyuvQ"/>
+		<outline text="Jason West" title="Jason West" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCQ-rZd0NpjXYTpB3y5BNxPw"/>
+		<outline text="Greg Isenberg" title="Greg Isenberg" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCPjNBjflYl0-HQtUvOx0Ibw"/>
+		<outline text="My First Million" title="My First Million" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCyaN6mg5u8Cjy2ZI4ikWaug"/>
+		<outline text="Riley Brown" title="Riley Brown" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCMcoud_ZW7cfxeIugBflSBw"/>
+		<outline text="Tina Huang" title="Tina Huang" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC2UXDak6o7rBm23k3Vv5dww"/>
+		<outline text="Last Week in AI" title="Last Week in AI" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCKARTq-t5SPMzwtft8FWwnA"/>
+		<outline text="All-In Podcast" title="All-In Podcast" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCESLZhusAkFfsNsApnjF_Cg"/>
+		<outline text="AI Explained" title="AI Explained" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCNJ1Ymd5yFuUPtn21xtRbbw"/>
+		<outline text="Two Minute Papers" title="Two Minute Papers" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg"/>
+		<outline text="Matthew Berman" title="Matthew Berman" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCawZsQWqfGSbCI5yjkdVkTA"/>
+		<outline text="freeCodeCamp.org" title="freeCodeCamp.org" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ"/>
+		<outline text="ByteByteGo" title="ByteByteGo" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCZgt6AzoyjslHTC9dz0UoTw"/>
+		<outline text="Product School" title="Product School" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC6hlQ0x6kPbAGjYkoz53cvA"/>
+		<outline text="yobi321" title="yobi321" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCB_DbqNN9w30tnyWJSrIwyA"/>
+		<outline text="TED" title="TED" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCAuUUnT6oDeKwE6v1NGQxug"/>
+		<outline text="LangChain" title="LangChain" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCC-lyoTfSrcJzA1ab3APAgw"/>
+		<outline text="Siraj Raval" title="Siraj Raval" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCWN3xxRkmTPmbKwht9FuE5A"/>
 		<outline text="What's Next｜科技早知道" title="What's Next｜科技早知道" type="rss" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e74b52c418a84a046ecaceb"/>
 		<outline text="无人知晓" title="无人知晓" type="rss" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/611719d3cb0b82e1df0ad29e"/>
 		<outline text="硅谷101" title="硅谷101" type="rss" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e5c52c9418a84a04625e6cc"/>
