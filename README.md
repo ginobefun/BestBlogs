@@ -8,6 +8,8 @@ BestBlogs.dev 为您提供编程、人工智能、产品设计、商业科技和
 
 ![主要特性](./images/main_page_v4.png)
 
+![订阅精选](./images/main_page_v4_2.png)
+
 ### 1.1 优质文章
 
 ![文章列表](./images/article_list_v4.png)
