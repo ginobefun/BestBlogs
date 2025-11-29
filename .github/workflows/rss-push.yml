@@ -1,0 +1,23 @@
+name: RSS to TG Push
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'    # ← 改为每 6 小时一次
+  workflow_dispatch:        # 仍支持手动触发
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Run RSS to TG script
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+      run: python rss_to_tg.py
