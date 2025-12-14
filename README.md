@@ -56,9 +56,9 @@ BestBlogs.dev 为您提供编程、人工智能、产品设计、商业科技和
 BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 
 - **全站订阅：** [https://www.bestblogs.dev/zh/feeds/rss](https://www.bestblogs.dev/zh/feeds/rss)
-- **精选文章订阅：** [https://www.bestblogs.dev/zh/feeds/rss?featured=y](https://www.bestblogs.dev/zh/feeds/rss?featured=y)
-- **编程技术类文章：** [https://www.bestblogs.dev/zh/feeds/rss?category=programming](https://www.bestblogs.dev/zh/feeds/rss?category=programming)
-- **人工智能高分文章：** [https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90](https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90)
+- **所有精选内容订阅：** [https://www.bestblogs.dev/zh/feeds/rss?featured=y](https://www.bestblogs.dev/zh/feeds/rss?featured=y)
+- **编程技术类文章：** [https://www.bestblogs.dev/zh/feeds/rss?category=programming&type=article](https://www.bestblogs.dev/zh/feeds/rss?category=programming&type=article)
+- **人工智能高分内容：** [https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90](https://www.bestblogs.dev/en/feeds/rss?category=ai&minScore=90)
 
 更多参数说明和用法请参考：[BestBlogs.dev RSS 订阅指南](./BestBlogs_RSS_Doc.md)
 

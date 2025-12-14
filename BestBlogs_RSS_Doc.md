@@ -73,11 +73,25 @@ BestBlogs.dev 提供了灵活的 RSS 订阅功能，让您可以根据自己的�
 - 参数名：`keyword`
 - 示例：`/feeds/rss?keyword=ChatGPT`
 
+### 7. 资源类型 (type)
+
+按资源类型进行过滤
+
+- 参数名：`type`
+- 可选值：
+  - `article`：文章
+  - `podcast`：播客
+  - `video`：视频
+  - `twitter`：推文
+
+- 示例：`/feeds/rss?type=article`
+
+
 ## 参数组合示例
 
 您可以组合使用多个参数来精确定制您的订阅内容：
 
-1. 订阅高质量编程文章：
+1. 订阅高质量编程内容：
 
 ```url
 https://www.bestblogs.dev/zh/feeds/rss?category=programming&minScore=85
@@ -86,19 +100,31 @@ https://www.bestblogs.dev/zh/feeds/rss?category=programming&minScore=85
 2. 订阅最近一天的 AI 精选文章：
 
 ```url
-https://www.bestblogs.dev/zh/feeds/rss?category=ai&featured=y&timeFilter=1d
+https://www.bestblogs.dev/zh/feeds/rss?category=ai&featured=y&timeFilter=1d&type=article
 ```
 
-3. 订阅包含特定关键词的高分文章：
+3. 订阅包含特定关键词的高分内容：
 
 ```url
 https://www.bestblogs.dev/zh/feeds/rss?keyword=Agent&minScore=85
 ```
 
-4. 订阅英文精选文章：
+4. 订阅英文精选内容：
 
 ```url
 https://www.bestblogs.dev/en/feeds/rss?featured=y&language=en
+```
+
+5、订阅视频内容：
+
+```url
+https://www.bestblogs.dev/zh/feeds/rss?type=video
+```
+
+6、订阅订阅推文内容：
+
+```url
+https://www.bestblogs.dev/zh/feeds/rss?type=twitter
 ```
 
 ## 更新频率
