@@ -6,25 +6,25 @@
 
 BestBlogs.dev 为您提供编程、人工智能、产品设计、商业科技和个人成长领域的精选内容，汇集自顶级技术公司和社区。我们利用先进的大语言模型，为每篇文章提供智能摘要、评分和翻译服务，帮助您快速筛选高价值内容，节省阅读时间。立即订阅，探索未来技术的无限可能！
 
-![主要特性](./images/main_page_v4.png)
+![主要特性](./images/main_page_v5.png)
 
-![订阅精选](./images/main_page_v4_2.png)
+![订阅精选](./images/main_page_v5_2.png)
 
 ### 1.1 优质文章
 
-![文章列表](./images/article_list_v4.png)
+![文章列表](./images/article_list_v5.png)
 
 ### 1.2 品质播客
 
-![播客列表](./images/podcast_list_v4.png)
+![播客列表](./images/podcast_list_v5.png)
 
 ### 1.3 精选视频
 
-![视频列表](./images/video_list_v4.png)
+![视频列表](./images/video_list_v5.png)
 
 ### 1.4 热门推文
 
-![推文列表](./images/twitter_list_v4.png)
+![推文列表](./images/twitter_list_v5.png)
 
 ## 2. 订阅
 
@@ -32,7 +32,7 @@ BestBlogs.dev 为您提供编程、人工智能、产品设计、商业科技和
 
 每周五推送最新的[精选推送](https://www.bestblogs.dev/newsletter)，包含本周最具价值的技术文章、人工智能动态、产品设计洞察等优质内容。
 
-![精选推送](./images/newsletter_list_v4.png)
+![精选推送](./images/newsletter_list_v5.png)
 
 ## 3. RSS 源
 
@@ -47,7 +47,7 @@ BestBlogs.dev 为您提供编程、人工智能、产品设计、商业科技和
 
 您可以在 [订阅源页面](https://www.bestblogs.dev/sources) 浏览所有 RSS 订阅源信息，包括最近 3 个月的文章数量、精选文章数量和阅读数统计。
 
-![订阅源页面](./images/source_page_v4.png)
+![订阅源页面](./images/source_page_v5.png)
 
 您可以直接导入这些 OPML 文件到您的 RSS 阅读器中。如有优质的 RSS 订阅源推荐，欢迎提 Issue 补充。
 
@@ -66,7 +66,7 @@ BestBlogs.dev 提供灵活的 RSS 订阅功能，支持按需订阅：
 
 ## 5. 开放 API
 
-BestBlogs.dev 提供开放 API 接口，支持文章、播客、推文等内容的智能分析和获取。
+BestBlogs.dev 提供开放 API 接口，支持文章、播客、推文等内容的智能分析和获取。**目前正在开发 BestBlogs 2.0 版本，重新设计了 API 接口，支持更多功能和更好的性能，原有 API 接口暂时停止接入，等后续 2.0 版本发布再行通知。**
 
 API 文档：[BestBlogs_OpenAPI_Doc.md](./BestBlogs_OpenAPI_Doc.md)
 
@@ -108,7 +108,7 @@ API 文档：[BestBlogs_OpenAPI_Doc.md](./BestBlogs_OpenAPI_Doc.md)
 
 - ⭐ 给项目点个 Star
 - 💝 赞赏支持项目发展  
-- 👥 加入读者交流群讨论
+- 👥 加入读者交流群讨论，添加微信好友备注「BestBlogs」
 - 📧 邮件反馈建议：[hi@gino.bot](mailto:hi@gino.bot)
 
 <div align="center">
@@ -126,7 +126,6 @@ API 文档：[BestBlogs_OpenAPI_Doc.md](./BestBlogs_OpenAPI_Doc.md)
 - [RSSHub](https://github.com/DIYgod/RSSHub) - 万物皆可 RSS
 - [wechat2rss](https://github.com/ttttmr/Wechat2RSS) - 微信公众号转 RSS
 - [Dify](https://github.com/langgenius/dify) - LLM 应用开发平台
-- [Gemini Balancer](https://github.com/snailyp/gemini-balance) - Gemini 轮询代理服务
 - [Bark](https://github.com/Finb/Bark) - iOS 推送通知工具
 - [Uptime Kuma](https://github.com/louislam/uptime-kuma) - 自建监控服务
 - [XGo.ing](https://xGo.ing) - 推文 RSS
