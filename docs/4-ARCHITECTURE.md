@@ -1,0 +1,638 @@
+# BestBlogs Architecture
+
+更新时间：2026-03-30
+状态：Draft
+
+## 0. 文档定位
+
+本文档用于记录 BestBlogs 当前生效的系统架构、核心边界、关键链路与演进约束。
+
+它不是历史方案归档，也不是未来路线图，更不是单纯的部署说明。本文档的职责，是让架构始终服务于 BestBlogs 的产品结构和长期方向，避免系统随着功能增长而失去一致性。
+
+本文档默认遵循以下边界：
+
+1. 只记录当前已经生效或已经明确采纳的架构方案
+2. 不维护历史争议过程，历史方案保留在其他文档或讨论记录中
+3. 与代码实现发生冲突时，以代码和当前已执行决策为准
+4. 数值型运营规则、营销策略、阶段性目标不在此维护
+
+## 1. 架构目标与设计原则
+
+BestBlogs 的架构不是围绕单点功能组织，而是围绕产品飞轮组织。
+
+我们不是在构建一个只负责聚合内容的平台，而是在构建一套帮助用户持续发现更适合自己的高质量内容，并逐步从阅读走向理解与沉淀的系统。架构的目标不是堆叠更多能力，而是让高质量内容、个性化工作流和可调用能力形成稳定闭环。
+
+当前架构遵循以下原则。
+
+### 1.1 服务三层飞轮，而不是功能孤岛
+
+BestBlogs 当前按三层能力组织：
+
+1. 第一层，公共策展质量池
+2. 第二层，个人阅读工作流
+3. 第三层，Agent-ready Infrastructure
+
+三层不是三个彼此独立的产品，而是一个递进结构。第一层建立品牌与信任，第二层承接留存与付费，第三层扩大分发与复用。
+
+### 1.2 公共质量判断优先于个性化分发
+
+BestBlogs 的个性化建立在公共质量池之上，而不是直接绕过质量判断做原始分发。推荐、早报、内容广场、开放接口默认优先复用已经完成 AI 初评与专家精审的公共高质量内容基础。
+
+### 1.3 个性化必须可理解、可调节、可回溯
+
+第二层的核心不是神秘推荐算法，而是围绕兴趣标签、行为学习、来源偏好和用户反馈形成的个人阅读工作流。系统应尽可能提供明确的理由、来源和调节路径，而不是让个性化成为无法理解的黑盒。
+
+### 1.4 AI 放大判断力，不替代判断力
+
+AI 在 BestBlogs 中承担规模化初筛、结构化分析、理解辅助和效率增强等职责。边界判断、质量把关和体验可信度，仍由清晰的产品规则与人工机制共同守住。
+
+### 1.5 第三层建立在前两层资产之上
+
+Agent-ready Infrastructure 不是独立飘在外面的能力集合。OpenAPI、研究报告、研究会话、主题追踪、MCP Service 等长期能力，必须建立在第一层和第二层已经沉淀出的内容结构、质量判断和用户上下文之上。
+
+### 1.6 优先保持简单、清晰、可演进的边界
+
+在当前阶段，BestBlogs 优先选择足够清晰、成本可控、可持续演进的架构。只在收益明确时引入新的中间件、运行时边界或部署单元，避免过早复杂化。
+
+## 2. 能力分层总览
+
+### 2.1 第一层，公共策展质量池
+
+第一层面向所有用户，负责把高噪声内容压缩为可信赖的公共高质量内容集合。它承载内容采集、分析、筛选、审核、公共早报、精选内容、SEO 与品牌信任建设，是 BestBlogs 的判断力来源与获客入口。
+
+### 2.2 第二层，个人阅读工作流
+
+第二层面向用户个体，负责把公共判断力转化为更适合单个用户的持续阅读体验。它承载我的早报、为你推荐、我的关注、AI 伴读、兴趣标签、行为学习、来源偏好与 Pro 价值承载，是留存与付费的核心驱动力。
+
+### 2.3 第三层，Agent-ready Infrastructure
+
+第三层面向外部系统与智能体，负责把内容、判断、结构化分析与上下文能力开放为可调用原语。当前已落地 OpenAPI 2.0 与基础鉴权链路。研究报告、研究会话、主题追踪、MCP Service 等属于后续自然延展方向。
+
+## 3. 运行时与仓库边界
+
+BestBlogs 当前采用 monorepo 结构，以保证领域模型、仓储、配置体系、共享能力和前后端协作的一致性。
+
+```text
+bestblogs-monorepo/
+├── bestblogs-app            # 公开站
+├── bestblogs-admin          # 管理端
+├── bestblogs-service
+│   ├── bestblogs-api        # 用户 API
+│   ├── bestblogs-admin-api  # 管理 API + Job 宿主
+│   ├── bestblogs-worker     # 任务模块，作为库被 admin-api 依赖
+│   └── bestblogs-common     # 共享领域、仓储、适配器、参数体系
+└── deploy                   # 容器部署与环境模板
+
+3.1 前端边界
+
+3.1.1 bestblogs-app
+用户可见产品入口，承载内容广场、我的早报、为你推荐、AI 伴读、我的关注等核心体验。
+
+3.1.2 bestblogs-admin
+管理操作台，承载内容审核、参数配置、运营管理与系统管理能力。
+
+3.1.3 前端共享原则
+前端共享设计 token、语义层和基础组件，但不在 UI 层复制业务规则。与用户状态、配额、门禁、权限、可见性相关的规则统一收敛到服务端和明确的前端适配层。
+
+3.2 后端边界
+
+3.2.1 bestblogs-api
+承载用户侧请求、用户鉴权、内容查询、推荐、阅读辅助与开放接口等能力。
+
+**API 版本策略**
+
+用户 API 已完成前缀收敛，默认前缀为 `/api/*`：
+
+- 默认 User API：`/api/*`（当前活跃版本，`bestblogs-app` 唯一调用路径）
+- OpenAPI：`/openapi/v1/*`、`/openapi/v2/*`（对外开放接口，支持并行版本）
+
+`bestblogs-app` 代理层对白名单前缀与后端默认用户 API 已统一为 `/api/`。OpenAPI 保持 `/openapi/*` 独立路径，不受本次收敛影响。
+
+**前缀治理与过滤器绑定规则（当前）**
+
+- `/api/*`：前端代理调用的默认用户 API，受 `InternalTokenFilter` 保护
+- `/api/users/me/*`：强登录用户域，受 `JwtAuthFilter` 保护（默认受保护域）
+- `/api/auth/oauth/*/callback`、`/api/webhook/*`：第三方回调入口，不走内部 token 校验，走各自签名/state 校验
+- `/openapi/v1/*`、`/openapi/v2/*`：对外开放接口，仅走 OpenAPI API Key、限流与配额过滤器
+
+该分层用于避免“同前缀不同信任边界”导致的拦截器误伤；新增端点时必须先确定所属边界，再决定是否进入 `JwtAuthFilter` 的显式路径列表。
+
+3.2.2 bestblogs-admin-api
+承载管理操作、后台任务与调度能力，是当前 Job 体系的运行宿主。
+
+3.2.3 bestblogs-worker
+当前保持为库模块，由 bestblogs-admin-api 依赖，不独立部署。其职责是沉淀后台任务相关的领域逻辑、任务定义与共享执行能力，而不是形成独立运行单元。
+
+3.2.4 bestblogs-common
+承载跨模块共享的领域模型、仓储接口、适配器、配置键与公共能力，是系统一致性的基础层。
+
+3.3 当前技术基线
+	1.	Java 21
+	2.	Spring Boot 3.x
+	3.	spring.threads.virtual.enabled=true 已启用
+	4.	MongoDB 作为主存储
+	5.	Elasticsearch 作为搜索读模型
+	6.	Redis 作为共享缓存、分布式协调、限流与短期共享状态支撑
+
+3.4 当前部署拓扑
+
+3.4.1 bestblogs-api
+作为用户流量入口，支持多实例水平扩展。
+
+3.4.2 bestblogs-admin-api
+作为管理 API 与后台任务宿主，支持多实例部署。多实例下通过统一任务锁语义避免重复执行。
+
+3.4.3 bestblogs-worker
+不独立部署，不单独暴露运行端口，不单独扩容。当前阶段优先减少部署复杂度和运维成本。
+
+4. 第一层架构：公共策展质量池
+
+4.1 内容生产链路
+
+第一层的核心链路如下：
+
+抓取或导入 -> 预处理 -> 过滤 -> 分析 -> 翻译 -> 审核 -> 完成发布
+
+这条链路的职责，是把原始外部内容转化为可以公开消费、可以参与推荐、可以进入公共早报与公共分发的公共高质量内容。
+
+4.2 内容状态机与发布约束
+
+内容状态机的唯一来源为 FlowStatusEnum。
+
+当前状态包括：
+	1.	WAIT_PREPARE
+	2.	WAIT_FILTER
+	3.	WAIT_ANALYSIS
+	4.	WAIT_TRANSLATE
+	5.	WAIT_REVIEW
+	6.	CANCELLED
+	7.	COMPLETED
+
+终态语义如下：
+	1.	COMPLETED：终态；前台公开消费仅面向 COMPLETED + processed=true；默认不回退
+	2.	CANCELLED：终态；前台不可见；默认不进入后续处理链路；允许通过人工操作重新进入流程（按管理策略执行）
+
+发布约束如下：
+	1.	前台公开消费默认只面向 COMPLETED + processed=true 的内容
+	2.	未完成状态不得进入公共内容广场、公共早报、公开推荐或公开开放接口结果
+	3.	状态机的职责不仅是任务推进，更是公共质量边界的一部分
+
+4.3 AI 初评与专家精审
+
+第一层通过 AI 初评与专家精审共同形成公共高质量内容。AI 负责规模化初筛、标签和结构化分析，专家精审负责质量确认、判断修正与最终可见性把关。两者不是替代关系，而是协作关系。
+
+4.4 公共早报链路
+
+公共早报属于第一层的公共分发能力。当前链路包含文本、音频、邮件等形态。
+
+当前调度节奏如下（产品语义 -> 代码任务名）：
+
+06:30 公共早报底稿 -> GlobalBriefJob（3天窗口 + 加权评分 + 历史去重 + 质量检查）
+07:00 我的早报 -> UserBriefJob
+07:15 早报底稿重试 -> GlobalBriefRetryJob（FAILED 自动重试，最多 3 次）
+07:30 早报音频生成 -> DailyBriefAudioJob
+08:30 早报邮件推送 -> BriefEmailDeliveryJob
+09:00 微信群推送 -> WeChatBriefPushJob（推送纯文本版到微信群）
+
+其中：
+	1.	公共早报负责公共内容整理与分发，含加权评分（来源优先级/头部厂商/AI Coding/视频播客）和历史去重
+	2.	音频生成、邮件推送、微信群推送均受独立开关控制
+	3.	GlobalBrief 失败后 07:15 自动重试，重试次数可配置（DAILY_BRIEF_RETRY_MAX_ATTEMPTS）
+	4.	GlobalBrief 生成完成后自动生成微信群纯文本版（wechatText 字段）
+	5.	具体数值和时刻属于当前实现，可调整，但公共早报属于第一层的公共分发能力这一边界不变
+	6.	**briefDate 时区约定**：所有 briefDate 字段均以 `Asia/Shanghai` 为基准生成和解析（Worker 写入时 + API 读取时保持一致）。`notificationTimezone` 仅控制邮件发送时间，不参与日期解析。
+
+4.5 公共查询读模型与可见性边界
+
+公共查询只应消费公共可见内容。私有订阅源内容不得进入公共内容广场、公共早报、公共搜索结果与公共召回。
+
+为了降低关联查询成本并避免可见性泄漏，系统允许在内容侧维护必要的冗余可见性字段，但可见性判定的业务语义必须保持单一来源与统一规则。
+
+4.6 第一层的战略职责
+
+第一层的职责，不只是生产内容，更是建立 BestBlogs 的公共判断力、品牌可信度与长期质量资产。任何架构调整都不得削弱这一层的边界清晰度和内容可信度。
+
+5. 第二层架构：个人阅读工作流
+
+5.1 我的早报
+
+我的早报是第二层最关键的日入口。它不是公共早报的简单变体，而是围绕用户关注、兴趣和阅读行为生成的个人化整理结果。
+
+它的核心价值在于：
+	1.	把公共判断力转化为面向单个用户的日常阅读入口
+	2.	在有限时间内优先递交更相关、更值得读的内容
+	3.	逐步形成属于用户自己的每日节奏
+
+5.2 为你推荐
+
+为你推荐承载持续推荐流能力。它不是单纯依赖黑盒算法的推荐流，而是基于公共高质量内容、兴趣标签、行为学习、多路召回与重排生成结果。
+
+为你推荐的目标不是最大化停留时间，而是更稳定地把更适合用户的高质量内容送到用户面前。
+
+5.3 AI 伴读
+
+AI 伴读属于第二层的理解增强能力。它围绕内容详情页展开，支持总结、提问、章节跳转等能力，目标是降低理解成本，而不是替代阅读本身。
+
+AI 伴读相关配额、免费版与 Pro 边界、能力开关统一在服务层治理，不允许散落到多个前端入口各自判断。
+
+5.4 我的关注与私有订阅源
+
+我的关注是用户与订阅源建立持续关系的入口。对来源的动作统一称为关注和取消关注，不使用订阅一词，避免和 Pro 订阅混淆。
+
+私有订阅源是第二层的重要个性化资产，允许用户引入更适合自己的长期信息来源，但其内容可见性必须严格限制在授权用户范围内，不得污染第一层公共结果。
+
+5.5 兴趣标签、行为学习与来源偏好
+
+第二层个性化的核心由三部分构成：
+
+5.5.1 兴趣标签
+用于描述用户长期与短期关注的主题结构。
+
+5.5.2 行为学习
+从点击、深读、收藏、划线、稍后读、不感兴趣等行为中更新系统对用户偏好的理解。
+
+5.5.3 来源偏好
+表达系统基于用户关注与行为形成的对不同订阅源的偏好判断。文档层统一使用来源偏好，代码中可保留 source_affinity 等内部字段名。
+
+5.6 Pro 价值承载与门禁边界
+
+免费版与 Pro 不是简单的功能数量差异，而是不同层级的产品价值边界。
+	1.	第一层主要承接公共输入价值
+	2.	第二层主要承接个性化工作流价值
+	3.	Pro 的核心价值在于让内容真正开始更适合用户
+
+架构层必须确保门禁逻辑集中治理，避免免费版与 Pro 规则分散到各业务入口，导致体验与商业边界漂移。
+
+5.7 统一内容列表系统
+
+统一内容列表系统的目标不是只统一 UI 组件，而是为内容广场、为你推荐、我的关注等入口建立一致的筛选、排序、分页与视图能力，同时允许各入口保留自己的数据策略和业务边界。
+
+统一的应是交互语言与结构能力，不应强行抹平各入口的业务语义差异。
+
+5.8 第二层的战略职责
+
+第二层的职责，是把高质量内容入口提升为真正面向单个用户的阅读工作流。它决定 BestBlogs 是否能够稳定带来留存、付费与行为数据，是当前阶段最关键的增长与价值承载层。
+
+6. 第三层架构：Agent-ready Infrastructure
+
+6.1 OpenAPI 2.0
+
+当前第三层已经有明确起点，即 OpenAPI 2.0 与基础鉴权链路。
+
+当前路径为：
+
+/openapi/v1/*
+/openapi/v2/*
+
+**版本说明**：OpenAPI 当前支持 v1/v2 并行（`/openapi/v1/*`、`/openapi/v2/*`）。对外契约变更需遵循灰度与兼容策略，v1 下线须等外部接入方完成切换通知后执行。
+
+当前已开放的核心原语包括：
+	1.	search
+	2.	category
+	3.	brief / daily-brief
+	4.	resource / trending
+	5.	source
+	6.	tweet
+	7.	newsletter
+
+6.2 鉴权、限流与租户边界
+
+开放接口必须具备清晰的身份识别、配额控制与速率限制机制。开放接口不是对内部能力的无差别透出，而是受控暴露经过筛选的稳定原语。
+
+生产环境中通过统一过滤器实现 API Key 校验与限流控制（bestblogs.env=prod 条件生效）。
+
+当前态与目标态拆分如下：
+	1.	当前态：
+	- OpenAPI 速率限制使用单机进程内限流（RateLimiter + 本地缓存）
+	- OpenAPI 每日配额计数使用 MongoDB 原子计数
+	2.	目标态：
+	- Redis 承担跨节点共享限流计数、共享配额计数与短期共享状态
+	- 保持 API 契约与上层治理语义不变，仅替换底层实现
+
+6.3 当前开放能力边界
+
+当前第三层开放的是内容检索与分发相关原语，而不是完整暴露内部推荐决策、用户隐私上下文、后台审核流程或内部任务状态。
+
+当前原则如下：
+	1.	先开放稳定原语
+	2.	再逐步开放组合能力
+	3.	个性化决策过程默认不直接对外暴露
+	4.	用户隐私上下文默认不进入公共开放层
+
+6.4 与研究报告、研究会话、MCP Service 的关系
+
+研究报告、研究会话、主题追踪、MCP Service 等能力属于第三层的自然延展方向，但必须建立在以下资产之上：
+	1.	已稳定的内容结构
+	2.	已统一的可见性边界
+	3.	已沉淀的兴趣标签与上下文能力
+	4.	已经验证有效的第一层与第二层闭环
+
+6.5 第三层的战略职责
+
+第三层的职责，不是把 BestBlogs 变成通用智能体入口，而是让 BestBlogs 成为智能体时代默认可调用的高质量阅读与知识基础设施。
+
+7. 横切机制
+
+7.1 参数与开关治理
+
+系统关键能力均应通过统一参数入口治理，避免魔法字符串和散落配置。
+
+当前统一入口为 ConfigKey。
+
+关键组别包括：
+	1.	功能开关
+	2.	推荐配置
+	3.	搜索读模型配置
+	4.	标签分类配置
+	5.	公共早报与邮件配置
+	6.	Pro 配置
+	7.	AI 伴读配额配置
+	8.	订阅源管理配置
+	9.	邀请系统相关配置
+
+约束如下：
+	1.	禁止在业务代码中散落硬编码开关名
+	2.	动态参数变更后必须触发缓存刷新或失效
+	3.	参数命名需要保持业务语义清晰和分组一致
+
+7.2 缓存架构
+
+当前版本起，BestBlogs 采用本地缓存、Redis、数据源三层缓存架构，但不同链路当前落地程度不同，以下按当前态与目标态区分。
+
+7.2.1 本地缓存
+用于节点内热点对象、极低延迟读取和短生命周期读优化。它的角色是加速本节点访问，而不是承担集群级共享状态。
+
+7.2.2 Redis
+	1.	当前态：
+	- 作为已采纳中间件能力方向与共享缓存基础设施
+	- OpenAPI 鉴权元数据、限流计数、每日配额计数已迁移到 Redis
+	- API Key 元数据读取采用 Redis 优先，Redis miss 回源 Mongo 并回填
+	2.	目标态：
+	- 共享缓存
+	- 配置缓存与广播失效
+	- 短 TTL 的共享状态
+	- 必要的跨节点协调
+	- OpenAPI 共享限流计数与共享配额计数
+
+7.2.3 MongoDB 与 Elasticsearch
+MongoDB 作为主存储与核心业务真相来源。Elasticsearch 作为搜索读模型和检索增强来源。Redis 不替代主数据库，也不替代搜索引擎。
+
+7.2.4 缓存设计原则
+	1.	Redis 不承载长期业务真相
+	2.	本地缓存可以保留，但只承担节点内热点优化职责
+	3.	跨节点共享状态不得只依赖本地缓存
+	4.	缓存失效、版本切换、广播通知应统一封装
+	5.	上层业务尽量依赖缓存语义，而不是依赖具体实现
+
+7.3 分布式锁与任务协调
+
+跨节点互斥禁止依赖 JVM 本地锁。
+
+当前统一保留以下语义：
+	1.	@HoldJobLock
+同一时刻仅允许一个节点执行
+	2.	@DistributedLock
+在固定周期内竞争执行
+
+当前实现中，@HoldJobLock 与 @DistributedLock 锁后端已统一为 Redis（SET NX EX + Lua 校验 owner 续期/释放）。
+
+上层语义保持不变，业务方不应感知底层实现变化。
+
+7.4 搜索读模型
+
+搜索读模型继续采用 MongoDB 与 Elasticsearch 双模式。
+	1.	MongoDB 负责主存储与基础查询
+	2.	Elasticsearch 负责混合搜索、向量召回、相似内容等检索增强
+	3.	搜索读模型开关与模式切换通过统一配置治理
+	4.	Redis 不承担搜索排序与复杂检索职责
+
+7.5 可观测性与故障降级
+
+关键链路需要具备基本的可观测性和降级路径。
+
+优先覆盖的链路包括：
+	1.	第一层内容生产链路
+	2.	公共早报与我的早报链路
+	3.	为你推荐与 AI 伴读链路
+	4.	OpenAPI 开放接口链路
+	5.	后台任务与锁竞争链路
+
+当前降级策略应至少包括：
+	1.	推荐链路超时降级
+	2.	外部 AI 服务异常降级
+	3.	缓存穿透保护
+	4.	OpenAPI 限流与快速失败
+	5.	后台任务幂等保障
+
+8. 中间件与部署决策
+
+8.1 当前中间件栈
+
+当前中间件栈为：
+	1.	MongoDB，主存储（API Key 主数据与业务真相来源）
+	2.	Elasticsearch，搜索读模型
+	3.	Redis，已采纳并生效于 OpenAPI 鉴权缓存、限流、配额与分布式锁
+	4.	本地缓存，节点内短生命周期热点缓存
+	5.	无独立消息队列
+
+8.2 为什么引入 Redis
+
+引入 Redis 的原因，是解决当前集群部署下的现实问题，而不是为了追求形式上的现代化。
+
+当前收益主要包括：
+	1.	解决多实例下本地缓存一致性窗口问题
+	2.	提供共享缓存与统一失效能力
+	3.	为跨节点协调提供可扩展支撑
+	4.	为 OpenAPI 共享限流与共享配额计数提供目标承载
+	5.	降低继续把所有跨节点问题压在 MongoDB 与本地缓存上的复杂度
+
+8.3 为什么暂不引入消息队列
+
+当前异步和解耦诉求仍不强。内容打标、任务调度、行为聚合、后台任务与应用内事件体系，仍可满足现阶段需求。
+
+暂不引入 Kafka、RabbitMQ 等消息队列，原因如下：
+	1.	当前收益不足以覆盖额外运维与一致性复杂度
+	2.	现阶段更需要收敛链路与保证边界清晰，而不是增加更多运行单元
+	3.	当前没有高吞吐事件流和跨系统可靠投递的明确压力
+
+仅在以下情况出现时重新评估消息队列：
+	1.	高吞吐事件流成为常态
+	2.	多消费者异步解耦需求显著增加
+	3.	跨系统可靠投递成为关键诉求
+	4.	当前 Job 体系已无法支撑任务峰值与复杂度
+
+8.4 为什么 bestblogs-worker 仍不独立部署
+
+bestblogs-worker 当前继续保持库模块形态，由 bestblogs-admin-api 统一承载 Job 宿主职责。
+
+原因如下：
+	1.	当前任务规模尚未要求单独扩容
+	2.	独立拆分会引入额外部署、配置、观测和发布成本
+	3.	当前阶段更重要的是收敛后台任务体系，而不是增加更多进程边界
+
+仅在以下条件满足时再评估拆分：
+	1.	后台任务资源消耗开始明显影响管理 API 稳定性
+	2.	后台任务需要与管理 API 独立扩缩容
+	3.	后台任务需要独立发布节奏
+	4.	后台任务故障需要与管理能力进行更强隔离
+
+9. 当前架构现实与已知差距
+
+9.1 已落地能力
+
+当前已落地的关键能力包括：
+	1.	公共早报文本、音频、邮件全链路
+	2.	信息架构第二版与旧路由迁移规则
+	3.	OpenAPI 与 API Key 鉴权链路
+	4.	为你推荐完整推荐编排及超时、异常降级
+	5.	兴趣标签体系、内容打标、推荐增强与行为学习闭环
+	6.	AI 伴读主链路
+	7.	统一内容列表系统与自定义视图能力
+
+9.2 已知差距
+
+当前已识别的差距包括：
+	1.	冷启动接口仍存在双路径并行
+	2.	用户 API 统一使用 `/api/*` 作为默认前缀，历史迁移描述仅保留在专题文档中供追溯
+	3.	个别旧配置与新参数分组之间仍有进一步收敛空间
+	4.	第三层长期能力尚处于原语开放阶段，尚未形成完整研究会话闭环
+	5.	Admin API（bestblogs-admin-api）尚未开始 v2 迁移
+
+9.3 需要持续偿还的技术债
+
+当前最重要的技术债包括：
+	1.	从本地缓存主导过渡为本地缓存与 Redis 分层协作
+	2.	分布式锁、缓存失效、限流与共享状态的统一封装
+	3.	外部 AI 服务的重试、熔断、降级与观测完善
+	4.	匿名公开接口的防刷与保护机制完善
+	5.	下线 v1 User API Controller（已无流量，可安全删除）
+	6.	Admin API v2 迁移（当前仍为 v1 路径）
+
+10. 架构风险与演进触发条件
+
+10.1 工程风险
+
+当前重点工程风险包括：
+	1.	缓存失效与数据一致性窗口
+	2.	后台任务跨节点竞争与幂等问题
+	3.	外部 AI 服务波动导致链路抖动
+	4.	匿名开放接口被滥用
+	5.	搜索读模型切换与多路径兼容复杂度
+
+10.2 产品一致性风险
+
+当前重点产品一致性风险包括：
+	1.	推荐与个性化绕开第一层质量判断，导致品牌信任受损
+	2.	第二层个性化越来越黑盒，削弱可理解、可调节的产品定位
+	3.	第三层开放能力先于前两层资产成熟，导致开放层空心化
+	4.	免费版与 Pro 门禁散落各处，导致体验与商业边界混乱
+	5.	对来源动作和付费关系混用术语，破坏产品文案与交互一致性
+
+10.3 中间件升级触发条件
+
+10.3.1 Redis
+Redis 已进入当前生效架构，应优先覆盖共享缓存、限流、锁与协调等最直接收益场景。
+
+10.3.2 消息队列
+只有在异步事件流、跨系统投递和多消费者解耦压力显著增加时，再评估引入。
+
+10.3.3 bestblogs-worker 独立部署
+只有在资源隔离、扩缩容、发布节奏和故障隔离需求明确出现时，再评估拆分。
+
+11. 术语与表达约定
+
+本文档默认遵循术语库中的统一表达。
+
+11.1 用户侧与产品文档主名称
+
+统一使用以下术语：
+	1.	内容广场
+	2.	我的早报
+	3.	公共早报
+	4.	为你推荐
+	5.	AI 伴读
+	6.	我的关注
+	7.	私有订阅源
+	8.	来源偏好
+	9.	研究报告
+	10.	研究会话
+	11.	免费版
+	12.	Pro
+
+11.2 动作与关系表达
+	1.	用户对订阅源的动作统一使用关注和取消关注
+	2.	只有付费关系使用订阅一词，如 Pro 订阅
+	3.	不再使用订阅流、个性化早报、来源亲和度等表达
+
+11.3 对外与对内分层表达
+
+用户可见名称优先使用结果导向、体验导向的表达。内部文档和技术实现允许保留更精确的结构术语。
+
+例如：
+	1.	用户侧使用研究报告，内部可保留 Context Pack
+	2.	文档侧使用来源偏好，代码中可保留 source_affinity
+	3.	文档侧使用公共早报与我的早报，内部 Job 命名可保留更技术化名称
+
+11.4 首次出现的写法
+
+当一个术语需要中英文对应时，首次出现可写作中文加英文，之后优先使用统一主名称，不频繁切换。
+
+12. 文档边界与维护规则
+
+本文件记录当前生效架构、已采纳决策与必须守住的演进边界。
+
+当以下任一情况发生时，应同步更新本文档：
+	1.	新中间件被正式引入或移除
+	2.	核心链路发生边界变化
+	3.	三层能力的职责发生调整
+	4.	关键术语发生统一变更
+	5.	部署形态发生实质变化
+	6.	关键锁语义、缓存策略或开放边界发生变化
+
+维护要求如下：
+	1.	先更新真实架构，再同步文档
+	2.	不把未来设想提前写成当前现实
+	3.	不把临时实现误写成长期原则
+	4.	在保持真实的前提下，优先维持架构边界与产品表达的一致性
+
+13. 架构事实锚点（轻量）
+
+为降低“文档描述与代码实现漂移”风险，关键声明附以下事实锚点。该列表保持轻量，仅覆盖横切关键链路。
+
+13.1 状态机
+	1.	FlowStatusEnum：`bestblogs-service/bestblogs-common/src/main/java/dev/bestblogs/foundation/enums/FlowStatusEnum.java`
+
+13.2 早报调度
+	1.	GlobalBriefJob：`bestblogs-service/bestblogs-worker/src/main/java/dev/bestblogs/worker/job/brief/GlobalBriefJob.java`
+	2.	UserBriefJob：`bestblogs-service/bestblogs-worker/src/main/java/dev/bestblogs/worker/job/brief/UserBriefJob.java`
+	3.	GlobalBriefRetryJob：`bestblogs-service/bestblogs-worker/src/main/java/dev/bestblogs/worker/job/brief/GlobalBriefRetryJob.java`
+	4.	DailyBriefAudioJob：`bestblogs-service/bestblogs-worker/src/main/java/dev/bestblogs/worker/job/brief/DailyBriefAudioJob.java`
+	5.	BriefEmailDeliveryJob：`bestblogs-service/bestblogs-worker/src/main/java/dev/bestblogs/worker/job/brief/BriefEmailDeliveryJob.java`
+	6.	WeChatBriefPushJob：`bestblogs-service/bestblogs-worker/src/main/java/dev/bestblogs/worker/job/brief/WeChatBriefPushJob.java`
+	7.	BriefQualityMonitor：`bestblogs-service/bestblogs-worker/src/main/java/dev/bestblogs/worker/service/brief/BriefQualityMonitor.java`
+
+13.3 OpenAPI 鉴权与限流
+	1.	过滤器注册与环境条件：`bestblogs-service/bestblogs-api/src/main/java/dev/bestblogs/api/config/BestBlogsWebFilterConfig.java`
+	2.	OpenAPI 鉴权：`bestblogs-service/bestblogs-api/src/main/java/dev/bestblogs/api/controller/filter/OpenApiAuthFilter.java`
+	3.	OpenAPI 速率限制（Redis 共享计数）：`bestblogs-service/bestblogs-api/src/main/java/dev/bestblogs/api/controller/filter/OpenApiRateLimitFilter.java`
+	4.	OpenAPI 每日配额（Redis 共享计数）：`bestblogs-service/bestblogs-api/src/main/java/dev/bestblogs/api/controller/filter/OpenApiDailyQuotaFilter.java`
+	5.	OpenAPI Redis 能力封装：`bestblogs-service/bestblogs-common/src/main/java/dev/bestblogs/common/openapi/OpenApiRedisService.java`
+
+13.4 分布式锁
+	1.	@DistributedLock 切面：`bestblogs-service/bestblogs-common/src/main/java/dev/bestblogs/foundation/lock/DistributedLockAspect.java`
+	2.	@HoldJobLock 切面：`bestblogs-service/bestblogs-common/src/main/java/dev/bestblogs/foundation/lock/HoldJobLockAspect.java`
+	3.	锁服务入口：`bestblogs-service/bestblogs-common/src/main/java/dev/bestblogs/foundation/lock/DistributedLockService.java`
+	4.	Redis 锁实现：`bestblogs-service/bestblogs-common/src/main/java/dev/bestblogs/foundation/lock/RedisDistributedLockBackend.java`
+
+13.5 前端 CSP 视频嵌入白名单
+
+文章详情页会直接渲染源站抓取的 `<iframe>`（`ArticleBody` 行内嵌入）与独立视频页的 `VideoPlayer`。CSP 响应头由 `bestblogs-app/next.config.mjs` 定义，`frame-src` / `script-src` 采用“显式枚举”策略，仅允许下述来源；新增其他视频平台时需同步更新此节与 next.config.mjs。
+
+	1.	`frame-src`：
+		- `https://www.youtube.com`、`https://www.youtube-nocookie.com`（YouTube 嵌入）
+		- `https://player.vimeo.com`（Vimeo 标准嵌入域，覆盖 OpenAI 官网等源站的 Vimeo 播放器。**仅放行 player 子域，不放行 vimeo.com 顶级域**，避免意外扩大嵌入范围。）
+	2.	`script-src`（需加载第三方播放器脚本时）：
+		- `https://www.youtube.com`（YouTube IFrame Player API）
+		- `https://player.vimeo.com`（Vimeo Player SDK）
+	3.	`frame-ancestors 'none'` + `X-Frame-Options: DENY` 双保险：禁止我方页面被反向嵌入。
+	4.	新增/删除白名单条目：PR 需同步更新本节；修改完需人工验证抽测源站（YouTube / Vimeo / OpenAI 官网等）的视频嵌入加载。
