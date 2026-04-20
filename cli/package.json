@@ -1,6 +1,6 @@
 {
   "name": "@bestblogs/cli",
-  "version": "0.1.1",
+  "version": "2.0.8",
   "description": "BestBlogs command-line interface — agent-friendly reading workflow (intake → discover → read → capture) backed by the /openapi/v2/* contract.",
   "bin": {
     "bestblogs": "dist/bestblogs.js",

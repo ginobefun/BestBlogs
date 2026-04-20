@@ -1,0 +1,26 @@
+{
+  "name": "bestblogs-skills",
+  "version": "2.0.8",
+  "description": "BestBlogs Skills for Claude Code — personalized reading, discovery, and capture powered by @bestblogs/cli",
+  "bin": {
+    "bestblogs-skills": "./bin/index.js"
+  },
+  "keywords": [
+    "bestblogs",
+    "claude-code",
+    "skills",
+    "ai",
+    "reading"
+  ],
+  "author": "Gino Zhang <ginobefun@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ginobefun/BestBlogs",
+    "directory": "skills"
+  },
+  "homepage": "https://bestblogs.dev",
+  "engines": {
+    "node": ">=16"
+  }
+}
