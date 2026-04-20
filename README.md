@@ -46,7 +46,7 @@ bestblogs read deep <id>       # 深度阅读一篇
 **Agent Skills**（Claude Code / Cursor 等）：
 
 ```bash
-npx bestblogs-skills           # 一键安装所有 Skills
+npx @bestblogs/skills           # 一键安装所有 Skills
 # 安装后在 Claude Code 中直接说：「今天 BestBlogs 有什么值得读的？」
 ```
 
@@ -134,8 +134,8 @@ bestblogs capture bookmark add <resourceId> --note "值得反复读"
 一组 SKILL.md 文件，让 Claude Code / Cursor / OpenClaw 等 Agent 主动触发 BestBlogs 能力（25 个稳定原语）。
 
 ```bash
-npx bestblogs-skills             # 安装到 Claude Code
-npx bestblogs-skills upgrade     # 升级到最新版
+npx @bestblogs/skills             # 安装到 Claude Code
+npx @bestblogs/skills upgrade     # 升级到最新版
 ```
 
 安装后直接说：
