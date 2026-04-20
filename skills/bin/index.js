@@ -77,7 +77,7 @@ async function doInstall({ skillsDir, skills, force }) {
 
   if (!force && installed === latest) {
     console.log(`✓ BestBlogs Skills v${latest} already up to date.`);
-    console.log(`  Use --force to reinstall, or run: npx bestblogs-skills upgrade`);
+    console.log(`  Use --force to reinstall, or run: npx @bestblogs/skills upgrade`);
     return;
   }
 
@@ -152,16 +152,16 @@ async function doList({ skillsDir }) {
 
   if (latest && installed !== latest) {
     console.log('');
-    console.log(`  Run \`npx bestblogs-skills upgrade\` to update to v${latest}.`);
+    console.log(`  Run \`npx @bestblogs/skills upgrade\` to update to v${latest}.`);
   }
 }
 
 function printHelp() {
   console.log(`
-bestblogs-skills — BestBlogs Skills installer for Claude Code
+@bestblogs/skills — BestBlogs Skills installer for Claude Code
 
 Usage:
-  npx bestblogs-skills [command] [options]
+  npx @bestblogs/skills [command] [options]
 
 Commands:
   install (default)   Install or upgrade skills
@@ -174,11 +174,11 @@ Options:
   --force             Force reinstall even if version matches
 
 Examples:
-  npx bestblogs-skills
-  npx bestblogs-skills upgrade
-  npx bestblogs-skills list
-  npx bestblogs-skills install --skill bestblogs-discover
-  npx bestblogs-skills install --dir /custom/path/skills
+  npx @bestblogs/skills
+  npx @bestblogs/skills upgrade
+  npx @bestblogs/skills list
+  npx @bestblogs/skills install --skill bestblogs-discover
+  npx @bestblogs/skills install --dir /custom/path/skills
 `);
 }
 

@@ -1,9 +1,12 @@
 {
-  "name": "bestblogs-skills",
+  "name": "@bestblogs/skills",
   "version": "2.0.8",
   "description": "BestBlogs Skills for Claude Code — personalized reading, discovery, and capture powered by @bestblogs/cli",
   "bin": {
-    "bestblogs-skills": "./bin/index.js"
+    "bestblogs-skills": "bin/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "bestblogs",
