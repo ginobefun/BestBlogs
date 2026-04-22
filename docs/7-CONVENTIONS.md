@@ -310,6 +310,22 @@ Closes #96
 
 ---
 
+## 6.5 可观测性约定（IMPORTANT）
+
+新增/修改代码涉及外部调用、定时任务、告警规则时，必须遵守以下硬约束（详细条款见 `bestblogs-docs/11-OPERATIONS.md` §开发时的监控与告警要求）：
+
+- **事件常量集中**：后端事件名引用统一常量类，禁止硬编码字符串；新增事件先更新 `bestblogs-docs/specs/observability-event-catalog.md`
+- **外部调用双埋**：AI / TTS / HTTP 入口 try-finally 同时上报 Micrometer Counter/Timer + 分析平台事件；失败分支区分 `SUCCESS`/`FAILED`/`TIMEOUT`/`RATELIMITED`
+- **Job 自动三写**：标准 Job 基类和 Job 锁注解自动写 MongoDB 执行日志 + Meter + 分析平台事件；日级/周级 Job 必须在健康检查 Job 中登记宽松阈值
+- **告警统一入口**：通过统一告警分发服务触发，禁止绕过直接调通知适配层；`deduplicateKey` 按 `{source}:{alertName}:{granularity|param}` 命名
+- **告警级别语义**：`CRITICAL`=任意一次告警（用户已受影响）、`WARNING`=阈值/滑窗触发、`INFO`=仅日志不触达
+- **内部端点**：`/api/internal/*` 内部端点必须从公网限流过滤器跳过，避免告警洪峰被 503 误触
+- **敏感字段**：禁止把完整 userId/email/连接字符串写入告警内容；errMsg 上报前截断并做白名单净化
+- **Meter 命名**：`bestblogs.{module}.{action}.{result}`；分析平台事件命名：`{domain}_{action}[_outcome]` snake_case
+- **告警阈值**：全部走 `ALERT_*` ConfigKey 动态调整；代码内仅保留 fallback 默认值
+
+---
+
 ## 7. 性能规范
 
 ### 7.1 接口响应时间

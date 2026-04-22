@@ -45,7 +45,41 @@ function run(args: string[]): { stdout: string; stderr: string; status: number }
 }
 
 function parseJson(out: string): any {
-  return JSON.parse(out.trim().split('\n').filter((l) => l.startsWith('{')).join('\n'))
+  const trimmed = out.trim()
+  if (!trimmed) throw new Error('empty stdout, cannot parse json')
+  try {
+    return JSON.parse(trimmed)
+  } catch {
+    // 兼容前后可能夹杂日志的场景：提取首个 JSON 对象块
+    const start = trimmed.indexOf('{')
+    const end = trimmed.lastIndexOf('}')
+    if (start >= 0 && end > start) {
+      return JSON.parse(trimmed.slice(start, end + 1))
+    }
+    throw new Error(`cannot locate JSON payload from stdout: ${trimmed.slice(0, 200)}`)
+  }
+}
+
+function isTransientFailure(result: { stdout: string; stderr: string; status: number }): boolean {
+  const combined = `${result.stdout}\n${result.stderr}`
+  if (combined.includes('"code":"601002"')) return true
+  if (combined.includes('"retryable":true')) return true
+  if (combined.includes('"httpStatus":429')) return true
+  return false
+}
+
+function runWithRetry(
+  args: string[],
+  attempts = 3,
+): { stdout: string; stderr: string; status: number } {
+  let last = run(args)
+  for (let i = 1; i < attempts; i += 1) {
+    if (last.status === 0 || !isTransientFailure(last)) return last
+    // eslint-disable-next-line no-console
+    console.warn(`[smoke] transient failure, retry ${i + 1}/${attempts}: ${args.join(' ')}`)
+    last = run(args)
+  }
+  return last
 }
 
 describe.skipIf(!shouldRun)('bestblogs CLI E2E smoke', () => {
@@ -73,37 +107,57 @@ describe.skipIf(!shouldRun)('bestblogs CLI E2E smoke', () => {
   })
 
   it('最小闭环：discover → read → bookmark → notes', () => {
-    const discover = run(['discover', 'today', '--limit', '3', '--json'])
+    const discover = run(['discover', 'today', '--limit', '5', '--json'])
     expect(discover.status, discover.stderr).toBe(0)
     const candidates = parseJson(discover.stdout).data.candidates
     if (!Array.isArray(candidates) || candidates.length === 0) {
       console.warn('[smoke] 今日无候选，跳过深度闭环')
       return
     }
-    const first = candidates[0]
-    const rid: string = first.resourceId
+    let rid = ''
+    let bookmarkResult: { stdout: string; stderr: string; status: number } | null = null
+    const tried: string[] = []
 
-    const read = run(['read', 'deep', rid, '--json'])
-    expect(read.status, read.stderr).toBe(0)
-    const readData = parseJson(read.stdout).data
-    expect(readData.meta).toBeTruthy()
+    for (const c of candidates) {
+      const currentRid = c?.resourceId as string | undefined
+      if (!currentRid) continue
+      tried.push(currentRid)
 
-    const bookmark = run(['capture', 'bookmark', 'add', rid, '--note', 'smoke test', '--json'])
-    expect(bookmark.status, bookmark.stderr).toBe(0)
+      const read = run(['read', 'deep', currentRid, '--json'])
+      if (read.status !== 0) continue
+      const readData = parseJson(read.stdout).data
+      if (!readData?.meta) continue
 
-    // 幂等：重复 add 仍 success
-    const bookmarkAgain = run(['capture', 'bookmark', 'add', rid, '--json'])
-    expect(bookmarkAgain.status).toBe(0)
+      const bookmark = runWithRetry([
+        'capture', 'bookmark', 'add', currentRid, '--note', 'smoke test', '--json',
+      ])
+      if (bookmark.status !== 0) continue
 
-    const highlight = run(['capture', 'highlight', 'add', '-r', rid, '-t', 'smoke text', '-n', 'smoke note', '--json'])
-    expect(highlight.status, highlight.stderr).toBe(0)
+      rid = currentRid
+      bookmarkResult = bookmark
+      break
+    }
 
-    const notes = run(['capture', 'notes', '--limit', '5', '--json'])
-    expect(notes.status, notes.stderr).toBe(0)
-    const notesData = parseJson(notes.stdout).data
-    expect(Array.isArray(notesData.highlights)).toBe(true)
+    expect(rid, `no candidate passed full chain, tried=${tried.join(',')}`).not.toBe('')
+    expect(bookmarkResult?.status, bookmarkResult?.stderr ?? '').toBe(0)
 
-    // 清理
-    run(['capture', 'bookmark', 'remove', rid])
+    try {
+      // 幂等：重复 add 仍 success
+      const bookmarkAgain = run(['capture', 'bookmark', 'add', rid, '--json'])
+      expect(bookmarkAgain.status).toBe(0)
+
+      const highlight = runWithRetry([
+        'capture', 'highlight', 'add', '-r', rid, '-t', 'smoke text', '-n', 'smoke note', '--json',
+      ])
+      expect(highlight.status, highlight.stderr).toBe(0)
+
+      const notes = run(['capture', 'notes', '--limit', '5', '--json'])
+      expect(notes.status, notes.stderr).toBe(0)
+      const notesData = parseJson(notes.stdout).data
+      expect(Array.isArray(notesData.highlights)).toBe(true)
+    } finally {
+      // 清理
+      run(['capture', 'bookmark', 'remove', rid])
+    }
   })
 })

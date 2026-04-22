@@ -18,6 +18,9 @@
     "build": "tsup",
     "dev": "tsx src/bin/bestblogs.ts",
     "test": "vitest run",
+    "test:unit": "vitest run test/normalize.test.ts test/errors.test.ts",
+    "test:e2e": "vitest run test/smoke.e2e.ts",
+    "test:release": "pnpm test:unit && pnpm test:e2e",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit"
   },

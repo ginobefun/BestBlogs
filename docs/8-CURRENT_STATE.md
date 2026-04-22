@@ -113,10 +113,20 @@
 - 配额控制：Free 有限次数（摘要为主），Pro 高阶能力与更高用量
 - 全内容类型覆盖：文章 / 播客 / 视频 / 推文四种类型均已支持，各自差异化欢迎语与快捷问题
 
+#### M6.5 内建沉浸式翻译 🚧 开发中（v2.0.14）
+
+- 替换外部 wenrun.ai 跳转为内建段落级双语对照，免跳出阅读流
+- 内容类型：文章 + 推文（播客 / 视频翻译推 v2）
+- 方向：en → zh；Free 3 段预览 + Pro 解锁完整译文（配额 20/天）
+- 技术链路：`/api/content-translate/resources/{id}/stream`（SSE）→ ParagraphSplitter → 段落级缓存（`bb_content_translation`，命中率目标 ≥ 50%）→ LLM（gpt-5.4-mini 默认 + gpt-5.4-nano fallback）→ post-filter
+- 三层 Prompt Injection 防御：XML wrap + system instruction + 输入 sanitize + 输出 tag/length 校验
+- Feature Flag：`FEATURE_CONTENT_TRANSLATE_ENABLED`（默认关闭，灰度放开）
+- 详见 `specs/content-translate.md`
+
 #### M7 个性化推荐 ✅ 开发完成（待 QA）
 
 - 多路召回：兴趣、探索、热点、协同 4 路并行召回
-- 六维兴趣标签：Domain / Topic / Entity / Format 二维用户偏好建模
+- 六维兴趣标签：Domain(8) / Topic(~220) / Entity(~30高信号) / Format(16) 四层标签体系；per-tier 打标上限（domain≤1/topic≤5/format≤1/entity≤3）已落地；cold-start 精简至 27 个 topic
 - 行为学习闭环：点击 / 阅读 / 收藏 / 划线 / 不感兴趣 / 深度阅读等信号实时更新偏好
 - 智能重排：综合标签匹配（含 Entity 独立加权）、来源亲和度、新鲜度、质量分、多样性排序
 - 推荐解释：用户可见的推荐理由，非黑盒

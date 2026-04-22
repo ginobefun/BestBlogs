@@ -13,7 +13,7 @@ describe('errors · toStructuredError', () => {
     const out = toStructuredError(err)
     expect(out).toEqual({
       success: false,
-      error: { code: 'RATE_LIMITED', httpStatus: 429, message: 'too many', retryable: true },
+      error: { code: 'RATE_LIMITED', httpStatus: 429, message: 'too many', retryable: true, requestId: null },
     })
   })
 

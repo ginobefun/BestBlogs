@@ -50,9 +50,9 @@ describe('normalize · fromBriefItem', () => {
     expect(out.fallbackApplied).toBe(true)
   })
 
-  it('BriefContentItem 不携带 url_默认为 null', () => {
+  it('BriefContentItem 不携带 readUrl_默认为 null', () => {
     const out = fromBriefItem({ resourceId: 'RAW_5', title: 'T' })
-    expect(out.url).toBeNull()
+    expect(out.readUrl).toBeNull()
   })
 })
 
@@ -79,8 +79,8 @@ describe('normalize · fromResourceMeta', () => {
     expect(out.fallbackApplied).toBe(false)
   })
 
-  it('URL 字段透传', () => {
+  it('URL 字段透传到 readUrl', () => {
     const out = fromResourceMeta({ resourceId: 'R', title: 'T', url: 'https://x.com' })
-    expect(out.url).toBe('https://x.com')
+    expect(out.readUrl).toBe('https://x.com')
   })
 })

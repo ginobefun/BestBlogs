@@ -77,6 +77,11 @@
 | 为你推荐 | For You | 围绕用户兴趣和行为生成的持续推荐内容流 | 对外主用、产品文档主用 | 界面名称可保留 For You |
 | AI 伴读 | AI Reading Assistant | 帮助用户更快理解内容的阅读辅助能力，包括提问、总结、章节跳转等 | 产品文档主用、对外主用 | |
 | 我的关注 | Following | 用户关注的订阅源所形成的内容入口或内容流 | 对外主用、产品文档主用 | 替代「订阅流」 |
+| 每日回顾 | Daily Review | Pro 专属的晚间回顾能力，21:00 基于当日阅读行为生成 | 对外主用、产品文档主用 | 与「每日早报 Daily Brief」配对形成早晚闭环；v2 升级为夜间叙事页 |
+| 夜间叙事页 | Evening Narrative Page | Daily Review v2 的页面定位：从「模块拼贴」升级为具备主题聚合与情感开场的叙事式体验 | 产品文档主用 | 见 `specs/daily-review-v2-redesign.md`；文案不得使用装饰性 emoji 或感叹号 |
+| 主题聚合 | Topic Clustering | Dify workflow 内部 LLM 软聚类，把当日阅读聚到 2–3 个主题并产出一句话解读 | 产品文档主用、技术文档主用 | 不依赖后端向量计算；主题命名避免「其他」「综合」「杂项」等宽泛词 |
+| 今日一问 | Daily Question | 基于当日阅读主题由 AI 生成的一句开放式思考题，替代 v1 的 thoughtPrompt | 对外主用、产品文档主用 | v2 MVP 为内联输入框（不触发 Copilot）；禁用感叹号和 emoji |
+| 周回顾 | Weekly Review | Daily Review 的周度聚合视图，每周日产出本周主题图谱与未解问题 | 产品文档主用 | Phase 2 候选能力，MVP 不做 |
 
 ### 5.2 用户动作
 
@@ -114,6 +119,7 @@
 | AI 摘要 | AI Summary | AI 为内容生成的结构化摘要，帮助用户快速了解要点 | |
 | AI 问答 | AI Q&A | AI 伴读中的互动问答能力，用户可以针对内容提问 | |
 | 章节跳转 | Section Jump | AI 伴读中帮助用户快速定位到内容特定章节的能力 | |
+| 内建翻译 / 沉浸式翻译 | Content Translate / Immersive Translate | Pro 权益之一：英文内容段落级双语对照翻译，替换外部 wenrun.ai 跳转 | 对外可用「沉浸式翻译」，对内代码统一 `content-translate` |
 
 ## 8. 订阅源与用户关系术语
 
@@ -211,6 +217,11 @@
 | 私有订阅源 | Private Source |
 | 来源偏好 | Source Preference |
 | AI 伴读 | AI Reading Assistant |
+| 每日回顾 | Daily Review |
+| 夜间叙事页 | Evening Narrative Page |
+| 主题聚合 | Topic Clustering |
+| 今日一问 | Daily Question |
+| 周回顾 | Weekly Review |
 | AI 初评 | AI Screening |
 | 专家精审 | Expert Review |
 | 研究会话 | Research Session |
