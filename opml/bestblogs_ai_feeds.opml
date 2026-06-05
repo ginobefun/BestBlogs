@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<title>BestBlogs.dev AI &amp; LLM Feeds Collection</title>
+	</head>
+	<body>
+		<!-- AI Research Labs -->
+		<outline text="OpenAI Blog" type="rss" xmlUrl="https://openai.com/news/rss.xml" htmlUrl="https://openai.com/news" title="OpenAI Blog"></outline>
+		<outline text="Google DeepMind Blog" type="rss" xmlUrl="https://deepmind.com/blog/feed/basic/" htmlUrl="https://deepmind.com/blog" title="Google DeepMind Blog"></outline>
+		<outline text="Google Research" type="rss" xmlUrl="https://ai.googleblog.com/atom.xml" htmlUrl="https://ai.googleblog.com" title="Google Research"></outline>
+		<outline text="Meta AI Research" type="rss" xmlUrl="https://ai.meta.com/feed/" htmlUrl="https://ai.meta.com/blog" title="Meta AI Research"></outline>
+		<outline text="Microsoft Research" type="rss" xmlUrl="https://www.microsoft.com/en-us/research/feed/" htmlUrl="https://www.microsoft.com/en-us/research" title="Microsoft Research"></outline>
+		<outline text="AWS Machine Learning Blog" type="rss" xmlUrl="https://aws.amazon.com/blogs/amazon-ai/feed/" htmlUrl="https://aws.amazon.com/blogs/amazon-ai" title="AWS Machine Learning Blog"></outline>
+		<outline text="NVIDIA Blog - AI" type="rss" xmlUrl="https://feeds.feedburner.com/nvidia/blogs/ai" htmlUrl="https://blogs.nvidia.com/ai" title="NVIDIA Blog - AI"></outline>
+
+		<!-- AI Frameworks & Tools -->
+		<outline text="LangChain Blog" type="rss" xmlUrl="https://blog.langchain.dev/rss/" htmlUrl="https://blog.langchain.dev" title="LangChain Blog"></outline>
+		<outline text="LlamaIndex Blog" type="rss" xmlUrl="https://www.llamaindex.ai/blog/feed" htmlUrl="https://www.llamaindex.ai/blog" title="LlamaIndex Blog"></outline>
+		<outline text="HuggingFace Blog" type="rss" xmlUrl="https://huggingface.co/blog/feed.xml" htmlUrl="https://huggingface.co/blog" title="HuggingFace Blog"></outline>
+		<outline text="Ollama Blog" type="rss" xmlUrl="https://ollama.com/blog/feed" htmlUrl="https://ollama.com/blog" title="Ollama Blog"></outline>
+		<outline text="Dify" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/e46c03a4cb65509e22ab9a8507888a2096319d65.xml" htmlUrl="https://docs.dify.ai" title="Dify"></outline>
+
+		<!-- AI Companies -->
+		<outline text="Anthropic Research" type="rss" xmlUrl="https://www.anthropic.com/index.xml" htmlUrl="https://www.anthropic.com/research" title="Anthropic Research"></outline>
+		<outline text="Cohere AI Blog" type="rss" xmlUrl="https://txt.cohere.com/rss/" htmlUrl="https://txt.cohere.com" title="Cohere AI Blog"></outline>
+		<outline text="Databricks Blog" type="rss" xmlUrl="https://www.databricks.com/feed" htmlUrl="https://www.databricks.com/blog" title="Databricks Blog"></outline>
+		<outline text="DeepSeek" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/1709da4f538d4ce4fb6d7a8ba1a5a1c297919601.xml" htmlUrl="https://www.deepseek.com" title="DeepSeek"></outline>
+		<outline text="月之暗面 Kimi" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/c5c43d4bc17bae656763859ed0903bb6314ec6fe.xml" htmlUrl="https://kimi.moonshot.cn" title="月之暗面 Kimi"></outline>
+		<outline text="阶跃星辰" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/3e2714d06aa36142e8ed6b3f4e5cf9090a069dd2.xml" htmlUrl="https://www.stepfun.com" title="阶跃星辰"></outline>
+
+		<!-- Chinese AI Media -->
+		<outline text="量子位" type="rss" xmlUrl="https://www.qbitai.com/feed" htmlUrl="https://www.qbitai.com" title="量子位"></outline>
+		<outline text="机器之心" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/8d97af31b0de9e48da74558af128a4673d78c9a3.xml" htmlUrl="https://www.jiqizhixin.com" title="机器之心"></outline>
+		<outline text="新智元" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/e531a18b21c34cf787b83ab444eef659d7a980de.xml" htmlUrl="https://www.ithome.com" title="新智元"></outline>
+		<outline text="智东西" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/cfd52b4245ca6119b2fda4ef934832c689028927.xml" htmlUrl="https://www.zhidx.com" title="智东西"></outline>
+		<outline text="甲子光年" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/1c4008936645d5c17239d99bba91522cf2bdfa26.xml" htmlUrl="https://www.hrjzg.com" title="甲子光年"></outline>
+		<outline text="AI前线" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/25185b01482da0f485418ecb92e208b4416712fb.xml" htmlUrl="https://www.infoq.cn" title="AI前线"></outline>
+		<outline text="AI科技评论" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/789e5fefb9cc2646ba7b680cb7a88378a34eb7a4.xml" htmlUrl="https://www.aitechtalk.com" title="AI科技评论"></outline>
+		<outline text="ShowMeAI研究中心" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/854a592a3bac3c2574d092daf4628cf65dfd1858.xml" htmlUrl="https://www.showmeai.tech" title="ShowMeAI研究中心"></outline>
+
+		<!-- AI Practitioners & Thought Leaders -->
+		<outline text="李继刚" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/9645a69180041ff935c458753174fa8bc2061295.xml" htmlUrl="https://mp.weixin.qq.com" title="李继刚"></outline>
+		<outline text="宝玉的分享" type="rss" xmlUrl="https://baoyu.io/feed.xml" htmlUrl="https://baoyu.io" title="宝玉的分享"></outline>
+		<outline text="歸藏的AI工具箱" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/1c3e3571b1627d23ee9c64521a0b0a41d3fe2987.xml" htmlUrl="https://mp.weixin.qq.com" title="歸藏的AI工具箱"></outline>
+		<outline text="AI炼金术" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/4915f3747653bbb9c7975323c11b768d2b9cd6c9.xml" htmlUrl="https://mp.weixin.qq.com" title="AI炼金术"></outline>
+		<outline text="大模型智能" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/bfc6440c1a2443fab9a6bf607137d41db5cd5c93.xml" htmlUrl="https://mp.weixin.qq.com" title="大模型智能"></outline>
+		<outline text="山行AI" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/98bc16b6f53902a2ab511b4faa3499e0a1c78eb1.xml" htmlUrl="https://mp.weixin.qq.com" title="山行AI"></outline>
+
+		<!-- AI Newsletters & Journals -->
+		<outline text="Last Week in AI" type="rss" xmlUrl="https://lastweekin.ai/feed/" htmlUrl="https://lastweekin.ai" title="Last Week in AI"></outline>
+		<outline text="deeplearning.ai" type="rss" xmlUrl="https://rsshub.bestblogs.dev/deeplearning/the-batch" htmlUrl="https://www.deeplearning.ai/the-batch" title="deeplearning.ai"></outline>
+		<outline text="The Batch" type="rss" xmlUrl="https://read.deeplearning.ai/feed/" htmlUrl="https://read.deeplearning.ai" title="The Batch"></outline>
+		<outline text="AINLP" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/875df1d1a991bf9250ba9813e3148f58ef2240d4.xml" htmlUrl="https://www.ainlp.cn" title="AINLP"></outline>
+	</body>
+</opml>
