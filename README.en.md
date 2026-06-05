@@ -14,6 +14,8 @@ It judges what's worth reading, helps you read faster and deeper, and learns you
   <a href="./README.md"><b>中文</b></a>
 </p>
 
+![Homepage](./images/homepage.png)
+
 ---
 
 ## 1. Why BestBlogs
@@ -69,15 +71,21 @@ Both are powered by the same shared quality pool (AI pre-screening + editorial c
 | **Immersive Translation** | Bidirectional Chinese ↔ English, across articles / tweets / podcasts / videos |
 | **Explainable Profile** | Interests driven by explicit behavior (follows, reading, domain-level custom counts) — no manual weight tuning |
 
-### Content Types
+### Screenshots
 
-![Article List](./images/article_list_v5.png)
+**Public Curation Layer**
 
-![Podcast List](./images/podcast_list_v5.png)
+![Daily Brief](./images/public_daily_brief.png)
 
-![Video List](./images/video_list_v5.png)
+![Explore](./images/explore_contents.png)
 
-![Twitter / X List](./images/twitter_list_v5.png)
+![Topic Pages](./images/topics.png)
+
+**My Space (Pro)**
+
+![My Brief](./images/my_daily_brief.png)
+
+![My Follows](./images/my_following.png)
 
 ---
 
@@ -130,7 +138,7 @@ npx @bestblogs/skills           # Install all Skills in one step
 
 Every Friday, the **Featured Weekly Newsletter** delivers a hand-curated collection of the week's best content — AI pre-screened and editorially refined, available as text, email, annotated read, and podcast → [Browse past issues](https://www.bestblogs.dev/newsletter?utm_source=github&utm_medium=readme&utm_campaign=newsletter-section)
 
-![Featured Weekly](./images/newsletter_list_v5.png)
+![Featured Weekly](./images/newsletters.png)
 
 ---
 
