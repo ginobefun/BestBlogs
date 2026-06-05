@@ -1,3 +1,11 @@
+# \u26A0\uFE0F Issue #564 \u6539\u9020\u8BF4\u660E\uFF082026-05\uFF09\uFF1A
+#   1. \u8F93\u5165\u5B57\u6BB5\u6269\u5C55\uFF1A\u9664 input_article_id / input_article_title \u5916\uFF0C\u8FD8\u9700\u63A5\u53D7
+#      source_name / source_url / source_category / resource_type / language /
+#      publish_time / original_summary\uFF08200 \u5B57\u7B26\u622A\u65AD\uFF09
+#   2. \u8F93\u51FA value \u5B57\u6BB5\u5C3A\u5EA6\u4ECE 1-10 \u6539\u4E3A 0-100\uFF0C\u4E0E analysis totalScore \u540C\u5C3A\u5EA6
+#   3. \u5931\u8D25 fail-soft\uFF1AJava \u7AEF Dify \u5F02\u5E38\u65F6\u653E\u884C\u8FDB WAIT_ANALYSIS\uFF0C\u4E0D cancel
+#   \u672C YAML \u662F\u5386\u53F2 v1 \u5BFC\u51FA\uFF0C\u65B0 schema \u7531\u8FD0\u7EF4\u5728 Dify \u5E73\u53F0\u76F4\u63A5\u7F16\u8F91\u53D1\u5E03\u3002
+#   \u5B8C\u6574\u89C4\u8303\u53C2\u89C1\uFF1Abestblogs-docs/specs/content-pipeline-filter.md
 app:
   description: "\u5229\u7528\u5927\u8BED\u8A00\u6A21\u578B\u5BF9\u6587\u7AE0\u8FDB\
     \u884C\u521D\u8BC4\uFF0C\u5224\u65AD\u662F\u5426\u9700\u8981\u8FDB\u4E00\u6B65\

@@ -58,7 +58,7 @@ bestblogs intake setup --non-interactive \
 bestblogs intake setup
 ```
 
-（CLI 会用 `prompts` 弹出多选，Skill 在 Claude Code 里 fork 子进程执行即可。）
+（CLI 会用 `prompts` 弹出多选，Skill 在支持 shell 的 agent 里 fork 子进程执行即可。）
 
 ### 查画像
 

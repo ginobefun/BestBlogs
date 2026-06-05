@@ -117,7 +117,7 @@
   | publishTimeStamp | Long | 发布时间戳（毫秒） |
   | publishDateStr | String | 发布日期（YYYY-MM-DD） |
   | qualified | Boolean | 是否通过 AI 质量过滤（`true` 表示精选内容） |
-  | priority | String | 来源优先级：`HIGHEST` / `HIGH` / `MEDIUM` / `LOW` / `LOWEST` |
+  | priority | String | 来源优先级：`HIGH` / `MEDIUM` / `NORMAL` / `LOW` |
   | sourceVisibility | String | 来源可见性：`SYSTEM`（平台内置）/ `PUBLIC`（用户公开）/ `PRIVATE`（私有） |
 
 ---

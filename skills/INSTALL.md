@@ -11,7 +11,7 @@ bestblogs auth login
 bestblogs auth status    # 验证 API Key 可用
 ```
 
-## 2. 安装 Skills 到 Claude Code
+## 2. 安装 Skills 到 Claude Code 和 Codex
 
 ```bash
 cd bestblogs-skills
@@ -21,13 +21,33 @@ cd bestblogs-skills
 安装脚本做的事：
 
 - 检查 `bestblogs` CLI 是否在 PATH
-- 把 `skills/bestblogs-*` 软链到 `${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}/`
+- 默认把 `skills/bestblogs-*` 软链到 `${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}/`
+- 默认把 `skills/bestblogs-*` 软链到 `${CODEX_SKILLS_DIR:-$HOME/.codex/skills}/`
+- 不修改 Codex 内置 skills（`~/.codex/skills/.system`）或 gstack skills（`~/.codex/skills/gstack`）
 
-安装完重启 Claude Code（或其他 skill-aware 客户端）即可。
+安装完重启 Claude Code、Codex（或其他 skill-aware 客户端）即可。
+
+只安装到 Codex：
+
+```bash
+./install.sh --client codex
+```
+
+只安装到 Claude Code：
+
+```bash
+./install.sh --client claude
+```
+
+指定自定义目录：
+
+```bash
+./install.sh --dir /custom/path/skills
+```
 
 ## 3. 触发验证
 
-在 Claude Code 里说：
+在 Claude Code 或 Codex 里说：
 
 > 今天 BestBlogs 有什么值得读的？
 
@@ -59,6 +79,6 @@ cd bestblogs-skills && git pull && ./install.sh    # 软链保持不变，skills
 ## 卸载
 
 ```bash
-rm -r ~/.claude/skills/bestblogs-*
+rm -r ~/.claude/skills/bestblogs-* ~/.codex/skills/bestblogs-*
 npm uninstall -g @bestblogs/cli
 ```

@@ -2,7 +2,7 @@
 
 BestBlogs 命令行界面 — agent-friendly 阅读工作流（intake → discover → read → capture）。
 
-构建在 BestBlogs OpenAPI v2 之上，所有命令都有 `--json` 模式，便于被智能体（Claude Code、Cursor、OpenClaw 等）或 shell 管道消费。
+构建在 BestBlogs OpenAPI v2 之上，所有命令都有 `--json` 模式，便于被智能体（Claude Code、Codex、Cursor、OpenClaw 等）或 shell 管道消费。
 
 ## 安装
 

@@ -1,7 +1,7 @@
 {
   "name": "@bestblogs/skills",
-  "version": "2.0.8",
-  "description": "BestBlogs Skills for Claude Code — personalized reading, discovery, and capture powered by @bestblogs/cli",
+  "version": "2.2.0",
+  "description": "BestBlogs Skills for Claude Code, Codex, and SKILL.md-aware agents — personalized reading, discovery, and capture powered by @bestblogs/cli",
   "bin": {
     "bestblogs-skills": "bin/index.js"
   },
@@ -11,6 +11,7 @@
   "keywords": [
     "bestblogs",
     "claude-code",
+    "codex",
     "skills",
     "ai",
     "reading"

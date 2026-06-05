@@ -1,0 +1,65 @@
+# ============================================================================
+# BestBlogs Tweet Batch Initial Review Workflow (Issue #564, batched)
+# ============================================================================
+#
+# Contract spec for the tweet filter Dify workflow. The actual graph / nodes /
+# prompt are edited directly on the Dify platform by ops; this directory no
+# longer maintains full graph exports.
+#
+# Prompt source of truth: bestblogs-docs/workflows/prompts/twitter-batch-filter.md
+#
+# Batching: the tweet entry path moved from "one-by-one filter" to "one Dify
+# call per batch of tweets from the same source", reducing per-tweet cost. The
+# flow scores each tweet independently and returns a JSON array (each item
+# carries tweetId).
+#
+# Java entry point:
+#   - TwitterEntryStrategy.processEntries
+#       → FilterDecisionService.decideBatch
+#       → TweetProcessor.batchFilter
+#       → WorkflowService.runTweetBatchFilterFlow
+#       → DifyWorkflowAdapter.runBatchTweetFilterFlow
+#   - Config: ConfigKey.TWEET_FILTER_FLOW_API_KEY
+#   - Per-batch cap: ConfigKey.FILTER_TWEET_BATCH_MAX_SIZE (default 20)
+#
+# Input fields (source-level metadata + tweets array):
+#   - source_name      (string)  X handle / RSS source name
+#   - source_url       (string)  RSS URL (fallback)
+#   - source_category  (string)  source category (e.g. "AI", "Programming")
+#   - source_priority  (string)  source priority (HIGH / MEDIUM / NORMAL / LOW)
+#   - resource_type    (string)  always "TWITTER"
+#   - tweets           (string)  JSON array string, each item:
+#       { "tweet_id", "title", "summary" (truncated to 200 chars), "language",
+#         "publish_time", "influence_score", "view_count" }
+#
+# Output (JSON array at end of prompt; one object per tweet):
+#   [
+#     {
+#       "tweetId":  "1947640330318156074", // MUST echo input tweet_id (for alignment)
+#       "ignore":   false,                  // boolean — AI advises to skip
+#       "reason":   "major first announcement", // string — reason (≤50 chars)
+#       "value":    90,                     // integer — 0-100 (KEY threshold field)
+#       "summary":  "OpenAI announces ...", // string — AI summary (≤50 chars)
+#       "language": "en_US"                // string — AI-detected language
+#     }
+#   ]
+#
+# Thresholds:
+#   - FILTER_MIN_SCORE_TWEET defaults to 50 (tweets are noisy, higher bar)
+#   - score < 50 → REJECT; score ≥ 50 → PASS
+#   - FILTER_DRY_RUN=true keeps low-score tweets passing (decision logged only)
+#   - A tweetId missing from the result (LLM skipped it) → that tweet fail-soft
+#     passes, never mistakenly killed
+#
+# ============================================================================
+# Deploy order: publish flow on Dify (JSON array + 0-100 output) → set
+#               TWEET_FILTER_FLOW_API_KEY → merge Java PR. Otherwise prod runs
+#               without a flow and all tweets fail-soft pass through.
+# ============================================================================
+
+app:
+  description: BestBlogs Tweet Batch Initial Review Workflow (Issue #564 batched, stub, actual graph on Dify)
+  icon: helicopter
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: BestBlogs Tweet Batch Initial Review Workflow

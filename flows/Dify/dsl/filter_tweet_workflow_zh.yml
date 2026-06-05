@@ -1,0 +1,61 @@
+# ============================================================================
+# BestBlogs 推文批量初评流程（Issue #564 · 批量化）
+# ============================================================================
+#
+# 这是推文初评 Dify 工作流的契约说明文件。实际的 graph / nodes / prompt 由运维在
+# Dify 平台直接编辑发布，本目录不再维护完整 graph 导出。
+#
+# 提示词事实来源：bestblogs-docs/workflows/prompts/twitter-batch-filter.md
+#
+# 批量化说明：推文入口从「逐条初评」改为「同一订阅源一批推文一次 Dify 调用」，
+# 降低逐条调用成本。Dify flow 对每条推文独立打分，返回 JSON 数组（每项带 tweetId）。
+#
+# Java 端调用入口：
+#   - TwitterEntryStrategy.processEntries
+#       → FilterDecisionService.decideBatch
+#       → TweetProcessor.batchFilter
+#       → WorkflowService.runTweetBatchFilterFlow
+#       → DifyWorkflowAdapter.runBatchTweetFilterFlow
+#   - 配置项：ConfigKey.TWEET_FILTER_FLOW_API_KEY
+#   - 单批条数上限：ConfigKey.FILTER_TWEET_BATCH_MAX_SIZE（默认 20）
+#
+# 输入字段（源级元信息 + tweets 数组）：
+#   - source_name      (string)  X 用户名 / RSS 源名称
+#   - source_url       (string)  RSS URL（兜底）
+#   - source_category  (string)  源分类（如 "AI"、"编程"）
+#   - source_priority  (string)  源优先级（HIGH / MEDIUM / NORMAL / LOW）
+#   - resource_type    (string)  固定为 "TWITTER"
+#   - tweets           (string)  JSON 数组字符串，每项：
+#       { "tweet_id", "title", "summary"(≤200 字符截断), "language",
+#         "publish_time", "influence_score", "view_count" }
+#
+# 输出字段（JSON 数组，prompt 末端必须输出；每条推文一个对象）：
+#   [
+#     {
+#       "tweetId":  "1947640330318156074", // 必须原样回传输入 tweet_id（结果对齐用）
+#       "ignore":   false,                  // boolean，AI 是否建议忽略
+#       "reason":   "重大首发，时效性强",    // string，理由（≤50 字）
+#       "value":    90,                     // integer，0-100 分（关键阈值字段）
+#       "summary":  "OpenAI 宣布 ...",       // string，AI 概括（≤50 字）
+#       "language": "en_US"                // string，AI 检测的语言
+#     }
+#   ]
+#
+# 阈值：
+#   - FILTER_MIN_SCORE_TWEET 默认 50（推文噪声多，门槛偏高）
+#   - score < 50 → REJECT；score ≥ 50 → PASS
+#   - FILTER_DRY_RUN=true 时低分推文也放行（仅记录决策）
+#   - 结果中缺失某条 tweetId（LLM 漏评）→ 该条 fail-soft 放行，不误杀
+#
+# ============================================================================
+# 部署顺序：先在 Dify 平台发布该 flow（输出 JSON 数组 + 0-100）→ 配置
+#           TWEET_FILTER_FLOW_API_KEY → 合并 Java PR。否则线上跑无 flow，
+#           所有推文走 fail-soft 放行。
+# ============================================================================
+
+app:
+  description: BestBlogs 推文批量初评流程（Issue #564 批量化，stub 占位，实际 graph 在 Dify 平台维护）
+  icon: helicopter
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: BestBlogs 推文批量初评流程

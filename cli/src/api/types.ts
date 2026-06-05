@@ -154,3 +154,36 @@ export const NewsletterSchema = z
     publishTime: z.string().optional().nullable(),
   })
   .passthrough()
+
+export const TopicListItemSchema = z
+  .object({
+    slug: z.string().optional().nullable(),
+    type: z.string().optional().nullable(),
+    title: z.string().optional().nullable(),
+    summary: z.string().optional().nullable(),
+    coverUrl: z.string().optional().nullable(),
+    tagCodes: z.array(z.string()).optional().nullable(),
+    publishedAt: z.string().optional().nullable(),
+    updatedAt: z.string().optional().nullable(),
+    pinnedOrder: z.number().optional().nullable(),
+  })
+  .passthrough()
+export type TopicListItem = z.infer<typeof TopicListItemSchema>
+
+export const TopicDetailSchema = z
+  .object({
+    slug: z.string().optional().nullable(),
+    type: z.string().optional().nullable(),
+    title: z.string().optional().nullable(),
+    summary: z.string().optional().nullable(),
+    language: z.string().optional().nullable(),
+    coverUrl: z.string().optional().nullable(),
+    tagCodes: z.array(z.string()).optional().nullable(),
+    publishedAt: z.string().optional().nullable(),
+    updatedAt: z.string().optional().nullable(),
+    hasZhVersion: z.boolean().optional().nullable(),
+    hasEnVersion: z.boolean().optional().nullable(),
+    pinnedOrder: z.number().optional().nullable(),
+  })
+  .passthrough()
+export type TopicDetail = z.infer<typeof TopicDetailSchema>

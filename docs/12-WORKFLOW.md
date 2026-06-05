@@ -1,6 +1,11 @@
 # 12-WORKFLOW.md
 
-本文件是 BestBlogs monorepo 的**开发流程**事实来源，描述从需求进入到上线的完整链路、所涉及的 Claude Code skills / agents / hooks、以及相关规范。适合新人入门、团队对齐、外部分享。
+> **日常 agent 入口请优先读 `CLAUDE.md`**（monorepo 根目录 + 各组件目录）—— 它包含发布分支策略、Worktree、Commit 规范、Hooks、Skills 速查表、开发流程规范等执行规则，是 agent 默认读入的事实来源。
+>
+> **本文件聚焦 CLAUDE.md 不展开的内容**：流程图全景、`/feat` × `/fix` 两条路径对比、`/dev` 编码闭环 6 步细则、`/deepreview` 评审矩阵详表、`/release` changelog 格式、Issue 6 段模板、典型会话三例、反模式与升级信号。承接 PRODUCT v2 北极星切换与两端 4+4 入口结构。
+
+更新时间：2026-05-25
+状态：v2.4.0 薄壳化（去与 CLAUDE.md 双源维护）+ Project 状态自动化
 
 ## 设计理念
 
@@ -9,6 +14,8 @@
 - **两条路径，对应两种节奏**：大需求走规划密集的 `/feat`，小改动/Bug 走轻量的 `/fix`，共享编码与评审环节。
 - **Plan 驱动执行，Spec 沉淀已实现**：大需求由 gstack `/autoplan` 产出 plan 指导开发；合并后 `/spec-doc` 回写归档。不再用重型 Spec 文档驱动执行。
 - **多角度评审 + 三方一致性守护**：代码 / 文档 / ConfigKey 三处必须对齐，阻塞门禁。
+- **GitHub Project 状态随工作流自动流转**：Issue 状态由 skill 自动更新，无需手动维护；PR 与 Issue Review 保留人工决策。
+- **版本发布后自动归档**：release 合入 main 后，关联 Issue 一键置 Done，Project 保持聚焦。
 - **流程本身可演进**：`/evolve` 基于会话痕迹提议 skill / agent / hook 迭代。
 
 ---
@@ -84,34 +91,47 @@
 
 ---
 
-## 1. 发布分支策略
+## GitHub Project 状态生命周期
 
-### 命名与节奏
+所有 Issue 通过固定的状态序列流转，自动与开发流程绑定，**PR/Issue 的 Review 与合并保留人工决策**。
 
-- **发布分支**：`v<major>.<minor>.<patch>`，例 `v2.0.6`
-- **粒度**：以日为单位，每天由主开发者开一条
-- **合并方向**：feature 分支 → 发布分支 → main（日终 `/release` 创建 PR，人工验证通过后合并）
+### 状态序列
 
-### 分支一览
+```
+Backlog ──► Ready ──► In progress ──► In review ──► Done
+              ↑                            │
+          (手动归入              (PR 合入 release 后
+           Project 时默认)        等待 release 合 main)
+```
 
-| 类型 | 命名 | 拉自 | 合入 |
-|---|---|---|---|
-| 发布分支 | `vX.Y.Z` | main | main（/release 的 PR） |
-| Feature 分支 | `<type>/<issue>-<slug>` | 当前发布分支 | 当前发布分支 |
-| Hotfix | `hotfix/<issue>-<slug>` | main | main + 回填发布分支 |
+| 状态 | 含义 | 触发方式 |
+|---|---|---|
+| **Backlog** | 待评估，暂不排期 | 手动设置 |
+| **Ready** | 已排期，可随时开发 | Issue 加入 Project 时自动设为 Ready；或手动 |
+| **In progress** | 开发中 | `/worktree` 创建 worktree 后**自动**更新 |
+| **In review** | PR 已创建，等待 Review | `/commit-pr pr` 创建 PR 后**自动**更新 |
+| **Done** | 已合入 release 并通过验证 | release PR 合入 main 后，`/release` 提示运行**归档命令**批量更新 |
 
-### Feature 分支命名
+### 自动化边界
 
-正则：`^(feat|fix|refactor|perf|docs|test|ops|chore)/\d+-[a-z0-9-]+$`
+- **自动**（无需人工干预）：`/worktree` → In progress；`/commit-pr pr` → In review
+- **人工**（需人工决定）：PR Code Review、PR 合并到 release 分支、release PR 合并到 main
+- **半自动**（人工触发命令）：release 合入 main 后，执行归档命令批量置 Done（详见 §4）
 
-示例：
-- `feat/123-daily-brief-email`
-- `fix/456-youtube-video-404`
-- `ops/225-dev-workflow-redesign`
+### 辅助脚本
+
+`.claude/scripts/update-issue-project-status.sh <issue_number> <status_name>` 是底层工具，可单独调用手动修正状态：
+
+```bash
+# 手动修正：把 Issue #970 回退到 Ready
+.claude/scripts/update-issue-project-status.sh 970 "Ready"
+```
 
 ---
 
-## 2. 两个入口：`/feat` 和 `/fix`
+## 1. 两个入口：`/feat` 和 `/fix`
+
+> 发布分支命名、Feature 分支命名正则、Hotfix 规则等 → 见 `CLAUDE.md §开发流程规范`。本节聚焦两条路径对比。
 
 ### `/feat` — 大需求（跨模块 / 产品决策 / 架构变更）
 
@@ -153,11 +173,29 @@ Phase 1 立项 → Phase 2 开发 → Phase 3 评审提交
 | Spec 归档 | 需要 `/spec-doc` | 不需要 |
 | 预计耗时 | 半天 - 多天 | 10 分钟 - 半天 |
 
+### 入口与两端 4+4 scope 对照（v2.4.0 起）
+
+新需求落到 Issue 时的 `area:*` Label 应对照 PRODUCT §3 的两端 8 个入口：
+
+| 端 | 入口 | 推荐 Label / scope |
+|---|---|---|
+| 公共策展层 | 每日早报 | `area:public-briefing` / scope `briefing` |
+| 公共策展层 | 精选周刊 | `area:newsletter` / scope `weekly` |
+| 公共策展层 | 主题解读 | `area:topic` / scope `topic` |
+| 公共策展层 | 内容广场 | `area:explore` / scope `explore` |
+| 我的空间 | 我的早报 | `area:my-brief` / scope `my-brief` |
+| 我的空间 | 我的关注 | `area:follow` / scope `follow` |
+| 我的空间 | 我的阅读 | `area:my-reading` / scope `reading` |
+| 我的空间 | 我的回顾 | `area:daily-review` / scope `review` |
+| 跨入口 | AI 伴读 / 翻译 / Domain 篇数 / 自定义视图 | scope `copilot` / `translate` / `interest` / `view` |
+
+阶段提示：当前 PRODUCT 处于 **Phase 1 个性化阅读工作流**（PRODUCT §8.2），北极星 = 每天打开「我的早报」的 Pro 用户数。`/feat` 立项时如果北极星预期影响为正，需在 Issue 「现象 / 期望行为」段显式标注。
+
 ---
 
-## 3. `/dev` 编码闭环
+## 2. `/dev` 编码闭环
 
-一次性把"开发 + 测试 + 文档 + 自测"做完，降低 `/deepreview` 反复次数。
+一次性把「开发 + 测试 + 文档 + 自测」做完，降低 `/deepreview` 反复次数。
 
 ### 6 步流程
 
@@ -166,7 +204,7 @@ Phase 1 立项 → Phase 2 开发 → Phase 3 评审提交
 | 1 | 制定细化计划 | 子任务 3-8 个、关键决策、影响面、风险点、测试策略 |
 | 2 | 设计文档（仅 /feat 复杂场景） | Issue 评论中的简短草稿 |
 | 3 | 编码（按子任务推进） | 实现 + 单测 + 本地跑通 |
-| 4 | 更新文档（逐项核对） | 对照 bestblogs-docs/1-11 + 子模块 CLAUDE.md |
+| 4 | 更新文档（逐项核对） | 对照 bestblogs-docs/1-13 + 子模块 CLAUDE.md |
 | 5 | 自测 | /verify 通过 + golden path + 响应式 + 深色模式 |
 | 6 | 汇总输出 | 子任务/变更/测试/文档/verify 结果 |
 
@@ -178,7 +216,7 @@ Phase 1 立项 → Phase 2 开发 → Phase 3 评审提交
 
 ---
 
-## 4. `/deepreview` 多角度评审
+## 3. `/deepreview` 多角度评审
 
 **6 个视角 + 2 个一致性守护 + /verify 硬门禁**，并行调度，目标 < 5 分钟出报告。
 
@@ -190,7 +228,7 @@ Phase 1 立项 → Phase 2 开发 → Phase 3 评审提交
 | arch-review | 分层、依赖、契约、ConfigKey 治理 | `4-ARCHITECTURE.md` / `7-CONVENTIONS.md` | — |
 | code-reviewer | 代码质量、规范、潜在 Bug | `7-CONVENTIONS.md` | — |
 | qa-review | 测试覆盖、Mock 质量、回归风险 | `9-TESTING.md` | — |
-| ops-review | Feature Flag、灰度、监控、回滚 | `11-OPERATIONS.md` | — |
+| ops-review | Feature Flag、灰度、监控、回滚、**VISION §8 五条红线** | `11-OPERATIONS.md` | — |
 | designer-review | 视觉 / **响应式 / 暗黑模式 / 交互体验** / 可达性 | `5-DESIGN.md` / `6-UI-SPEC.md` / `3-BRAND.md` | ✅（仅前端） |
 
 ### 2 个一致性守护（**阻塞门禁**）
@@ -221,7 +259,7 @@ Phase 1 立项 → Phase 2 开发 → Phase 3 评审提交
 
 ---
 
-## 5. `/release` 日终关闭发布分支
+## 4. `/release` 日终关闭发布分支
 
 当日所有 feature PR 合入发布分支后执行。
 
@@ -237,16 +275,44 @@ Phase 1 立项 → Phase 2 开发 → Phase 3 评审提交
 gh pr create --base main
      ↓
 人工验证 → 手动 merge to main → 生产部署
+     ↓
+告知 Claude "release merged" → 执行 Issue 归档（批量置 Done）
 ```
+
+### Post-merge Issue 归档
+
+release PR **人工合并到 main 后**，告知 Claude 执行归档。Claude 会运行：
+
+```bash
+# 从所有已合入本 release 的 PR body 中提取 Closes #N，批量置 Done
+RELEASE_BRANCH="v<version>"
+REPO="ginobefun/bestblogs-monorepo"
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+gh pr list --repo "$REPO" --base "$RELEASE_BRANCH" --state merged --json body \
+  | python3 -c "
+import sys, json, re
+prs = json.load(sys.stdin)
+issues = set()
+for pr in prs:
+    matches = re.findall(r'(?:Closes?|Fixes?|Resolves?)\s+#(\d+)', pr.get('body',''), re.IGNORECASE)
+    issues.update(matches)
+for i in sorted(issues, key=int): print(i)
+" | while read issue; do
+  "$REPO_ROOT/.claude/scripts/update-issue-project-status.sh" "$issue" "Done"
+done
+```
+
+归档完成后 Project 视图中本次 release 所有 Issue 自动移入 Done，Board 聚焦于进行中的工作。
 
 ### Changelog 格式
 
-参考 `bestblogs-app/content/changelog/v2.0.5.md`：
+参考最近的 changelog 入口（`bestblogs-app/content/changelog/v2.4.0.md`）：
 
 ```yaml
 ---
-version: "2.0.6"
-date: "2026-04-17"
+version: "2.4.0"
+date: "2026-05-19"
 title:
   zh: "..."
   en: "..."
@@ -257,21 +323,21 @@ tags: [...]
 ---
 
 ## 中文
-### ✨ 新功能
-### 🔧 体验优化
-### 🐛 修复
+### 新功能
+### 体验优化
+### 修复
 
 ## English
-### ✨ New Features
-### 🔧 Improvements
-### 🐛 Fixes
+### New Features
+### Improvements
+### Fixes
 ```
 
 分组映射：`feat` → 新功能，`perf/refactor` → 体验优化，`fix` → 修复；`docs/test/ops/chore/style` 默认不进 changelog（除非用户可见）。
 
 ---
 
-## 6. Issue 模板（6 段结构）
+## 5. Issue 模板（6 段结构）
 
 `/issue-open` 使用固定模板：
 
@@ -300,65 +366,11 @@ tags: [...]
 - [ ] 回归测试
 ```
 
-**"待人工验证"是关键**：`/release` 会把它聚合到 release PR，作为人工验证清单。
+**「待人工验证」是关键**：`/release` 会把它聚合到 release PR，作为人工验证清单。
 
 ---
 
-## 7. Commit Message 规范
-
-遵循 **Conventional Commits**：
-
-```
-<type>(<scope>): <subject>
-
-<body 可选>
-
-Closes #<issue>
-
-Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
-```
-
-- **type**：`feat` / `fix` / `refactor` / `perf` / `docs` / `test` / `style` / `ops` / `chore`
-- **scope**（可选）：`app` / `admin` / `service` / `worker` / `common` / `docs` / `workflow`
-- **subject**：≤ 70 字符，中英文均可
-- **Closes #N** 自动关联 Issue
-- 原子提交：一个 commit 一件事
-
----
-
-## 8. Worktree（隔离开发）
-
-`.claude/worktrees/<issue>-<slug>/` 放独立 worktree，避免干扰主 working tree，也支持多 Issue 并行。
-
-```bash
-# /worktree skill 自动执行
-git worktree add -b <branch> .claude/worktrees/<issue>-<slug> <release-branch>
-
-# 合并后回收
-git worktree remove .claude/worktrees/<issue>-<slug>
-git branch -d <branch>
-```
-
-`.claude/worktrees/` 已在 `.gitignore` 中。
-
----
-
-## 9. Hooks 自动守护
-
-| 触发 | 行为 | 作用 |
-|---|---|---|
-| SessionStart | 打印当前发布分支与 feature 分支提示 | 会话开始即知道默认 PR base |
-| PreToolUse Write\|Edit | 扫描 secret 模式（AKIA / ghp_ / sk- / PRIVATE KEY） | 防止提交密钥 |
-| PreToolUse Bash | 拦 `git checkout main` / `git push origin main` / `gh pr create --base main` | 防绕过发布分支流程 |
-| PostToolUse Edit\|Write | eslint --fix（TS/TSX） | 自动修小风格问题 |
-| PostToolUse Edit\|Write | bestblogs-common 改动提示 `mvn install` | 避免下游用旧 JAR |
-| PostToolUse Edit\|Write | ConfigKey.java 改动提示三处同步 | 配合 config-consistency agent |
-| PostToolUse Edit\|Write | Controller.java 改动提示更新 architecture/spec 文档 | 配合 doc-consistency agent |
-| Stop | 会话结束提醒：如有流程痛点考虑 `/evolve`，重要决策同步 memory/CLAUDE.md | 促进持续迭代 |
-
----
-
-## 10. `/evolve` 流程演进
+## 6. `/evolve` 流程演进
 
 开发流程不是一次成型。`/evolve` 基于本次会话痕迹提议 skill / agent / hook / 文档的优化：
 
@@ -372,92 +384,28 @@ git branch -d <branch>
 
 ---
 
-## 11. Skills 速查表
+## 7. 常见问题与反模式
 
-### 顶层入口（4）
+### 反模式
 
-| Skill | 用途 |
-|---|---|
-| `/feat` | 大需求全链路编排 |
-| `/fix` | 小需求 / Bug 编排 |
-| `/deepreview` | 多角度评审 |
-| `/release` | 日终关闭发布分支 |
-
-### 编码阶段（1）
-
-| Skill | 用途 |
-|---|---|
-| `/dev` | 统一编码闭环（计划 / 编码 / 测试 / 文档 / 自测） |
-
-### 工具（3）
-
-| Skill | 用途 |
-|---|---|
-| `/issue-open` | 结构化 Issue 模板 |
-| `/worktree` | 规范化 git worktree |
-| `/spec-doc` | 大需求合入后回写 spec |
-
-### 提交与验证（2）
-
-| Skill | 用途 |
-|---|---|
-| `/commit-pr [push\|pr]` | 提交 / 推送 / 创建 PR（base 默认 release 分支） |
-| `/verify <scope>` | lint + build + test 硬门禁 |
-
-### 演进（1）
-
-| Skill | 用途 |
-|---|---|
-| `/evolve` | 基于会话痕迹迭代 skills / agents / hooks |
-
-### 保留的 gstack 全局 skill
-
-- `/office-hours`、`/autoplan`、`/plan-ceo-review`、`/plan-eng-review`、`/plan-design-review` — 规划评审
-- `/land-and-deploy`、`/retro` — 部署与复盘
-
----
-
-## 12. 与现有文档的关系
-
-| 文档 | 职责 | 本流程文档的关系 |
-|---|---|---|
-| `1-VISION.md` | 愿景 | 不变 |
-| `2-PRODUCT.md` | 产品策略 | `pm-review` 参考 |
-| `3-BRAND.md` | 品牌表达 | `pm-review` / `designer-review` 参考 |
-| `4-ARCHITECTURE.md` | 架构 | `arch-review` / `doc-consistency` 参考 |
-| `5-DESIGN.md` | 视觉设计 | `designer-review` 参考 |
-| `6-UI-SPEC.md` | UI 细则 | `designer-review` 参考 |
-| `7-CONVENTIONS.md` | 代码规范 | `code-reviewer` / `arch-review` 参考 |
-| `8-CURRENT_STATE.md` | 当前状态 | `pm-review` 参考 |
-| `9-TESTING.md` | 测试约定 | `qa-review` 参考 |
-| `10-TERMINOLOGY.md` | 术语 | `pm-review` 参考 |
-| `11-OPERATIONS.md` | 运维 | `ops-review` 参考 |
-| **`12-WORKFLOW.md`（本文件）** | 开发流程 | 总入口：整合前 11 份 |
-| `specs/` | 已交付能力快照 | `/spec-doc` 产出目标 |
-
----
-
-## 13. 常见问题与反模式
-
-### ❌ 反模式
-
-- 直接在发布分支（`vX.Y.Z`）上编辑代码并 commit（应 `/worktree` 拉 feature 分支）
+- 直接在发布分支（`vX.Y.Z`）上编辑代码并 commit（应 `/worktree` 拉 feature 分支；例外：doc / 小 bugfix 允许直接 commit，见根目录 CLAUDE.md 协作风格）
 - Feature 分支从 `main` 拉（应从当前发布分支拉）
 - PR base = main（仅 `/release` 的 release PR 允许）
-- 建 Issue 时"待人工验证"留空（`/release` 无法汇总到 release PR）
+- 建 Issue 时「待人工验证」留空（`/release` 无法汇总到 release PR）
 - 新增 ConfigKey 只改 `ConfigKey.java`（必须三处齐）
 - 改 Controller 不更新 `4-ARCHITECTURE.md`（doc-consistency 会阻塞）
 - 绕过 `/deepreview` 直接提交（一致性守护不过）
 - 跳过 `/dev` Step 4（文档更新）和 Step 5（自测）
+- **触犯 VISION §8 五条红线为了拉北极星**（详见 `11-OPERATIONS.md §运维规约 价值红线 read-only 副本`）
 
-### ✅ 最佳实践
+### 最佳实践
 
 - 每个 Issue 一个专注目标，大 Issue 拆开
 - 原子提交，便于回溯与 changelog 生成
 - 待人工验证写具体复现步骤 + 账号 + 前置条件
 - `/evolve` 反馈使用感受，持续优化工作流
 
-### 💡 升级信号
+### 升级信号
 
 | 场景 | 建议升级到 |
 |---|---|
@@ -465,6 +413,17 @@ git branch -d <branch>
 | 同类评审必修项反复出现 | 在 agent 检查清单补充 → `/evolve` |
 | 某类 Bug 反复出现 | 在 `9-TESTING.md` 补测试约定，补回归用例 |
 | ConfigKey 三处同步成本高 | 推动通用式架构（枚举遍历 + UI 通用渲染） |
+
+---
+
+## 8. 与现有文档的关系
+
+| 文档 | 职责 | 本流程文档的关系 |
+|---|---|---|
+| `CLAUDE.md`（根目录） | 协作风格 + 分支策略 + Commit / Worktree / Hooks / Skills 速查 | **日常 agent 默认入口**；本文件不重复其内容 |
+| `1-VISION.md` ~ `13-INFRA-DEPS.md` | 各专题事实来源 | `/deepreview` 6 视角分别引用 |
+| `specs/` | 已交付能力快照 | `/spec-doc` 产出目标 |
+| `reviews/` | 每个 minor 版本的全局组织 review 归档（v2.4.0 起） | `/release` 阶段沉淀 |
 
 ---
 
@@ -481,7 +440,7 @@ Claude：
   → /dev（调查 + 修复 + 单测 + 自测）
   → /deepreview（designer-review 必修 + 其它通过）
   → 修复 → 再 /deepreview 通过
-  → /commit-pr pr（PR base = v2.0.6）
+  → /commit-pr pr（PR base = v2.4.0）
 ```
 
 ### 场景 B：大需求
@@ -497,7 +456,7 @@ Claude：
   → /dev（细化 → 设计评论 → 编码 → 测试 → 文档 → 自测）
   → /deepreview 6 角度（含 designer-review 响应式/深色/交互）
   → 修复 → /commit-pr pr
-  → PR 合入 v2.0.6
+  → PR 合入 v2.4.0
   → /spec-doc 生成 bestblogs-docs/specs/newsletter-template.md
 ```
 
@@ -506,11 +465,11 @@ Claude：
 ```
 用户：/release
 Claude：
-  → 当前 v2.0.6，合入 N 个 PR
+  → 当前 v2.4.0，合入 N 个 PR
   → /deepreview 全量
   → /verify all 通过
-  → 生成 bestblogs-app/content/changelog/v2.0.6.md（双语）
-  → 聚合 N 个 Issue 的"待人工验证"
+  → 生成 bestblogs-app/content/changelog/v2.4.0.md（双语）
+  → 聚合 N 个 Issue 的「待人工验证」
   → gh pr create --base main
   → 输出：release PR URL + 人工验证清单
 用户：人工验证通过 → GitHub 界面 Merge → 生产部署
@@ -523,3 +482,5 @@ Claude：
 | 日期 | 版本 | 说明 |
 |---|---|---|
 | 2026-04-17 | v1.0 | 初始版本，对应 Issue #225 工作流重组 |
+| 2026-05-19 | v1.1 | 薄壳化（Issue #840）：去与 `CLAUDE.md` 重复内容，承接 PRODUCT v2 北极星切换与两端 4+4 入口 scope 对照；示例版本号统一为 v2.4.0 |
+| 2026-05-25 | v1.2 | GitHub Project 状态自动化：新增状态生命周期章节、/worktree → In progress、/commit-pr pr → In review、release post-merge 批量归档 → Done |

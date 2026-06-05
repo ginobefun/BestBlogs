@@ -1,6 +1,6 @@
 # bestblogs-skills
 
-一组给智能体（Claude Code、Cursor 等支持 SKILL.md 约定的客户端）使用的 BestBlogs 技能包。
+一组给智能体（Claude Code、Codex、Cursor 等支持 SKILL.md 约定的客户端）使用的 BestBlogs 技能包。
 
 每个 skill 都是一份 `SKILL.md` 文件，描述触发词、原语清单、动作示例与错误处理。内部实现统一 shell out 到 `bestblogs` CLI（见 `../bestblogs-cli/`）并消费其 `--json` 输出。
 
@@ -25,19 +25,44 @@ npm install -g @bestblogs/cli
 bestblogs auth login
 ```
 
-## 安装到 Claude Code
+## 安装到 Claude Code 和 Codex
 
 ```bash
 ./install.sh
 ```
 
-脚本会把 `skills/*` 软链到 `~/.claude/skills/bestblogs/*`，Claude Code 重启后即可按 description 主动触发。
+脚本默认会把 `skills/bestblogs-*` 软链到：
+
+- `~/.claude/skills/`（Claude Code）
+- `~/.codex/skills/`（Codex）
+
+Codex 已有的内置 skills（`~/.codex/skills/.system`）和 gstack skills（`~/.codex/skills/gstack`）不会被移动或覆盖。重启对应 agent 后即可按 description 主动触发。
+
+只安装到 Codex：
+
+```bash
+./install.sh --client codex
+```
+
+只安装到 Claude Code：
+
+```bash
+./install.sh --client claude
+```
 
 也可以手动 clone + 指定 skill dir：
 
 ```bash
 git clone https://github.com/ginobefun/bestblogs-monorepo.git
-ln -s $(pwd)/bestblogs-monorepo/bestblogs-skills/skills/* ~/.claude/skills/
+ln -s $(pwd)/bestblogs-monorepo/bestblogs-skills/skills/* ~/.codex/skills/
+```
+
+或者使用 npm 安装器：
+
+```bash
+npx @bestblogs/skills install --client codex
+npx @bestblogs/skills install --client claude
+npx @bestblogs/skills list
 ```
 
 ## 给其他 agent 生态用

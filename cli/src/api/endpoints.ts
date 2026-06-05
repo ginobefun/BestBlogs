@@ -4,7 +4,7 @@
  */
 
 import { request } from './client.js'
-import type { Bookmark, DailyBrief, Highlight, ResourceMeta } from './types.js'
+import type { Bookmark, DailyBrief, Highlight, ResourceMeta, TopicListItem, TopicDetail } from './types.js'
 
 // ========== Identity ==========
 
@@ -125,6 +125,18 @@ export const history = {
   delete: (resourceId: string) =>
     request<void>(`/openapi/v2/me/history/${encodeURIComponent(resourceId)}`, { method: 'DELETE' }),
   clear: () => request<void>('/openapi/v2/me/history', { method: 'DELETE' }),
+}
+
+// ========== Topics ==========
+
+export const topics = {
+  list: (params?: { type?: string; language?: string; page?: number; pageSize?: number }) =>
+    request<{ dataList: TopicListItem[]; totalCount?: number; currentPage?: number; pageSize?: number }>(
+      '/openapi/v2/topics',
+      { query: params, anonymous: true },
+    ),
+  get: (slug: string, params?: { language?: string }) =>
+    request<TopicDetail>(`/openapi/v2/topics/${encodeURIComponent(slug)}`, { query: params, anonymous: true }),
 }
 
 // ========== Explain ==========

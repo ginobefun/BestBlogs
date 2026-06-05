@@ -1,3 +1,11 @@
+# ⚠️ Issue #564 changes (2026-05):
+#   1. Input fields extended: in addition to input_article_id / input_article_title,
+#      now also accept source_name / source_url / source_category / resource_type /
+#      language / publish_time / original_summary (truncated to 200 chars)
+#   2. Output `value` rescaled from 1-10 to 0-100 (matches analysis totalScore)
+#   3. Fail-soft: on Dify exception Java side passes resource to WAIT_ANALYSIS, no cancel
+#   This YAML is the historical v1 export; the new schema is edited directly on the
+#   Dify platform by ops. See bestblogs-docs/specs/content-pipeline-filter.md
 app:
   description: Leveraging LLM to conduct preliminary assessments of articles, determining
     whether further evaluation is necessary.

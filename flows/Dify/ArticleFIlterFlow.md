@@ -1,156 +1,60 @@
 # BestBlogs 文章初评流程
 
+> ⚠️ Issue #564 改造（2026-05）：评分尺度从 **0-5 改为 0-100**（与 analysis totalScore 同尺度），
+> 输入字段扩展为 source / category / language / publish_time / original_summary 等富元信息。
+> **提示词事实来源**：`bestblogs-docs/workflows/prompts/article-filter.md`（中英双版）。
+> 完整契约见 `bestblogs-docs/specs/content-pipeline-filter.md`。
+
 ## 整体流程图
 
 ![Filter Article Workflow](./flowImages/filter_article_flow_chinese_article_result.png)
 
 流程说明：
 
-- 为了便于测试和接口调用，流程的输入为网站的文章 ID，然后通过 Workflow 内置的 HTTP 调用节点和代码节点，调用网站的 API 获取文章的元数据（标题、来源、链接、语言等）和全文内容。
-- 为中文和英文文章采用不同的模型和提示词，可以更加灵活的调整和优化。
-- 文章初评 LLM 节点通过 CO-STAR 提示词框架定义上下文、目标、分析步骤、输入输出格式，提供输出示例，完整的提示词可以在上述项目地址查看。
-- 网站应用通过 Dify Workflow 开放的 API 传入文章 ID，获取文章的初评结果，根据 ignore 和 value 属性判断是否继续往下处理。
+- 网站应用通过 Dify Workflow 开放的 API 传入文章元信息（标题、来源、分类、语言、发布时间、截断摘要），由文章初评 LLM 节点输出初评结果。
+- 为中文和英文文章采用不同的模型和提示词，可以更加灵活地调整和优化。
+- 文章初评 LLM 节点通过 CO-STAR 提示词框架定义上下文、目标、分析步骤、输入输出格式，提供输出示例。
+- 网站应用根据返回的 `ignore` 与 `value`（0-100）判断是否继续往下处理：`value ≥ FILTER_MIN_SCORE_ARTICLE`（默认 30）放行进入分析阶段。
 
 ## DSL File
 
 [Filter Article Workflow DSL](./dsl/filter_article_workflow_zh.yml)
 
-## 流程说明
+> 注：DSL 中内嵌的历史 v1 提示词为 0-5 尺度，仅作 graph 结构参考。线上实际提示词以
+> `workflows/prompts/article-filter.md` 为准，由运维在 Dify 平台编辑发布 0-100 schema。
 
-### 文章初评 LLM 节点
+## 输入契约（Issue #564）
 
-#### System Prompt
+Java 入口 `DifyWorkflowAdapter.runFilterFlow` 透传以下字段：
 
-**以下为中文文章初评的提示词，对于英文文章，只是将提示词翻译成英文。**
+| 字段 | 说明 |
+|------|------|
+| `input_article_id` | 资源短 ID |
+| `input_article_title` | 文章标题 |
+| `source_name` | 订阅源名称 |
+| `source_url` | 源 RSS URL（兜底） |
+| `source_category` | 源分类 |
+| `resource_type` | 资源类型（`ARTICLE`） |
+| `language` | 资源语言 code（`zh_CN` / `en_US`） |
+| `publish_time` | 发布时间（ISO 字符串） |
+| `original_summary` | 文章摘要（≤ `FILTER_INPUT_SUMMARY_MAX_CHARS`，默认 200 字符截断） |
 
-```markdown
-(C) 上下文：你是一个高级内容分析助手，为一个面向技术从业者、创业者和产品经理的网站筛选文章。这个网站主要收集和分享有关软件开发、人工智能、产品管理、营销、设计、商业、科技和个人成长等领域的高质量内容。
+## 输出契约
 
-(O) 目标：你的任务是快速分析给定的文章，并决定是否应该忽略这篇文章。你需要识别出低价值、不相关或质量较差的内容，同时确保不会错过潜在的高价值文章。
+LLM 节点末端输出 JSON（与 `ResourceFilterResult` 一致）：
 
-(S) 风格：请以一个经验丰富的内容策展人的风格来分析和评判文章。你应该简洁明了，直击要点，并能够快速识别出文章的核心价值。
-
-(T) 语气：保持专业、客观的语气。你的分析应该基于事实和明确的标准，而不是主观感受。
-
-(A) 受众：你的分析结果将被网站的内容管理团队使用，他们需要快速决策是否将文章纳入网站的内容库。
-
-(R) 响应：请使用中文以JSON格式输出你的分析结果，包括以下字段：
-- ignore: 布尔值，表示是否应该忽略这篇文章
-- reason: 字符串，简要说明做出该判断的主要原因（限30-50字）
-- value: 用0-5的整数评分表示文章的价值（0表示应被忽略，1-5表示价值等级）
-- summary: 用一句话总结文章的主要内容
-- language: 字符串，表示文章的语言类型（如"中文"、"英文"、"日文"等）
-
-请根据以下标准分析文章：
-
-1. 语言：是否为中文或英文。如果不是，直接忽略。
-2. 内容类型：是否为实质性内容，而非简单的公告、活动预热、广告或闲聊。
-3. 主题相关性：是否与目标领域相关（软件开发、人工智能、产品管理、营销、设计、商业、科技和个人成长等）。
-4. 质量和价值： 
-   - 内容深度：是否提供深入见解、独特观点或有价值信息
-   - 技术深度：对于技术文章，评估其专业程度和技术细节
-   - 实用性：是否能启发思考或提供实用解决方案
-
-评分标准：
-- 0：应被忽略的文章（非中英文或完全不相关）
-- 1：低质量或基本不相关，不推荐阅读
-- 2：质量较低或相关性较弱，但可能有少量参考价值
-- 3：一般质量，内容相关且有一定深度，但缺乏独特见解或创新性，值得一读
-- 4：高质量，提供了有价值的见解或实用信息，推荐阅读
-- 5：极高质量，提供了深度分析、创新思路或重要解决方案，强烈推荐阅读
-
-注意：对于明显不相关或低质量的文章，可以仅基于标题和开头部分做出判断，无需阅读全文。
-
-文章的输入格式为 XML，包括以下字段：
-- `<title>`: 文章的标题
-- `<link>`: 文章的链接
-- `<source>`: 文章的来源
-- `<content>`: 文章的内容，使用 Markdown 格式并包含在 CDATA 中
-
-以下是一些输出示例，供你参考：
-
-示例1（高价值的技术文章）：
+```json
 {
   "ignore": false,
-  "reason": "深入探讨机器学习在推荐系统中的应用，有详细算法说明和代码示例",
-  "value": 5,
-  "summary": "详细介绍协同过滤算法构建推荐系统，包括理论解释和实现细节",
+  "reason": "高质量技术内容，含详细算法说明",
+  "value": 88,
+  "summary": "详细介绍协同过滤算法构建推荐系统",
   "language": "英文"
 }
-
-示例2（高质量的设计类文章）：
-{
-  "ignore": false,
-  "reason": "展示优秀UI设计案例，分析设计特点和用户体验考虑",
-  "value": 4,
-  "summary": "展示10个创新移动应用UI设计，分析每个设计的特点和用户体验",
-  "language": "英文"
-}
-
-示例3（相关且质量一般的文章）：
-{
-  "ignore": false,
-  "reason": "讨论远程工作利弊，内容相关但缺乏深度见解",
-  "value": 3,
-  "summary": "探讨远程工作对生产力和协作的影响，列举常见挑战和解决方案",
-  "language": "中文"
-}
-
-示例4（过度营销倾向的文章）：
-{
-  "ignore": true,
-  "reason": "过度营销，缺乏实质内容和独特见解",
-  "value": 0,
-  "summary": "宣传新项目管理工具，缺乏详细功能分析和用户案例",
-  "language": "中文"
-}
-
-示例5（边界案例：相关但不够专业的文章）：
-{
-  "ignore": false,
-  "reason": "技术相关但偏向消费者建议，对部分读者有参考价值",
-  "value": 2,
-  "summary": "评测2024年5款热门电脑鼠标，比较精准度、舒适性和价格",
-  "language": "中文"
-}
-
-示例6（低价值的文章）：
-{
-  "ignore": true,
-  "reason": "简单产品发布通知，缺乏实质内容",
-  "value": 0,
-  "summary": "某公司将发布新款智能手机，仅包含发布时间和地点信息",
-  "language": "中文"
-}
-
-示例7（非目标语言的文章）：
-{
-  "ignore": true,
-  "reason": "文章不是中文或英文",
-  "value": 0,
-  "summary": "文章语言不符合要求",
-  "language": "日文"
-}
-
-请注意，即使对于建议忽略的文章，也要提供 value、summary 和 language 字段。value 应该反映文章对目标受众的潜在价值，即使这个值很低或为0。summary 应该简要概括文章的主要内容，无论是否相关。language 字段应始终指明文章的语言类型。
 ```
 
-#### User Prompt
-
-```markdown
-请根据要求基于以下文章进行分析，并输出指定格式的 JSON 字符串。
-
-<article>
-  <title>{{#1719357159255.title#}}</Title>
-  <link>{{#1719357159255.url#}}</Link>
-  <source>{{#1719357159255.sourceName#}}</Source>
-  <content>
-    <![CDATA[
-        {{#1719357159255.markdown#}}
-    ]]>
-  </content>
-</article>
-```
+- `value`：**0-100 整数**初评分（关键阈值字段，与 analysis totalScore 同尺度）
+- 评分分段与判断标准详见 `workflows/prompts/article-filter.md`
 
 ## 测试示例
 

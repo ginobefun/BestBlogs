@@ -15,6 +15,9 @@ import { registerDiscoverCommands } from '../commands/discover.js'
 import { registerReadCommands } from '../commands/read.js'
 import { registerCaptureCommands } from '../commands/capture.js'
 import { registerExplainCommands } from '../commands/explain.js'
+import { registerBriefCommands } from '../commands/brief.js'
+import { registerTrendingCommand } from '../commands/trending.js'
+import { registerTopicsCommands } from '../commands/topics.js'
 
 declare const __CLI_VERSION__: string
 // tsup injects __CLI_VERSION__ at build time; fall back gracefully in dev (tsx)
@@ -32,6 +35,9 @@ registerDiscoverCommands(program)
 registerReadCommands(program)
 registerCaptureCommands(program)
 registerExplainCommands(program)
+registerBriefCommands(program)
+registerTrendingCommand(program)
+registerTopicsCommands(program)
 
 program.parseAsync(process.argv).catch((err) => {
   // 兜底：命令层已经 printError 过的不会到这里

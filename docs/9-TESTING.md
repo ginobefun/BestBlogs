@@ -119,6 +119,30 @@ pnpm test:e2e
 pnpm test:release
 ```
 
+
+### bestblogs-mobile（Mobile）
+**位置**：`bestblogs-mobile/src/**/__tests__/**` 与 `bestblogs-mobile/app/**/__tests__/**`。
+
+**单测（jest-expo）**：
+- 命名：`*.test.ts(x)`
+- 必须覆盖：
+  - 纯逻辑模块（`pii-filter` / `observability` / `i18n` locale 解析 / `makeSemanticColors`）
+  - 设计 token 语义映射（暗黑改造风险项——`palette.{light,dark}` key 对称、`accentQuality` 锁 `amber600`）
+  - i18n 消息键完整性（zh / en 对称 · 无空值）
+  - 全局状态组件硬门禁（`minHeight ≥ minTouchSize` 直接断言组件 props · `maxFontSizeMultiplier = MAX_FONT_SCALE` 直接断言 Text props · VoiceOver 合并元素）
+- 禁止：间接断言常量值而非组件渲染结果（eg. `expect(minTouchSize >= 44)` 不能替代 `expect(btn.props.style.minHeight).toBe(44)`）
+
+**E2E（Detox）**：
+- 计划位置：`bestblogs-mobile/e2e/**`（#270 起补）
+- 首批用例：Apple/Google/Email 三种登录 · Account Linking 确认 · Delete Account · Creem→RevenueCat Pro 识别
+- 上架前冒烟：冷启动 → 登录 → 打开早报 → 订阅 → 退订
+
+**Mock 约束**：
+- `react-native-reanimated` 必须用官方 mock（`react-native-reanimated/mock`）
+- `expo-localization` / `expo-constants` 在测试里走 `jest.mock` 控制系统 locale 与运行时 extras
+- `@sentry/react-native` / `posthog-react-native` 在 observability 测试中 mock，避免副作用
+
+**Pre-PR**：`cd bestblogs-mobile && pnpm lint && pnpm type-check && pnpm test`。
 ## UI Smoke 与发布前一键验证
 
 ### UI Smoke 统一入口
@@ -130,7 +154,8 @@ pnpm test:release
 ```
 
 执行内容：
-- `uitest/scripts/smoke_test.py`
+- `uitest/scripts/smoke_test.py`（兼容历史，Python Playwright，仅冒烟旧路由）
+- `uitest/e2e/`（新主线：@playwright/test + TypeScript，覆盖 v2.4 核心链路）
 
 前置检查：
 - 脚本会先检查 `localhost:3002/8090` 连通性；
@@ -138,6 +163,57 @@ pnpm test:release
 
 输出：
 - 日志与汇总写入 `uitest/screenshots/run-<timestamp>/`
+- Playwright HTML 报告：`uitest/e2e/playwright-report/index.html`
+
+### Playwright E2E（v2.4+ 主线）
+
+位置：`uitest/e2e/`，详见该目录 README。
+
+关键能力：
+- 4 个预设账号（admin / normal / pro / onboarding）由 `uitest/scripts/init-test-data.js` 幂等注入
+- 登录走真实「发码 → 服务端读码 → 验码」链路：后端新增 `/api/internal/test/verification-code` 端点
+  （仅 `local` / `test` profile 装配 + `X-Internal-Token` + `FEATURE_TEST_HELPER_ENABLED` 三重门禁），
+  生产部署 Bean 不存在
+- storageState 持久化登录态：`auth.setup.ts` 跑一次，正式用例直接复用 cookie
+- 5 个 Project 维度组织：`auth-setup` / `anonymous` / `authenticated-normal` / `authenticated-pro` / `onboarding`
+
+覆盖场景（7 个 spec / 36 个用例）：
+- 首页（匿名 + 已登录两态）
+- 登录页表单 + 端到端验证码登录
+- 公共早报 `/explore/brief`
+- 我的早报 `/reading/brief`（Pro）
+- 内容广场 `/explore` + 4 种类型筛选
+- 文章 / 播客 / 视频 / Newsletter 详情页
+- Onboarding V2 三步引导端到端
+
+### 两端 4+4 入口 smoke 必跑矩阵（v2.4.0 起）
+
+承接 PRODUCT §3 两端结构，每个入口至少 1 个 anonymous + 1 个 authenticated 用例；Pro Only 入口额外覆盖 Pro 状态：
+
+| 入口 | anonymous | authenticated-normal | authenticated-pro |
+|---|---|---|---|
+| **公共策展层** | | | |
+| 每日早报 `/explore/brief` | ✅ 已覆盖 | ✅ 已覆盖 | — |
+| 精选周刊 `/newsletter`、详情页 `/newsletter/[id]` | ✅ 已覆盖（详情页） | ⬜ 列表态待补 | — |
+| 主题解读 `/topics`、`/topics/[slug]` | ⬜ 待补 | ⬜ 待补 | — |
+| 内容广场 `/explore` + 精选/最新双视角 | ✅ 已覆盖 | ✅ 已覆盖 | — |
+| **我的空间** | | | |
+| 我的早报 `/reading/brief` | LoginRequired 跳 `/signin` | ⬜ 预览态可见 + Pro 升级提示 | ✅ 已覆盖 |
+| 我的关注 `/reading/follow`（FollowWorkspace v2） | LoginRequired | ⬜ 待补 | ⬜ 待补 |
+| 我的阅读 `/library/reading`（4 collection） | LoginRequired | ⬜ 待补 | ⬜ 待补 |
+| 我的回顾 `/library/review` 入口低优先级（v1 维持） | LoginRequired | — | ⬜ 入口可达即可 |
+
+⬜ 标注为新增 v2.4.0 应补的入口 smoke。新增 spec 时优先复用 `auth.setup.ts` 持久化 storageState 和 4 个预设账号。
+
+### 北极星埋点 E2E 回归用例（必跑）
+
+北极星指标 = 每天打开「我的早报」的 Pro 用户数（PRODUCT §7）。**至少 1 条 E2E 用例必须断言**新北极星核心事件：
+
+- `brief_mailing_open`（邮件打开通路 · 由 Resend webhook + 像素回调触发）
+- `my_brief_view`（Web 打开通路 · 进入 `/reading/brief` 页面时触发）
+- 「打开」口径：Web OR 邮件任一即算 —— E2E 用例需覆盖两条通路至少各 1 次
+
+埋点事实见 `specs/my-daily-brief.md §9.4`。
 
 ### 发布前一键验证
 
@@ -185,9 +261,15 @@ BB_RUN_CLI_LIVE_E2E=true BESTBLOGS_API_KEY=bbk_xxx BESTBLOGS_BASE_URL=http://loc
 新增 workflow：`.github/workflows/pr-functional-tests.yml`
 
 覆盖：
-- 后端 UT / IT（Maven profile）
+- 后端 UT（Maven `test-unit` profile）
 - 前端 Unit / Integration
 - CLI Unit（稳定层）+ 可选 Live E2E
+
+后端 IT（Maven `test-integration` profile）已从 PR 自动门禁移除，改为手动 workflow，以降低 Actions 用量：
+
+- Workflow：`.github/workflows/backend-integration-manual.yml`
+- 触发：`workflow_dispatch`（GitHub Actions → **Backend Integration (Manual)** → Run workflow）
+- 本地等价：`cd bestblogs-service && ./mvnw test -Ptest-integration`
 
 ### 发布前门禁
 
@@ -266,13 +348,59 @@ cd bestblogs-cli && pnpm test:unit
 1. `when(x).thenReturn(null)` 后再断言非空。
 2. 只验证 `verify(method())` 不验证关键参数。
 3. 只有 happy path，无 error/boundary。
-4. 以“只要不抛异常”为主要断言。
+4. 以「只要不抛异常」为主要断言。
 
 ### 必须
 
 1. 至少一个 happy path + 一个 error path。
 2. 关键场景增加边界用例（空、null、极值、并发）。
 3. Bug 修复必须补回归测试。
+
+## 跨入口能力硬门禁（v2.4.0 起）
+
+承接 PRODUCT §3.3 跨入口能力，每项能力必须覆盖以下测试约束：
+
+### AI 伴读（SSE 流式）
+
+- SSE 流稳定性：长连接 ≥ 30s 不断流
+- token 取消：客户端 abort 后服务端清理资源
+- 跨文章上下文（**完全 Pro Only**）：Free 用户调用返回 `FORBIDDEN_PRO_ONLY`；Pro 用户返回正常流
+- 配额耗尽：Free 用户达上限返回 `QUOTA_EXCEEDED` + 升级提示链接
+
+### 沉浸式翻译 v2（Issue #333）
+
+- **同用户同资源仅扣 1 次**：并发 SSE 请求由 `bb_user_translation_log (userId, resourceId)` UNIQUE 索引保证；测试需断言并发 5 次请求 → 计费 1 次
+- 全类型覆盖：article / podcast / video / tweet 各 1 条用例
+- 双向：zh→en 与 en→zh 各 1 条用例
+
+### Domain 自定义篇数（Issue #684 · **Pro Only**）
+
+- 配额上限：`Σ quotaPerInterest ≤ USER_INTEREST_QUOTA_TOTAL_MAX`，超出返回 `USER_INTEREST_QUOTA_EXCEEDED (105404)`
+- Free 用户调用 PATCH `/api/users/me/interests/quota` 返回 `FORBIDDEN_PRO_ONLY`
+- 单 Domain 降级：单 Domain 不足配额时降到 `BRIEF_RC_DOMAIN_QUALITY_THRESHOLD_RELAXED`(60) 继续拉，**无 HOT 跨 Domain 兜底**
+
+### 自定义视图（**Pro Only**）
+
+- Free 用户访问保存视图 API 返回 `FORBIDDEN_PRO_ONLY`
+- Pro 用户保存 / 切换 / 删除视图均可成功
+- 服务层 `ProFeatureHelper.requirePro` 集中守门（不依赖前端隐藏入口）
+
+### 行为驱动画像 PII 过滤
+
+- PostHog 事件不得包含完整 email / userId / 堆栈
+- 关注 / 阅读 / Domain 自定义篇数事件需有对应 `bb_user_op_log` 写入
+
+## 反骚扰断言原则（VISION §8）
+
+测试**不得断言**以下骚扰式行为模式：
+
+- ❌ 「弹窗在首访自动出现」「Modal 在 N 秒后自动弹起」
+- ❌ 「升级 Pro 提示在 X 时间内必触达」
+- ❌ 「push 在用户未操作时主动唤醒」
+- ❌ 「标题党文案出现」（如「N 篇错过的重要内容！」）
+- ❌ 「AI 替我读完无需点开」类按钮 / 入口被默认渲染
+
+如果测试用例验证「升级 CTA 可见」，**必须同时验证**：CTA 不阻断浏览 + 可关闭 + 触发条件是「能力天花板触达」（如配额耗尽）而非时间窗口。
 
 ## 当前分级改造文件
 
