@@ -10,10 +10,9 @@
 <p align="center">
   <a href="https://bestblogs.dev/?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-primary"><b>🚀 Try BestBlogs.dev →</b></a> &nbsp;·&nbsp;
   <a href="https://bestblogs.dev/newsletter?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-secondary"><b>📬 Subscribe Newsletter</b></a> &nbsp;·&nbsp;
-  <a href="https://bestblogs.dev/pro?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-pro"><b>⭐ Try Pro (7-day free)</b></a>
+  <a href="https://bestblogs.dev/pro?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-pro"><b>⭐ Try Pro (7-day free)</b></a> &nbsp;·&nbsp;
+  <a href="./README.en.md"><b>English</b></a>
 </p>
-
-![主页](./images/main_page_v5.png)
 
 ---
 
