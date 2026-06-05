@@ -1,0 +1,181 @@
+---
+title: 解密 BestBlogs 早报背后的 AI 助手：一个「说人话就能用」的内容策展系统
+date: 2026-03-07
+description: 每天早上，BestBlogs 早报会从 500+ 信息源中筛选出最值得关注的 10 条内容。这篇文章用通俗的方式拆解早报背后的 AI Agent 工作流，聊聊 Skill 是什么、Agent 怎么工作，以及一个人如何用 AI 搭建自己的内容策展系统。
+category: build
+tags: BestBlogs, AI Agent, Claude Code, Skill, Content Curation, Automation Workflow
+cover: https://media.ginonotes.com/covers/bestblogs_daily_digest_blog_image_cover.png
+slug: bestblogs-daily-digest-behind-the-scenes
+---
+
+## 从一份早报说起
+
+每天早上 9 点，我打开终端，对 AI 助手说一句：「帮我生成今日早报」。
+
+大约五分钟后，我拿到三样东西：一份可以直接丢进微信群的纯文本摘要，一个可以在浏览器打开的杂志风网页，还有一张适合发朋友圈的信息图海报。
+
+![一句指令，AI 帮我读完 500+ 资讯？](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_1.png)
+
+这份早报涵盖了过去 24 小时里最值得关注的 10 条技术内容，从 AI 新模型发布到编程工具更新，从深度分析文章到行业动态。每条都附上摘要、来源和评分，点击链接就能跳转阅读原文。
+
+整个过程我只说了一句话。
+
+这篇文章想聊的，就是这句话背后发生了什么，以及为什么我觉得这种工作方式值得分享给更多人。
+
+## BestBlogs 是什么
+
+在聊早报之前，先简单介绍一下 [BestBlogs.dev](https://www.bestblogs.dev)。
+
+很多人，包括开发者，大概都有一个共同的烦恼：信息太多，时间太少。你可能订阅了几十个博客，关注了一堆公众号，时不时刷一下 Twitter 和 YouTube，但每天真正能认真读完的文章，可能不超过三五篇。
+
+BestBlogs 做的事情很简单：帮你从海量信息里挑出值得读的那些。
+
+![信息大爆炸，根本读不完！](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_2.png)
+
+具体来说，BestBlogs 聚合了 500 多个优质信息源，覆盖技术博客、播客、视频和社交媒体。按目前这套流程，每天会有 500 到 800 篇新内容进入系统，经过 AI 多轮分析后，最后留下的大约是 300 到 400 篇。AI 会为每篇内容生成摘要、提取关键观点、打上质量评分，还会把英文内容翻译成中文，降低阅读门槛。
+
+你可以把它理解成一个 AI 驱动的技术内容编辑部。RSS 是它的记者网络，AI 是它的编辑团队，最后呈现给你的，是一份经过层层筛选的内容清单。
+
+目前，BestBlogs 已经有超过 10000 名订阅用户，每周发送精选 Newsletter，累计发布了 85 期以上。
+
+## 早报是怎么生成的
+
+回到开头那个场景。当我说出「帮我生成今日早报」的时候，AI 助手会自动执行一套完整的工作流。这个过程像一个迷你编辑部的日常运作，大致分成四步。
+
+### 第一步：记者采集
+
+编辑部每天的第一件事是收集素材。AI 助手会同时向 BestBlogs 的 7 个内容接口发出请求，分别拉取 AI 方向的文章、编程技术文章、商业科技文章、产品设计文章、视频、播客和推文。
+
+这 7 个请求是并行执行的，就像派出 7 个记者，分别去不同的线口跑新闻。每个记者带回评分最高的 100 条内容，合在一起，就是一个接近 700 条的候选池。
+
+### 第二步：主编选稿
+
+素材到手，接下来是最关键的环节：从 700 条里选出 10 条。
+
+![迷你编辑部日常：采集与选稿](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_4.png)
+
+这一步由 AI 来完成，但它不是简单地按评分排序。AI 会综合考虑几个维度：
+
+- 头部厂商的重大动态会优先入选，比如 OpenAI、Anthropic、Google 发布了新模型
+- AI Coding 相关的内容会加权，因为这是当前最活跃的方向
+- 来自高质量来源的内容会加权，比如 OpenAI、Anthropic、Google、Lenny's Podcast、a16z、Andrew Ng、Andrej Karpathy、阿里巴巴、腾讯、字节跳动、腾讯科技、Founder Park、张小珺、宝玉等
+- 同一话题如果有多篇报道，只保留最好的一篇，其他作为补充来源
+
+最终选出的 10 条内容，每一条都会标注入选理由。
+
+### 第三步：美编排版
+
+选稿完成后，AI 助手会把这 10 条内容加工成三种不同的输出格式：
+
+**纯文本版** 是最朴素的格式，可以直接复制粘贴到微信群、QQ 群里。因为即时通讯软件不渲染 Markdown，所以文本版的链接会单独成行，确保可以直接点击。
+
+**杂志风 HTML** 是一个可以在浏览器打开的独立网页，走的是设计杂志的路线。墨蓝配色、衬线标题字体、大量留白，第一条内容会用琥珀色边线特别标记。整体风格接近 Monocle 和 Kinfolk 那种克制、精致的版式。
+
+**信息图海报** 则是取 Top 5 内容生成的竖版海报，适合发朋友圈或社交媒体。
+
+### 第四步：存档发行
+
+三种格式的输出会被保存到本地，同时纯文本版会直接显示在对话中，方便我快速复制分享。
+
+![迷你编辑部日常：排版发行](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_5.png)
+
+整个过程大约五分钟，取决于网络和 AI 处理的速度。
+
+## 什么是 Skill，什么是 Agent
+
+读到这里，你可能会好奇：这个 AI 助手到底是什么？它怎么知道该做这些事情？
+
+这就要聊到两个概念：Agent 和 Skill。
+
+![谁在干活？Agent 与 Skill](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_3.png)
+
+### Agent：会自己干活的 AI
+
+我们平时用 ChatGPT 或者 Claude 聊天，基本上是一问一答的模式。你问一个问题，AI 回一段文字，然后等你下一个问题。
+
+Agent 不一样。你给它一个目标，它会自己拆解任务、调用工具、处理中间结果，直到完成整个目标。就像你跟一个实习生说：「帮我订一下明天去上海的高铁票。」他会自己打开 12306、搜车次、选座位、完成下单，而不是每一步都回来问你。
+
+我用的是 Claude Code，它本身就是一个 Agent。它能读文件、写文件、执行命令、调用 API，可以自主完成复杂的多步骤任务。
+
+### Skill：教 Agent 学会新技能
+
+但 Agent 也不是什么都会。它需要掌握特定领域的知识，才能把特定的事情做好。
+
+这就是 Skill 的作用。
+
+Skill 本质上是一份结构化的指令文档，告诉 Agent 在某个场景下应该怎么做。你可以把它想象成一本操作手册：当用户说出某些关键词时，Agent 会自动加载对应的 Skill，再按照手册里的步骤一步步执行。
+
+拿早报这个例子来说，`bestblogs-daily-digest` 这个 Skill 里写清楚了：
+
+- 应该调用哪些 API 接口
+- 每个接口需要传什么参数
+- 数据拿回来之后怎么筛选和排序
+- 最终输出应该是什么格式
+- 遇到错误该怎么处理
+
+有了这份 Skill，我只需要说一句「帮我生成今日早报」，Agent 就能自动识别意图、加载对应的 Skill、执行完整的工作流，最后把结果交出来。
+
+打一个不太准确但容易理解的比方：Agent 是一个聪明但刚入职的员工，Skill 是你给他写的 SOP。员工本身有很强的理解力和执行力，但还需要 SOP 告诉他具体的业务流程和操作细节。
+
+## 不止是早报：一个完整的内容运营链
+
+早报只是整个内容策展体系中的一环。围绕 BestBlogs 的开放 API，我一共开发了 7 个 Skill。它们各司其职，也可以串联起来。
+
+![不仅是早报！完整的运营链](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_6.png)
+
+最底层是 `bestblogs-fetcher`，负责从 BestBlogs 拉取各类内容，是其他所有 Skill 的数据基础。在它之上，`bestblogs-transcribe-youtube` 和 `bestblogs-process-videos` 专门处理视频内容，把 YouTube 视频转写成文字稿，让视频也能被 AI 分析和检索。
+
+日常运营主要靠两个 Skill 撑起来。`bestblogs-daily-digest` 就是前面详细介绍的早报生成器。`bestblogs-article-recommender` 则可以为单篇文章生成中英文推荐语，写清楚一篇文章为什么值得读，这在做周刊策展的时候特别好用。
+
+到了周末，`bestblogs-weekly-curator` 会从本周内容中精选约 20 篇文章，按 AI、开发、产品、资讯四个类别组织，生成周刊的标题和推荐语。如果这周有值得展开聊的话题，再用 `bestblogs-weekly-blogger` 把周刊转化成一篇图文并茂的博客，加入个人洞察和主题线索。
+
+这样一来，从每天的信息采集到最终的深度输出，就形成了一条完整的链路：日报积累素材，周刊沉淀精华，博客输出深度。一个人配合 AI，也能跑起过去通常需要一个小型编辑团队协作的流程。
+
+## 这套系统的日常
+
+说完原理，聊聊实际用起来是什么感觉。
+
+每天早上，我打开终端，说一句「帮我生成今日早报」。五分钟后拿到早报，快速浏览一遍，再把纯文本版发到几个技术群里。
+
+如果某条内容让我特别感兴趣，我会点开 BestBlogs 的链接去读原文。如果觉得这篇适合放进本周的周刊，就用 `bestblogs-article-recommender` 给它写一段推荐语。
+
+到了周末，用 `bestblogs-weekly-curator` 从这一周的内容里挑出 20 篇精选，生成周刊发给 10000 多名订阅用户。如果这周有特别值得展开聊的话题，再用 `bestblogs-weekly-blogger` 写一篇博客。
+
+![AI 负责流水线，人类负责判断力](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_7.png)
+
+整个流程里，我做的主要是决策和审美判断：这条值不值得推荐？这个角度对不对？推荐语写得够不够准确？采集、筛选、排版、格式转换这些重复性工作，则交给 AI。
+
+这也是我在实际使用中最大的感受：AI 并不是取代我的判断力，而是接管了流水线上的执行环节，让我可以把时间花在真正需要思考的地方。
+
+## 还在进化
+
+这套系统并不是做完就一成不变的。每天用下来，我会不断发现可以改进的地方。
+
+比如早报的信息图海报，目前是竖版 9:16 的布局，Top 5 内容纵向排列。实际分享下来，有朋友反馈说，希望信息密度更高一些，横版布局可能更适合在电脑上浏览。这类反馈我可以直接用自然语言告诉 AI，让它更新 Skill 里的海报设计规范，下次生成时就会用新的布局。
+
+这也是 Skill 这套机制的好处：很多时候，调整工作流不需要改代码，改的是那份 Markdown 文档。只要把你想要的变化描述清楚，AI 就能照着执行。
+
+## 相关资源
+
+我一直很愿意把这套系统里相对通用、适合学习的部分分享出来，但这里需要说明一下边界。
+
+目前放在 GitHub 上，主要是方便大家阅读和参考其中的一些实现思路。比如 RSS 源、网站里用到的 Dify Workflow，以及一些建设方案，都整理在 `BestBlogs` 项目里。这个项目目前已经有超过 3000 个 Star。
+
+不过，BestBlogs 2.0 还在开发中，开放 API 目前也暂时停止申请。至于 BestBlogs.dev 网站本身，因为系统比较复杂，也不适合直接完整开源。
+
+如果你感兴趣，可以先从这些更适合公开分享的部分开始看：
+
+- `gino-skills`：[github.com/ginobefun/gino-skills](https://github.com/ginobefun/gino-skills)，包含早报在内的相关 Skill 定义
+- `BestBlogs`：[github.com/ginobefun/bestblogs](https://github.com/ginobefun/bestblogs)，包含 RSS、Dify Workflow 和部分建设方案
+
+如果你也在用 Claude Code，或者也在搭自己的内容工作流，这些资料应该会有一些参考价值。对很多工作流来说，Skill 的门槛其实比想象中低。它的核心往往就是一份 Markdown 文档，写清楚什么情况下触发、调用哪些接口、数据怎么处理、结果怎么呈现。只要把一个流程描述清楚，AI 往往就能照着执行。
+
+## 写在最后
+
+回到开头那个场景。一句「帮我生成今日早报」的背后，是 500 多个信息源的实时采集、700 条候选内容的智能筛选，以及三种格式的自动排版。
+
+但对使用者来说，这一切都被封装在一句自然语言里。你不需要知道 API 怎么调用，不需要了解 JSON 数据怎么解析，甚至不需要知道什么是 AI Agent。你只需要像跟同事说话一样告诉它你想要什么，它就会把结果交到你手上。
+
+![下一个被 AI 接管的工作是？](https://media.ginonotes.com/images/20260307_bestblogs_daily_digest_behind_the_scenes/bestblogs_daily_digest_blog_image_8.png)
+
+如果你每天也在信息海洋里挣扎，不妨试试 [BestBlogs.dev](https://www.bestblogs.dev)，或者关注我后续分享的 Skill 开发经验。说不定下一个被 AI 接管的重复工作，就是你现在每天花两小时在做的那件事。
