@@ -326,6 +326,23 @@ Detailed implementation docs and Dify DSLs:
 
 ## 12. Community & Support
 
+Alongside the podcast and YouTube source curation, we've also organized BestBlogs' public channels for community and updates.
+
+If you're interested in RSS, AI-powered reading, agent workflows, high-quality sources, or personal knowledge management, follow BestBlogs here:
+
+| Channel | Description |
+|---|---|
+| **WeChat Group** | Day-to-day chat, feedback, and source recommendations; if the QR code expires, add **ginobot** on WeChat to join |
+| **WeChat Official Account** | Product updates, source curation, and reading tips → [Follow](https://mp.weixin.qq.com/s/PjLi-o2-kxIWqIGT7_0o4A?scene=1) |
+| **Feishu Group** | Deeper product, engineering, and ops discussions → [Join](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=e71u9acd-3f93-4d7d-95b2-94111c51a668) |
+| **Xiaoyuzhou (Chinese)** | Chinese daily brief, curated picks, and product news → [Listen](https://www.xiaoyuzhoufm.com/podcast/69acf4bcfe570e1a10f20f73) |
+| **Xiaoyuzhou (English)** | English curated content and BestBlogs updates → [Listen](https://www.xiaoyuzhoufm.com/podcast/6a1f845cf18021cbae82c1f2) |
+| **Apple Podcasts** | For listeners who prefer Apple Podcasts → [Subscribe](https://podcasts.apple.com/us/podcast/bestblogs/id1896876403) |
+| **Public Repo** | OPML, source lists, OpenAPI, CLI, and Agent skills → [BestBlogs on GitHub](https://github.com/ginobefun/BestBlogs) |
+| **Author's Blog** | Product iteration, architecture, growth, and indie dev notes → [GinoNotes](https://www.ginonotes.com/) |
+| **Gino on X** | BestBlogs, AI reading, RSS, agents, and indie dev → [@hongming731](https://x.com/hongming731) |
+| **Xiaoguang on X** | Product, content, community, startups, and reading experience → [@puliandc](https://x.com/puliandc) |
+
 If BestBlogs.dev has been useful to you:
 
 - ⭐ Star this repo — help others discover it
@@ -334,7 +351,13 @@ If BestBlogs.dev has been useful to you:
 - 🐛 File an issue: [GitHub Issues](https://github.com/ginobefun/BestBlogs/issues)
 - 💬 Join the discussion: [GitHub Discussions](https://github.com/ginobefun/BestBlogs/discussions)
 
----
+<div align="center">
+
+| Support the project | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | WeChat group (contact ginobot if QR expired) |
+|:---:|:---:|:---:|
+| <img src="https://bestblogs.dev/support-qrcode.png" alt="Support BestBlogs" width="200" /> | | <img src="https://bestblogs.dev/author-qrcode.png" alt="Join WeChat group" width="200" /> |
+
+</div>
 
 ## Acknowledgements
 
