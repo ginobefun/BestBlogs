@@ -2,6 +2,7 @@
 
 > 扫描日期：2026-05-11 | 扫描范围：后端 Spring Boot、前端 Next.js、Mobile、Deploy 配置、Skills 层
 > 维护规则：服务新增/下线时同步更新本文档；实际月支出由运营者手动填写"实际月支出"列
+> **公开同步**：本文档经 `scripts/sync-to-public.sh` 同步至公开仓，禁止写入真实 IP、内网地址、密钥等私密信息；节点用 `APP_HOST_*` / `DB_HOST_*` 代号，真实映射见私有运维文档（如 `runbooks/uptime-kuma-checklist.md`）
 > **版本对齐**（2026-05-19）：与 PRODUCT v2.4.0（2026-05-18 重写）兼容。定位变更（「AI 驱动的内容平台」→「AI 驱动的私人阅读助手」）与北极星切换（WQRL/WDRR → Pro 早报日开数）不影响外部依赖矩阵；PostHog 节点未来挂接新北极星看板（待 `specs/north-star-metric.md` 重写）。
 
 ---
@@ -21,14 +22,14 @@ graph TB
 
     subgraph INFRA["🏠 自托管基础设施"]
         direction TB
-        subgraph APPNODES["应用层 · 4 VPS 节点（155.94.133.116/117 · 198.46.221.216 · 204.44.123.139）"]
+        subgraph APPNODES["应用层 · 4 VPS 节点（APP_HOST_1~4）"]
             NX["⚖️ Nginx<br/>负载均衡 + SSL 终止<br/>HOST_2 唯一出口"]
             BApp["bestblogs-app<br/>Next.js :3002"]
             BAdm["bestblogs-admin<br/>Next.js :3003"]
             BAPI["bestblogs-api<br/>Spring Boot :8090"]
             BAAdm["bestblogs-admin-api<br/>Spring Boot :8095<br/>含 Chrome · yt-dlp · ffmpeg"]
         end
-        subgraph DBNODES["数据层 · 3 专用 DB 节点（74.48.178.72 · 74.48.146.75 · 148.135.40.82）"]
+        subgraph DBNODES["数据层 · 3 专用 DB 节点（DB_HOST_1~3）"]
             MDB[("🍃 MongoDB 8.0<br/>3 节点副本集")]
             RDS[("⚡ Redis 7.0<br/>6 节点 Cluster")]
             ES_[("🔍 Elasticsearch<br/>⚠️ Feature Flag 默认关闭")]
@@ -329,8 +330,8 @@ Google OAuth / GitHub OAuth / X OAuth · Google Sign In Mobile · Sendflare · A
 
 | 资源 | 规格推断 | 费用性质 |
 |------|---------|---------|
-| 4 台应用节点 VPS | `155.94.133.116/117`、`198.46.221.216`、`204.44.123.139` | VPS 月费（约 $20-60/台，合计 $80-240/月） |
-| 3 台 DB 节点 VPS | MongoDB 3 副本集 + Redis 6 节点 | VPS 月费（约 $20-60/台，合计 $60-180/月） |
+| 4 台应用节点 VPS | `APP_HOST_1` ~ `APP_HOST_4`（`APP_HOST_2` = Nginx 出口） | VPS 月费（约 $20-60/台，合计 $80-240/月） |
+| 3 台 DB 节点 VPS | `DB_HOST_1` ~ `DB_HOST_3`（MongoDB 3 副本集 + Redis 6 节点） | VPS 月费（约 $20-60/台，合计 $60-180/月） |
 
 ### 外部 SaaS 费用估算
 

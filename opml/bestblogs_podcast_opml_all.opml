@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>BestBlogs Podcast Subscriptions</title>
+    <dateCreated>2026-06-07</dateCreated>
+    <ownerName>BestBlogs.dev</ownerName>
+    <ownerEmail>gino@bestblogs.dev</ownerEmail>
+  </head>
+  <body>
+    <outline text="商业科技 Business &amp; Tech" title="商业科技 Business &amp; Tech">
+      <outline type="rss" text="张小珺Jùn｜商业访谈录" title="张小珺Jùn｜商业访谈录" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/626b46ea9cbbf0451cf5a962" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/626b46ea9cbbf0451cf5a962" description="深度访谈节目，聚焦真实的人物表达与高密度的前沿信息。主持人张小珺是财经媒体人，专注中国科技业深度报道。" />
+      <outline type="rss" text="罗永浩的十字路口" title="罗永浩的十字路口" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/68981df29e7bcd326eb91d88" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/68981df29e7bcd326eb91d88" description="由罗永浩主持的深度播客类节目，聚焦于科技与人文领域，讲述个体命运故事，探讨时代发展趋势。" />
+      <outline type="rss" text="屠龙之术" title="屠龙之术" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6507bc165c88d2412626b401" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6507bc165c88d2412626b401" description="庄明浩的个人播客节目，记录互联网与风险投资行业的方法论与思考。" />
+      <outline type="rss" text="42章经" title="42章经" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/648b0b641c48983391a63f98" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/648b0b641c48983391a63f98" description="专注和有趣、有独到认知、又愿意坦诚分享的聪明人聊天，分享商业洞察与创业认知。" />
+      <outline type="rss" text="硬地骇客" title="硬地骇客" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/640ee2438be5d40013fe4a87" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/640ee2438be5d40013fe4a87" description="来自三位拥有10年+互联网创业者的深度思考和对话，关注前沿科技，分享创业故事，打造超级个体。" />
+      <outline type="rss" text="硅谷101" title="硅谷101" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e5c52c9418a84a04625e6cc" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e5c52c9418a84a04625e6cc" description="由媒体人泓君发起的深度访谈节目，分享当下最新鲜的技术、知识与思想的科技播客。" />
+      <outline type="rss" text="半拿铁 | 商业沉浮录" title="半拿铁 | 商业沉浮录" xmlUrl="http://rsshub.bestblogs.dev/xiaoyuzhou/podcast/62382c1103bea1ebfffa1c00" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/62382c1103bea1ebfffa1c00" description="财经媒体人和互联网产品老兵，跟你讲述商业背后的故事。" />
+      <outline type="rss" text="开始连接 LinkStart" title="开始连接 LinkStart" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/63ff0da51b1faf8a0b70b337" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/63ff0da51b1faf8a0b70b337" description="由极客公园出品的科技商业播客，邀请各行业嘉宾跨界对话、碰撞思想。" />
+      <outline type="rss" text="高能量" title="高能量" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/62c6ae08c4eaa82b112b9c84" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/62c6ae08c4eaa82b112b9c84" description="由李翔和李丰共同制作的播客，通过商业观察者的视角重新理解日常生活中的现象。" />
+      <outline type="rss" text="此话当真" title="此话当真" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/646f194853a5e5ea1408d97c" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/646f194853a5e5ea1408d97c" description="由真格基金出品的泛商业类播客，分享最新热点和行业洞察。" />
+      <outline type="rss" text="牛油果烤面包" title="牛油果烤面包" xmlUrl="http://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e7c8b2b418a84a046e3ecbc" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e7c8b2b418a84a046e3ecbc" description="聊科技发展趋势，聊各行业来龙去脉，坐标硅谷，邀请第一线的资深专家分享。" />
+      <outline type="rss" text="晚点聊 LateTalk" title="晚点聊 LateTalk" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/61933ace1b4320461e91fd55" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/61933ace1b4320461e91fd55" description="《晚点 LatePost》出品。最一手的科技访谈，最真实的从业者思考。" />
+      <outline type="rss" text="乱翻书" title="乱翻书" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/61358d971c5d56efe5bcb5d2" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/61358d971c5d56efe5bcb5d2" description="关注商业、科技和历史的对话节目，研究明星公司的创新、竞争和兴衰循环。" />
+      <outline type="rss" text="TIANYU2FM — 对谈未知领域" title="TIANYU2FM — 对谈未知领域" xmlUrl="https://rsshub.xiaowuaiblog.com/xiaoyuzhou/podcast/5f22729f9504bbdb77253e46" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5f22729f9504bbdb77253e46" description="每期对谈一个陌生领域，通过与人对话来拓展自己对世界认知的新边界。" />
+      <outline type="rss" text="声动早咖啡" title="声动早咖啡" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/60de7c003dd577b40d5a40f3" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/60de7c003dd577b40d5a40f3" description="由声动活泼出品的清晨播客节目，十五分钟轻松同步日常生活与商业世界。" />
+      <outline type="rss" text="科技乱炖" title="科技乱炖" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e4243cd418a84a0469573fb" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e4243cd418a84a0469573fb" description="由多名资深互联网从业者主持的科技点评播客，犀利、独到、深刻。" />
+      <outline type="rss" text="What's Next｜科技早知道" title="What's Next｜科技早知道" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e74b52c418a84a046ecaceb" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e74b52c418a84a046ecaceb" description="放眼全球，聚焦科技引领世界以及商业格局变化，由声动活泼制作播出。" />
+      <outline type="rss" text="声东击西" title="声东击西" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e2831ed418a84a046231c00" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e2831ed418a84a046231c00" description="通过创新的声音实验与深度访谈，帮你厘清社会变迁的脉络。由声动活泼制作播出。" />
+      <outline type="rss" text="疯投圈" title="疯投圈" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e280faf418a84a0461fbd39" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e280faf418a84a0461fbd39" description="一起探索好玩的商业世界。" />
+      <outline type="rss" text="商业就是这样" title="商业就是这样" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6022a180ef5fdaddc30bb101" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6022a180ef5fdaddc30bb101" description="用简单易懂的语言解读商业现象。" />
+      <outline type="rss" text="枫言枫语" title="枫言枫语" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e2864f5418a84a04628e249" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e2864f5418a84a04628e249" description="由开发者枫影JustinYan和设计师自力hzlzh主持的播客，听见科技与人文的声音。" />
+      <outline type="rss" text="保持偏见" title="保持偏见" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/663e3c95af1e22bb157dcee3" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/663e3c95af1e22bb157dcee3" description="用普通人可以听得懂的语言来讲述大道理背后的故事，洞察世界的真实规则。" />
+      <outline type="rss" text="三五环" title="三五环" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e280fab418a84a0461faa3c" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e280fab418a84a0461faa3c" description="后厂村的刘飞的独立播客，邀请身边在城市里生活的局内人朋友聊天，发现不同的认知视角。" />
+      <outline type="rss" text="皮蛋漫游记" title="皮蛋漫游记" xmlUrl="http://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6281264ad22bcf3950c80b56" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6281264ad22bcf3950c80b56" description="对谈不同行业的产品经理，发现科技背后更广大的世界。" />
+    </outline>
+    <outline text="人工智能 Artificial Intelligence" title="人工智能 Artificial Intelligence">
+      <outline type="rss" text="AI炼金术" title="AI炼金术" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/63e9ef4de99bdef7d39944c8" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/63e9ef4de99bdef7d39944c8" description="关注 AI 带来的本质变化和商业机会，徐文浩与任鑫分享阅读与洞察。" />
+      <outline type="rss" text="十字路口Crossing" title="十字路口Crossing" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/60502e253c92d4f62c2a9577" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/60502e253c92d4f62c2a9577" description="关注 AI 带来的变革与机会，寻找、访谈和凝聚 AI 时代的积极行动者。" />
+      <outline type="rss" text="信号与噪声" title="信号与噪声" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6819d5a7e37664602a344e0e" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6819d5a7e37664602a344e0e" description="绿洲出品的播客栏目，以心印心，在AI时代参赞生命力。" />
+      <outline type="rss" text="人民公园说AI" title="人民公园说AI" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/65257ff6e8ce9deaf70a65e9" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/65257ff6e8ce9deaf70a65e9" description="三位合伙人跨越12小时时差，用老炮视角聊科技热点，做你的专属科技BGM。" />
+      <outline type="rss" text="跨国串门儿计划" title="跨国串门儿计划" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/670f3da40d2f24f28978736f" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/670f3da40d2f24f28978736f" description="使用 AI 技术将英文播客翻译为中文播客，保留原有声线，用中文听懂外语播客。" />
+    </outline>
+    <outline text="金融经济 Finance &amp; Economy" title="金融经济 Finance &amp; Economy">
+      <outline type="rss" text="知行小酒馆" title="知行小酒馆" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6013f9f58e2f7ee375cf4216" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6013f9f58e2f7ee375cf4216" description="有知有行出品的一档分享投资与生活的播客节目，关注投资理财，更关注怎样更好地生活。" />
+      <outline type="rss" text="搞钱女孩" title="搞钱女孩" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/63d945ece725b5378a158d29" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/63d945ece725b5378a158d29" description="收集女性的折腾故事，挖掘普通人能借鉴的财富密码。" />
+      <outline type="rss" text="起朱楼宴宾客" title="起朱楼宴宾客" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/61dd99a47b29652ff572257b" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/61dd99a47b29652ff572257b" description="大卫翁的播客，记录投资理财知识与金融圈观察，记录这个大时代。" />
+      <outline type="rss" text="面基" title="面基" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6388760f22567e8ea6ad070f" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" description="替听友和自己多问几个为什么？聚焦投资理财。" />
+      <outline type="rss" text="第一财经" title="第一财经" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/64c75555e8176c3ff81de98c" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/64c75555e8176c3ff81de98c" description="由第一财经推出的播客节目，专注解读热点商业资讯、财经事件，分析背后逻辑。" />
+    </outline>
+    <outline text="个人成长 Productivity &amp; Growth" title="个人成长 Productivity &amp; Growth">
+      <outline type="rss" text="无人知晓" title="无人知晓" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/611719d3cb0b82e1df0ad29e" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/611719d3cb0b82e1df0ad29e" description="孟岩的播客，我，眼中的世界。" />
+      <outline type="rss" text="纵横四海" title="纵横四海" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/62694abdb221dd5908417d1e" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/62694abdb221dd5908417d1e" description="携隐Melody的播客，人类使用说明书。" />
+      <outline type="rss" text="自我进化论" title="自我进化论" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e5de5cb418a84a0467beb90" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e5de5cb418a84a0467beb90" description="持续分享自我探索和自我养育内容的播客，启发自我觉醒和向内探索。" />
+      <outline type="rss" text="自习室 STUDY ROOM" title="自习室 STUDY ROOM" xmlUrl="http://rsshub.bestblogs.dev/xiaoyuzhou/podcast/65a5fb7540d4ef949c0140ac" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/65a5fb7540d4ef949c0140ac" description="两位铁三卷王的成长能量站，聊运动、聊人物、聊读书，永远相信进步是最性感的事。" />
+      <outline type="rss" text="慢速生长" title="慢速生长" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/668d00c38fcadceb90158ac1" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/668d00c38fcadceb90158ac1" description="携隐Melody的另一档播客，不着急给答案，但持续在发生的过程。" />
+      <outline type="rss" text="诗梳风" title="诗梳风" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/696496f4db4738160d5fabde" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/696496f4db4738160d5fabde" description="一档关于创作过程的播客，谈论不限于具体媒介的，创作过程的各个层面。" />
+      <outline type="rss" text="谭立人" title="谭立人" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/65a2d0f07242f9fc1c1df60a" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/65a2d0f07242f9fc1c1df60a" description="一档关于自我成长与生活方式的播客，献给当代都市人。" />
+    </outline>
+    <outline text="生活方式与文化 Lifestyle &amp; Culture" title="生活方式与文化 Lifestyle &amp; Culture">
+      <outline type="rss" text="李诞" title="李诞" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/65bb55f6513a776b57dedb32" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/65bb55f6513a776b57dedb32" description="李诞的播客，分享所见所闻，所思所想，所困所惑。" />
+      <outline type="rss" text="岩中花述" title="岩中花述" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/625635587bfca4e73e990703" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/625635587bfca4e73e990703" description="由意大利静奢品牌GIADA推出的播客，智性女性的精神衣橱，探讨多样而广阔的生命议题。" />
+      <outline type="rss" text="蒋方舟·一寸" title="蒋方舟·一寸" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/67c7eeb07ac3e30992e75a2f" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/67c7eeb07ac3e30992e75a2f" description="蒋方舟全新个人播客，联合看理想共同出品，关于文学的严肃探讨与生活的放肆表达。" />
+      <outline type="rss" text="游荡集" title="游荡集" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6163ca67c8c1d14e83366b31" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6163ca67c8c1d14e83366b31" description="作家许知远的个人播客，分享最近的见闻、看的书、听的音乐、各种偶遇，以及胡思乱想。" />
+      <outline type="rss" text="一席" title="一席" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e285326418a84a04627343f" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e285326418a84a04627343f" description="人文 科技 白日梦。" />
+      <outline type="rss" text="独树不成林" title="独树不成林" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/64acd33c7a3d479103fbd32d" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/64acd33c7a3d479103fbd32d" description="政治哲学视角的播客，大声思考每一个严肃的人都会关心的问题。" />
+      <outline type="rss" text="文化有限" title="文化有限" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e4515bd418a84a046e2b11a" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e4515bd418a84a046e2b11a" description="一档泛文化播客，每周二更新，和三位来自互联网和文化行业的从业者分享最打动我们的作品。" />
+      <outline type="rss" text="忽左忽右" title="忽左忽右" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e4ee557418a84a0466737b7" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e4ee557418a84a0466737b7" description="一档文化沙龙类播客节目，试图为中文播客听众提供基于经验视角的话题和内容。由JustPod出品。" />
+      <outline type="rss" text="梁永安的播客" title="梁永安的播客" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/61bc1762e5fdeb81a8db115c" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/61bc1762e5fdeb81a8db115c" description="复旦大学文学系教授梁永安的播客，聚焦当代年轻人的生活新现象和新困惑。" />
+      <outline type="rss" text="看理想圆桌" title="看理想圆桌" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e4ff4c7418a84a046977618" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e4ff4c7418a84a046977618" description="邀请不同领域嘉宾，以多元视角探讨当下议题，听见生活更多可能的声音杂志。" />
+      <outline type="rss" text="不合时宜" title="不合时宜" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e280fb8418a84a0461fd076" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e280fb8418a84a0461fd076" description="由几位穿梭在不同时区的媒体人共同创立的谈话类播客，以跨文化的视野和女性的视角探讨公共议题。" />
+      <outline type="rss" text="天真不天真" title="天真不天真" xmlUrl="http://rsshub.bestblogs.dev/xiaoyuzhou/podcast/65cef9e3cace72dff8d98de3" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/65cef9e3cace72dff8d98de3" description="杨天真播客，分享那些或天真或不天真的故事，与世界碰撞，聊出真相。" />
+      <outline type="rss" text="凹凸电波" title="凹凸电波" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e2839ca418a84a0462431b7" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e2839ca418a84a0462431b7" description="一档打破传统认知的两性杂谈类脱口秀节目，当代男女的情感自留地。" />
+      <outline type="rss" text="随机波动StochasticVolatility" title="随机波动StochasticVolatility" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e7cc741418a84a046b0c2bd" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e7cc741418a84a046b0c2bd" description="由三位女性媒体人发起的一档泛文化类播客。" />
+      <outline type="rss" text="东腔西调" title="东腔西调" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5f72b66083c34e85dd14fde9" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5f72b66083c34e85dd14fde9" description="由大观天下志制作播出的文化类对谈播客，突破茧房，不赶浪潮，学术也可以接地气。" />
+      <outline type="rss" text="东亚观察局" title="东亚观察局" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e9a4e25418a84a046bc6156" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e9a4e25418a84a046bc6156" description="聚焦以中日韩三国为核心的东亚地区的热点话题、文化现象以及历史趣闻。" />
+      <outline type="rss" text="肥话连篇" title="肥话连篇" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/61d50d72ee197a3aac3dac42" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/61d50d72ee197a3aac3dac42" description="肥杰和惠子一起聊天的播客，喜欢讲有趣的故事，希望陪你度过美好时光。" />
+    </outline>
+    <outline text="编程技术 Programming &amp; Technology" title="编程技术 Programming &amp; Technology">
+      <outline type="rss" text="捕蛇者说" title="捕蛇者说" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/5e2864f7418a84a04628f2da" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/5e2864f7418a84a04628f2da" description="一档以编程为主题的聊天节目，聊聊编程、程序员和 Python。" />
+    </outline>
+    <outline text="商业访谈 Business Talk" title="商业访谈 Business Talk">
+      <outline type="rss" text="卫诗婕｜漫谈Light the Star" title="卫诗婕｜漫谈Light the Star" xmlUrl="https://rsshub.bestblogs.dev/xiaoyuzhou/podcast/6627fda4b56459544087d86a" htmlUrl="https://www.xiaoyuzhoufm.com/podcast/6627fda4b56459544087d86a" description="更有生命力的科技商业访谈。关注科技商业进步与公共利益，学习AI、具身智能、全球化等前沿领域。" />
+    </outline>
+  </body>
+</opml>

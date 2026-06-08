@@ -171,13 +171,15 @@ OPML files of the sources currently tracked by BestBlogs — import into any RSS
 
 ### Curated Source Collection (opml/)
 
-The BestBlogs team is systematically curating high-quality RSS sources by type. Over **1,600** sources are being organized and will be released in batches — stay tuned.
+The BestBlogs team is systematically curating high-quality RSS sources by type. **551 sources** are published so far (375 WeChat + 57 podcasts + 119 YouTube channels), with more types coming — stay tuned.
 
 **Published so far:**
 
-| File | Type | Notes |
-|---|---|---|
-| [opml/bestblogs_wechat2rss_opml_all.opml](./opml/bestblogs_wechat2rss_opml_all.opml) | WeChat Public Accounts | Quality WeChat account RSS feeds via [wechat2rss](https://github.com/ttttmr/Wechat2RSS) (companion post in progress) |
+| File | Type | Count | Notes |
+|---|---|---|---|
+| [opml/bestblogs_wechat2rss_opml_all.opml](./opml/bestblogs_wechat2rss_opml_all.opml) | WeChat Public Accounts | 375 | RSS via [wechat2rss](https://github.com/ttttmr/Wechat2RSS); [companion post](./posts/bestblogs_sources_wechat_part1.md) |
+| [opml/bestblogs_podcast_opml_all.opml](./opml/bestblogs_podcast_opml_all.opml) | Podcasts (Xiaoyuzhou) | 57 | Xiaoyuzhou podcast RSS; [companion post](./posts/bestblogs_sources_part2_podcasts_videos.md) |
+| [opml/bestblogs_youtube_opml_all.opml](./opml/bestblogs_youtube_opml_all.opml) | YouTube | 119 | YouTube channel RSS; [companion post](./posts/bestblogs_sources_part2_podcasts_videos.md) |
 
 Have a quality RSS source to recommend? [Open an Issue](https://github.com/ginobefun/BestBlogs/issues).
 
@@ -258,6 +260,7 @@ BestBlogs is built entirely in public. Here are some behind-the-scenes posts on 
 | [Inside the BestBlogs Daily Brief AI System](./posts/20260307_bestblogs_daily_digest_behind_the_scenes.mdx) | Mar 2026 | How the AI agent workflow behind the daily brief actually works — Skills, Agents, and automation |
 | [AI Content Analysis with Dify Workflow at BestBlogs.dev](./posts/20240714_bestblogs_use_dify_workflow.mdx) | Jul 2024 | Full walkthrough: from article pre-screening to deep analysis to multilingual translation |
 | [BestBlogs Source Curation Vol. 1: WeChat Public Accounts](./posts/bestblogs_sources_wechat_part1.md) | Jun 2026 | 375 actively updated WeChat public account RSS feeds, organized by category |
+| [BestBlogs Source Curation Vol. 2: Podcasts & Videos](./posts/bestblogs_sources_part2_podcasts_videos.md) | Jun 2026 | 57 Xiaoyuzhou podcasts + 119 YouTube channels, organized by category |
 
 ---
 
@@ -323,6 +326,23 @@ Detailed implementation docs and Dify DSLs:
 
 ## 12. Community & Support
 
+Alongside the podcast and YouTube source curation, we've also organized BestBlogs' public channels for community and updates.
+
+If you're interested in RSS, AI-powered reading, agent workflows, high-quality sources, or personal knowledge management, follow BestBlogs here:
+
+| Channel | Description |
+|---|---|
+| **WeChat Group** | Day-to-day chat, feedback, and source recommendations; if the QR code expires, add **ginobot** on WeChat to join |
+| **WeChat Official Account** | Product updates, source curation, and reading tips → [Follow](https://mp.weixin.qq.com/s/PjLi-o2-kxIWqIGT7_0o4A?scene=1) |
+| **Feishu Group** | Deeper product, engineering, and ops discussions → [Join](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=e71u9acd-3f93-4d7d-95b2-94111c51a668) |
+| **Xiaoyuzhou (Chinese)** | Chinese daily brief, curated picks, and product news → [Listen](https://www.xiaoyuzhoufm.com/podcast/69acf4bcfe570e1a10f20f73) |
+| **Xiaoyuzhou (English)** | English curated content and BestBlogs updates → [Listen](https://www.xiaoyuzhoufm.com/podcast/6a1f845cf18021cbae82c1f2) |
+| **Apple Podcasts** | For listeners who prefer Apple Podcasts → [Subscribe](https://podcasts.apple.com/us/podcast/bestblogs/id1896876403) |
+| **Public Repo** | OPML, source lists, OpenAPI, CLI, and Agent skills → [BestBlogs on GitHub](https://github.com/ginobefun/BestBlogs) |
+| **Author's Blog** | Product iteration, architecture, growth, and indie dev notes → [GinoNotes](https://www.ginonotes.com/) |
+| **Gino on X** | BestBlogs, AI reading, RSS, agents, and indie dev → [@hongming731](https://x.com/hongming731) |
+| **Xiaoguang on X** | Product, content, community, startups, and reading experience → [@puliandc](https://x.com/puliandc) |
+
 If BestBlogs.dev has been useful to you:
 
 - ⭐ Star this repo — help others discover it
@@ -331,7 +351,13 @@ If BestBlogs.dev has been useful to you:
 - 🐛 File an issue: [GitHub Issues](https://github.com/ginobefun/BestBlogs/issues)
 - 💬 Join the discussion: [GitHub Discussions](https://github.com/ginobefun/BestBlogs/discussions)
 
----
+<div align="center">
+
+| Support the project | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | WeChat group (contact ginobot if QR expired) |
+|:---:|:---:|:---:|
+| <img src="https://bestblogs.dev/support-qrcode.png" alt="Support BestBlogs" width="200" /> | | <img src="https://bestblogs.dev/author-qrcode.png" alt="Join WeChat group" width="200" /> |
+
+</div>
 
 ## Acknowledgements
 
