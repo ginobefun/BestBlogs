@@ -178,6 +178,12 @@ AI 协助层
 
 个人阅读层负责把公共质量池和用户主动选择的来源、主题、兴趣、行为结合起来，形成个人阅读流。
 
+#### 2.2.1 临时特刊域
+
+世界杯特刊通过独立 `worldcup` 域承接赛事、预测、虚拟金球币、竞猜、榜单和普神公开单。它复用现有用户、Pro、来源、内容与参数体系，但使用独立 Mongo collections、独立领域服务、独立公开 API 与管理 API，避免把一期活动玩法扩散进 Daily Brief、Explore、Topic 或我的空间核心链路。
+
+该域不新增运行时服务单元，仍落在现有 `bestblogs-common` / `bestblogs-api` / `bestblogs-admin-api` / `bestblogs-worker` / `bestblogs-app` 内。所有公开能力默认由 Feature Flag 关闭，生产公开页必须在 `FEATURE_WORLDCUP_SPECIAL_ENABLED && WORLDCUP_COMPLIANCE_APPROVED && WORLDCUP_PUBLIC_PAGE_ENABLED` 同时开启后才可访问；竞猜写路径必须同时满足总开关、合规批准和 `WORLDCUP_BETTING_ENABLED`。
+
 它承担：
 
 - 我的早报；

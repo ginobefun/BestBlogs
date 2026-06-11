@@ -7,6 +7,8 @@
 
 **v2.4.0 里程碑**：Pro 开通后 15 分钟内即可收到首份个性化早报；粘贴链接自动识别并接入 YouTube / 小宇宙 / 公众号订阅源；我的阅读、我的关注全面合并重组，私人阅读助手工作流更完整。
 
+**世界杯专刊已上线**：围绕赛前信息、赛后回顾与精选内容做轻量更新，方便看球前后快速跟上关键脉络。
+
 <p align="center">
   <a href="https://bestblogs.dev/?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-primary"><b>🚀 Try BestBlogs.dev →</b></a> &nbsp;·&nbsp;
   <a href="https://bestblogs.dev/newsletter?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-secondary"><b>📬 Subscribe Newsletter</b></a> &nbsp;·&nbsp;

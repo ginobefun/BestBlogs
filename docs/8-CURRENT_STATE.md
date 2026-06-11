@@ -1,6 +1,6 @@
 # CURRENT_STATE.md — 当前状态与路线图
 
-更新时间：2026-05-20（v2.4.0 release · 愿景与产品文档全面重写 · 北极星指标变更为 Pro 早报日开数）
+更新时间：2026-06-11（v2.5.0 release · 世界杯特刊 · Pro 我的早报偏好补充说明）
 
 > 产品蓝图见 `2-PRODUCT.md`，架构细节见 `4-ARCHITECTURE.md`。
 
@@ -25,6 +25,13 @@
 | 高分英文文章预翻译队列 | PreTranslateQueue + `PRE_TRANSLATE_ENABLED` | ✅ 上线（M9）|
 | prepub 预发环境 | `docker-compose.prepub.yml` + `ENV_TYPE` 驱动隔离 | ✅ 上线（M11）|
 | Playwright E2E 主链路 | `uitest/e2e/tests/*.spec.ts` | ✅ 上线（M11）|
+| 世界杯特刊一期 | `/worldcup` + `worldcup` 域 + `FEATURE_WORLDCUP_SPECIAL_ENABLED` | ✅ v2.5.0 发布准备完成 |
+
+## 临时特刊状态（2026-06-11）
+
+世界杯特刊一期是独立活动域，不改变 BestBlogs 主产品路线。当前实现以 Web 为主，包含公开特刊首页、单场详情、Timeline、竞猜、金球币、榜单、普神公开单、管理端参数配置和后台聚合 Job。Issue #1147 / #1150 增量：3 个一次性任务、每日隐藏彩蛋轮换（11 任务池确定性抽 K，分配持久化 `bb_worldcup_daily_task_assign`，前端不下发清单）、寻宝随机掉落（真实内容/早报/周刊/主题资源上服务端摇号，金额分档 100-500，`bb_worldcup_treasure_roll` 幂等）、未参与用户静默未中，新增 `WORLDCUP_DAILY_TASK_ENABLED` / `WORLDCUP_TREASURE_ENABLED` 等 5 个 ConfigKey（默认全关）。
+
+上线默认 fail-closed：`FEATURE_WORLDCUP_SPECIAL_ENABLED`、`WORLDCUP_COMPLIANCE_APPROVED`、`WORLDCUP_PUBLIC_PAGE_ENABLED`、`WORLDCUP_BETTING_ENABLED`、`WORLDCUP_COIN_TASK_ENABLED`、`WORLDCUP_LEADERBOARD_ENABLED`、`WORLDCUP_DAILY_TASK_ENABLED`、`WORLDCUP_TREASURE_ENABLED` 等开关默认关闭。正式放量前需要完成真实 Mongo/Redis 环境集成测试、真实赛程与内容数据导入、运营结算演练，并由产品/法务确认后显式打开 `WORLDCUP_COMPLIANCE_APPROVED`。
 
 ## Phase A 运营增强（早鸟期 5/1 → 6/30，2026-05-09 启动）
 

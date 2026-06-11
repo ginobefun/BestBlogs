@@ -7,6 +7,8 @@ It judges what's worth reading, helps you read faster and deeper, and learns you
 
 **v2.4.0 highlights**: Your first personalized Pro brief arrives within 15 minutes after activation. Paste a link to auto-detect and add YouTube, Xiaoyuzhou, or WeChat sources. My Reading and My Follows are now unified into a streamlined workspace.
 
+**World Cup Special is live**: concise match context, recaps, and curated reading help you catch up before and after matches.
+
 <p align="center">
   <a href="https://bestblogs.dev/?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-primary"><b>🚀 Try BestBlogs.dev →</b></a> &nbsp;·&nbsp;
   <a href="https://bestblogs.dev/newsletter?utm_source=github&utm_medium=readme&utm_campaign=hero-cta-secondary"><b>📬 Subscribe Newsletter</b></a> &nbsp;·&nbsp;
