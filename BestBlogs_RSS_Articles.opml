@@ -174,5 +174,16 @@
 		<outline text="刘小排r" title="刘小排r" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/484d4199ae6c0b72ea01e7e0597a1f74933dfb62.xml"/>
 		<outline text="Elevate" title="Elevate" type="rss" xmlUrl="https://addyo.substack.com/feed"/>
 		<outline text="43 Talks" title="43 Talks" type="rss" xmlUrl="https://wechat2rss.bestblogs.dev/feed/4efe7ec6970afd4a050d6f10b9e8131a9d5e6816.xml"/>
+		<!-- 新增 AI & Programming Feeds -->
+		<outline text="Ollama Blog" title="Ollama Blog" type="rss" xmlUrl="https://ollama.com/blog/feed"/>
+		<outline text="Anthropic Research" title="Anthropic Research" type="rss" xmlUrl="https://www.anthropic.com/index.xml"/>
+		<outline text="NVIDIA Blog - AI" title="NVIDIA Blog - AI" type="rss" xmlUrl="https://feeds.feedburner.com/nvidia/blogs/ai"/>
+		<outline text="Cohere AI Blog" title="Cohere AI Blog" type="rss" xmlUrl="https://txt.cohere.com/rss/"/>
+		<outline text="Google Research" title="Google Research" type="rss" xmlUrl="https://ai.googleblog.com/atom.xml"/>
+		<outline text="Simon Willison's Weblog" title="Simon Willison's Weblog" type="rss" xmlUrl="https://simonwillison.net/atom/everything/"/>
+		<outline text="The New Stack - AI" title="The New Stack - AI" type="rss" xmlUrl="https://thenewstack.io/category/ai/feed/"/>
+		<outline text="Towards Data Science" title="Towards Data Science" type="rss" xmlUrl="https://towardsdatascience.com/feed"/>
+		<outline text="MIT Technology Review - AI" title="MIT Technology Review - AI" type="rss" xmlUrl="https://www.technologyreview.com/c/ai/feed/"/>
+		<outline text="O'Reilly Radar" title="O'Reilly Radar" type="rss" xmlUrl="https://www.oreilly.com/radar/feed/"/>
 	</body>
 </opml>
