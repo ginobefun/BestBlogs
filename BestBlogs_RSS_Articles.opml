@@ -20,6 +20,7 @@
 		<outline text="ByteByteGo Newsletter" title="ByteByteGo Newsletter" type="rss" xmlUrl="https://blog.bytebytego.com/feed"/>
 		<outline text="Google Cloud Blog" title="Google Cloud Blog" type="rss" xmlUrl="https://cloudblog.withgoogle.com/rss/"/>
 		<outline text="Last Week in AI" title="Last Week in AI" type="rss" xmlUrl="https://lastweekin.ai/feed/"/>
+		<outline text="AI Weekly" title="AI Weekly" type="rss" xmlUrl="https://aiweekly.co/feed"/>
 		<outline text="Next.js Blog" title="Next.js Blog" type="rss" xmlUrl="https://nextjs.org/feed.xml"/>
 		<outline text="David Heinemeier Hansson" title="David Heinemeier Hansson" type="rss" xmlUrl="https://world.hey.com/dhh/feed.atom"/>
 		<outline text="Google DeepMind Blog" title="Google DeepMind Blog" type="rss" xmlUrl="https://deepmind.com/blog/feed/basic/"/>
